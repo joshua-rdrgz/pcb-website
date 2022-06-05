@@ -1,4 +1,5 @@
 import Root from './components/Root'
+import link from "@frontity/html2react/processors/link";
 
 export default {
   name: "pcb-theme",
@@ -10,5 +11,10 @@ export default {
   },
   actions: {
     theme: {}
+  },
+  libraries: {
+    html2react: {
+      processors: [link]
+    }
   }
 };
