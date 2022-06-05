@@ -16,6 +16,7 @@ const settings = {
       state: {
         source: {
           url: "http://performanceclearbra.dev",
+          homepage: "/home",
         },
       },
     },
