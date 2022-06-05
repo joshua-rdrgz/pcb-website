@@ -1,10 +1,10 @@
 {
   "name": "pcb-theme",
   "version": "1.0.0",
-  "description": "Frontity package created using the Frontity CLI.",
+  "description": "Marketing Website for Performance Clear Bra",
   "keywords": [
-    "frontity",
-    "frontity-theme"
+    "pcb",
+    "pcb-theme"
   ],
   "license": "Apache-2.0",
   "dependencies": {
