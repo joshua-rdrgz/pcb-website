@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'frontity';
 
-const Root = ({ state }) => {
+const App = ({ state }) => {
   return (
     <>
     <div>Hello</div>
@@ -9,4 +9,4 @@ const Root = ({ state }) => {
   );
 };
 
-export default connect(Root);
+export default connect(App);

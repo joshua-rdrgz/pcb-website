@@ -1,10 +1,10 @@
-import Root from './components/Root'
+import App from './components/App'
 import link from "@frontity/html2react/processors/link";
 
 export default {
   name: "pcb-theme",
   roots: {
-    theme: Root
+    theme: App
   },
   state: {
     theme: {}
