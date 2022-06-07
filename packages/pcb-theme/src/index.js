@@ -1,4 +1,4 @@
-import App from './components/App'
+import App from './theme/App'
 import link from "@frontity/html2react/processors/link";
 
 export default {
