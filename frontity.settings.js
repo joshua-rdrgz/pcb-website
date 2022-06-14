@@ -1,10 +1,12 @@
+import key from './packages/pcb-theme/src/important';
 const settings = {
   name: "pcb-website",
   state: {
     frontity: {
-      url: "https://test.frontity.org",
-      title: "Test Frontity Blog",
-      description: "WordPress installation for Frontity development",
+      // edit this when deploying
+      url: "https://performanceclearbra.dev",
+      title: "Performance Clear Bra",
+      description: "Marketing website of Performance Clear Bra",
     },
   },
   packages: [
@@ -17,6 +19,7 @@ const settings = {
         source: {
           url: "http://performanceclearbra.dev",
           homepage: "/home",
+          auth: key
         },
       },
     },
