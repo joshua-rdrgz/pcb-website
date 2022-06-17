@@ -3,7 +3,6 @@ const settings = {
   name: "pcb-website",
   state: {
     frontity: {
-      // edit this when deploying
       url: "https://performanceclearbra.dev",
       title: "Performance Clear Bra",
       description: "Marketing website of Performance Clear Bra",
