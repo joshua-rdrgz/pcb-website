@@ -25,6 +25,9 @@ export const colorGoldDeep2 = "#654C01";
 export const headerBorder = `1px solid ${colorWhite}`;
 
 // MEDIA QUERIES
-export const queryLG = "81.25em"; // 1300px
-export const queryMD = "66.88em"; // 1070px
-export const querySM = "22.19em"; // 355px
+export const queryLG = "62.5em"; // 1000px
+export const queryMD = "50em"; // 800px
+export const queryMDSM = '40.625em'; // 650px
+export const querySMMD = '35.125em'; // 550px
+export const querySM = "30.625em"; // 490px
+export const queryXSM = '24.5em'; // 392px

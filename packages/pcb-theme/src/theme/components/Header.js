@@ -1,5 +1,5 @@
 import React from "react";
-import { connect, styled, css } from "frontity";
+import { connect, styled } from "frontity";
 import * as Mixins from "../styles/Mixins";
 import * as Variables from "../styles/Variables";
 
@@ -35,6 +35,10 @@ function Header({ route, state, actions, libraries }) {
       <MainBarContainer>
         {/* <PcbLogo data={pcbLogo.guid.rendered} type="image/svg+xml"></PcbLogo> */}
         <PcbLogo data={pcbLOGO} type="image/svg+xml"></PcbLogo>
+        <MobileToggle type="checkbox" id="mobile-toggle" />
+        <MobileBurger for="mobile-toggle">
+          <MobileIcon>&nbsp;</MobileIcon>
+        </MobileBurger>
         <Nav>
           <NavList>
             {menus.navLinks
@@ -46,7 +50,7 @@ function Header({ route, state, actions, libraries }) {
                   );
                   return (
                     <ParentLink key={link.id} id={link.id}>
-                      {link.title.rendered}
+                      <span>{link.title.rendered}</span>
                       {/* Font-Awesome drop-down icon here */}
                       <ChildList>
                         {childItems.map((item) => {
@@ -93,29 +97,71 @@ export default connect(Header);
 const PcbLogo = styled.object`
   width: 250px;
   margin-left: 3rem;
+  @media (max-width: ${Variables.queryMD}) {
+    margin-right: auto;
+    width: 200px;
+  }
+  @media (max-width: ${Variables.querySMMD}) {
+    margin-left: 1rem;
+  }
 `;
 
 const TopBarContainer = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  flex-wrap: wrap;
   border-bottom: ${Variables.headerBorder};
   ${Mixins.addColors(Variables.colorRedDeep2, Variables.colorWhite)};
   ${Mixins.addHeadingFont(400, 2)};
 `;
 
 const CallBlock = styled.div`
-  padding-right: 10rem;
+  padding: 0 3rem;
   border-right: ${Variables.headerBorder};
+  @media (max-width: ${Variables.queryMD}) {
+    padding: 0 1rem;
+  }
+  @media (max-width: ${Variables.querySMMD}) {
+    border-right: none;
+    margin-left: auto;
+  }
+  @media (max-width: ${Variables.querySM}) {
+    margin: 0 auto;
+  }
 `;
 
 const AddressBlock = styled.div`
-  padding-right: 25rem;
+  margin-right: auto;
+  padding-left: 3rem;
+  @media (max-width: ${Variables.queryMD}) {
+    padding: 0 1rem;
+  }
+  @media (min-width: ${Variables.querySMMD}) and (max-width: 36.25em) {
+    border-right: 1px solid ${Variables.colorWhite};
+  }
+  @media (max-width: ${Variables.querySMMD}) {
+    margin-left: auto;
+    margin-right: 0;
+  }
+  @media (max-width: ${Variables.queryXSM}) {
+    margin-right: auto;
+    text-align: center;
+  }
 `;
 
 const SocialsBlock = styled.div`
   display: flex;
   gap: 2rem;
   align-items: center;
+  padding-right: 3rem;
+  @media (max-width: ${Variables.queryMD}) {
+    gap: 1rem;
+    padding: 0 1rem;
+  }
+  @media (max-width: ${Variables.querySMMD}) {
+    margin: 0 auto;
+    padding-bottom: 0.5rem;
+  }
 `;
 
 const MainBarContainer = styled.div`
@@ -123,24 +169,120 @@ const MainBarContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   background-color: ${Variables.colorBlack};
-  ${Mixins.addHeadingFont(300, 2)}
+  @media (max-width: ${Variables.queryMD}) {
+    flex-direction: column;
+  }
 `;
 
-const Nav = styled.nav`
+export const Nav = styled.nav`
+  // exported for Mixins.js
   color: ${Variables.colorWhite};
-  margin-right: 7rem;
+  margin-left: auto;
+  margin-right: 3rem;
   margin-top: 2rem;
+  @media (max-width: ${Variables.queryMD}) {
+    height: 0;
+    margin-top: 0;
+    transform: scale(1, 0);
+    transform-origin: top;
+    transition: all 400ms ease-in-out;
+  }
+`;
+
+export const MobileToggle = styled.input`
+  // exported for Mixins.js
+  display: none;
+  &:checked ~ ${Nav} {
+    // ~ looks for any preceding sibling
+    max-height: auto;
+    transform: scale(1, 1);
+  }
+  &:checked ~ ${Nav} a {
+    opacity: 1;
+  }
+`;
+
+const MobileIcon = styled.span`
+  visibility: hidden;
+  &,
+  &::before,
+  &::after {
+    display: block;
+    background: white;
+    height: 2px;
+    width: 2rem;
+    border-radius: 2px;
+    position: relative;
+  }
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    transition: all 0.2s;
+  }
+  &::before {
+    bottom: 0.7rem;
+  }
+  &::after {
+    top: 0.7rem;
+  }
+  @media (max-width: ${Variables.queryMD}) {
+    visibility: visible;
+    margin-left: 0.9rem;
+    margin-top: 1.9rem;
+  }
+`;
+
+const MobileBurger = styled.label`
+  visibility: hidden;
+  background-color: transparent;
+  position: absolute;
+  right: 0;
+  margin-right: 3rem;
+  margin-top: 1.5rem;
+  height: 4rem;
+  width: 4rem;
+  &:hover ${MobileIcon}:before {
+    bottom: 0.8rem;
+  }
+  &:hover ${MobileIcon}:after {
+    top: 0.8rem;
+  }
+  ${MobileToggle}:checked + & ${MobileIcon} {
+    background-color: transparent;
+  }
+  ${MobileToggle}:checked + & ${MobileIcon}::before {
+    transform: rotate(135deg);
+    top: 0;
+  }
+  ${MobileToggle}:checked + & ${MobileIcon}::after {
+    transform: rotate(-135deg);
+    top: 0;
+  }
+  @media (max-width: ${Variables.queryMD}) {
+    visibility: visible;
+  }
 `;
 
 const NavList = styled.ul`
   display: flex;
   justify-content: space-between;
   gap: 8rem;
+  @media (max-width: ${Variables.queryLG}) {
+    gap: 5rem;
+  }
+  @media (max-width: ${Variables.queryMD}) {
+    background-color: ${Variables.colorBlack};
+    flex-direction: column;
+    gap: 0;
+    width: 100vw;
+  }
 `;
 
 const NormalLink = styled.li`
   ${Mixins.liCleanUp};
   ${Mixins.addHeadingFont(700, 3)};
+  text-align: center;
 `;
 
 const ParentLink = styled.li`
@@ -152,47 +294,65 @@ const ParentLink = styled.li`
   &:hover {
     color: ${Variables.colorGold};
   }
+  @media (max-width: ${Variables.queryMD}) {
+    padding-bottom: 0;
+    & span {
+      display: none;
+    }
+  }
 `;
 
 const ChildList = styled.ul`
-  display: none;
-  position: absolute;
-  min-width: 20rem;
-  z-index: 1;
-  margin-left: -6rem;
-  margin-top: 1.5rem;
-  box-shadow: 0 0.5rem 1rem rgba(16, 16, 16, 0.3);
-  background-color: ${Variables.colorGray1};
-  border-radius: 0.5rem;
-  ${ParentLink}:hover & {
-    display: block;
-  }
-  &::before {
-    content: "";
-    display: block;
-    border-color: transparent transparent ${Variables.colorGray1} transparent;
-    border-style: solid;
-    border-width: 1.5rem;
+  @media (min-width: ${Variables.queryMD}) {
+    display: none;
     position: absolute;
-    top: -3rem;
-    left: 50%;
-    margin-left: -2rem;
+    min-width: 20rem;
+    z-index: 1;
+    margin-left: -6rem;
+    margin-top: 1.5rem;
+    box-shadow: 0 0.5rem 1rem rgba(16, 16, 16, 0.3);
+    background-color: ${Variables.colorGray1};
+    border-radius: 0.5rem;
+    ${ParentLink}:hover & {
+      display: block;
+    }
+    &::before {
+      content: "";
+      display: block;
+      border-color: transparent transparent ${Variables.colorGray1} transparent;
+      border-style: solid;
+      border-width: 1.5rem;
+      position: absolute;
+      top: -3rem;
+      left: 50%;
+      margin-left: -2rem;
+    }
+  }
+  @media (max-width: ${Variables.queryLG}) {
+    min-width: 16rem;
+    margin-left: -4.5rem;
+  }
+  @media (max-width: ${Variables.queryMD}) {
+    margin-left: 0;
   }
 `;
 
 const ChildLink = styled.li`
-  ${Mixins.liCleanUp};
-  ${Mixins.addHeadingFont(700, 2.5)};
-  text-align: center;
-  &:first-child {
-    padding-top: 0.5rem;
-  }
-  &:last-child {
-    padding-bottom: 1rem;
+@media (min-width: ${Variables.queryMD}) {
+    ${Mixins.liCleanUp};
+    ${Mixins.addHeadingFont(700, 2.5)};
+    text-align: center;
+    &:first-child {
+      padding-top: 0.5rem;
+    }
+    &:last-child {
+      padding-bottom: 1rem;
+    }
   }
 `;
 
 const CTA = styled.li`
+  text-align: center;
   ${Mixins.liCleanUp};
   ${Mixins.addHeadingFont(700, 3)};
 `;
@@ -212,5 +372,13 @@ const StyledCTA = styled(Link)`
   &:hover {
     color: ${Variables.colorWhite};
     border-color: ${Variables.colorRed};
+  }
+  @media (max-width: ${Variables.queryMD}) {
+    border: none;
+    padding: none;
+    color: ${Variables.colorWhite} !important;
+    &:hover {
+      color: ${Variables.colorGold} !important;
+    }
   }
 `;
