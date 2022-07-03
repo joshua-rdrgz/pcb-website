@@ -1,11 +1,10 @@
 import React from "react";
-import { Head, Global, connect, css } from "frontity";
-import * as Variables from "./styles/Variables";
+import { Head, Global, connect } from "frontity";
 import Reset from "./styles/Reset";
 
-import Header from "./components/Header";
-import PageContent from "./components/PageContent";
-import Footer from "./components/Footer";
+import Header from "./layout/Header";
+import PageContent from "./layout/PageContent";
+import Footer from "./layout/Footer";
 
 const App = ({ state }) => {
   return (
