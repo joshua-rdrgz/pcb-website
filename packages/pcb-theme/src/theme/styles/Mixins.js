@@ -1,6 +1,5 @@
 import { css } from "frontity";
 import * as Variables from "./Variables";
-import { MobileToggle, Nav } from "../components/Header";
 
 export const liCleanUp = () => css`
   list-style: none;
@@ -8,20 +7,13 @@ export const liCleanUp = () => css`
     cursor: pointer;
   }
 `;
+
 export const aCleanUp = (color) => css`
   text-decoration: none;
   color: ${color};
   &:link,
   &:visited {
     color: ${color};
-  }
-  @media (max-width: ${Variables.queryMD}) {
-    opacity: 0;
-    transition: opacity 150ms ease-in-out;
-    ${MobileToggle}:checked ~ ${Nav} & {
-      opacity: 1;
-      transition: opacity 250ms ease-in-out 250ms;
-    }
   }
 `;
 
