@@ -3,9 +3,8 @@ import { connect, styled } from "frontity";
 import * as Mixins from '../styles/Mixins';
 import * as Variables from "../styles/Variables";
 
-// import Link from "@frontity/components/link";
 import pcbLOGO from "../assets/pcb-logo-transparent.svg";
-import HeaderNav from "./components/Nav";
+import Navigation from "./components/Navigation";
 
 function Header({ state }) {
   // Fetch Menus
@@ -36,7 +35,7 @@ function Header({ state }) {
       <MainBarContainer>
         {/* <PcbLogo data={pcbLogo.guid.rendered} type="image/svg+xml"></PcbLogo> */}
         <PcbLogo data={pcbLOGO} type="image/svg+xml"></PcbLogo>
-        <HeaderNav />
+        <Navigation type='header' menuNumber={state.theme.headerMenuID} />
       </MainBarContainer>
     </header>
   );

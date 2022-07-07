@@ -9,7 +9,11 @@ export default {
     theme: App
   },
   state: {
-    theme: {}
+    theme: {
+      headerMenuID: 3,
+      footerPagesID: 7,
+      footerResourcesID: 8,
+    }
   },
   actions: {
     theme: {

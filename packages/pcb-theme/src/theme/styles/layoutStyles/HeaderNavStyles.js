@@ -1,76 +1,10 @@
-import React from "react";
-import { connect, styled, css } from "frontity";
-import * as Mixins from "../../styles/Mixins";
-import * as Variables from "../../styles/Variables";
-
+import { styled, css } from 'frontity';
 import Link from "@frontity/components/link";
+import * as Variables from '../Variables';
+import * as Mixins from '../Mixins';
 
-function HeaderNav({ state }) {
-  // Fetch Menus
-  const menus = state.source.get("menus");
-  console.log(menus);
 
-  return (
-    <>
-      <MobileToggle type="checkbox" id="mobile-toggle" />
-      <MobileBurger for="mobile-toggle">
-        <MobileIcon>&nbsp;</MobileIcon>
-      </MobileBurger>
-      <Nav>
-        <NavList>
-          {menus.navLinks
-            .filter((link) => link.menus === 3)
-            .map((link) => {
-              if (link.acf.parent === "yes") {
-                const parent = link;
-                let childItemsObj = [];
-                childItemsObj.push(menus.navLinks.filter(
-                  link => link.parent === parent.id
-                ));
-                  return (
-                    <ParentLink key={link.id} id={link.id}>
-                      <span>{link.title.rendered}</span>
-                      {/* Font-Awesome drop-down icon here */}
-                      <ChildList>
-                        {childItemsObj[0].map((child) => {
-                            return (
-                              <ChildLink key={child.id} id={child.id}>
-                                <StyledLink link={child.url}>
-                                  {child.title.rendered}
-                                </StyledLink>
-                              </ChildLink>
-                            );
-                        })}
-                      </ChildList>
-                    </ParentLink>
-                  );
-              }
-              if (link.acf.cta === "yes") {
-                return (
-                  <CTA key={link.id} id={link.id}>
-                    <StyledCTA link={link.url}>{link.title.rendered}</StyledCTA>
-                  </CTA>
-                );
-              }
-              if (link.parent === 0) {
-                return (
-                  <NormalLink key={link.id} id={link.id}>
-                    <StyledLink link={link.url}>
-                      {link.title.rendered}
-                    </StyledLink>
-                  </NormalLink>
-                );
-              }
-            })}
-        </NavList>
-      </Nav>
-    </>
-  );
-}
-
-export default connect(HeaderNav);
-
-const Nav = styled.nav`
+export const Nav = styled.nav`
   color: ${Variables.colorWhite};
   margin-left: auto;
   margin-right: 3rem;
@@ -84,7 +18,7 @@ const Nav = styled.nav`
   }
 `;
 
-const MobileToggle = styled.input`
+export const MobileToggle = styled.input`
   display: none;
   &:checked ~ ${Nav} {
     // ~ looks for any preceding sibling
@@ -96,7 +30,7 @@ const MobileToggle = styled.input`
   }
 `;
 
-const MobileIcon = styled.span`
+export const MobileIcon = styled.span`
   visibility: hidden;
   &,
   &::before,
@@ -127,7 +61,7 @@ const MobileIcon = styled.span`
   }
 `;
 
-const MobileBurger = styled.label`
+export const MobileBurger = styled.label`
   visibility: hidden;
   background-color: transparent;
   position: absolute;
@@ -158,7 +92,7 @@ const MobileBurger = styled.label`
   }
 `;
 
-const NavList = styled.ul`
+export const NavList = styled.ul`
   display: flex;
   justify-content: space-between;
   gap: 8rem;
@@ -173,13 +107,13 @@ const NavList = styled.ul`
   }
 `;
 
-const NormalLink = styled.li`
+export const NormalLink = styled.li`
   ${Mixins.liCleanUp};
   ${Mixins.addHeadingFont(700, 3)};
   text-align: center;
 `;
 
-const ParentLink = styled.li`
+export const ParentLink = styled.li`
   ${Mixins.liCleanUp};
   ${Mixins.addHeadingFont(700, 3)};
   text-align: center;
@@ -196,7 +130,7 @@ const ParentLink = styled.li`
   }
 `;
 
-const ChildList = styled.ul`
+export const ChildList = styled.ul`
   @media (min-width: ${Variables.queryMD}) {
     display: none;
     position: absolute;
@@ -231,7 +165,7 @@ const ChildList = styled.ul`
   }
 `;
 
-const ChildLink = styled.li`
+export const ChildLink = styled.li`
 @media (min-width: ${Variables.queryMD}) {
     ${Mixins.liCleanUp};
     ${Mixins.addHeadingFont(700, 2.5)};
@@ -245,14 +179,14 @@ const ChildLink = styled.li`
   }
 `;
 
-const CTA = styled.li`
+export const CTA = styled.li`
   text-align: center;
   ${Mixins.liCleanUp};
   ${Mixins.addHeadingFont(700, 3)};
 `;
 
 // Mixin to make links responsive, keeping it here to not pollute the global Mixin file.
-const linkResponsive = () => css`
+export const linkResponsive = () => css`
 @media (max-width: ${Variables.queryMD}) {
   opacity: 0;
   transition: opacity 150ms ease-in-out;
@@ -263,7 +197,7 @@ const linkResponsive = () => css`
 }
 `;
 
-const StyledLink = styled(Link)`
+export const StyledLink = styled(Link)`
   ${Mixins.aCleanUp(Variables.colorWhite)};
   &:hover {
     color: ${Variables.colorGold};
@@ -271,7 +205,7 @@ const StyledLink = styled(Link)`
   ${linkResponsive};
 `;
 
-const StyledCTA = styled(Link)`
+export const StyledCTA = styled(Link)`
   ${Mixins.aCleanUp(Variables.colorGold)};
   border: 2px solid ${Variables.colorGold};
   border-radius: 0.5rem;
