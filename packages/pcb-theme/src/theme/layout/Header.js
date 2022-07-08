@@ -6,21 +6,22 @@ import * as Variables from "../styles/Variables";
 import pcbLOGO from "../assets/pcb-logo-transparent.svg";
 import Navigation from "./components/Navigation";
 
+// import facebookLogo from '../assets/facebook-header.svg';
+// import yelpLogo from '../assets/yelp-header.svg';
+
 function Header({ state }) {
   // Fetch Menus
   const menus = state.source.get("menus");
-  console.log(menus);
 
   // Fetch Assets
   const { data: assetData } = state.source.get("media");
   const assets = Object.values(assetData);
   // const pcbLogo = assets.find((asset) => asset.id === ??); // for when logo comes from WP
-  const facebookLogo = assets.find((asset) => asset.id === 82);
-  const yelpLogo = assets.find((asset) => asset.id === 83);
-  console.log(assets);
+  const facebookLogo = assets.find((asset) => asset.slug === 'facebook-header');
+  const yelpLogo = assets.find((asset) => asset.slug === 'yelp-header');
 
   return (
-    <header>
+    <StyledHeader>
       <TopBarContainer>
         <CallBlock>{menus.menuData[0].acf.phone}</CallBlock>
         <AddressBlock>{menus.menuData[0].acf.address}</AddressBlock>
@@ -37,11 +38,16 @@ function Header({ state }) {
         <PcbLogo data={pcbLOGO} type="image/svg+xml"></PcbLogo>
         <Navigation type='header' menuNumber={state.theme.headerMenuID} />
       </MainBarContainer>
-    </header>
+    </StyledHeader>
   );
 }
 
 export default connect(Header);
+
+const StyledHeader = styled.header`
+  position: sticky;
+  top: 0;
+`;
 
 const PcbLogo = styled.object`
   width: 250px;
@@ -114,6 +120,8 @@ const SocialsBlock = styled.div`
 `;
 
 const MainBarContainer = styled.div`
+  position: sticky;
+  top: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;

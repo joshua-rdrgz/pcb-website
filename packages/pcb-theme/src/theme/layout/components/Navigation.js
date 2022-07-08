@@ -2,13 +2,11 @@ import React from "react";
 import { connect } from "frontity";
 
 import * as HNS from "../../styles/layoutStyles/HeaderNavStyles";
-import * as FNS from '../../styles/layoutStyles/FooterNavStyles';
+import * as FNS from "../../styles/layoutStyles/FooterNavStyles";
 
 function Navigation({ state, menuNumber, type }) {
   // Fetch Menus
   const menus = state.source.get("menus");
-  console.log(menus);
-
   const typeOfNav = type;
 
   const renderNav = function (type, styled) {
@@ -16,7 +14,7 @@ function Navigation({ state, menuNumber, type }) {
       return (
         <>
           <styled.MobileToggle type="checkbox" id="mobile-toggle" />
-          <styled.MobileBurger for="mobile-toggle">
+          <styled.MobileBurger htmlFor="mobile-toggle">
             <styled.MobileIcon>&nbsp;</styled.MobileIcon>
           </styled.MobileBurger>
           <styled.Nav>
@@ -72,12 +70,32 @@ function Navigation({ state, menuNumber, type }) {
         </>
       );
     }
-    if (type === 'footer') {
-      return 'hi!';
+    if (type === "footer") {
+      const [ menuData ] = menus.menuData.filter(
+        (menu) => menu.id === menuNumber
+      );
+      return (
+        <styled.Nav>
+          <styled.Title>{menuData.name}</styled.Title>
+          <styled.NavList>
+            {menus.navLinks
+              .filter(link => link.menus === menuNumber)
+              .map((link) => {
+                return (
+                  <styled.NavItem key={link.id} id={link.id}>
+                    <styled.StyledLink link={link.url}>
+                      {link.title.rendered}
+                    </styled.StyledLink>
+                  </styled.NavItem>
+                );
+              })}
+          </styled.NavList>
+        </styled.Nav>
+      );
     }
   };
 
-  return renderNav(typeOfNav, typeOfNav === 'header' ? HNS : FNS);
+  return renderNav(typeOfNav, typeOfNav === "header" ? HNS : FNS);
 }
 
 export default connect(Navigation);
