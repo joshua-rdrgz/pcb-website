@@ -49,7 +49,7 @@ function Footer({ state }) {
             <Social data={facebookLogo.guid.rendered} type="image/svg+xml"></Social>
             <Social data={yelpLogo.guid.rendered} type="image/svg+xml"></Social>
           </Socials>
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d46661.83134146085!2d-97.37785355349327!3d32.76933557693849!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864e734cf2061099%3A0x8c5e06440f0da472!2sPerformance%20Clear%20Bra!5e0!3m2!1sen!2sus!4v1657234656201!5m2!1sen!2sus" width="400" height="300" style={{border: 0}} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+          <Map src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d46661.83134146085!2d-97.37785355349327!3d32.76933557693849!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864e734cf2061099%3A0x8c5e06440f0da472!2sPerformance%20Clear%20Bra!5e0!3m2!1sen!2sus!4v1657234656201!5m2!1sen!2sus" style={{border: 0}} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></Map>
         </div>
       </FooterGrid>
     </StyledFooter>
@@ -66,18 +66,43 @@ const StyledFooter = styled.footer`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  @media (max-width: ${Variables.queryLG}) {
+    padding-top: 5rem;
+  }
 `;
 
 const FooterGrid = styled.div`
   display: flex;
   justify-content: center;
   gap: 7rem;
+  flex-wrap: wrap;
+  margin: 0 5rem;
+  @media (max-width: ${Variables.queryMD}) {
+    text-align: center;
+    gap: 3rem;
+  }
 `;
 
 const PcbLogo = styled.object`
   width: 600px;
   display: block;
   margin: 0 auto;
+  @media (max-width: ${Variables.queryLG}) {
+    width: 500px;
+  }
+  @media (max-width: ${Variables.queryMDMD}) {
+    border-bottom: 0.5px solid ${Variables.colorGray1};
+    margin-bottom: 3rem;
+  }
+  @media (max-width: ${Variables.queryMDSM}) {
+    width: 400px;
+  }
+  @media (max-width: ${Variables.querySM}) {
+    width: 300px;
+  }
+  @media (max-width: ${Variables.queryXSMLG}) {
+    width: 250px;
+  }
 `;
 
 const FancyLinesContainer = styled.div`
@@ -87,6 +112,9 @@ const FancyLinesContainer = styled.div`
   width: 75rem;
   height: 0.5rem;
   margin-bottom: 3rem;
+  @media (max-width: ${Variables.queryMDMD}) {
+    display: none;
+  }
 `;
 
 const FancyLines = styled.div`
@@ -103,6 +131,9 @@ const FancyLines = styled.div`
   }
   &::after {
     right: 19rem;
+  }
+  @media (max-width: ${Variables.queryMDMD}) {
+    display: none;
   }
 `;
 
@@ -133,3 +164,16 @@ const Socials = styled.div`
   gap: 1rem;
   margin-bottom: 2rem;
 `;
+
+const Map = styled.iframe`
+  width: 400px;
+  height: 300px;
+  @media (max-width: ${Variables.querySM}) {
+    width: 300px;
+    height: 200px;
+  }
+  @media (max-width: ${Variables.queryXSM}) {
+    width: 250px;
+    height: 150px;
+  }
+`

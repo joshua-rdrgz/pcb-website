@@ -30,7 +30,10 @@ export const footerBorder = `0.5px solid ${colorGray1}`
 // MEDIA QUERIES
 export const queryLG = "62.5em"; // 1000px
 export const queryMD = "50em"; // 800px
+export const queryMDMD = '46.875em'; // 750px
 export const queryMDSM = '40.625em'; // 650px
 export const querySMMD = '35.125em'; // 550px
 export const querySM = "30.625em"; // 490px
+export const queryXSMLG = '25em'; // 400px
 export const queryXSM = '24.5em'; // 392px
+export const queryXXSM = '18.75em'; // 300px

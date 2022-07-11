@@ -26,6 +26,9 @@ export const NavList = styled.ul`
 export const NavItem = styled.li`
   ${Mixins.liCleanUp()};
   font-size: 2.5rem;
+  @media (max-width: ${Variables.queryLG}) {
+    font-size: ${2.5 - 0.35}rem;
+  }
 `;
 
 export const StyledLink = styled(Link)`
