@@ -6,11 +6,12 @@ import pcbLOGO from "../assets/pcb-logo-transparent.svg";
 
 import * as Variables from '../styles/Variables';
 import * as Mixins from '../styles/Mixins';
+import { footerSection } from '../styles/layoutStyles/FooterNavStyles';
 
 
 function Footer({ state }) {
   const menus = state.source.get('menus');
-  const [menuData] = menus.menuData.filter(menu => menu.name === 'Our Pages')
+  const [menuData] = menus.menuData.filter(menu => menu.locations[0] === 'footer')
 
   const {data: assets} = state.source.get('media');
   const media = Object.values(assets);
@@ -20,49 +21,115 @@ function Footer({ state }) {
   return (
     <StyledFooter>
       <PcbLogo data={pcbLOGO} type="image/svg+xml"></PcbLogo>
-      <div>
+      <FancyLinesContainer>
+        <FancyLines />
+      </FancyLinesContainer>
+      <FooterGrid>
         <Navigation type='footer' menuNumber={state.theme.footerPagesID} />
         <Navigation type='footer' menuNumber={state.theme.footerResourcesID} />
+        <WhereToFindUs>
+          <Title>Where To Find Us</Title>
+          <div>
+            <Label>Email</Label>
+            <Data>{menuData.acf.email}</Data>
+          </div>
+          <div>
+            <Label>Phone</Label>
+            <Data>{menuData.acf.phone}</Data>
+          </div>
+          <div>
+            <Label>Address</Label>
+            <Data>{menuData.acf.top_address}</Data>
+            <Data>{menuData.acf.bottom_address}</Data>
+            <Data>{menuData.acf.hours}</Data>
+          </div>
+        </WhereToFindUs>
         <div>
-          <h1>Where To Find Us</h1>
-          <div>
-            <div>Email</div>
-            <div>{menuData.acf.email}</div>
-          </div>
-          <div>
-            <div>Phone</div>
-            <div>{menuData.acf.phone}</div>
-          </div>
-          <div>
-            <div>Address</div>
-            <div>{menuData.acf.top_address}</div>
-            <div>{menuData.acf.bottom_address}</div>
-            <div>{menuData.acf.hours}</div>
-          </div>
-        </div>
-        <div>
-          <div>
+          <Socials>
             <Social data={facebookLogo.guid.rendered} type="image/svg+xml"></Social>
             <Social data={yelpLogo.guid.rendered} type="image/svg+xml"></Social>
-          </div>
+          </Socials>
           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d46661.83134146085!2d-97.37785355349327!3d32.76933557693849!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864e734cf2061099%3A0x8c5e06440f0da472!2sPerformance%20Clear%20Bra!5e0!3m2!1sen!2sus!4v1657234656201!5m2!1sen!2sus" width="400" height="300" style={{border: 0}} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
         </div>
-      </div>
+      </FooterGrid>
     </StyledFooter>
   )
 }
 
 export default connect(Footer);
 
-const PcbLogo = styled.object`
-  width: 600px;
+const StyledFooter = styled.footer`
+  background-color: ${Variables.colorBlackPure};
+  color: ${Variables.colorWhite};
+  padding-top: 10rem;
+  padding-bottom: 10rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 `;
 
-const StyledFooter = styled.footer`
-  background-color: ${Variables.colorBlack};
-  color: ${Variables.colorWhite};
+const FooterGrid = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 7rem;
+`;
+
+const PcbLogo = styled.object`
+  width: 600px;
+  display: block;
+  margin: 0 auto;
+`;
+
+const FancyLinesContainer = styled.div`
+  position: relative;
+  content: '';
+  margin: 0 auto;
+  width: 75rem;
+  height: 0.5rem;
+  margin-bottom: 3rem;
+`;
+
+const FancyLines = styled.div`
+  &::before, &::after {
+    content: '';
+    width: 40rem;
+    height: 0.5px;
+    background: ${Variables.colorGray1};
+    position: absolute;
+  }
+  &::before {
+    top: 0.5rem;
+    left: 19rem;
+  }
+  &::after {
+    right: 19rem;
+  }
 `;
 
 const Social = styled.object`
   width: 5rem;
+`;
+
+const WhereToFindUs = styled.div`
+  ${footerSection(20)};
+`;
+
+const Title = styled.span`
+  border-bottom: ${Variables.footerBorder};
+  ${Mixins.addHeadingFont(400, 3)};
+`;
+
+const Label = styled.span`
+  ${Mixins.addHeadingFont(400, 2.5)};
+`;
+
+const Data = styled.div`
+  font-size: 1.25rem;
+`;
+
+const Socials = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
 `;
