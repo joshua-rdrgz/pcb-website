@@ -72,9 +72,12 @@ const TopBarContainer = styled.div`
   justify-content: space-between;
   flex-wrap: wrap;
   border-bottom: ${Variables.headerBorder};
-  transition: all 2s;
+  transition: all 1s;
   ${props => props.scrollPos > 50 ? Mixins.addColors(Variables.colorRedDeep2RGBA, Variables.colorWhite) : Mixins.addColors(Variables.colorRedDeep2, Variables.colorWhitePure)};
   ${Mixins.addHeadingFont(400, 2)};
+  @media (max-width: ${Variables.querySMMD}) {
+    ${props => props.scrollPos > 50 && 'transform: translateY(-100%)'}
+  }
 `;
 
 const CallBlock = styled.div`
@@ -130,9 +133,15 @@ const MainBarContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: all 2s;
+  transition: all 1s;
   background-color: ${props => props.scrollPos > 50 ? Variables.colorBlackPureRGBA : Variables.colorBlackPure};
   @media (max-width: ${Variables.queryMD}) {
     flex-direction: column;
+  }
+  @media (max-width: ${Variables.querySMMD}) {
+    ${props => props.scrollPos > 50 && `
+      border-top: 1px solid ${Variables.colorWhite};
+      transform: translateY(-73%);
+    `}
   }
 `;
