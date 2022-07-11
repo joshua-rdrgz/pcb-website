@@ -31,6 +31,7 @@ function Navigation({ state, menuNumber, type }) {
                     return (
                       <styled.ParentLink key={link.id} id={link.id}>
                         <span>{link.title.rendered}</span>
+                        <styled.ParentIcon>&nbsp;</styled.ParentIcon>
                         {/* Font-Awesome drop-down icon here */}
                         <styled.ChildList>
                           {childItemsObj[0].map((child) => {

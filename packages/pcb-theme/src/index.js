@@ -10,9 +10,10 @@ export default {
   },
   state: {
     theme: {
+      scrollPos: 0,
       headerMenuID: 3,
-      footerPagesID: 7,
-      footerResourcesID: 8,
+      footerPagesID: 4,
+      footerResourcesID: 5,
     }
   },
   actions: {

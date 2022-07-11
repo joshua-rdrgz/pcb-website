@@ -21,7 +21,6 @@ export const Nav = styled.nav`
 export const MobileToggle = styled.input`
   display: none;
   &:checked ~ ${Nav} {
-    // ~ looks for any preceding sibling
     max-height: auto;
     transform: scale(1, 1);
   }
@@ -127,6 +126,39 @@ export const ParentLink = styled.li`
     & span {
       display: none;
     }
+  }
+`;
+
+export const ParentIcon = styled.span`
+  position: absolute;
+  width: 4rem;
+  height: 4rem;
+  &::before, &::after {
+    content: '';
+    width: 1.5rem;
+    height: 1.5px;
+    background: white;
+    display: inline-block;
+    position: absolute;
+    border-radius: 15px;
+    top: 2.5rem;
+    transition: all .2s;
+  }
+  &::before {
+    transform: rotate(45deg);
+    right: 2rem;
+  }
+  &::after {
+    transform: rotate(135deg);
+    right: 1rem;
+  }
+  ${ParentLink}:hover &::before {
+    transform: rotate(135deg);
+    background: ${Variables.colorGold};
+  }
+  ${ParentLink}:hover &::after {
+    transform: rotate(45deg);
+    background: ${Variables.colorGold};
   }
 `;
 

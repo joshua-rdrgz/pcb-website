@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect, styled } from "frontity";
 import * as Mixins from '../styles/Mixins';
 import * as Variables from "../styles/Variables";
@@ -6,8 +6,7 @@ import * as Variables from "../styles/Variables";
 import pcbLOGO from "../assets/pcb-logo-transparent.svg";
 import Navigation from "./components/Navigation";
 
-// import facebookLogo from '../assets/facebook-header.svg';
-// import yelpLogo from '../assets/yelp-header.svg';
+// const API = typeof window !== 'undefined' ? window.API : NodeAlternative;
 
 function Header({ state }) {
   // Fetch Menus
@@ -20,9 +19,16 @@ function Header({ state }) {
   const facebookLogo = assets.find((asset) => asset.slug === 'facebook-header');
   const yelpLogo = assets.find((asset) => asset.slug === 'yelp-header');
 
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      state.theme.scrollPos = window.scrollY;
+    });
+  }, [])
+  
+  
   return (
     <StyledHeader>
-      <TopBarContainer>
+      <TopBarContainer scrollPos={state.theme.scrollPos}>
         <CallBlock>{menus.menuData[0].acf.phone}</CallBlock>
         <AddressBlock>{menus.menuData[0].acf.address}</AddressBlock>
         <SocialsBlock>
@@ -33,7 +39,7 @@ function Header({ state }) {
           <object data={yelpLogo.guid.rendered} type="image/svg+xml"></object>
         </SocialsBlock>
       </TopBarContainer>
-      <MainBarContainer>
+      <MainBarContainer scrollPos={state.theme.scrollPos}>
         {/* <PcbLogo data={pcbLogo.guid.rendered} type="image/svg+xml"></PcbLogo> */}
         <PcbLogo data={pcbLOGO} type="image/svg+xml"></PcbLogo>
         <Navigation type='header' menuNumber={state.theme.headerMenuID} />
@@ -66,7 +72,8 @@ const TopBarContainer = styled.div`
   justify-content: space-between;
   flex-wrap: wrap;
   border-bottom: ${Variables.headerBorder};
-  ${Mixins.addColors(Variables.colorRedDeep2, Variables.colorWhite)};
+  transition: all 2s;
+  ${props => props.scrollPos > 50 ? Mixins.addColors(Variables.colorRedDeep2RGBA, Variables.colorWhite) : Mixins.addColors(Variables.colorRedDeep2, Variables.colorWhitePure)};
   ${Mixins.addHeadingFont(400, 2)};
 `;
 
@@ -120,12 +127,11 @@ const SocialsBlock = styled.div`
 `;
 
 const MainBarContainer = styled.div`
-  position: sticky;
-  top: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: ${Variables.colorBlack};
+  transition: all 2s;
+  background-color: ${props => props.scrollPos > 50 ? Variables.colorBlackPureRGBA : Variables.colorBlackPure};
   @media (max-width: ${Variables.queryMD}) {
     flex-direction: column;
   }
