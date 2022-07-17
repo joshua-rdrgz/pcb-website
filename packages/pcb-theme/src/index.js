@@ -3,6 +3,8 @@ import link from "@frontity/html2react/processors/link";
 import menuHandler from './theme/handlers/menu-handler';
 import mediaHandler from './theme/handlers/media-handler';
 
+import heroboxProcessor from './theme/processors/heroboxProcessor';
+
 export default {
   name: "pcb-theme",
   roots: {
@@ -26,7 +28,8 @@ export default {
   },
   libraries: {
     html2react: {
-      processors: [link]
+      processors: [link, heroboxProcessor]
+      
     },
     source: {
       handlers: [menuHandler, mediaHandler]
