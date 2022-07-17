@@ -1,5 +1,3 @@
-import { css } from "frontity";
-
 // COLORS
 export const colorWhitePure = "#FFF";
 export const colorWhite = "#EFEFEF";
@@ -7,6 +5,7 @@ export const colorGrayLight1 = "#DFDFDF";
 export const colorGrayLight2 = "#CFCFCF";
 export const colorGrayLight3 = "#BFBFBF";
 export const colorGray1 = "#808080";
+export const colorGray1RGBA = 'rgba(128,128,128,0.5)'
 export const colorGray2 = "#707070";
 export const colorGrayDark = "#404040";
 export const colorBlack = "#101010";
@@ -25,13 +24,20 @@ export const colorGoldDeep2 = "#654C01";
 
 // BORDERS
 export const headerBorder = `1px solid ${colorWhite}`;
-export const footerBorder = `0.5px solid ${colorGray1}`
+export const footerBorder = `0.5px solid ${colorGray1}`;
+
+// BOX-SHADOW
+export const boxShadow = `0 0.5rem 1rem rgba(16, 16, 16, 0.3)`;
+export const boxShadowHover = `0.3rem 0.7rem 1rem rgba(16, 16, 16, 0.5)`;
+export const boxShadowActive = `0.3rem 0.6rem 1rem rgba(16, 16, 16, 0.3)`
 
 // MEDIA QUERIES
+export const queryXLG = "81.25em" // 1300px
 export const queryLG = "62.5em"; // 1000px
 export const queryMD = "50em"; // 800px
 export const queryMDMD = '46.875em'; // 750px
 export const queryMDSM = '40.625em'; // 650px
+export const queryMDSMSM = '37.5em'; // 600px
 export const querySMMD = '35.125em'; // 550px
 export const querySM = "30.625em"; // 490px
 export const queryXSMLG = '25em'; // 400px

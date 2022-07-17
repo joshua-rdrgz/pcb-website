@@ -167,10 +167,10 @@ export const ChildList = styled.ul`
     display: none;
     position: absolute;
     min-width: 20rem;
-    z-index: 1;
+    z-index: 1000;
     margin-left: -6rem;
     margin-top: 1.5rem;
-    box-shadow: 0 0.5rem 1rem rgba(16, 16, 16, 0.3);
+    box-shadow: ${Variables.boxShadow};
     background-color: ${Variables.colorGray1};
     border-radius: 0.5rem;
     ${ParentLink}:hover & {

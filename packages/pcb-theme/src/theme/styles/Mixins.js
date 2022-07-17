@@ -25,9 +25,22 @@ export const addHeadingFont = (fontWeight, fontSize) => css`
   @media (max-width: ${Variables.queryLG}) {
     font-size: ${fontSize - 0.35}rem;
   }
+  @media (max-width: ${Variables.queryMD}) {
+    font-size: ${fontSize - 0.55}rem;
+  }
 `;
 
 export const addColors = (bgColor, txtColor) => css`
   background-color: ${bgColor};
   color: ${txtColor};
 `;
+
+export const applyBoxShadow = css`
+  box-shadow: ${Variables.boxShadow};
+  &:hover {
+    box-shadow: ${Variables.boxShadowHover};
+  }
+  &:active {
+    box-shadow: ${Variables.boxShadowActive};
+  }
+`

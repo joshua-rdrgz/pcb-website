@@ -53,6 +53,7 @@ export default connect(Header);
 const StyledHeader = styled.header`
   position: sticky;
   top: 0;
+  z-index: 1000;
 `;
 
 const PcbLogo = styled.object`
@@ -73,7 +74,7 @@ const TopBarContainer = styled.div`
   flex-wrap: wrap;
   border-bottom: ${Variables.headerBorder};
   transition: all 1s;
-  ${props => props.scrollPos > 50 ? Mixins.addColors(Variables.colorRedDeep2RGBA, Variables.colorWhite) : Mixins.addColors(Variables.colorRedDeep2, Variables.colorWhitePure)};
+  ${Mixins.addColors(Variables.colorRedDeep2, Variables.colorWhitePure)};
   ${Mixins.addHeadingFont(400, 2)};
   @media (max-width: ${Variables.querySMMD}) {
     ${props => props.scrollPos > 50 && 'transform: translateY(-100%)'}
@@ -133,8 +134,8 @@ const MainBarContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: all 1s;
-  background-color: ${props => props.scrollPos > 50 ? Variables.colorBlackPureRGBA : Variables.colorBlackPure};
+  transition: all .5s;
+  background-color: ${props => props.scrollPos > 80 ? Variables.colorBlackPureRGBA : Variables.colorBlackPure};
   @media (max-width: ${Variables.queryMD}) {
     flex-direction: column;
   }
