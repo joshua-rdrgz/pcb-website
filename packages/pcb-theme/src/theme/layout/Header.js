@@ -4,6 +4,7 @@ import * as Mixins from '../styles/Mixins';
 import * as Variables from "../styles/Variables";
 
 import pcbLOGO from "../assets/pcb-logo-transparent.svg";
+import Link from '@frontity/components/link';
 import Navigation from "./components/Navigation";
 
 // const API = typeof window !== 'undefined' ? window.API : NodeAlternative;
@@ -41,7 +42,9 @@ function Header({ state }) {
       </TopBarContainer>
       <MainBarContainer scrollPos={state.theme.scrollPos}>
         {/* <PcbLogo data={pcbLogo.guid.rendered} type="image/svg+xml"></PcbLogo> */}
-        <PcbLogo data={pcbLOGO} type="image/svg+xml"></PcbLogo>
+        <Link link='/'>
+          <PcbLogo src={pcbLOGO}></PcbLogo>
+        </Link>
         <Navigation type='header' menuNumber={state.theme.headerMenuID} />
       </MainBarContainer>
     </StyledHeader>
@@ -56,7 +59,7 @@ const StyledHeader = styled.header`
   z-index: 1000;
 `;
 
-const PcbLogo = styled.object`
+const PcbLogo = styled.img`
   width: 250px;
   margin-left: 3rem;
   @media (max-width: ${Variables.queryMD}) {
