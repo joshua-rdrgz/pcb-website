@@ -1,12 +1,17 @@
 import React from "react";
 import { Head, Global, connect } from "frontity";
+import Switch from '@frontity/components/switch';
 import Reset from "./styles/Reset";
 
 import Header from "./layout/Header";
 import PageContent from "./layout/PageContent";
 import Footer from "./layout/Footer";
 
+import Loading from "./layout/components/Loading";
+import Error from './layout/components/Error';
+
 const App = ({ state }) => {
+  const data = state.source.get(state.router.link);
   return (
     <>
       <Head>
@@ -23,7 +28,11 @@ const App = ({ state }) => {
       </Head>
       <Global styles={Reset} />
       <Header />
-      <PageContent />
+      <Switch>
+        <PageContent when={data.isPage}/>
+        <Loading when={data.isFetching}/>
+        <Error when={data.isError}/>
+      </Switch>
       <Footer />
     </>
   );
