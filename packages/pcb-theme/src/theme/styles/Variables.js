@@ -27,19 +27,25 @@ export const headerBorder = `1px solid ${colorWhite}`;
 export const footerBorder = `0.5px solid ${colorGray1}`;
 
 // BOX-SHADOW
+export const textShadow = `0.3rem 0.5rem 0.5rem rgba(16,16,16,0.1)`;
 export const boxShadow = `0 0.5rem 1rem rgba(16, 16, 16, 0.3)`;
 export const boxShadowHover = `0.3rem 0.7rem 1rem rgba(16, 16, 16, 0.5)`;
 export const boxShadowActive = `0.3rem 0.6rem 1rem rgba(16, 16, 16, 0.3)`
 
 // MEDIA QUERIES
-export const queryXLG = "81.25em" // 1300px
+export const queryXXLG = "84.375em"; // 1350px
+export const queryXLG = "81.25em"; // 1300px
+export const queryLGLG = '75em'; // 1200px
+export const queryLGMD = '64.0625em'; // 1025px
 export const queryLG = "62.5em"; // 1000px
+export const queryMDLG = '54.6875em'; // 875px
 export const queryMD = "50em"; // 800px
 export const queryMDMD = '46.875em'; // 750px
 export const queryMDSM = '40.625em'; // 650px
 export const queryMDSMSM = '37.5em'; // 600px
 export const querySMMD = '35.125em'; // 550px
 export const querySM = "30.625em"; // 490px
+export const querySMSM = '28.125em'; // 450px
 export const queryXSMLG = '25em'; // 400px
 export const queryXSM = '24.5em'; // 392px
 export const queryXXSM = '18.75em'; // 300px

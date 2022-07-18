@@ -4,6 +4,7 @@ import menuHandler from './theme/handlers/menu-handler';
 import mediaHandler from './theme/handlers/media-handler';
 
 import heroboxProcessor from './theme/processors/heroboxProcessor';
+import homeServicesProcessor from './theme/processors/homeServicesProcessor';
 
 export default {
   name: "pcb-theme",
@@ -28,7 +29,7 @@ export default {
   },
   libraries: {
     html2react: {
-      processors: [link, heroboxProcessor]
+      processors: [link, heroboxProcessor, homeServicesProcessor]
       
     },
     source: {
