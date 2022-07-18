@@ -10,7 +10,6 @@ import * as Variables from "../styles/Variables";
 import * as Mixins from "../styles/Mixins";
 
 const Herobox = ({
-  loggedNode,
   primaryHeadingContent,
   slot2Tag,
   slot2Content,
@@ -20,7 +19,6 @@ const Herobox = ({
   buttonLink,
   state,
 }) => {
-  console.log(loggedNode, buttonLink.split('/')[3]);
   const link = state.source.get(state.router.link);
   const media = state.source.get("media");
   const mediaID = state.source.page[link.id].featured_media;
@@ -132,14 +130,19 @@ const SecondaryHeading = styled.h2`
 `;
 
 const StyledButton = styled(Link)`
-  ${(props) => LinkStyles(props.type, props.fontSize)}
+  ${(props) => LinkStyles(props.type, props.fontSize)};
+  @media (max-width: ${Variables.queryMDMD}) {
+    font-size: ${props => props.fontSize - 1.5}rem;
+  }
+  @media (max-width: ${Variables.querySMMD}) {
+    font-size: ${props => props.fontSize - 2}rem;
+  }
 `;
 
 const RepBrands = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   flex-wrap: wrap;
-  gap: 25rem;
   padding: 3rem 0;
   background-color: ${Variables.colorGray1RGBA};
   @media (max-width: ${Variables.queryXLG}) {
@@ -215,7 +218,6 @@ const heroboxProcessor = {
     return {
       component: Herobox,
       props: {
-        loggedNode,
         primaryHeadingContent,
         slot2Tag,
         slot2Content,
