@@ -6,17 +6,14 @@ import Card from "../layout/components/Card";
 import * as Mixins from '../styles/Mixins';
 import * as Variables from '../styles/Variables';
 import LinkStyles from "../styles/componentStyles/LinkStyles";
-import { StyledLink } from "../styles/layoutStyles/HeaderNavStyles";
 
 const HomeServices = ({
-  loggedNode,
   sectionHeader,
   cards,
   buttonContent,
   buttonFontSize,
   buttonLink,
 }) => {
-  console.log(loggedNode, cards, buttonLink);
   return (
     <Section>
       <Heading>{sectionHeader}</Heading>
