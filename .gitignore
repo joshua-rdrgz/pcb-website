@@ -60,3 +60,4 @@ build
 # Custom
 html/
 important.js
+package-lock.json

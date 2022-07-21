@@ -22,6 +22,7 @@
     "@frontity/tiny-router": "^1.4.4",
     "@frontity/wp-source": "^1.11.7",
     "frontity": "^1.17.2",
-    "pcb-theme": "file:packages/pcb-theme"
+    "pcb-theme": "file:packages/pcb-theme",
+    "react-icons": "^4.4.0"
   }
 }
