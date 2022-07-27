@@ -1,11 +1,13 @@
 import App from "./theme/App";
 import link from "@frontity/html2react/processors/link";
+import iframe from '@frontity/html2react/processors/iframe';
 import menuHandler from "./theme/handlers/menu-handler";
 import mediaHandler from "./theme/handlers/media-handler";
 
 import heroboxProcessor from "./theme/processors/heroboxProcessor";
 import homeServicesProcessor from "./theme/processors/homeServicesProcessor";
 import galleryTabProcessor from "./theme/processors/galleryTabProcessor";
+import testimonialProcessor from "./theme/processors/testimonialProcessor";
 
 export default {
   name: "pcb-theme",
@@ -37,9 +39,11 @@ export default {
     html2react: {
       processors: [
         link,
+        iframe,
         heroboxProcessor,
         homeServicesProcessor,
         galleryTabProcessor,
+        testimonialProcessor
       ],
     },
     source: {
