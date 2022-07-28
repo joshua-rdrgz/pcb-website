@@ -113,6 +113,7 @@ export const addHeadingMediaQueries = fontSize => css`
 const PrimaryHeading = styled.h1`
   ${Mixins.addHeadingFont(700, 8)};
   ${addHeadingMediaQueries(8)};
+  margin-top: 4rem;
   @media (max-width: ${Variables.queryMDMD}) {
     font-size: 5.5rem;
   }
