@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { connect, styled } from "frontity";
-import * as Mixins from '../styles/Mixins';
+import * as Mixins from "../styles/Mixins";
 import * as Variables from "../styles/Variables";
 
 import pcbLOGO from "../assets/pcb-logo-transparent.svg";
-import Link from '@frontity/components/link';
+import Link from "@frontity/components/link";
 import Navigation from "./components/Navigation";
 
 // const API = typeof window !== 'undefined' ? window.API : NodeAlternative;
@@ -17,19 +17,23 @@ function Header({ state }) {
   const { data: assetData } = state.source.get("media");
   const assets = Object.values(assetData);
   // const pcbLogo = assets.find((asset) => asset.id === ??); // for when logo comes from WP
-  const facebookLogo = assets.find((asset) => asset.slug === 'facebook-header');
-  const yelpLogo = assets.find((asset) => asset.slug === 'yelp-header');
+  const facebookLogo = assets.find((asset) => asset.slug === "facebook-header");
+  const yelpLogo = assets.find((asset) => asset.slug === "yelp-header");
+
+  // Top Bar Reference
+  const topBarContainer = useRef();
+  
 
   useEffect(() => {
-    window.addEventListener('scroll', () => {
-      state.theme.scrollPos = window.scrollY;
+    window.addEventListener("scroll", () => {
+      state.theme.header.scrollPos = window.scrollY;
     });
-  }, [])
-  
-  
+    state.theme.header.topBarHeight = topBarContainer.current.offsetHeight;
+  }, []);
+
   return (
     <StyledHeader>
-      <TopBarContainer scrollPos={state.theme.scrollPos}>
+      <TopBarContainer scrollPos={state.theme.header.scrollPos} ref={topBarContainer}>
         <CallBlock>{menus.menuData[0].acf.phone}</CallBlock>
         <AddressBlock>{menus.menuData[0].acf.address}</AddressBlock>
         <SocialsBlock>
@@ -40,12 +44,12 @@ function Header({ state }) {
           <object data={yelpLogo.guid.rendered} type="image/svg+xml"></object>
         </SocialsBlock>
       </TopBarContainer>
-      <MainBarContainer scrollPos={state.theme.scrollPos}>
+      <MainBarContainer scrollPos={state.theme.header.scrollPos} topBarHeight={state.theme.header.topBarHeight}>
         {/* <PcbLogo data={pcbLogo.guid.rendered} type="image/svg+xml"></PcbLogo> */}
-        <Link link='/'>
+        <PcbLogoLink link="/">
           <PcbLogo src={pcbLOGO}></PcbLogo>
-        </Link>
-        <Navigation type='header' menuNumber={state.theme.headerMenuID} />
+        </PcbLogoLink>
+        <Navigation type="header" menuNumber={state.theme.headerMenuID} />
       </MainBarContainer>
     </StyledHeader>
   );
@@ -57,6 +61,16 @@ const StyledHeader = styled.header`
   position: sticky;
   top: 0;
   z-index: 1000;
+`;
+
+const PcbLogoLink = styled(Link)`
+  @media (max-width: ${Variables.queryMD}) {
+    margin-right: auto;
+    width: 200px;
+  }
+  @media (max-width: ${Variables.querySMMD}) {
+    margin-left: 0.5rem;
+  }
 `;
 
 const PcbLogo = styled.img`
@@ -76,11 +90,11 @@ const TopBarContainer = styled.div`
   justify-content: space-between;
   flex-wrap: wrap;
   border-bottom: ${Variables.headerBorder};
-  transition: all 1s;
+  transition: all 0.5s;
   ${Mixins.addColors(Variables.colorRedDeep2, Variables.colorWhitePure)};
   ${Mixins.addHeadingFont(400, 2)};
   @media (max-width: ${Variables.querySMMD}) {
-    ${props => props.scrollPos > 50 && 'transform: translateY(-100%)'}
+    ${(props) => props.scrollPos > 50 && "transform: translateY(-100%)"}
   }
 `;
 
@@ -137,15 +151,20 @@ const MainBarContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: all .5s;
-  background-color: ${props => props.scrollPos > 80 ? Variables.colorBlackPureRGBA : Variables.colorBlackPure};
+  transition: all 0.5s;
+  background-color: ${(props) =>
+    props.scrollPos > 125
+      ? Variables.colorBlackPureRGBA
+      : Variables.colorBlackPure};
   @media (max-width: ${Variables.queryMD}) {
     flex-direction: column;
   }
   @media (max-width: ${Variables.querySMMD}) {
-    ${props => props.scrollPos > 50 && `
+    ${(props) =>
+      props.scrollPos > 50 &&
+      `
       border-top: 1px solid ${Variables.colorWhite};
-      transform: translateY(-73%);
+      transform: translateY(-${props.topBarHeight}px);
     `}
   }
 `;

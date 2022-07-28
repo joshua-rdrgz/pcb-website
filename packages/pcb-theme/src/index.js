@@ -8,6 +8,7 @@ import heroboxProcessor from "./theme/processors/heroboxProcessor";
 import homeServicesProcessor from "./theme/processors/homeServicesProcessor";
 import galleryTabProcessor from "./theme/processors/galleryTabProcessor";
 import testimonialProcessor from "./theme/processors/testimonialProcessor";
+import pageBreakProcessor from './theme/processors/pageBreakProcessor';
 
 export default {
   name: "pcb-theme",
@@ -19,7 +20,10 @@ export default {
       gallery: {
         galleryPos: 4,
       },
-      scrollPos: 0,
+      header: {
+        scrollPos: 0,
+        topBarHeight: 0,
+      },
       headerMenuID: 3,
       footerPagesID: 4,
       footerResourcesID: 5,
@@ -40,6 +44,7 @@ export default {
       processors: [
         link,
         iframe,
+        pageBreakProcessor,
         heroboxProcessor,
         homeServicesProcessor,
         galleryTabProcessor,
