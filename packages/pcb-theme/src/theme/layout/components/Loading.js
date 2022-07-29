@@ -26,7 +26,7 @@ const Spinner = styled.div`
   width: 20rem;
   height: 20rem;
   animation: ${spin} 0.7s linear infinite;
-  margin: auto;
+  margin: 2rem auto 0 auto;
 `;
 
 const H1 = styled.h1`
