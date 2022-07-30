@@ -9,6 +9,7 @@ import homeServicesProcessor from "./theme/processors/homeServicesProcessor";
 import galleryTabProcessor from "./theme/processors/galleryTabProcessor";
 import testimonialProcessor from "./theme/processors/testimonialProcessor";
 import pageBreakProcessor from './theme/processors/pageBreakProcessor';
+import aboutUsTabProcessor from "./theme/processors/aboutUsTabProcessor";
 
 export default {
   name: "pcb-theme",
@@ -48,7 +49,8 @@ export default {
         heroboxProcessor,
         homeServicesProcessor,
         galleryTabProcessor,
-        testimonialProcessor
+        testimonialProcessor,
+        aboutUsTabProcessor
       ],
     },
     source: {
