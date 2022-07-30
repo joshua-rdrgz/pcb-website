@@ -217,7 +217,7 @@ const testimonialProcessor = {
   test: ({ node }) => {
     return (
       node?.props?.className?.includes("wp-block-group") &&
-      node?.children[0]?.children[1]?.props?.className.includes("ti-goog")
+      node?.children[0]?.children[1]?.props?.className?.includes("ti-goog")
     );
   },
   processor: ({ node }) => {

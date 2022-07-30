@@ -3,8 +3,8 @@ import { styled } from "frontity";
 import Link from "@frontity/components/link";
 import Card from "../layout/components/Card";
 
-import * as Mixins from '../styles/Mixins';
-import * as Variables from '../styles/Variables';
+import * as Mixins from "../styles/Mixins";
+import * as Variables from "../styles/Variables";
 import LinkStyles from "../styles/componentStyles/LinkStyles";
 
 const HomeServices = ({
@@ -25,11 +25,12 @@ const HomeServices = ({
           const description = shortHand[2]?.children[0]?.content;
           const buttonContent =
             shortHand[3]?.children[0]?.children[0]?.children[0]?.content;
-          const buttonLink = shortHand[3]?.children[0]?.children[0]?.props?.href;
+          const buttonLink =
+            shortHand[3]?.children[0]?.children[0]?.props?.href;
           return (
             <Card
               key={i + 1}
-              type='services'
+              type="services"
               title={title}
               img={img}
               description={description}
@@ -51,7 +52,6 @@ const Section = styled.section`
   flex-direction: column;
   gap: 2rem;
   justify-content: center;
-
 `;
 
 const Heading = styled.h3`
@@ -66,10 +66,10 @@ const Cards = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   gap: 4rem;
-`
+`;
 
 const Button = styled(Link)`
-  ${props => LinkStyles(props.type, props.fontSize)};
+  ${(props) => LinkStyles(props.type, props.fontSize)};
   margin: 0 auto;
   margin-top: 2rem;
   margin-bottom: 3rem;
@@ -81,7 +81,7 @@ const homeServicesProcessor = {
   test: ({ node }) => {
     return (
       node?.props?.className?.includes("wp-block-group") &&
-      node?.children[0]?.children[1]?.props?.className.includes(
+      node?.children[0]?.children[1]?.props?.className?.includes(
         "wp-block-group"
       )
     );
