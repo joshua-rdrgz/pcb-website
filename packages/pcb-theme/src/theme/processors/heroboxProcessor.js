@@ -24,7 +24,7 @@ const Herobox = ({
   const mediaID = state.source.page[link.id].featured_media;
   const [fMedia] = media.data.filter((media) => media.id === mediaID);
   const fImg = fMedia?.guid.rendered;
-  const frontityButtonLink = buttonLink.split('/').reverse()[1];
+  const frontityButtonLink = buttonLink.includes('#') ? buttonLink : buttonLink.split('/').reverse()[1];
 
   return (
     <Section image={fImg}>
