@@ -10,6 +10,7 @@ import galleryTabProcessor from "./theme/processors/galleryTabProcessor";
 import testimonialProcessor from "./theme/processors/testimonialProcessor";
 import pageBreakProcessor from './theme/processors/pageBreakProcessor';
 import aboutUsTabProcessor from "./theme/processors/aboutUsTabProcessor";
+import faqProcessor from "./theme/processors/faqProcessor";
 
 export default {
   name: "pcb-theme",
@@ -25,6 +26,9 @@ export default {
         scrollPos: 0,
         topBarHeight: 0,
       },
+      faq: {
+        FAQToggleData: []
+      },
       headerMenuID: 3,
       footerPagesID: 4,
       footerResourcesID: 5,
@@ -38,6 +42,22 @@ export default {
           await actions.source.fetch("menus");
           await actions.source.fetch("media");
         },
+      faq: {
+        addFAQToggleData: ({ state }) => (data) => {
+          state.theme.faq.FAQToggleData = [
+            ...state.theme.faq.FAQToggleData,
+            data
+          ];
+        },
+        setFAQToggleData: ({ state }) => (index) => {
+          state.theme.faq.FAQToggleData.map((faq, i) => {
+            if (faq.index === index) {
+              faq.open = !faq.open;
+            }
+            return faq;
+          })
+        }
+      }
     },
   },
   libraries: {
@@ -50,7 +70,8 @@ export default {
         homeServicesProcessor,
         galleryTabProcessor,
         testimonialProcessor,
-        aboutUsTabProcessor
+        aboutUsTabProcessor,
+        faqProcessor
       ],
     },
     source: {
