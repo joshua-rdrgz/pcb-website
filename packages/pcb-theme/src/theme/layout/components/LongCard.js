@@ -7,7 +7,6 @@ import * as Variables from "../../styles/Variables";
 import LinkStyles from "../../styles/componentStyles/LinkStyles";
 
 const LongCard = ({ alignment, item1, item2, item3 }) => {
-  console.log(alignment);
   return (
     <Article alignment={alignment}>
       {alignment === "text-left" ? (
