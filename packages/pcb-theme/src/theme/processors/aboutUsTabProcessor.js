@@ -8,8 +8,6 @@ import * as Mixins from "../styles/Mixins";
 import LongCard from "../layout/components/LongCard";
 
 const AboutUsTab = ({
-  sectionHeader,
-  video,
   aboutUsCards,
   buttonContent,
   buttonFontSize,
@@ -17,19 +15,6 @@ const AboutUsTab = ({
 }) => {
   return (
     <Section>
-      <SectionHeader>{sectionHeader}</SectionHeader>
-      <VideoWrapper>
-        <iframe
-          src={video.src}
-          loading="lazy"
-          title={video.title}
-          frameBorder="0"
-          allowFullScreen={video.allowFullScreen}
-          allow={video.allow}
-          width='100%'
-          height='100%'
-        />
-      </VideoWrapper>
       <AboutUsCards>
         {aboutUsCards.map((aboutUsCard, i) => {
           const aboutUsContent = aboutUsCard?.children[0].children;
@@ -98,40 +83,27 @@ const aboutUsTabProcessor = {
   name: "About Us Tab",
   priority: 5,
   test: ({ node }) => {
-    return (
-      node?.props?.className?.includes("wp-block-group") &&
-      node?.children[0]?.children[1]?.props?.className?.includes(
-        "is-type-video"
-      )
-    );
+    return node?.props?.className?.includes("wp-block-group" && "about-us");
   },
   processor: ({ node }) => {
     // for console, and to shorten digging
     const loggedNode = node?.children[0]?.children;
 
-    // section header, always will be first
-    const sectionHeader = loggedNode[0]?.children[0]?.content;
-
-    // video
-    const video = loggedNode[1]?.children[0]?.children[0]?.props;
-
     // About Us Cards - slices first 2 and last element to leave amount of About Us Cards
-    const aboutUsCards = loggedNode?.slice(2, -1);
+    const aboutUsCards = loggedNode?.slice(0, -1);
 
     // button, always will be last
     const buttonContent =
-      loggedNode?.at(-1)?.children[0]?.children[0]?.children[0].content;
+      loggedNode?.at(-1)?.children[0]?.children[0]?.children[0]?.content;
     const buttonFontSize = loggedNode?.at(-1)?.children[0]?.props?.css?.styles;
     const buttonLink = loggedNode
       ?.at(-1)
-      ?.children[0].children[0]?.props?.href.split("/")
+      ?.children[0]?.children[0]?.props?.href?.split("/")
       .reverse()[1];
 
     return {
       component: AboutUsTab,
       props: {
-        sectionHeader,
-        video,
         aboutUsCards,
         buttonContent,
         buttonFontSize,

@@ -11,6 +11,7 @@ import testimonialProcessor from "./theme/processors/testimonialProcessor";
 import pageBreakProcessor from './theme/processors/pageBreakProcessor';
 import aboutUsTabProcessor from "./theme/processors/aboutUsTabProcessor";
 import faqProcessor from "./theme/processors/faqProcessor";
+import videoProcessor from "./theme/processors/videoProcessor";
 
 export default {
   name: "pcb-theme",
@@ -71,7 +72,8 @@ export default {
         galleryTabProcessor,
         testimonialProcessor,
         aboutUsTabProcessor,
-        faqProcessor
+        faqProcessor,
+        videoProcessor
       ],
     },
     source: {
