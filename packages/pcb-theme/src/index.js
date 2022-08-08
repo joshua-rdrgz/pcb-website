@@ -12,6 +12,7 @@ import pageBreakProcessor from './theme/processors/pageBreakProcessor';
 import aboutUsTabProcessor from "./theme/processors/aboutUsTabProcessor";
 import faqProcessor from "./theme/processors/faqProcessor";
 import videoProcessor from "./theme/processors/videoProcessor";
+import tabbedServiceInfoProcessor from "./theme/processors/serviceInfoProcessor";
 
 export default {
   name: "pcb-theme",
@@ -73,7 +74,8 @@ export default {
         testimonialProcessor,
         aboutUsTabProcessor,
         faqProcessor,
-        videoProcessor
+        videoProcessor,
+        tabbedServiceInfoProcessor
       ],
     },
     source: {
