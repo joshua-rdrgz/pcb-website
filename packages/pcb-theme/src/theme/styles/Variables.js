@@ -1,3 +1,15 @@
+import { keyframes } from 'frontity';
+
+// ANIMATIONS
+export const fadeIn = keyframes`
+  0% {
+    opacity: 0;
+  } 
+  100% {
+    opacity: 1;
+  }
+`;
+
 // COLORS
 export const colorWhitePure = "#FFF";
 export const colorWhite = "#EFEFEF";

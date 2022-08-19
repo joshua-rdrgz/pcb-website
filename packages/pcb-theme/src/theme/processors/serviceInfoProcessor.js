@@ -1,6 +1,7 @@
 import React from "react";
+import { AiOutlineFundProjectionScreen } from "react-icons/ai";
 
-import TabbedServiceInfo from "./components/TabbedServiceInfo";
+import TabbedServiceInfo from "./components/tabbedserviceinfo/TabbedServiceInfo";
 
 const tabbedServiceInfoProcessor = {
   name: "Tabbed Service Information",
@@ -17,7 +18,7 @@ const tabbedServiceInfoProcessor = {
     const sectionHeader = shortHand[0]?.children[0]?.content;
 
     // button tabs, controls what is shown to user
-    const tabButtons = shortHand[1]?.children.map((_, i) => {
+    const typeButtons = shortHand[1]?.children.map((_, i) => {
       return shortHand[1]?.children[i].children[0].children[0].content;
     });
 
@@ -45,103 +46,90 @@ const tabbedServiceInfoProcessor = {
 
     // prices
     const priceRows = rowsLocations.slice(0, types.length);
-    const pricesData = priceRows.map(typePrices => {
+    const prices = priceRows.map((typePrices) => {
       return typePrices.children.slice(1).map((price) => {
         return price.children[0].content;
-      })
-    })
-    const prices = {};
-    types.forEach((type, index) => {
-      prices[type] = {};
-      locations.forEach((location, i) => {
-        prices[type][location] = pricesData[index][i]
-      })
-    })
+      });
+    });
+
 
     // images
     const imageRow = rowsLocations.slice(types.length, types.length + 1);
-    const [imageData] = imageRow.map((imageRowObj) => {
+    const [images] = imageRow.map((imageRowObj) => {
       return imageRowObj.children.slice(1).map((image) => {
         return image.children[0].props;
-      })
-    })
-    const images = {};
-    locations.forEach((location, i) => {
-      images[location] = imageData[i]
-    })
+      });
+    });
 
     // descriptions
-    const descriptionsRows = rowsLocations.slice(types.length + 1).length > 0 ? rowsLocations.slice(types.length + 1) : [rowsTypes[2]];
-    const [descriptions] =
-      descriptionsRows.map((descriptionRow) => {
-        const descriptionTitle = descriptionRow.children[0].children[0].content;
-        const descriptionContent = descriptionRow.children
-          .slice(1)
-          .map((description) => {
-            return description.children[0].content;
-          });
-        const returned = {};
-        locations.forEach((location, i) => {
-          if(descriptionTitle.includes('*')) {
-            returned[location] = {
-            title: descriptionTitle,
-            content: descriptionContent[i],
-            }
-          } else {
-            returned[location] = {
-              content: descriptionContent[i],
-            }
-          }
+    const descriptionsRows =
+      rowsLocations.slice(types.length + 1).length > 0
+        ? rowsLocations.slice(types.length + 1)
+        : [rowsTypes[2]];
+    const descriptions = descriptionsRows.map((descriptionRow) => {
+      const descriptionTitle = descriptionRow.children[0].children[0].content;
+      const descriptionContent = descriptionRow.children
+        .slice(1)
+        .map((description) => {
+          return description.children[0].content;
         });
-        return returned;
-      });
+      return [descriptionTitle, descriptionContent];
+    });
 
     // values
-    const valuesArr = [];
-    const values = {};
+    const values = [];
     rowsTypes[0].children.slice(1).map((valueRow) => {
-      valuesArr.push(valueRow.children[0].content)
+      values.push(valueRow.children[0].content);
     });
-    types.forEach((type, i) => {
-      values[type] = valuesArr[i]
-    })
 
     // benefits
-    const benefitsArr = [];
-    const benefits = {};
-    rowsTypes[1].children.slice(1).map(benefitRow => {
-      benefitsArr.push(benefitRow.children[0].content)
-    })
-    types.forEach((type, i) => {
-      benefits[type] = benefitsArr[i]
-    })
+    const benefits = [];
+    rowsTypes[1].children.slice(1).map((benefitRow) => {
+      benefits.push(benefitRow.children[0].content);
+    });
 
     // common benefits
     const commonBenefits = [];
-    if (shortHand.slice(-2, -1)[0].component === 'div') {
-      const commonBenefitsData = shortHand.slice(-2, -1)[0].children[0].children.slice(1);
+    if (shortHand.slice(-2, -1)[0].component === "div") {
+      const commonBenefitsData = shortHand
+        .slice(-2, -1)[0]
+        .children[0].children.slice(1);
       commonBenefitsData.map((benefitObj) => {
-        commonBenefits.push(benefitObj.children[0].content);   
-      })
+        commonBenefits.push(benefitObj.children[0].content);
+      });
     }
 
     // final data object sent to component
     const data = {
+      locations,
+      types,
       prices,
       images,
       descriptions,
       values,
       benefits,
-      commonBenefits
-    }
+      commonBenefits,
+    };
+
+    // Button Content
+    const buttonContent =
+      shortHand?.at(-1)?.children[0]?.children[0]?.children[0].content;
+    const buttonFontSize = shortHand?.at(-1)?.children[0]?.props?.css?.styles;
+    const buttonLink = shortHand
+      ?.at(-1)
+      ?.children[0].children[0]?.props?.href?.split("/")
+      .reverse()[1];
 
     return {
       component: TabbedServiceInfo,
       props: {
         state,
         sectionHeader,
-        tabButtons,
-        data
+        typeButtons,
+        data,
+        buttonContent,
+        buttonFontSize,
+        buttonLink
       },
     };
   },
