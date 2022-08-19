@@ -13,6 +13,7 @@ import aboutUsTabProcessor from "./theme/processors/aboutUsTabProcessor";
 import faqProcessor from "./theme/processors/faqProcessor";
 import videoProcessor from "./theme/processors/videoProcessor";
 import tabbedServiceInfoProcessor from "./theme/processors/serviceInfoProcessor";
+import contactProcessor from "./theme/processors/contactProcessor";
 
 export default {
   name: "pcb-theme",
@@ -105,6 +106,7 @@ export default {
         faqProcessor,
         videoProcessor,
         tabbedServiceInfoProcessor,
+        contactProcessor,
       ],
     },
     source: {
