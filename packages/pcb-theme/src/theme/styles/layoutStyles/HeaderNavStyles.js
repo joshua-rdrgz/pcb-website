@@ -99,7 +99,7 @@ export const NavList = styled.ul`
     gap: 5rem;
   }
   @media (max-width: ${Variables.queryMD}) {
-    background-color: ${Variables.colorBlack};
+    background-color: ${Variables.colorBlackPureRGBA};
     flex-direction: column;
     gap: 0;
     width: 100vw;
