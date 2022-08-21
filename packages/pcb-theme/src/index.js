@@ -28,6 +28,7 @@ export default {
       header: {
         scrollPos: 0,
         topBarHeight: 0,
+        headerHeight: 0,
       },
       faq: {
         FAQToggleData: [],

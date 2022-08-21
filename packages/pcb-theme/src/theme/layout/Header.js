@@ -20,18 +20,27 @@ function Header({ state }) {
 
   // Top Bar Reference
   const topBarContainer = useRef();
-  
+  const headerRef = useRef();
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
       state.theme.header.scrollPos = window.scrollY;
     });
     state.theme.header.topBarHeight = topBarContainer.current.offsetHeight;
+    state.theme.header.headerHeight = headerRef.current.offsetHeight;
   }, []);
 
   return (
-    <StyledHeader>
-      <TopBarContainer scrollPos={state.theme.header.scrollPos} ref={topBarContainer}>
+    <StyledHeader
+      ref={headerRef}
+      scrollPos={state.theme.header.scrollPos}
+      topBarHeight={state.theme.header.topBarHeight}
+      headerHeight={state.theme.header.headerHeight}
+    >
+      <TopBarContainer
+        scrollPos={state.theme.header.scrollPos}
+        ref={topBarContainer}
+      >
         <CallBlock>{menus.menuData[0].acf.phone}</CallBlock>
         <AddressBlock>{menus.menuData[0].acf.address}</AddressBlock>
         <SocialsBlock>
@@ -42,7 +51,10 @@ function Header({ state }) {
           <object data={yelpLogo.guid.rendered} type="image/svg+xml"></object>
         </SocialsBlock>
       </TopBarContainer>
-      <MainBarContainer scrollPos={state.theme.header.scrollPos} topBarHeight={state.theme.header.topBarHeight}>
+      <MainBarContainer
+        scrollPos={state.theme.header.scrollPos}
+        topBarHeight={state.theme.header.topBarHeight}
+      >
         {/* <PcbLogo data={pcbLogo.guid.rendered} type="image/svg+xml"></PcbLogo> */}
         <PcbLogoLink link="/">
           <PcbLogo src={pcbLOGO}></PcbLogo>
@@ -59,6 +71,13 @@ const StyledHeader = styled.header`
   position: sticky;
   top: 0;
   z-index: 1000;
+  @media (max-width: ${Variables.querySMMD}) {
+    ${(props) =>
+      props.scrollPos > 50 &&
+      `
+      height: calc(${props.headerHeight}px - ${props.topBarHeight}px);
+    `}
+  }
 `;
 
 const PcbLogoLink = styled(Link)`
