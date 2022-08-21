@@ -14,6 +14,9 @@ const tabbedServiceInfoProcessor = {
   processor: ({ node, state }) => {
     const shortHand = node?.children[0]?.children;
 
+    // HTML anchor for Herobox to target
+    const anchorHTML = node.props.id;
+
     // section header, always will be first
     const sectionHeader = shortHand[0]?.children[0]?.content;
 
@@ -123,7 +126,7 @@ const tabbedServiceInfoProcessor = {
     return {
       component: TabbedServiceInfo,
       props: {
-        state,
+        anchorHTML,
         sectionHeader,
         typeButtons,
         data,

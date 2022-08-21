@@ -24,7 +24,9 @@ const Herobox = ({
   const mediaID = state.source.page[link.id].featured_media;
   const [fMedia] = media.data.filter((media) => media.id === mediaID);
   const fImg = fMedia?.guid.rendered;
-  const frontityButtonLink = buttonLink.includes('#') ? buttonLink : buttonLink.split('/').reverse()[1];
+  const frontityButtonLink = buttonLink.includes("#")
+    ? buttonLink
+    : buttonLink.split("/").reverse()[1];
 
   return (
     <Section image={fImg}>
@@ -32,6 +34,14 @@ const Herobox = ({
         <PrimaryHeading>{primaryHeadingContent}</PrimaryHeading>
         {slot2Tag.includes("h") ? (
           <SecondaryHeading>{slot2Content}</SecondaryHeading>
+        ) : frontityButtonLink.includes("#") ? (
+          <StyledA
+            href={frontityButtonLink}
+            type="primary"
+            fontSize={buttonFontSize}
+          >
+            {slot3Content}
+          </StyledA>
         ) : (
           <StyledButton
             link={`/${frontityButtonLink}`}
@@ -41,14 +51,22 @@ const Herobox = ({
             {slot2Content}
           </StyledButton>
         )}
-        {slot3Tag && (
+        {slot3Tag && frontityButtonLink.includes("#") ? (
+          <StyledA
+            href={frontityButtonLink}
+            type="primary"
+            fontSize={buttonFontSize}
+          >
+            {slot3Content}
+          </StyledA>
+        ) : (
           <StyledButton
-          link={`/${frontityButtonLink}`}
-          type="primary"
-          fontSize={buttonFontSize}
-        >
-          {slot3Content}
-        </StyledButton>
+            link={`/${frontityButtonLink}`}
+            type="primary"
+            fontSize={buttonFontSize}
+          >
+            {slot3Content}
+          </StyledButton>
         )}
       </HeroboxContent>
       <RepBrands>
@@ -77,8 +95,8 @@ const Section = styled.section`
       135deg,
       ${Variables.colorBlackPure},
       ${Variables.colorBlackPure} 10px,
-      rgba(0,0,0,0.99) 10px,
-      rgba(0,0,0,0.99) 20px
+      rgba(0, 0, 0, 0.99) 10px,
+      rgba(0, 0, 0, 0.99) 20px
     );
     height: 65vh;
   }
@@ -101,7 +119,7 @@ const HeroboxContent = styled.div`
 `;
 
 // exported for LinkStyles.js
-export const addHeadingMediaQueries = fontSize => css`
+export const addHeadingMediaQueries = (fontSize) => css`
   @media (max-width: ${Variables.queryMDMD}) {
     font-size: ${fontSize - 1.5}rem;
   }
@@ -130,13 +148,23 @@ const SecondaryHeading = styled.h2`
   ${addHeadingMediaQueries(4)};
 `;
 
+const StyledA = styled.a`
+  ${(props) => LinkStyles(props.type, props.fontSize)};
+  @media (max-width: ${Variables.queryMDMD}) {
+    font-size: ${(props) => props.fontSize - 1.5}rem;
+  }
+  @media (max-width: ${Variables.querySMMD}) {
+    font-size: ${(props) => props.fontSize - 2}rem;
+  }
+`;
+
 const StyledButton = styled(Link)`
   ${(props) => LinkStyles(props.type, props.fontSize)};
   @media (max-width: ${Variables.queryMDMD}) {
-    font-size: ${props => props.fontSize - 1.5}rem;
+    font-size: ${(props) => props.fontSize - 1.5}rem;
   }
   @media (max-width: ${Variables.querySMMD}) {
-    font-size: ${props => props.fontSize - 2}rem;
+    font-size: ${(props) => props.fontSize - 2}rem;
   }
 `;
 
@@ -162,19 +190,19 @@ const RepBrands = styled.div`
 `;
 
 const Brand1 = styled.object`
-@media (max-width: ${Variables.queryXLG}) {
-  max-width: 75px;
-}
+  @media (max-width: ${Variables.queryXLG}) {
+    max-width: 75px;
+  }
 `;
 const Brand2 = styled.object`
-@media (max-width: ${Variables.queryXLG}) {
-  max-width: 155px;
-}
+  @media (max-width: ${Variables.queryXLG}) {
+    max-width: 155px;
+  }
 `;
 const Brand3 = styled.object`
-@media (max-width: ${Variables.queryXLG}) {
-  max-width: 250px;
-}
+  @media (max-width: ${Variables.queryXLG}) {
+    max-width: 250px;
+  }
 `;
 
 const heroboxProcessor = {
@@ -214,8 +242,10 @@ const heroboxProcessor = {
     const buttonFontSize =
       node?.children[0]?.children[slot2Tag === "Link" ? 1 : 2]?.children[0]
         ?.props?.css?.styles;
-    const buttonLink = node?.children[0]?.children[slot2Tag === 'Link' ? 1 : 2]?.children[0]?.children[0]?.props.href;
-    
+    const buttonLink =
+      node?.children[0]?.children[slot2Tag === "Link" ? 1 : 2]?.children[0]
+        ?.children[0]?.props.href;
+
     return {
       component: Herobox,
       props: {

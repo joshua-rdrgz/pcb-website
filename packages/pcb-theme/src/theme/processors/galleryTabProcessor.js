@@ -170,7 +170,7 @@ const GalleryTab = ({
           </Container>
         </CarouselWrapperSmall>
       </Carousel>
-      <Button type="secondary" link={buttonLink} fontSize={buttonFontSize}>
+      <Button type="primary" link={buttonLink} fontSize={buttonFontSize}>
         {buttonContent}
       </Button>
     </Section>

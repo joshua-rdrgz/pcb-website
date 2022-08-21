@@ -10,6 +10,7 @@ import TabbedServiceContent from "./TabbedServiceContent";
 const TabbedServiceInfo = ({
   state,
   actions,
+  anchorHTML,
   sectionHeader,
   typeButtons,
   data,
@@ -19,7 +20,7 @@ const TabbedServiceInfo = ({
 }) => {
   actions.theme.tabbedServiceInfo.setCurrentPageData(data);
   return (
-    <Section>
+    <Section id={anchorHTML}>
       <SectionHeader>{sectionHeader}</SectionHeader>
       <TabbedServiceContent
         data={state.theme.tabbedServiceInfo.currentPageData}

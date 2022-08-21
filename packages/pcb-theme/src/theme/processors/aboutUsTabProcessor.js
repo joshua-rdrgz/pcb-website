@@ -8,41 +8,42 @@ import * as Mixins from "../styles/Mixins";
 import LongCard from "../layout/components/LongCard";
 
 const AboutUsTab = ({
+  anchorHTML,
   aboutUsCards,
   buttonContent,
   buttonFontSize,
   buttonLink,
 }) => {
   return (
-    <Section>
-      <AboutUsCards>
-        {aboutUsCards.map((aboutUsCard, i) => {
-          const aboutUsContent = aboutUsCard?.children[0].children;
-          const firstElement = aboutUsContent[0].component;
-          const item1 =
-            firstElement === "figure"
-              ? aboutUsContent[0].children[0].props
-              : aboutUsContent[0].children[0].content;
-          const item2 = aboutUsContent[1].children[0].content;
-          const item3 =
-            firstElement === "figure"
-              ? aboutUsContent[2].children[0].content
-              : aboutUsContent[2].children[0].props;
-          return (
-            <LongCard
-              key={`about-us-card-${i + 1}`}
-              alignment={firstElement === "figure" ? "text-right" : "text-left"}
-              item1={item1}
-              item2={item2}
-              item3={item3}
-            />
-          );
-        })}
-      </AboutUsCards>
-      <Button type="primary" fontSize={buttonFontSize} link={`/${buttonLink}`}>
-        {buttonContent}
-      </Button>
-    </Section>
+      <Section id={anchorHTML}>
+        <AboutUsCards>
+          {aboutUsCards.map((aboutUsCard, i) => {
+            const aboutUsContent = aboutUsCard?.children[0].children;
+            const firstElement = aboutUsContent[0].component;
+            const item1 =
+              firstElement === "figure"
+                ? aboutUsContent[0].children[0].props
+                : aboutUsContent[0].children[0].content;
+            const item2 = aboutUsContent[1].children[0].content;
+            const item3 =
+              firstElement === "figure"
+                ? aboutUsContent[2].children[0].content
+                : aboutUsContent[2].children[0].props;
+            return (
+              <LongCard
+                key={`about-us-card-${i + 1}`}
+                alignment={firstElement === "figure" ? "text-right" : "text-left"}
+                item1={item1}
+                item2={item2}
+                item3={item3}
+              />
+            );
+          })}
+        </AboutUsCards>
+        <Button type="primary" fontSize={buttonFontSize} link={`/${buttonLink}`}>
+          {buttonContent}
+        </Button>
+      </Section>
   );
 };
 
@@ -88,6 +89,9 @@ const aboutUsTabProcessor = {
   processor: ({ node }) => {
     // for console, and to shorten digging
     const loggedNode = node?.children[0]?.children;
+    
+    // HTML Anchor that Herobox CTA will use to target About Us Tab
+    const anchorHTML = node.props.id;
 
     // About Us Cards - slices first 2 and last element to leave amount of About Us Cards
     const aboutUsCards = loggedNode?.slice(0, -1);
@@ -104,6 +108,7 @@ const aboutUsTabProcessor = {
     return {
       component: AboutUsTab,
       props: {
+        anchorHTML,
         aboutUsCards,
         buttonContent,
         buttonFontSize,
