@@ -7,8 +7,6 @@ import pcbLOGO from "../assets/pcb-logo-transparent.svg";
 import Link from "@frontity/components/link";
 import Navigation from "./components/Navigation";
 
-// const API = typeof window !== 'undefined' ? window.API : NodeAlternative;
-
 function Header({ state }) {
   // Fetch Menus
   const menus = state.source.get("menus");
