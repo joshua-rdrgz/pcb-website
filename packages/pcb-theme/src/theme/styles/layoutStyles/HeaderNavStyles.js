@@ -194,6 +194,7 @@ export const ChildList = styled.ul`
   }
   @media (max-width: ${Variables.queryMD}) {
     margin-left: 0;
+    list-style: none;
   }
 `;
 
