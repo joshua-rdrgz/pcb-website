@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { connect } from "frontity";
 
 import * as HNS from "../../styles/layoutStyles/HeaderNavStyles";
@@ -9,11 +9,20 @@ function Navigation({ state, menuNumber, type }) {
   const menus = state.source.get("menus");
   const typeOfNav = type;
 
+  // Mobile Menu Checkbox Ref
+  const mobileMenuCheckbox = useRef();
+
+  useEffect(() => {
+    if (typeOfNav === 'header') {
+      mobileMenuCheckbox.current.checked = false;
+    }
+  }, [state.router.link]);
+
   const renderNav = function (type, styled) {
     if (type === "header") {
       return (
         <>
-          <styled.MobileToggle type="checkbox" id="mobile-toggle" />
+          <styled.MobileToggle type="checkbox" id="mobile-toggle" ref={mobileMenuCheckbox}/>
           <styled.MobileBurger htmlFor="mobile-toggle">
             <styled.MobileIcon>&nbsp;</styled.MobileIcon>
           </styled.MobileBurger>
@@ -32,7 +41,6 @@ function Navigation({ state, menuNumber, type }) {
                       <styled.ParentLink key={link.id} id={link.id}>
                         <span>{link.title.rendered}</span>
                         <styled.ParentIcon>&nbsp;</styled.ParentIcon>
-                        {/* Font-Awesome drop-down icon here */}
                         <styled.ChildList>
                           {childItemsObj[0].map((child) => {
                             return (
