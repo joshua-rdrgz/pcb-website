@@ -85,6 +85,7 @@ const FooterGrid = styled.div`
 
 const PcbLogo = styled.object`
   width: 600px;
+  height: 214px;
   display: block;
   margin: 0 auto;
   @media (max-width: ${Variables.queryLG}) {
