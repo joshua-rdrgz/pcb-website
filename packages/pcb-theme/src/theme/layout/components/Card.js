@@ -1,34 +1,57 @@
-import React from 'react'
-import { styled, css } from 'frontity';
-import Link from '@frontity/components/link';
+import React from "react";
+import { styled, css } from "frontity";
+import Link from "@frontity/components/link";
 
-import * as Mixins from '../../styles/Mixins';
-import * as Variables from '../../styles/Variables';
-import LinkStyles from '../../styles/componentStyles/LinkStyles';
+import * as Mixins from "../../styles/Mixins";
+import * as Variables from "../../styles/Variables";
+import LinkStyles from "../../styles/componentStyles/LinkStyles";
 
 function Card({ title, type, img, description, buttonContent, buttonLink }) {
   return (
-    <Article type={type}>
-      <Heading>{title}</Heading>
-      <ImgWrapper><Img srcSet={img.srcSet} alt={img.alt} loading={img.loading} sizes={img.sizes} /></ImgWrapper>
-      <Description>{description}</Description>
-      <Button link={buttonLink} type="secondary">{buttonContent}</Button>
-    </Article>
-  )
+    <CardLink link={buttonLink}>
+      <Article type={type}>
+        <Heading>{title}</Heading>
+        <ImgWrapper>
+          <Img
+            srcSet={img.srcSet}
+            alt={img.alt}
+            loading={img.loading}
+            sizes={img.sizes}
+          />
+        </ImgWrapper>
+        <Description>{description}</Description>
+        <Button link={buttonLink} type="secondary">
+          {buttonContent}
+        </Button>
+      </Article>
+    </CardLink>
+  );
 }
 
 export default Card;
+
+const CardLink = styled(Link)`
+  &,
+  &:active,
+  &:visited {
+    text-decoration: none;
+  }
+`;
 
 const Article = styled.article`
   text-align: center;
   border-radius: 0.5rem;
   box-shadow: ${Variables.boxShadow};
-  ${props => props.type === 'services' && css`
-    ${Mixins.addColors(Variables.colorBlack, Variables.colorWhite)};
-  `};
-  ${props => props.type === 'case-study' && css`
-    ${Mixins.addColors(Variables.colorGray1, Variables.colorBlack)};
-  `};
+  ${(props) =>
+    props.type === "services" &&
+    css`
+      ${Mixins.addColors(Variables.colorBlack, Variables.colorWhite)};
+    `};
+  ${(props) =>
+    props.type === "case-study" &&
+    css`
+      ${Mixins.addColors(Variables.colorGray1, Variables.colorBlack)};
+    `};
   margin: 0 0.5rem;
 `;
 
@@ -43,7 +66,8 @@ const ImgWrapper = styled.figure`
   @media (min-width: ${Variables.queryLGLG}) and (max-width: ${Variables.queryXXLG}) {
     width: 35rem;
   }
-  @media (min-width: ${Variables.queryLGMD}) and (max-width: ${Variables.queryLGLG}), (max-width: ${Variables.querySM}) {
+  @media (min-width: ${Variables.queryLGMD}) and (max-width: ${Variables.queryLGLG}),
+    (max-width: ${Variables.querySM}) {
     width: 30rem;
   }
   @media (min-width: ${Variables.queryMDSMSM}) and (max-width: ${Variables.queryMDLG}) {
@@ -56,9 +80,10 @@ const ImgWrapper = styled.figure`
 
 const addImgAndDescMediaQueries = css`
   @media (min-width: ${Variables.queryLGLG}) and (max-width: ${Variables.queryXXLG}) {
-    max-width: 30rem; 
+    max-width: 30rem;
   }
-  @media (min-width: ${Variables.queryLGMD}) and (max-width: ${Variables.queryLGLG}), (max-width: ${Variables.querySM}) {
+  @media (min-width: ${Variables.queryLGMD}) and (max-width: ${Variables.queryLGLG}),
+    (max-width: ${Variables.querySM}) {
     max-width: 25rem;
   }
   @media (min-width: ${Variables.queryMDSMSM}) and (max-width: ${Variables.queryMDLG}) {
@@ -72,7 +97,7 @@ const addImgAndDescMediaQueries = css`
 const Img = styled.img`
   width: 35rem;
   ${addImgAndDescMediaQueries};
-`
+`;
 
 const Description = styled.p`
   font-size: 1.5rem;
@@ -82,6 +107,9 @@ const Description = styled.p`
   ${addImgAndDescMediaQueries};
 `;
 
-const Button = styled(Link)`
-  ${props => LinkStyles(props.type)};
+const Button = styled.div`
+  ${(props) => LinkStyles(props.type)};
+  ${CardLink}:hover & {
+    color: ${Variables.colorRed}
+  }
 `;
