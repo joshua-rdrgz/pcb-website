@@ -2,7 +2,7 @@ import React from "react";
 import { styled, css } from "frontity";
 import Link from "@frontity/components/link";
 
-import threeM from "../assets/3m.svg";
+import bestOfFtWorth from '../assets/best-of-ft-worth.svg';
 import ceramicPro from "../assets/ceramic-pro.svg";
 import suntek from "../assets/suntek.svg";
 import LinkStyles from "../styles/componentStyles/LinkStyles";
@@ -70,8 +70,10 @@ const Herobox = ({
         )}
       </HeroboxContent>
       <RepBrands>
-        <Brand1 data={threeM} type="image/svg+xml"></Brand1>
         <Brand2 data={suntek} type="image/svg+xml"></Brand2>
+        <Link link="https://preferredmechanic.com/report/window-tinting-places/near_fort-worth-tarrant-county,tx/" target="_blank">
+          <img src={bestOfFtWorth} alt="Automotive Tinting Companies" />
+        </Link>
         <Brand3 data={ceramicPro} type="image/svg+xml"></Brand3>
       </RepBrands>
     </Section>
@@ -179,9 +181,6 @@ const RepBrands = styled.div`
     padding: 2.5rem 0;
   }
   @media (max-width: ${Variables.queryLG}) {
-    gap: 8rem;
-  }
-  @media (max-width: ${Variables.queryMDMD}) {
     gap: 5rem;
   }
   @media (max-width: ${Variables.querySM}) {
