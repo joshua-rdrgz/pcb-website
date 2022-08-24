@@ -18,54 +18,68 @@ const TabbedServiceContent = ({ state, actions, data, typeButtons }) => {
     // Initialize Type Button Data
     const activeTypeData = [];
     for (let i = 0; i < typeButtons.length; i++) {
-      activeTypeData.push(i === 0 ? true : false)
+      activeTypeData.push(i === 0 ? true : false);
     }
-    actions.theme.tabbedServiceInfo.setButtons('typeButtons', activeTypeData);
+    actions.theme.tabbedServiceInfo.setButtons("typeButtons", activeTypeData);
 
     // Initialize Location Button Data
     const activeLocationData = [];
     for (let i = 0; i < data.locations.length; i++) {
-      activeLocationData.push(i === 0 ? true : false)
+      activeLocationData.push(i === 0 ? true : false);
     }
-    actions.theme.tabbedServiceInfo.setButtons('locationButtons', activeLocationData);
+    actions.theme.tabbedServiceInfo.setButtons(
+      "locationButtons",
+      activeLocationData
+    );
   }, [state.router.link]);
 
   return (
     <Article>
-      <Types>
-        {typeButtons.map((button, i) => {
-          const active = state.theme.tabbedServiceInfo.typeButtons[i];
-          return (
-            <TypesButton
-              key={`types-button-${i + 1}`}
-              active={active}
-              onClick={() => changeActiveTab('typeButtons', i)}
-            >
-              {button}
-            </TypesButton>
-          );
-        })}
-      </Types>
+      <ButtonsContainer>
+        <ButtonList>
+          <Label>Select Coverage:</Label>
+          <Options>
+            {data.locations.map((location, i) => {
+              const active = state.theme.tabbedServiceInfo.locationButtons[i];
+              return (
+                  <Button
+                    key={`locations-button-${i + 1}`}
+                    active={active}
+                    onClick={() => changeActiveTab("locationButtons", i)}
+                  >
+                    {location}
+                  </Button>
+              );
+            })}
+          </Options>
+        </ButtonList>
+        <ButtonList>
+          <Label>Select Film:</Label>
+          <Options>
+            {typeButtons.map((button, i) => {
+              const active = state.theme.tabbedServiceInfo.typeButtons[i];
+              return (
+                <Button
+                  key={`types-button-${i + 1}`}
+                  active={active}
+                  onClick={() => changeActiveTab("typeButtons", i)}
+                >
+                  {button}
+                </Button>
+              );
+            })}
+          </Options>
+        </ButtonList>
+      </ButtonsContainer>
       <Content>
-        <Locations>
-          {data.locations.map((location, i) => {
-            const active = state.theme.tabbedServiceInfo.locationButtons[i];
-            return (
-              <LocationsButton 
-                key={`locations-button-${i + 1}`}
-                active={active}
-                onClick={() => changeActiveTab('locationButtons', i)}
-              >
-                {location}
-              </LocationsButton>
-            );
-          })}
-        </Locations>
         <TabbedServiceImage images={data.images} />
         <TabbedServiceValue values={data.values} />
         <TabbedServicePrice prices={data.prices} />
         <TabbedServiceDescription descriptions={data.descriptions} />
-        <TabbedServiceBenefits benefits={[data.benefits, data.commonBenefits]} types={data.types} />
+        <TabbedServiceBenefits
+          benefits={[data.benefits, data.commonBenefits]}
+          types={data.types}
+        />
       </Content>
     </Article>
   );
@@ -81,17 +95,45 @@ const Article = styled.article`
   padding: 2.5% 5% 5% 5%;
 `;
 
-const Types = styled.nav`
+const ButtonsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 3rem;
-  @media (max-width: ${Variables.queryLG}) {
+  justify-content: space-between;
+  @media (max-width: ${Variables.queryMDLG}) {
     justify-content: center;
+    text-align: center;
     gap: 0.5rem;
   }
 `;
+const ButtonList = styled.nav`
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 1rem;
+  &:first-child {
+    margin-right: 7rem;
+    @media (max-width: ${Variables.queryMDLG}) {
+      margin-right: 0;
+    }
+  }
+`;
 
-const TypesButton = styled.button`
+const Label = styled.span`
+  font-size: 2rem;
+`;
+
+const Options = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  @media (max-width: ${Variables.queryMDLG}) {
+    justify-content: center;
+  }
+`;
+
+
+
+const Button = styled.button`
   padding: 0.5rem 2rem;
   ${Mixins.addHeadingFont(400, 3)};
   border-radius: 0.5rem;
@@ -108,6 +150,8 @@ const TypesButton = styled.button`
     `}
 `;
 
+
+
 const Content = styled.div`
   ${Mixins.addColors(Variables.colorWhite, Variables.colorBlack)};
   padding: 1rem 3rem;
@@ -116,7 +160,6 @@ const Content = styled.div`
   grid-template-columns: 0.65fr 0.35fr;
   grid-template-rows: repeat(5, min-content);
   grid-template-areas:
-    "btns btns"
     "img value"
     "img price"
     "img des"
@@ -124,7 +167,6 @@ const Content = styled.div`
   @media (max-width: ${Variables.queryLG}) {
     grid-template-columns: 1fr;
     grid-template-areas:
-      "btns"
       "img"
       "value"
       "price"
@@ -133,32 +175,4 @@ const Content = styled.div`
     text-align: center;
     padding: 1rem;
   }
-`;
-
-const Locations = styled.nav`
-  display: flex;
-  justify-content: flex-end;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-right: 1rem;
-  grid-area: btns;
-  @media (max-width: ${Variables.queryLG}) {
-    justify-content: center;
-    margin: 0 0.5rem;
-  }
-`;
-
-const LocationsButton = styled.button`
-  padding: 1rem;
-  margin: 0.5rem 0;
-  border: 1px solid ${Variables.colorRed};
-  border-radius: 0.5rem;
-  &:hover {
-    ${Mixins.addColors(Variables.colorRed, Variables.colorWhite)};
-  }
-  ${(props) =>
-    props.active &&
-    css`
-      background-color: ${Variables.colorGoldDeep1};
-    `}
 `;
