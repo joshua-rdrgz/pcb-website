@@ -11,7 +11,7 @@ const tabbedServiceInfoProcessor = {
       "wp-block-group" && "tabbed-service-data"
     );
   },
-  processor: ({ node, state }) => {
+  processor: ({ node }) => {
     const shortHand = node?.children[0]?.children;
 
     // HTML anchor for Herobox to target
@@ -57,8 +57,8 @@ const tabbedServiceInfoProcessor = {
 
 
     // images
-    const imageRow = rowsLocations.slice(types.length, types.length + 1);
-    const [images] = imageRow.map((imageRowObj) => {
+    const imageRow = rowsLocations.slice(types.length, types.length * 2);
+    const images = imageRow.map((imageRowObj) => {
       return imageRowObj.children.slice(1).map((image) => {
         return image.children[0].props;
       });
@@ -66,9 +66,9 @@ const tabbedServiceInfoProcessor = {
 
     // descriptions
     const descriptionsRows =
-      rowsLocations.slice(types.length + 1).length > 0
-        ? rowsLocations.slice(types.length + 1)
-        : [rowsTypes[2]];
+      rowsLocations.slice(types.length * 3).length > 0
+        ? rowsLocations.slice(types.length * 3)
+        : [rowsTypes[1]];
     const descriptions = descriptionsRows.map((descriptionRow) => {
       const descriptionTitle = descriptionRow.children[0].children[0].content;
       const descriptionContent = descriptionRow.children
@@ -80,14 +80,18 @@ const tabbedServiceInfoProcessor = {
     });
 
     // values
-    const values = [];
-    rowsTypes[0].children.slice(1).map((valueRow) => {
-      values.push(valueRow.children[0].content);
+    const valuesRows = rowsLocations.slice(types.length * 2, types.length * 3);
+    const values = valuesRows.map((valueRow) => {
+      return valueRow.children.slice(1).map((value) => {
+        const valueDescriptor = value.children[0]?.children[0]?.content;
+        const valueSuffix = value.children[1]?.content;
+        return [valueDescriptor, valueSuffix];
+      })
     });
 
     // benefits
     const benefits = [];
-    rowsTypes[1].children.slice(1).map((benefitRow) => {
+    rowsTypes[0].children.slice(1).map((benefitRow) => {
       benefits.push(benefitRow.children[0].content);
     });
 

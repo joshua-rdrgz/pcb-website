@@ -37,7 +37,7 @@ const TabbedServiceContent = ({ state, actions, data, typeButtons }) => {
     <Article>
       <ButtonsContainer>
         <ButtonList>
-          <Label>Select Coverage:</Label>
+          <Label>Coverage Options:</Label>
           <Options>
             {data.locations.map((location, i) => {
               const active = state.theme.tabbedServiceInfo.locationButtons[i];
@@ -54,7 +54,7 @@ const TabbedServiceContent = ({ state, actions, data, typeButtons }) => {
           </Options>
         </ButtonList>
         <ButtonList>
-          <Label>Select Film:</Label>
+          <Label>Film Options:</Label>
           <Options>
             {typeButtons.map((button, i) => {
               const active = state.theme.tabbedServiceInfo.typeButtons[i];
