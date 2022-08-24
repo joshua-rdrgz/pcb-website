@@ -30,6 +30,7 @@ export default {
         topBarHeight: 0,
         headerHeight: 0,
       },
+      testimonials: [],
       faq: {
         FAQToggleData: [],
       },
@@ -51,6 +52,14 @@ export default {
           await actions.source.fetch("menus");
           await actions.source.fetch("media");
         },
+      testimonials: {
+        initTestimonials: ({ state }) => (testimonial) => {
+          state.theme.testimonials.push(testimonial);
+        },
+        openTestimonial: ({ state }) => index => {
+          state.theme.testimonials[index] = false;
+        }
+      },
       faq: {
         addFAQToggleData:
           ({ state }) =>
