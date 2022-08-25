@@ -129,7 +129,7 @@ export const ParentLink = styled.li`
   ${(props) =>
     props.isActive &&
     css`
-      color: ${Variables.colorGold};
+      color: ${Variables.colorGoldDeep1};
     `}
 `;
 
