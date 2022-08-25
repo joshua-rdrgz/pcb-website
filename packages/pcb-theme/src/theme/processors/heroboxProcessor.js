@@ -2,7 +2,7 @@ import React from "react";
 import { styled, css } from "frontity";
 import Link from "@frontity/components/link";
 
-import bestOfFtWorth from '../assets/best-of-ft-worth.svg';
+import bestOfFtWorth from "../assets/best-of-ft-worth.svg";
 import ceramicPro from "../assets/ceramic-pro.svg";
 import suntek from "../assets/suntek.svg";
 import LinkStyles from "../styles/componentStyles/LinkStyles";
@@ -70,11 +70,21 @@ const Herobox = ({
         )}
       </HeroboxContent>
       <RepBrands>
-        <Brand2 data={suntek} type="image/svg+xml"></Brand2>
-        <Link link="https://preferredmechanic.com/report/window-tinting-places/near_fort-worth-tarrant-county,tx/" target="_blank">
+        <Link
+          link="https://suntekfilms.com/suntek-paint-protection"
+          target="_blank"
+        >
+          <SunTek src={suntek} alt="SunTek Logo"></SunTek>
+        </Link>
+        <Link
+          link="https://preferredmechanic.com/report/window-tinting-places/near_fort-worth-tarrant-county,tx/"
+          target="_blank"
+        >
           <img src={bestOfFtWorth} alt="Automotive Tinting Companies" />
         </Link>
-        <Brand3 data={ceramicPro} type="image/svg+xml"></Brand3>
+        <Link link="https://ceramicpro.com/" target="_blank">
+          <CeramicPro src={ceramicPro} alt="Ceramic Pro Logo"></CeramicPro>
+        </Link>
       </RepBrands>
     </Section>
   );
@@ -188,19 +198,18 @@ const RepBrands = styled.div`
   }
 `;
 
-const Brand1 = styled.object`
-  @media (max-width: ${Variables.queryXLG}) {
-    max-width: 75px;
-  }
-`;
-const Brand2 = styled.object`
+const SunTek = styled.img`
   @media (max-width: ${Variables.queryXLG}) {
     max-width: 155px;
+    transform: translateY(20px);
   }
 `;
-const Brand3 = styled.object`
+const CeramicPro = styled.img`
   @media (max-width: ${Variables.queryXLG}) {
     max-width: 250px;
+  }
+  @media (min-width: ${Variables.queryMDMD}) {
+    transform: translateY(20px);
   }
 `;
 
