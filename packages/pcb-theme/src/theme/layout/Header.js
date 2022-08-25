@@ -17,6 +17,7 @@ function Header({ state }) {
   // const pcbLogo = assets.find((asset) => asset.id === ??); // for when logo comes from WP
   const facebookLogo = assets.find((asset) => asset.slug === "facebook-header");
   const yelpLogo = assets.find((asset) => asset.slug === "yelp-header");
+  const youtubeLogo = assets.find((asset) => asset.slug === "youtube-header");
 
   // Top Bar Reference
   const topBarContainer = useRef();
@@ -49,6 +50,7 @@ function Header({ state }) {
             type="image/svg+xml"
           ></object>
           <object data={yelpLogo.guid.rendered} type="image/svg+xml"></object>
+          <object data={youtubeLogo.guid.rendered} type='image/svg+xml'></object>
         </SocialsBlock>
       </TopBarContainer>
       <MainBarContainer
