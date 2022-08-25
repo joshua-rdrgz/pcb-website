@@ -8,13 +8,20 @@ export const liCleanUp = () => css`
   }
 `;
 
-export const aCleanUp = (color) => css`
+export const aCleanUp = (color, active = null) => css`
   text-decoration: none;
   color: ${color};
   &:link,
   &:visited {
     color: ${color};
   }
+  ${active &&
+  css`
+    &:link,
+    &:visited {
+      color: ${Variables.colorGoldDeep1};
+    }
+  `}
 `;
 
 export const addHeadingFont = (fontWeight, fontSize) => css`
@@ -43,4 +50,4 @@ export const applyBoxShadow = css`
   &:active {
     box-shadow: ${Variables.boxShadowActive};
   }
-`
+`;
