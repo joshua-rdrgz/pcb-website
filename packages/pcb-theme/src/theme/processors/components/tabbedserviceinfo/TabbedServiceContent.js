@@ -131,8 +131,6 @@ const Options = styled.div`
   }
 `;
 
-
-
 const Button = styled.button`
   padding: 0.5rem 2rem;
   ${Mixins.addHeadingFont(400, 3)};
@@ -150,11 +148,9 @@ const Button = styled.button`
     `}
 `;
 
-
-
 const Content = styled.div`
   ${Mixins.addColors(Variables.colorWhite, Variables.colorBlack)};
-  padding: 1rem 3rem;
+  padding: 4rem 3rem;
   border-radius: 1rem;
   display: grid;
   grid-template-columns: 0.65fr 0.35fr;

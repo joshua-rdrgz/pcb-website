@@ -51,7 +51,7 @@ const tabbedServiceInfoProcessor = {
     const priceRows = rowsLocations.slice(0, types.length);
     const prices = priceRows.map((typePrices) => {
       return typePrices.children.slice(1).map((price) => {
-        return price.children[0].content;
+        return price.children[0]?.content;
       });
     });
 
@@ -60,7 +60,7 @@ const tabbedServiceInfoProcessor = {
     const imageRow = rowsLocations.slice(types.length, types.length * 2);
     const images = imageRow.map((imageRowObj) => {
       return imageRowObj.children.slice(1).map((image) => {
-        return image.children[0].props;
+        return image.children[0]?.props;
       });
     });
 
@@ -74,7 +74,7 @@ const tabbedServiceInfoProcessor = {
       const descriptionContent = descriptionRow.children
         .slice(1)
         .map((description) => {
-          return description.children[0].content;
+          return description.children[0]?.content;
         });
       return [descriptionTitle, descriptionContent];
     });

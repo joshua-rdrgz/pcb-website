@@ -11,7 +11,7 @@ const TabbedServicePrice = ({ state, prices }) => {
         state.theme.tabbedServiceInfo.typeButtons.map((isActive, typeIndex) => {
           if (isActive) {
             return state.theme.tabbedServiceInfo.locationButtons.map((isActive, locationIndex) => {
-              if (isActive) {
+              if (isActive && prices?.[typeIndex]?.[locationIndex]) {
                 return (
                   <Fragment key={`price-${typeIndex}-${locationIndex}`}>
                     <PriceHeading>Starting from</PriceHeading>
