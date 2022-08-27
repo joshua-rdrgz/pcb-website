@@ -18,6 +18,7 @@ function Header({ state }) {
   const facebookLogo = assets.find((asset) => asset.slug === "facebook-header");
   const yelpLogo = assets.find((asset) => asset.slug === "yelp-header");
   const youtubeLogo = assets.find((asset) => asset.slug === "youtube-header");
+  const instagramLogo = assets.find((asset) => asset.slug === "instagram-header");
 
   // Top Bar Reference
   const topBarContainer = useRef();
@@ -51,6 +52,7 @@ function Header({ state }) {
           ></object>
           <object data={yelpLogo.guid.rendered} type="image/svg+xml"></object>
           <object data={youtubeLogo.guid.rendered} type='image/svg+xml'></object>
+          <object data={instagramLogo.guid.rendered} type='image/svg+xml'></object>
         </SocialsBlock>
       </TopBarContainer>
       <MainBarContainer
