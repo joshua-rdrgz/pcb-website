@@ -69,6 +69,11 @@ const WTContainer = styled.ul`
     justify-content: flex-start;
     gap: 0;
   }
+  @media (max-width: ${Variables.querySMSM}) {
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 0;
+  }
 `;
 
 const WTPriceContainer = styled.li`

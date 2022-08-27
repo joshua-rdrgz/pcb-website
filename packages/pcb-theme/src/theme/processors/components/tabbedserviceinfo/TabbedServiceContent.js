@@ -75,11 +75,11 @@ const TabbedServiceContent = ({ state, actions, data, typeButtons }) => {
         <TabbedServiceImage images={data.images} />
         <TabbedServiceValue values={data.values} />
         <TabbedServicePrice prices={data.prices} />
-        <TabbedServiceDescription descriptions={data.descriptions} />
         <TabbedServiceBenefits
           benefits={[data.benefits, data.commonBenefits]}
           types={data.types}
         />
+        <TabbedServiceDescription descriptions={data.descriptions} />
       </Content>
     </Article>
   );

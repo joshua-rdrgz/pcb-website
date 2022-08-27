@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { connect, styled } from "frontity";
 
-import { fadeIn } from "../../../styles/Variables";
+import { fadeIn, queryLG } from "../../../styles/Variables";
 
 const TabbedServiceBenefits = ({ state, benefits, types }) => {
   return (
@@ -48,4 +48,7 @@ const Benefit = styled.p`
   padding-right: 2rem;
   margin-bottom: 0.25rem;
   animation: ${fadeIn} 1s ease;
+  @media (max-width: ${queryLG}) {
+    padding-right: 0;
+  }
 `;
