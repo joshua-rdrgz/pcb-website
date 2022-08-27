@@ -54,7 +54,7 @@ const TabbedServiceContent = ({ state, actions, data, typeButtons }) => {
           </Options>
         </ButtonList>
         <ButtonList>
-          <Label>Film Options:</Label>
+          <Label>{state.router.link === '/window-tint/' ? 'Car Options:' : 'Film Options:'}</Label>
           <Options>
             {typeButtons.map((button, i) => {
               const active = state.theme.tabbedServiceInfo.typeButtons[i];
