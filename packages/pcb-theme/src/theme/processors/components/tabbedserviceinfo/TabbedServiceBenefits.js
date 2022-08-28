@@ -8,25 +8,65 @@ const TabbedServiceBenefits = ({ state, benefits, types }) => {
     <div>
       {state.theme.tabbedServiceInfo.typeButtons.map((isActive, i) => {
         if (isActive) {
-          const uniqueBenefits = benefits[0]?.[i]?.split("+");
+          const uniqueBenefits = state.router.link === '/window-tint/' ? benefits[0] : benefits[0]?.[i]?.split("+");
           let totalBenefits;
           if (uniqueBenefits !== undefined) {
             totalBenefits = [...benefits?.[0]?.[i]?.split("+"), ...benefits[1]];
           }
-          return (
-            <Fragment key={`benefits-${i}`}>
-              <Type>
-                <em>
-                  <strong>{types[i]}</strong>
-                </em>{" "}
-                benefits include:
-              </Type>
-              {totalBenefits &&
-                totalBenefits.map((benefit, index) => {
-                  return <Benefit key={`benefit-${index}`}>{benefit}</Benefit>;
-                })}
-            </Fragment>
-          );
+          if (state.router.link !== '/window-tint/') {
+            return (
+              <Fragment key={`benefits-${i}`}>
+                <Type>
+                  <em>
+                    <strong>{types[i]}</strong>
+                  </em>{"  "}
+                  benefits include:
+                </Type>
+                {totalBenefits &&
+                  totalBenefits.map((benefit, index) => {
+                    return <Benefit key={`benefit-${index}`}>{benefit}</Benefit>;
+                  })}
+              </Fragment>
+            );
+          } else {
+            return (
+              <Fragment key={`benefits-${i}`}>
+                <div>
+                  <Type>
+                    <em>
+                      <strong>{types[0]}</strong>
+                    </em>{"  "}
+                    benefits include:
+                  </Type>
+                  {uniqueBenefits?.[0]?.split("+").map((benefit, index) => {
+                      return <Benefit key={`benefit-${index}`}>{benefit}</Benefit>;
+                    })}
+                </div>
+                <div>
+                  <Type>
+                    <em>
+                      <strong>{types[1]}</strong>
+                    </em>{"  "}
+                    benefits include:
+                  </Type>
+                  {uniqueBenefits?.[1]?.split("+").map((benefit, index) => {
+                      return <Benefit key={`benefit-${index}`}>{benefit}</Benefit>;
+                    })}
+                </div>
+                <div>
+                  <Type>
+                    <em>
+                      <strong>All</strong>
+                    </em>{"  "}
+                    benefits include:
+                  </Type>
+                  {benefits[1].map((benefit, index) => {
+                      return <Benefit key={`benefit-${index}`}>{benefit}</Benefit>;
+                    })}
+                </div>
+              </Fragment>
+            );
+          }
         }
       })}
     </div>
