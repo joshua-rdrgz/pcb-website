@@ -33,7 +33,10 @@ export default {
       },
       testimonials: [],
       faq: {
-        FAQToggleData: [],
+        FAQToggleData: [
+          [],
+          []
+        ],
       },
       tabbedServiceInfo: {
         currentPageData: {},
@@ -119,17 +122,17 @@ export default {
       faq: {
         addFAQToggleData:
           ({ state }) =>
-          (data) => {
-            state.theme.faq.FAQToggleData = [
-              ...state.theme.faq.FAQToggleData,
+          (data, index = 0) => {
+            state.theme.faq.FAQToggleData[index] = [
+              ...state.theme.faq.FAQToggleData[index],
               data,
             ];
           },
         setFAQToggleData:
           ({ state }) =>
-          (index) => {
-            state.theme.faq.FAQToggleData.map((faq) => {
-              if (faq.index === index) {
+          (faqsBlockIndex, faqIndex) => {
+            state.theme.faq.FAQToggleData[faqsBlockIndex].map((faq) => {
+              if (faq.index === faqIndex) {
                 faq.open = !faq.open;
               }
             });
