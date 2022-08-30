@@ -1,5 +1,4 @@
 import React from "react";
-import { AiOutlineFundProjectionScreen } from "react-icons/ai";
 
 import TabbedServiceInfo from "./components/tabbedserviceinfo/TabbedServiceInfo";
 
