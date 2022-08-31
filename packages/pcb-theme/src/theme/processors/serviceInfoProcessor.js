@@ -56,7 +56,7 @@ const tabbedServiceInfoProcessor = {
 
 
     // images
-    const imageRow = rowsLocations.slice(types.length, types.length * 2);
+    const imageRow = rowsLocations.slice(typeButtons.length, typeButtons.length * 2);
     const images = imageRow.map((imageRowObj) => {
       return imageRowObj.children.slice(1).map((image) => {
         return image.children[0]?.props;
@@ -65,8 +65,8 @@ const tabbedServiceInfoProcessor = {
 
     // descriptions
     const descriptionsRows =
-      rowsLocations.slice(types.length * 3).length > 0
-        ? rowsLocations.slice(types.length * 3)
+      rowsLocations.slice(typeButtons.length * 3).length > 0
+        ? rowsLocations.slice(typeButtons.length * 3)
         : [rowsTypes[1]];
     const descriptions = descriptionsRows.map((descriptionRow) => {
       const descriptionTitle = descriptionRow.children[0].children[0].content;
@@ -79,7 +79,7 @@ const tabbedServiceInfoProcessor = {
     });
 
     // values
-    const valuesRows = rowsLocations.slice(types.length * 2, types.length * 3);
+    const valuesRows = rowsLocations.slice(typeButtons.length * 2, typeButtons.length * 3);
     const values = valuesRows.map((valueRow) => {
       return valueRow.children.slice(1).map((value) => {
         const valueDescriptor = value.children[0]?.children[0]?.content;

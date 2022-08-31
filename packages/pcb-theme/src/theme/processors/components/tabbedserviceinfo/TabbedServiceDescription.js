@@ -9,12 +9,14 @@ const TabbedServiceDescription = ({ state, descriptions }) => {
       {state.theme.tabbedServiceInfo.locationButtons.map((isActive, i) => {
         if (isActive) {
           return descriptions.map((description, index) => {
-            return (
-              <Fragment key={`description-${index}`}>
-                <DesHeading>{description[0]}</DesHeading>
-                <Description>{description[1]?.[i]}</Description>
-              </Fragment>
-            );
+            if (description[1]?.[i]) {
+              return (
+                <Fragment key={`description-${index}`}>
+                  <DesHeading>{description[0]}</DesHeading>
+                  <Description>{description[1]?.[i]}</Description>
+                </Fragment>
+              );
+            }
           });
         }
       })}
