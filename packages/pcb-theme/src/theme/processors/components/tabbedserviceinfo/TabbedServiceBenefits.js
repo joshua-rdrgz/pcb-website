@@ -57,9 +57,9 @@ const TabbedServiceBenefits = ({ state, benefits, types }) => {
                 <Benefits>
                   <Type addAnimation={false}>
                     <em>
-                      <strong>All</strong>
+                      <strong>Both</strong>
                     </em>{"  "}
-                    benefits include:
+                    films include:
                   </Type>
                   {benefits[1].map((benefit, index) => {
                       return <Benefit addAnimation={false} key={`benefit-${index}`}>{benefit}</Benefit>;

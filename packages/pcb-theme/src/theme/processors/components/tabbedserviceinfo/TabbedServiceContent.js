@@ -9,7 +9,13 @@ import TabbedServiceValue from "./TabbedServiceValue";
 import * as Variables from "../../../styles/Variables";
 import * as Mixins from "../../../styles/Mixins";
 
-const TabbedServiceContent = ({ state, actions, data, typeButtons }) => {
+const TabbedServiceContent = ({
+  state,
+  actions,
+  isWindowTint,
+  data,
+  typeButtons,
+}) => {
   const changeActiveTab = (page, index) => {
     actions.theme.tabbedServiceInfo.setActiveTab(page, index);
   };
@@ -42,19 +48,19 @@ const TabbedServiceContent = ({ state, actions, data, typeButtons }) => {
             {data.locations.map((location, i) => {
               const active = state.theme.tabbedServiceInfo.locationButtons[i];
               return (
-                  <Button
-                    key={`locations-button-${i + 1}`}
-                    active={active}
-                    onClick={() => changeActiveTab("locationButtons", i)}
-                  >
-                    {location}
-                  </Button>
+                <Button
+                  key={`locations-button-${i + 1}`}
+                  active={active}
+                  onClick={() => changeActiveTab("locationButtons", i)}
+                >
+                  {location}
+                </Button>
               );
             })}
           </Options>
         </ButtonList>
         <ButtonList>
-          <Label>{state.router.link === '/window-tint/' ? 'Car Options:' : 'Film Options:'}</Label>
+          <Label>{isWindowTint ? "Car Options:" : "Film Options:"}</Label>
           <Options>
             {typeButtons.map((button, i) => {
               const active = state.theme.tabbedServiceInfo.typeButtons[i];
@@ -71,11 +77,14 @@ const TabbedServiceContent = ({ state, actions, data, typeButtons }) => {
           </Options>
         </ButtonList>
       </ButtonsContainer>
-      <Content>
+      <Content isWindowTint={isWindowTint}>
         <TabbedServiceImage images={data.images} />
-        <TabbedServiceValue values={data.values} />
-        <TabbedServicePrice prices={data.prices} />
-        <TabbedServiceDescription descriptions={data.descriptions} />
+        <TabbedServiceValue isWindowTint={isWindowTint} values={data.values} />
+        <TabbedServicePrice isWindowTint={isWindowTint} prices={data.prices} />
+        <TabbedServiceDescription
+          isWindowTint={isWindowTint}
+          descriptions={data.descriptions}
+        />
         <TabbedServiceBenefits
           benefits={[data.benefits, data.commonBenefits]}
           types={data.types}
@@ -153,7 +162,8 @@ const Content = styled.div`
   padding: 4rem 3rem;
   border-radius: 1rem;
   display: grid;
-  grid-template-columns: 0.65fr 0.35fr;
+  grid-template-columns: ${(props) =>
+    props.isWindowTint ? "0.55fr 0.45fr" : "0.65fr 0.35fr"};
   grid-template-rows: repeat(5, min-content);
   grid-template-areas:
     "img value"

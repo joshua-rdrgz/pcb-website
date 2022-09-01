@@ -1,9 +1,9 @@
 import React, { Fragment } from "react";
-import { connect, styled } from "frontity";
+import { connect, styled, css } from "frontity";
 
 import { fadeIn, queryLG } from "../../../styles/Variables";
 
-const TabbedServiceDescription = ({ state, descriptions }) => {
+const TabbedServiceDescription = ({ state, isWindowTint, descriptions }) => {
   return (
     <div>
       {state.theme.tabbedServiceInfo.locationButtons.map((isActive, i) => {
@@ -11,10 +11,10 @@ const TabbedServiceDescription = ({ state, descriptions }) => {
           return descriptions.map((description, index) => {
             if (description[1]?.[i]) {
               return (
-                <Fragment key={`description-${index}`}>
+                <Div isWindowTint={isWindowTint} key={`description-${index}`}>
                   <DesHeading>{description[0]}</DesHeading>
-                  <Description>{description[1]?.[i]}</Description>
-                </Fragment>
+                  <Description isWindowTint={isWindowTint}>{description[1]?.[i]}</Description>
+                </Div>
               );
             }
           });
@@ -25,6 +25,12 @@ const TabbedServiceDescription = ({ state, descriptions }) => {
 };
 
 export default connect(TabbedServiceDescription);
+
+const Div = styled.div`
+  ${props => props.isWindowTint && css`
+    text-align: center;
+  `}
+`;
 
 const DesHeading = styled.span`
   font-family: trade-gothic-next-compressed, sans-serif;
@@ -37,6 +43,9 @@ const DesHeading = styled.span`
 const Description = styled.p`
   font-size: 1.25rem;
   padding-right: 2rem;
+  ${props => props.isWindowTint && css`
+    padding-right: 0;
+  `}
   margin-bottom: 1rem;
   animation: ${fadeIn} 1s ease;
   @media (max-width: ${queryLG}) {

@@ -1,10 +1,10 @@
 import React, { Fragment } from "react";
-import { connect, styled } from "frontity";
+import { connect, styled, css } from "frontity";
 
 import * as Mixins from "../../../styles/Mixins";
 import * as Variables from "../../../styles/Variables";
 
-const TabbedServicePrice = ({ state, prices }) => {
+const TabbedServicePrice = ({ state, isWindowTint, prices }) => {
   return (
     <div>
       {state.theme.tabbedServiceInfo.typeButtons.map((isActive, typeIndex) => {
@@ -14,21 +14,33 @@ const TabbedServicePrice = ({ state, prices }) => {
               if (isActive && prices?.[typeIndex]?.[locationIndex]) {
                 return (
                   <Fragment key={`price-${typeIndex}-${locationIndex}`}>
-                    {state.router.link !== "/window-tint/" && (
+                    {!isWindowTint && (
                       <>
                         <PriceHeading>Starting from</PriceHeading>
-                        <Price>${prices?.[typeIndex]?.[locationIndex]}</Price>
+                        <Price isWindowTint={isWindowTint}>
+                          ${prices?.[typeIndex]?.[locationIndex]}
+                        </Price>
                       </>
                     )}
-                    {state.router.link === '/window-tint/' && (
+                    {isWindowTint && (
                       <WTContainer>
                         <WTPriceContainer>
-                          <PriceHeading><strong>EVOLVE</strong> Starting from</PriceHeading>
-                          <Price>${prices?.[typeIndex]?.[locationIndex].split('/')[0]}</Price>
+                          <PriceHeading>
+                            <strong>EVOLVE</strong> Starting from
+                          </PriceHeading>
+                          <Price isWindowTint={isWindowTint}>
+                            $
+                            {prices?.[typeIndex]?.[locationIndex].split("/")[0]}
+                          </Price>
                         </WTPriceContainer>
                         <WTPriceContainer>
-                          <PriceHeading><strong>CERAMIC IR</strong> Starting from</PriceHeading>
-                          <Price>${prices?.[typeIndex]?.[locationIndex].split('/')[1]}</Price>
+                          <PriceHeading>
+                            <strong>CERAMIC IR</strong> Starting from
+                          </PriceHeading>
+                          <Price isWindowTint={isWindowTint}>
+                            $
+                            {prices?.[typeIndex]?.[locationIndex].split("/")[1]}
+                          </Price>
                         </WTPriceContainer>
                       </WTContainer>
                     )}
@@ -52,8 +64,12 @@ const PriceHeading = styled.span`
   animation: ${Variables.fadeIn} 1s ease;
 `;
 
-const Price = styled.h4`
-  ${Mixins.addHeadingFont(700, 8)}
+const Price = styled.h4` 
+  ${props => props.isWindowTint ? css`
+    ${Mixins.addHeadingFont(700, 6.5)};
+  ` : css`
+    ${Mixins.addHeadingFont(700, 8)}
+  `}
   color: ${Variables.colorRed};
   line-height: 1;
   padding-bottom: 2rem;
@@ -64,11 +80,7 @@ const WTContainer = styled.ul`
   display: flex;
   justify-content: space-around;
   gap: 3rem;
-  @media (min-width: ${Variables.queryLG}) and (max-width: ${Variables.queryLGXLG}) {
-    flex-direction: column;
-    justify-content: flex-start;
-    gap: 0;
-  }
+  text-align: center;
   @media (max-width: ${Variables.querySMSM}) {
     flex-direction: column;
     justify-content: flex-start;
