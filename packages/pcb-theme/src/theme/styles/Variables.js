@@ -45,6 +45,7 @@ export const boxShadowHover = `0.3rem 0.7rem 1rem rgba(16, 16, 16, 0.5)`;
 export const boxShadowActive = `0.3rem 0.6rem 1rem rgba(16, 16, 16, 0.3)`;
 
 // MEDIA QUERIES
+export const queryXXXLG = "90.625em"; // 1450px
 export const queryXXLG = "84.375em"; // 1350px
 export const queryXLG = "81.25em"; // 1300px
 export const queryLGXLG = "78.125em" // 1250px
