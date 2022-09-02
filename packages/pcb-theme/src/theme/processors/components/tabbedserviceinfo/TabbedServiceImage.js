@@ -3,7 +3,13 @@ import { connect, styled } from "frontity";
 
 import * as Variables from "../../../styles/Variables";
 
-const TabbedServiceImage = ({ state, images }) => {
+const TabbedServiceImage = ({
+  state,
+  isWindowTint,
+  locations,
+  types,
+  images,
+}) => {
   return (
     <Figure>
       {state.theme.tabbedServiceInfo.typeButtons.map((isActive, typeIndex) => {
@@ -11,11 +17,19 @@ const TabbedServiceImage = ({ state, images }) => {
           return state.theme.tabbedServiceInfo.locationButtons.map(
             (isActive, locationIndex) => {
               if (isActive) {
+                const beginningLink = `https://ik.imagekit.io/jrcoding/pcbpictures/customizerphotos`
+                const imageLink = `${
+                  isWindowTint ? "wt" : "ppf"
+                }/${types[typeIndex]?.toLowerCase()}/${locations[locationIndex]
+                  ?.toLowerCase()
+                  ?.split(" ")
+                  ?.join("")}.png`
                 return (
                   <Img
                     key={`service-image-${typeIndex}-${locationIndex}`}
-                    src={images[typeIndex]?.[locationIndex]?.src}
-                    alt={images[typeIndex]?.[locationIndex]?.alt}
+                    src={`${beginningLink}/tr:w-400/${imageLink}`}
+                    // src={images[typeIndex]?.[locationIndex]?.src}
+                    alt={`${imageLink}`}
                   />
                 );
               }
