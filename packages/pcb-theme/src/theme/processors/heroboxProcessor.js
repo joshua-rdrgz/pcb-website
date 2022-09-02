@@ -80,7 +80,7 @@ const Herobox = ({
           link="https://preferredmechanic.com/report/window-tinting-places/near_fort-worth-tarrant-county,tx/"
           target="_blank"
         >
-          <img src={bestOfFtWorth} alt="Automotive Tinting Companies" />
+          <img src={bestOfFtWorth} alt="Performance Clear Bra rated #1 of Automotive Tinting Companies in Fort Worth, Texas" />
         </Link>
         <Link link="https://ceramicpro.com/" target="_blank">
           <CeramicPro src={ceramicPro} alt="Ceramic Pro Logo"></CeramicPro>
@@ -152,12 +152,16 @@ const PrimaryHeading = styled.h1`
   }
   @media (max-width: ${Variables.querySM}) {
     font-size: 3.5rem;
+    padding: 0 1.5rem;
   }
 `;
 
 const SecondaryHeading = styled.h2`
   ${Mixins.addHeadingFont(400, 4)};
   ${addHeadingMediaQueries(4)};
+  @media (max-width: ${Variables.querySM}) {
+    padding: 0 1rem;
+  }
 `;
 
 const StyledA = styled.a`
@@ -187,11 +191,7 @@ const RepBrands = styled.div`
   padding: 3rem 0;
   background-color: ${Variables.colorGray1RGBA};
   @media (max-width: ${Variables.queryXLG}) {
-    gap: 15rem;
     padding: 2.5rem 0;
-  }
-  @media (max-width: ${Variables.queryLG}) {
-    gap: 5rem;
   }
   @media (max-width: ${Variables.querySM}) {
     gap: 1rem;
@@ -203,13 +203,18 @@ const SunTek = styled.img`
     max-width: 155px;
     transform: translateY(20px);
   }
+  @media (max-width: ${Variables.querySMSM}) {
+    transform: none;
+  }
 `;
+
 const CeramicPro = styled.img`
-  @media (max-width: ${Variables.queryXLG}) {
+  transform: translateY(20px);
+  @media (max-width: ${Variables.queryXXXLG}) {
     max-width: 250px;
   }
-  @media (min-width: ${Variables.queryMDMD}) {
-    transform: translateY(20px);
+  @media (max-width: ${Variables.queryMDSM}) {
+    transform: none;
   }
 `;
 
