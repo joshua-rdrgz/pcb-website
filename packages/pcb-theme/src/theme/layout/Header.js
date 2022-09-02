@@ -18,7 +18,9 @@ function Header({ state }) {
   const facebookLogo = assets.find((asset) => asset.slug === "facebook-header");
   const yelpLogo = assets.find((asset) => asset.slug === "yelp-header");
   const youtubeLogo = assets.find((asset) => asset.slug === "youtube-header");
-  const instagramLogo = assets.find((asset) => asset.slug === "instagram-header");
+  const instagramLogo = assets.find(
+    (asset) => asset.slug === "instagram-header"
+  );
 
   // Top Bar Reference
   const topBarContainer = useRef();
@@ -44,15 +46,26 @@ function Header({ state }) {
         ref={topBarContainer}
       >
         <CallBlock>{menus.menuData[0].acf.phone}</CallBlock>
-        <AddressBlock>{menus.menuData[0].acf.address}</AddressBlock>
+        <AddressLink
+          link="https://www.google.com/maps/place/Performance+Clear+Bra/@32.763217,-97.3587412,17z/data=!4m5!3m4!1s0x864e734cf2061099:0x8c5e06440f0da472!8m2!3d32.763217!4d-97.3565525"
+          target="_blank"
+        >
+          <div>{menus.menuData[0].acf.address}</div>
+        </AddressLink>
         <SocialsBlock>
           <object
             data={facebookLogo.guid.rendered}
             type="image/svg+xml"
           ></object>
           <object data={yelpLogo.guid.rendered} type="image/svg+xml"></object>
-          <object data={youtubeLogo.guid.rendered} type='image/svg+xml'></object>
-          <object data={instagramLogo.guid.rendered} type='image/svg+xml'></object>
+          <object
+            data={youtubeLogo.guid.rendered}
+            type="image/svg+xml"
+          ></object>
+          <object
+            data={instagramLogo.guid.rendered}
+            type="image/svg+xml"
+          ></object>
         </SocialsBlock>
       </TopBarContainer>
       <MainBarContainer
@@ -108,7 +121,6 @@ const PcbLogo = styled.img`
 
 const TopBarContainer = styled.div`
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
   border-bottom: ${Variables.headerBorder};
   transition: all 0.5s;
@@ -134,21 +146,20 @@ const CallBlock = styled.div`
   }
 `;
 
-const AddressBlock = styled.div`
-  margin-right: auto;
-  padding-left: 3rem;
+const AddressLink = styled(Link)`
+  ${Mixins.aCleanUp(Variables.colorWhite)};
+  border-right: 1px solid ${Variables.colorWhite};
+  padding: 0 3rem;
+  text-decoration: underline;
   @media (max-width: ${Variables.queryMD}) {
     padding: 0 1rem;
   }
-  @media (min-width: ${Variables.querySMMD}) and (max-width: 36.25em) {
-    border-right: 1px solid ${Variables.colorWhite};
-  }
   @media (max-width: ${Variables.querySMMD}) {
-    margin-left: auto;
-    margin-right: 0;
+    border-right: none;
+    margin: 0 auto;
   }
   @media (max-width: ${Variables.queryXSM}) {
-    margin-right: auto;
+    margin: 0 auto;
     text-align: center;
   }
 `;
@@ -157,13 +168,13 @@ const SocialsBlock = styled.div`
   display: flex;
   gap: 2rem;
   align-items: center;
-  padding-right: 3rem;
+  padding-left: 3rem;
   @media (max-width: ${Variables.queryMD}) {
     gap: 1rem;
     padding: 0 1rem;
+    margin: 0 auto;
   }
   @media (max-width: ${Variables.querySMMD}) {
-    margin: 0 auto;
     padding-bottom: 0.5rem;
   }
 `;
