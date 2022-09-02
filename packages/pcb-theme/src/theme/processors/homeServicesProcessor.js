@@ -65,7 +65,10 @@ const Cards = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 4rem;
+  gap: 8rem;
+  @media (max-width: ${Variables.queryLGMD}) {
+    gap: 4rem;
+  }
 `;
 
 const Button = styled(Link)`
