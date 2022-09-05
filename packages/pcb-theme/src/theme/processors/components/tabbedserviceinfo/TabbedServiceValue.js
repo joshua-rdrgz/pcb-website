@@ -1,25 +1,46 @@
 import React from "react";
-import { connect, styled } from "frontity";
+import { connect, styled, css } from "frontity";
 
-import * as Variables from '../../../styles/Variables';
+import * as Variables from "../../../styles/Variables";
 
-const TabbedServiceValue = ({ state, values }) => {
-  return (
-    <div>
-      {
-        state.theme.tabbedServiceInfo.typeButtons.map((isActive, i) => {
+const TabbedServiceValue = ({ state, isWindowTint, values }) => {
+  if (!isWindowTint) {   
+    return (
+      <Div isWindowTint={isWindowTint}>
+        {state.theme.tabbedServiceInfo.typeButtons.map((isActive, typeIndex) => {
           if (isActive) {
-            return (
-              <Value key={`value-${i + 1}`}><em><strong>{values[i]?.toUpperCase()}</strong> value!</em></Value>
-            )
+            return state.theme.tabbedServiceInfo.locationButtons.map(
+              (isActive, locationIndex) => {
+                if (isActive) {
+                  return (
+                    <Value key={`value-${typeIndex}-${locationIndex}`}>
+                      <strong>
+                        <em>{values[typeIndex]?.[locationIndex]?.[0]}</em>
+                      </strong>
+                      &nbsp;{values[typeIndex]?.[locationIndex]?.[1]}
+                    </Value>
+                  );
+                }
+              }
+            );
           }
-        })
-      }
-    </div>
-  );
+        })}
+      </Div>
+    );
+  }
+  return null;
 };
 
 export default connect(TabbedServiceValue);
+
+const Div = styled.div`
+  ${(props) =>
+    props.isWindowTint &&
+    css`
+      text-align: center;
+      margin-bottom: 1rem;
+    `}
+`;
 
 const Value = styled.span`
   font-family: trade-gothic-next-compressed, sans-serif;

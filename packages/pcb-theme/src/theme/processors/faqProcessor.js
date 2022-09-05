@@ -7,7 +7,7 @@ const faqProcessor = {
   name: "FAQ",
   priority: 5,
   test: ({ node }) => {
-    return node?.props?.className?.includes("wp-block-group" && "faq");
+    return node?.props?.className?.includes("wp-block-group" && "faqs");
   },
   processor: ({ node, state }) => {
     const shortHand = node?.children[0]?.children;
@@ -16,14 +16,14 @@ const faqProcessor = {
     const sectionHeader = shortHand[0]?.children[0]?.content;
 
     // FAQs
-    const faqs = shortHand.slice(1);
+    const faqsContainer = shortHand.slice(1);
+
     return {
       component: FAQTab,
       props: {
         state,
-        shortHand,
         sectionHeader,
-        faqs,
+        faqsContainer,
       },
     };
   },

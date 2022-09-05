@@ -11,6 +11,7 @@ const TabbedServiceInfo = ({
   state,
   actions,
   anchorHTML,
+  isWindowTint,
   sectionHeader,
   typeButtons,
   data,
@@ -25,6 +26,7 @@ const TabbedServiceInfo = ({
       <TabbedServiceContent
         data={state.theme.tabbedServiceInfo.currentPageData}
         typeButtons={typeButtons}
+        isWindowTint={isWindowTint}
       />
       <Button
         type="primary"

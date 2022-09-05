@@ -1,34 +1,52 @@
-import React from 'react'
-import { connect, styled } from 'frontity';
+import React from "react";
+import { connect, styled } from "frontity";
 
 import * as Variables from "../../../styles/Variables";
 
-const TabbedServiceImage = ({ state, images }) => {
+const TabbedServiceImage = ({
+  state,
+  isWindowTint,
+  locations,
+  types,
+  images,
+}) => {
   return (
     <Figure>
-      {
-        state.theme.tabbedServiceInfo.locationButtons.map((isActive, i) => {
-          if (isActive) {
-            return (
-              <Img
-                key={`service-image-${i + 1}`}
-                src={images[i]?.src}
-                alt={images[i]?.alt}
-              />
-            )
-          }
-        })
-      }
+      {state.theme.tabbedServiceInfo.typeButtons.map((isActive, typeIndex) => {
+        if (isActive) {
+          return state.theme.tabbedServiceInfo.locationButtons.map(
+            (isActive, locationIndex) => {
+              if (isActive) {
+                const beginningLink = `https://ik.imagekit.io/jrcoding/pcbpictures/customizerphotos`
+                const imageLink = `${
+                  isWindowTint ? "wt" : "ppf"
+                }/${types[typeIndex]?.toLowerCase()}/${locations[locationIndex]
+                  ?.toLowerCase()
+                  ?.split(" ")
+                  ?.join("")}.png`
+                return (
+                  <Img
+                    key={`service-image-${typeIndex}-${locationIndex}`}
+                    src={`${beginningLink}/tr:w-400/${imageLink}`}
+                    // src={images[typeIndex]?.[locationIndex]?.src}
+                    alt={`${imageLink}`}
+                  />
+                );
+              }
+            }
+          );
+        }
+      })}
     </Figure>
-  )
-}
+  );
+};
 
 const Figure = styled.figure`
   grid-area: img;
   position: relative;
-`
+`;
 const Img = styled.img`
-  width: 90%; 
+  width: 90%;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -42,4 +60,4 @@ const Img = styled.img`
   }
 `;
 
-export default connect(TabbedServiceImage)
+export default connect(TabbedServiceImage);

@@ -61,17 +61,25 @@ const Heading = styled.h4`
 `;
 
 const ImgWrapper = styled.figure`
-  width: 40rem;
+  width: 65rem;
   margin: 0 auto;
-  @media (min-width: ${Variables.queryLGLG}) and (max-width: ${Variables.queryXXLG}) {
-    width: 35rem;
-  }
-  @media (min-width: ${Variables.queryLGMD}) and (max-width: ${Variables.queryLGLG}),
-    (max-width: ${Variables.querySM}) {
-    width: 30rem;
-  }
-  @media (min-width: ${Variables.queryMDSMSM}) and (max-width: ${Variables.queryMDLG}) {
+  @media (max-width: ${Variables.queryXXXLG}) {
     width: 50rem;
+  }
+  @media (max-width: ${Variables.queryLGLG}) {
+    width: 45rem;
+  }
+  @media (max-width: ${Variables.queryLGMD}) {
+    width: 40rem;
+  }    
+  @media (max-width: ${Variables.queryMDLG}) {
+    width: 50rem;
+  }
+  @media (max-width: ${Variables.querySMMD}) {
+    width: 40rem;
+  }
+  @media (max-width: ${Variables.querySM}) {
+    width: 30rem;
   }
   @media (max-width: ${Variables.queryXSMLG}) {
     width: 25rem;
@@ -79,15 +87,23 @@ const ImgWrapper = styled.figure`
 `;
 
 const addImgAndDescMediaQueries = css`
-  @media (min-width: ${Variables.queryLGLG}) and (max-width: ${Variables.queryXXLG}) {
-    max-width: 30rem;
-  }
-  @media (min-width: ${Variables.queryLGMD}) and (max-width: ${Variables.queryLGLG}),
-    (max-width: ${Variables.querySM}) {
-    max-width: 25rem;
-  }
-  @media (min-width: ${Variables.queryMDSMSM}) and (max-width: ${Variables.queryMDLG}) {
+  @media (max-width: ${Variables.queryXXXLG}) {
     width: 45rem;
+  }
+  @media (max-width: ${Variables.queryLGLG}) {
+    width: 40rem;
+  }
+  @media (max-width: ${Variables.queryLGMD}) {
+    width: 35rem;
+  }
+  @media (max-width: ${Variables.queryMDLG}) {
+    width: 45rem;
+  }
+  @media (max-width: ${Variables.querySMMD}) {
+    width: 35rem;
+  }
+  @media (max-width: ${Variables.querySM}) {
+    max-width: 25rem;
   }
   @media (max-width: ${Variables.queryXSMLG}) {
     max-width: 20rem;
@@ -95,7 +111,7 @@ const addImgAndDescMediaQueries = css`
 `;
 
 const Img = styled.img`
-  width: 35rem;
+  width: 60rem;
   ${addImgAndDescMediaQueries};
 `;
 

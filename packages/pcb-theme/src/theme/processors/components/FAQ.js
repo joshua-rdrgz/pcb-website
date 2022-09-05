@@ -4,40 +4,58 @@ import { styled, css, connect } from "frontity";
 import * as Variables from "../../styles/Variables";
 import * as Mixins from "../../styles/Mixins";
 
-const FAQTab = ({ state, actions, sectionHeader, faqs }) => {
-  const faqData = state.theme.faq.FAQToggleData;
+const FAQTab = ({ state, actions, sectionHeader, faqsContainer }) => {
   useEffect(() => {
-    faqs.forEach((_, i) => {
-      actions.theme.faq.addFAQToggleData({
-        index: i,
-        open: false,
+    faqsContainer.forEach((faqsBlock, faqsBlockIndex) => {
+      const faqs = faqsBlock?.children[0]?.children;
+      faqs.forEach((_, faqIndex) => {
+        actions.theme.faq.addFAQToggleData({
+          index: faqIndex,
+          open: false,
+        }, faqsBlockIndex);
       });
     });
-  }, [faqs]);
+  }, [faqsContainer]);
 
   return (
     <Section>
       <SectionHeader>{sectionHeader}</SectionHeader>
-      <FAQs>
-        {faqs.map((faq, i) => {
-          const question = faq?.children[0]?.children[0]?.children[0]?.content;
-          const answer = faq?.children[0]?.children[1]?.children[0]?.content;
+      <FAQsContainer>
+        {faqsContainer.map((faqsBlock, faqsBlockIndex) => {
+          const faqs = faqsBlock?.children[0]?.children;
           return (
-            <FAQ
-              key={`faq-${i + 1}`}
-              onClick={() => actions.theme.faq.setFAQToggleData(i)}
-            >
-              <FAQIcon isOpen={state.theme.faq.FAQToggleData[i]?.open}>
-                &nbsp;
-              </FAQIcon>
-              <Question>{question}</Question>
-              <Answer isOpen={state.theme.faq.FAQToggleData[i]?.open}>
-                {answer}
-              </Answer>
-            </FAQ>
+            <FAQs key={`faq-${faqsBlockIndex}`} hasHeader={faqs[0].component.includes('h')}>
+              {faqs.map((faq, faqIndex) => {
+                const question =
+                  faq.component.includes('h') ? null : faq?.children[0]?.children[0]?.children[0]?.content;
+                const answer =
+                  faq.component.includes('h') ? null : faq?.children[0]?.children[1]?.children[0]?.content;
+        
+                if (!question) {
+                  return (
+                    <FAQHeader key={`faq-Header-${faqIndex + 1}`}>{faq?.children[0]?.content}</FAQHeader>
+                  )
+                } else {
+                  return (
+                  <FAQ
+                    key={`faq-${faqIndex + 1}`}
+                    onClick={() => actions.theme.faq.setFAQToggleData(faqsBlockIndex, faqIndex)}
+                  >
+                    <FAQIcon isOpen={state.theme.faq.FAQToggleData[faqsBlockIndex][faqIndex]?.open}>
+                      &nbsp;
+                    </FAQIcon>
+                    <Question>{question}</Question>
+                    <Answer isOpen={state.theme.faq.FAQToggleData[faqsBlockIndex][faqIndex]?.open}>
+                      {answer}
+                    </Answer>
+                  </FAQ>
+                );
+                }
+              })}
+            </FAQs>
           );
         })}
-      </FAQs>
+      </FAQsContainer>
     </Section>
   );
 };
@@ -45,7 +63,20 @@ const FAQTab = ({ state, actions, sectionHeader, faqs }) => {
 export default connect(FAQTab);
 
 const Section = styled.section`
-  background-color: ${Variables.colorGrayDark};
+  background: repeating-linear-gradient(
+    135deg,
+    ${Variables.colorBlackPure},
+    ${Variables.colorBlackPure} 20px,
+    rgba(0, 0, 0, 0.99) 20px,
+    rgba(0, 0, 0, 0.99) 40px
+  );
+`;
+
+const FAQsContainer = styled.div`
+  display: flex;
+  @media (max-width: ${Variables.queryMD}) {
+    display: block;
+  }
 `;
 
 const SectionHeader = styled.h3`
@@ -62,11 +93,21 @@ const FAQs = styled.section`
   display: flex;
   flex-direction: column;
   gap: 3rem;
-  width: 80%;
+  width: ${props => props.hasHeader ? '40%' : '80%'};
   margin: 0 auto;
   position: relative;
   padding-bottom: 4rem;
   cursor: pointer;
+  @media (max-width: ${Variables.queryMD}) {
+    width: 80%;
+  }
+`;
+
+const FAQHeader = styled.h4`
+  text-align: center;
+  ${Mixins.addHeadingFont(400, 2.5)};
+  text-shadow: ${Variables.textShadow};
+  color: ${Variables.colorWhite};
 `;
 
 const FAQ = styled.article`
@@ -87,7 +128,7 @@ const Answer = styled.p`
   padding-right: 2rem;
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
-  max-height: 0; 
+  max-height: 0;
   transform: scale(1, 0);
   opacity: 0;
   transform-origin: top;

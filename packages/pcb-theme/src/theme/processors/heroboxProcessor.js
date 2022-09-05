@@ -2,7 +2,7 @@ import React from "react";
 import { styled, css } from "frontity";
 import Link from "@frontity/components/link";
 
-import bestOfFtWorth from '../assets/best-of-ft-worth.svg';
+import bestOfFtWorth from "../assets/best-of-ft-worth.svg";
 import ceramicPro from "../assets/ceramic-pro.svg";
 import suntek from "../assets/suntek.svg";
 import LinkStyles from "../styles/componentStyles/LinkStyles";
@@ -70,11 +70,21 @@ const Herobox = ({
         )}
       </HeroboxContent>
       <RepBrands>
-        <Brand2 data={suntek} type="image/svg+xml"></Brand2>
-        <Link link="https://preferredmechanic.com/report/window-tinting-places/near_fort-worth-tarrant-county,tx/" target="_blank">
-          <img src={bestOfFtWorth} alt="Automotive Tinting Companies" />
+        <Link
+          link="https://suntekfilms.com/suntek-paint-protection"
+          target="_blank"
+        >
+          <SunTek src={suntek} alt="SunTek Logo"></SunTek>
         </Link>
-        <Brand3 data={ceramicPro} type="image/svg+xml"></Brand3>
+        <Link
+          link="https://preferredmechanic.com/report/window-tinting-places/near_fort-worth-tarrant-county,tx/"
+          target="_blank"
+        >
+          <img src={bestOfFtWorth} alt="Performance Clear Bra rated #1 of Automotive Tinting Companies in Fort Worth, Texas" />
+        </Link>
+        <Link link="https://ceramicpro.com/" target="_blank">
+          <CeramicPro src={ceramicPro} alt="Ceramic Pro Logo"></CeramicPro>
+        </Link>
       </RepBrands>
     </Section>
   );
@@ -142,12 +152,16 @@ const PrimaryHeading = styled.h1`
   }
   @media (max-width: ${Variables.querySM}) {
     font-size: 3.5rem;
+    padding: 0 1.5rem;
   }
 `;
 
 const SecondaryHeading = styled.h2`
   ${Mixins.addHeadingFont(400, 4)};
   ${addHeadingMediaQueries(4)};
+  @media (max-width: ${Variables.querySM}) {
+    padding: 0 1rem;
+  }
 `;
 
 const StyledA = styled.a`
@@ -177,30 +191,30 @@ const RepBrands = styled.div`
   padding: 3rem 0;
   background-color: ${Variables.colorGray1RGBA};
   @media (max-width: ${Variables.queryXLG}) {
-    gap: 15rem;
     padding: 2.5rem 0;
-  }
-  @media (max-width: ${Variables.queryLG}) {
-    gap: 5rem;
   }
   @media (max-width: ${Variables.querySM}) {
     gap: 1rem;
   }
 `;
 
-const Brand1 = styled.object`
-  @media (max-width: ${Variables.queryXLG}) {
-    max-width: 75px;
-  }
-`;
-const Brand2 = styled.object`
+const SunTek = styled.img`
   @media (max-width: ${Variables.queryXLG}) {
     max-width: 155px;
+    transform: translateY(20px);
+  }
+  @media (max-width: ${Variables.querySMSM}) {
+    transform: none;
   }
 `;
-const Brand3 = styled.object`
-  @media (max-width: ${Variables.queryXLG}) {
+
+const CeramicPro = styled.img`
+  transform: translateY(20px);
+  @media (max-width: ${Variables.queryXXXLG}) {
     max-width: 250px;
+  }
+  @media (max-width: ${Variables.queryMDSM}) {
+    transform: none;
   }
 `;
 

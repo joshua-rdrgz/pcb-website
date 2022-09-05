@@ -1,7 +1,7 @@
-import { styled, css } from 'frontity';
+import { styled, css } from "frontity";
 import Link from "@frontity/components/link";
-import * as Variables from '../Variables';
-import * as Mixins from '../Mixins';
+import * as Variables from "../Variables";
+import * as Mixins from "../Mixins";
 
 export const footerSection = (width) => css`
   display: flex;
@@ -19,9 +19,7 @@ export const Title = styled.span`
   border-bottom: ${Variables.footerBorder};
 `;
 
-export const NavList = styled.ul`
-
-`;
+export const NavList = styled.ul``;
 
 export const NavItem = styled.li`
   ${Mixins.liCleanUp()};
@@ -32,7 +30,7 @@ export const NavItem = styled.li`
 `;
 
 export const StyledLink = styled(Link)`
-  ${Mixins.aCleanUp(Variables.colorWhite)};
+  ${(props) => Mixins.aCleanUp(Variables.colorWhite, props.state.isActive)};
   &:hover {
     color: ${Variables.colorGold};
   }

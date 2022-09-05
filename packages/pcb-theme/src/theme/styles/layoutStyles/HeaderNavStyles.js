@@ -1,8 +1,7 @@
-import { styled, css } from 'frontity';
+import { styled, css } from "frontity";
 import Link from "@frontity/components/link";
-import * as Variables from '../Variables';
-import * as Mixins from '../Mixins';
-
+import * as Variables from "../Variables";
+import * as Mixins from "../Mixins";
 
 export const Nav = styled.nav`
   color: ${Variables.colorWhite};
@@ -127,14 +126,20 @@ export const ParentLink = styled.li`
       display: none;
     }
   }
+  ${(props) =>
+    props.isActive &&
+    css`
+      color: ${Variables.colorGoldDeep1};
+    `}
 `;
 
 export const ParentIcon = styled.span`
   position: absolute;
   width: 4rem;
   height: 4rem;
-  &::before, &::after {
-    content: '';
+  &::before,
+  &::after {
+    content: "";
     width: 1.5rem;
     height: 1.5px;
     background: white;
@@ -142,7 +147,7 @@ export const ParentIcon = styled.span`
     position: absolute;
     border-radius: 15px;
     top: 2.5rem;
-    transition: all .2s;
+    transition: all 0.2s;
   }
   &::before {
     transform: rotate(45deg);
@@ -199,7 +204,7 @@ export const ChildList = styled.ul`
 `;
 
 export const ChildLink = styled.li`
-@media (min-width: ${Variables.queryMD}) {
+  @media (min-width: ${Variables.queryMD}) {
     ${Mixins.liCleanUp};
     ${Mixins.addHeadingFont(700, 2.5)};
     text-align: center;
@@ -220,18 +225,18 @@ export const CTA = styled.li`
 
 // Mixin to make links responsive, keeping it here to not pollute the global Mixin file.
 export const linkResponsive = () => css`
-@media (max-width: ${Variables.queryMD}) {
-  opacity: 0;
-  transition: opacity 150ms ease-in-out;
-  ${MobileToggle}:checked ~ ${Nav} & {
-    opacity: 1;
-    transition: opacity 250ms ease-in-out 250ms;
+  @media (max-width: ${Variables.queryMD}) {
+    opacity: 0;
+    transition: opacity 150ms ease-in-out;
+    ${MobileToggle}:checked ~ ${Nav} & {
+      opacity: 1;
+      transition: opacity 250ms ease-in-out 250ms;
+    }
   }
-}
 `;
 
 export const StyledLink = styled(Link)`
-  ${Mixins.aCleanUp(Variables.colorWhite)};
+  ${(props) => Mixins.aCleanUp(Variables.colorWhite, props.state.isActive)};
   &:hover {
     color: ${Variables.colorGold};
   }
