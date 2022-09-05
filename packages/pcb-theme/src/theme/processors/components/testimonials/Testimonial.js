@@ -34,7 +34,7 @@ const Testimonial = ({ state, actions, testimonial, index }) => {
           <Star />
           <Verified />
         </div>
-        {state.theme.testimonials[index] ? (
+        {state.theme.testimonials.isExcerpt[index] ? (
           <>
             <Review>{testimonialExcerpt}</Review>
             <ShowMore onClick={() => openTestimonial(index)}>Show More</ShowMore>

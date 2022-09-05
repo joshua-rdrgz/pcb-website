@@ -31,7 +31,10 @@ export default {
         headerHeight: 0,
         menuActiveTabs: [],
       },
-      testimonials: [],
+      testimonials: {
+        isExcerpt: [],
+        viewportWidth: 0,
+      },
       faq: {
         FAQToggleData: [
           [],
@@ -111,13 +114,16 @@ export default {
         initTestimonials:
           ({ state }) =>
           (testimonial) => {
-            state.theme.testimonials.push(testimonial);
+            state.theme.testimonials.isExcerpt.push(testimonial);
           },
         openTestimonial:
           ({ state }) =>
           (index) => {
-            state.theme.testimonials[index] = false;
+            state.theme.testimonials.isExcerpt[index] = false;
           },
+        setViewportWidth: ({ state }) => outerWidth => {
+          state.theme.testimonials.viewportWidth = outerWidth;
+        }
       },
       faq: {
         addFAQToggleData:
