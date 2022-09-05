@@ -5,9 +5,7 @@ import * as Mixins from "../Mixins";
 
 export const Nav = styled.nav`
   color: ${Variables.colorWhite};
-  margin-left: auto;
-  margin-right: 3rem;
-  margin-top: 2rem;
+  margin: 2rem 3rem 2rem auto;
   @media (max-width: ${Variables.queryMD}) {
     height: 0;
     margin-top: 0;
@@ -93,9 +91,9 @@ export const MobileBurger = styled.label`
 export const NavList = styled.ul`
   display: flex;
   justify-content: space-between;
-  gap: 8rem;
+  gap: 5rem;
   @media (max-width: ${Variables.queryLG}) {
-    gap: 5rem;
+    gap: 2.5rem;
   }
   @media (max-width: ${Variables.queryMD}) {
     background-color: ${Variables.colorBlackPureRGBA};
@@ -107,7 +105,7 @@ export const NavList = styled.ul`
 
 export const NormalLink = styled.li`
   ${Mixins.liCleanUp};
-  ${Mixins.addHeadingFont(700, 3)};
+  ${Mixins.addHeadingFont(700, 2.75)};
   text-align: center;
 `;
 
