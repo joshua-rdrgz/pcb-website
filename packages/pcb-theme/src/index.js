@@ -31,6 +31,9 @@ export default {
         headerHeight: 0,
         menuActiveTabs: [],
       },
+      herobox: {
+        activeRepBrands: '',
+      },
       testimonials: {
         isExcerpt: [],
         viewportWidth: 0,
@@ -109,6 +112,11 @@ export default {
             };
             settingActiveTab(currentMenuIndex);
           },
+      },
+      herobox: {
+        setActiveRepBrands: ({ state }) => page => {
+          state.theme.herobox.activeRepBrands = page;
+        }
       },
       testimonials: {
         initTestimonials:
