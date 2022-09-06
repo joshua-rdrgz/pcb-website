@@ -7,9 +7,10 @@ import Testimonial from "./Testimonial";
 import LinkStyles from "../../../styles/componentStyles/LinkStyles";
 import * as Variables from "../../../styles/Variables";
 import * as Mixins from "../../../styles/Mixins";
-import { AiFillStar, AiOutlineFundProjectionScreen } from "react-icons/ai";
+import { AiFillStar } from "react-icons/ai";
 
 const TestimonialComponent = ({
+  state,
   actions,
   sectionHeader,
   testimonials,
@@ -19,8 +20,11 @@ const TestimonialComponent = ({
   buttonLink,
 }) => {
   useEffect(() => {
-    testimonials.forEach((testimonial, i) =>
-      actions.theme.testimonials.initTestimonials(testimonial.review.length > 200 ? true : false)
+    actions.theme.testimonials.setViewportWidth(window.outerWidth);
+    testimonials.forEach((testimonial) =>
+      actions.theme.testimonials.initTestimonials(
+        testimonial.review.length > 200 ? true : false
+      )
     );
   }, []);
   const testimonialOutput = (minIndex, maxIndex) =>
@@ -56,9 +60,18 @@ const TestimonialComponent = ({
         </GoogleFigure>
       </TestimonialsHeader>
       <Testimonials>
-        <TestimonialsCol>{testimonialOutput(0, 2)}</TestimonialsCol>
-        <TestimonialsCol>{testimonialOutput(3, 5)}</TestimonialsCol>
-        <TestimonialsCol>{testimonialOutput(6, 8)}</TestimonialsCol>
+        {state.theme.testimonials.viewportWidth >= 1000 ? (
+          <>
+            <TestimonialsCol>{testimonialOutput(0, 2)}</TestimonialsCol>
+            <TestimonialsCol>{testimonialOutput(3, 5)}</TestimonialsCol>
+            <TestimonialsCol>{testimonialOutput(6, 8)}</TestimonialsCol>
+          </>
+        ) : (
+          <>
+            <TestimonialsCol>{testimonialOutput(0, 4)}</TestimonialsCol>
+            <TestimonialsCol>{testimonialOutput(5, 8)}</TestimonialsCol>
+          </>
+        )}
       </Testimonials>
       <Button link={buttonLink} type="primary" fontSize={buttonFontSize}>
         {buttonContent}
@@ -118,7 +131,7 @@ const GoogleImg = styled.img`
 
 const Testimonials = styled.ul`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(27.5rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
   gap: 1rem;
   margin: 0 5%;
 `;

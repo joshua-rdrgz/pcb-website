@@ -61,7 +61,7 @@ const Heading = styled.h4`
 `;
 
 const ImgWrapper = styled.figure`
-  width: 65rem;
+  width: 60rem;
   margin: 0 auto;
   @media (max-width: ${Variables.queryXXXLG}) {
     width: 50rem;
@@ -71,7 +71,7 @@ const ImgWrapper = styled.figure`
   }
   @media (max-width: ${Variables.queryLGMD}) {
     width: 40rem;
-  }    
+  }
   @media (max-width: ${Variables.queryMDLG}) {
     width: 50rem;
   }
@@ -111,7 +111,7 @@ const addImgAndDescMediaQueries = css`
 `;
 
 const Img = styled.img`
-  width: 60rem;
+  width: 55rem;
   ${addImgAndDescMediaQueries};
 `;
 
@@ -126,6 +126,6 @@ const Description = styled.p`
 const Button = styled.div`
   ${(props) => LinkStyles(props.type)};
   ${CardLink}:hover & {
-    color: ${Variables.colorRed}
+    color: ${Variables.colorRed};
   }
 `;

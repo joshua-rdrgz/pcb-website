@@ -31,7 +31,13 @@ export default {
         headerHeight: 0,
         menuActiveTabs: [],
       },
-      testimonials: [],
+      herobox: {
+        activeRepBrands: '',
+      },
+      testimonials: {
+        isExcerpt: [],
+        viewportWidth: 0,
+      },
       faq: {
         FAQToggleData: [
           [],
@@ -107,17 +113,25 @@ export default {
             settingActiveTab(currentMenuIndex);
           },
       },
+      herobox: {
+        setActiveRepBrands: ({ state }) => page => {
+          state.theme.herobox.activeRepBrands = page;
+        }
+      },
       testimonials: {
         initTestimonials:
           ({ state }) =>
           (testimonial) => {
-            state.theme.testimonials.push(testimonial);
+            state.theme.testimonials.isExcerpt.push(testimonial);
           },
         openTestimonial:
           ({ state }) =>
           (index) => {
-            state.theme.testimonials[index] = false;
+            state.theme.testimonials.isExcerpt[index] = false;
           },
+        setViewportWidth: ({ state }) => outerWidth => {
+          state.theme.testimonials.viewportWidth = outerWidth;
+        }
       },
       faq: {
         addFAQToggleData:
