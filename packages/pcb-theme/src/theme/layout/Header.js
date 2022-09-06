@@ -3,7 +3,7 @@ import { connect, styled } from "frontity";
 import * as Mixins from "../styles/Mixins";
 import * as Variables from "../styles/Variables";
 
-import pcbLOGO from "../assets/pcb-logo-transparent.svg";
+// import pcbLOGO from "../assets/pcb-logo-transparent.svg";
 import Link from "@frontity/components/link";
 import Navigation from "./components/Navigation";
 
@@ -14,7 +14,8 @@ function Header({ state }) {
   // Fetch Assets
   const { data: assetData } = state.source.get("media");
   const assets = Object.values(assetData);
-  // const pcbLogo = assets.find((asset) => asset.id === ??); // for when logo comes from WP
+  const pcbLogo = assets.find((asset) => asset.slug === "pcb-logo");
+  console.log(pcbLogo);
   const facebookLogo = assets.find((asset) => asset.slug === "facebook-header");
   const yelpLogo = assets.find((asset) => asset.slug === "yelp-header");
   const youtubeLogo = assets.find((asset) => asset.slug === "youtube-header");
@@ -72,9 +73,8 @@ function Header({ state }) {
         scrollPos={state.theme.header.scrollPos}
         topBarHeight={state.theme.header.topBarHeight}
       >
-        {/* <PcbLogo data={pcbLogo.guid.rendered} type="image/svg+xml"></PcbLogo> */}
         <PcbLogoLink link="/">
-          <PcbLogo src={pcbLOGO}></PcbLogo>
+          <PcbLogo src={pcbLogo.guid.rendered}></PcbLogo>
         </PcbLogoLink>
         <Navigation type="header" menuNumber={state.theme.headerMenuID} />
       </MainBarContainer>
