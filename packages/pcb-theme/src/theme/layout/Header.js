@@ -3,7 +3,7 @@ import { connect, styled } from "frontity";
 import * as Mixins from "../styles/Mixins";
 import * as Variables from "../styles/Variables";
 
-// import pcbLOGO from "../assets/pcb-logo-transparent.svg";
+import pcbLOGO from "../assets/pcb-logo.svg";
 import Link from "@frontity/components/link";
 import Navigation from "./components/Navigation";
 
@@ -14,8 +14,7 @@ function Header({ state }) {
   // Fetch Assets
   const { data: assetData } = state.source.get("media");
   const assets = Object.values(assetData);
-  const pcbLogo = assets.find((asset) => asset.slug === "pcb-logo");
-  console.log(pcbLogo);
+  // const pcbLogo = assets.find((asset) => asset.slug === "pcb-logo");
   const facebookLogo = assets.find((asset) => asset.slug === "facebook-header");
   const yelpLogo = assets.find((asset) => asset.slug === "yelp-header");
   const youtubeLogo = assets.find((asset) => asset.slug === "youtube-header");
@@ -74,7 +73,7 @@ function Header({ state }) {
         topBarHeight={state.theme.header.topBarHeight}
       >
         <PcbLogoLink link="/">
-          <PcbLogo src={pcbLogo.guid.rendered}></PcbLogo>
+          <PcbLogo src={pcbLOGO}></PcbLogo>
         </PcbLogoLink>
         <Navigation type="header" menuNumber={state.theme.headerMenuID} />
       </MainBarContainer>

@@ -8,6 +8,8 @@ import * as Variables from "../styles/Variables";
 import * as Mixins from "../styles/Mixins";
 import { footerSection } from "../styles/layoutStyles/FooterNavStyles";
 
+import pcbLOGO from "../assets/pcb-logo.svg";
+
 function Footer({ state }) {
   const menus = state.source.get("menus");
   const [menuData] = menus.menuData.filter(
@@ -16,8 +18,7 @@ function Footer({ state }) {
 
   const { data: assets } = state.source.get("media");
   const media = Object.values(assets);
-  const pcbLogo = media.find((asset) => asset.slug === "pcb-logo");
-  console.log(pcbLogo);
+  // const pcbLogo = media.find((asset) => asset.slug === "pcb-logo");
   const facebookLogo = media.find((asset) => asset.slug === "facebook-footer");
   const yelpLogo = media.find((asset) => asset.slug === "yelp-footer");
   const youtubeLogo = media.find((asset) => asset.slug === "youtube-footer");
@@ -28,7 +29,7 @@ function Footer({ state }) {
   return (
     <StyledFooter>
       <Link link="/">
-        <PcbLogo src={pcbLogo.guid.rendered}></PcbLogo>
+        <PcbLogo src={pcbLOGO}></PcbLogo>
       </Link>
       <FancyLinesContainer>
         <FancyLines />
