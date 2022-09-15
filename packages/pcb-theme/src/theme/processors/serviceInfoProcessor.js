@@ -38,10 +38,9 @@ const tabbedServiceInfoProcessor = {
         });
 
     // types
-    const types = content[3]?.children[0]?.children[0].children[0].children
-      .slice(1)
+    const types = content[1]?.children
       .map((type) => {
-        return type.children[0].content;
+        return type.children[0].children[0].content;
       });
 
     // locations rows
