@@ -1,4 +1,3 @@
-import key from './packages/pcb-theme/src/important';
 const settings = {
   name: "pcb-website",
   state: {
@@ -18,7 +17,6 @@ const settings = {
         source: {
           url: "https://testingpcb.wpengine.com",
           homepage: "/home",
-          auth: key
         },
       },
     },
