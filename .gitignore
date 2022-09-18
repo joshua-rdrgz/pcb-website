@@ -59,6 +59,6 @@ build
 
 # Custom
 html/
-important.js
+.env
 package-lock.json
 .vercel

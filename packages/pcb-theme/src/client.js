@@ -1,4 +1,3 @@
-import { fetch } from 'frontity';
 import App from "./theme/App";
 import link from "@frontity/html2react/processors/link";
 import iframe from "@frontity/html2react/processors/iframe";
@@ -58,27 +57,6 @@ export default {
   },
   actions: {
     theme: {
-      fetchToken: ({ state }) => async () => {
-        const response = await fetch(`${state.source.url}/wp-json/jwt-auth/v1/token`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            username: 'testingpcb',
-            password: 'sFzCresc@75bpm',
-          })
-        })
-        const body = await response.json();
-        state.source.auth = `Bearer ${body.token}`;
-      },
-      beforeSSR:
-        ({ actions }) =>
-        async () => {
-          await actions.theme.fetchToken();
-          await actions.source.fetch("menus");
-          await actions.source.fetch("media");
-        },
       header: {
         initActiveTabs:
           ({ state }) =>
