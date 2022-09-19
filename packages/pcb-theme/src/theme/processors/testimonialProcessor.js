@@ -44,10 +44,6 @@ const testimonialProcessor = {
           testimonialContent[2]?.children[0]?.children[1]?.content.length,
       });
     });
-    // testimonials.sort((a, b) => {
-    //   if (a.reviewLength > b.reviewLength) return -1;
-    //   if (a.reviewLength < b.reviewLength) return 1;
-    // });
 
     // Button Content
     const buttonContent =
