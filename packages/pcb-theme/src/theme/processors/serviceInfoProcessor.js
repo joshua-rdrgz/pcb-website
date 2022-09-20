@@ -45,8 +45,6 @@ const tabbedServiceInfoProcessor = {
 
     // locations rows
     const rowsLocations = content[2]?.children[0]?.children[1]?.children;
-    // types rows
-    const rowsTypes = content[3]?.children[0]?.children[1]?.children;
 
     // prices
     const priceRows = rowsLocations.slice(0, types.length);
@@ -58,18 +56,10 @@ const tabbedServiceInfoProcessor = {
 
 
     // images
-    const imageRow = rowsLocations.slice(typeButtons.length, typeButtons.length * 2);
-    const images = imageRow.map((imageRowObj) => {
-      return imageRowObj.children.slice(1).map((image) => {
-        return image.children[0]?.props;
-      });
-    });
+    const images = content[3].children[0].props;
 
     // descriptions
-    const descriptionsRows =
-      rowsLocations.slice(typeButtons.length * 3).length > 0
-        ? rowsLocations.slice(typeButtons.length * 3)
-        : [rowsTypes[1]];
+    const descriptionsRows = rowsLocations.slice(-2);
     const descriptions = descriptionsRows.map((descriptionRow) => {
       const descriptionTitle = descriptionRow.children[0].children[0].content;
       const descriptionContent = descriptionRow.children
@@ -80,19 +70,25 @@ const tabbedServiceInfoProcessor = {
       return [descriptionTitle, descriptionContent];
     });
 
-    // values
-    const valuesRows = rowsLocations.slice(typeButtons.length * 2, typeButtons.length * 3);
-    const values = valuesRows.map((valueRow) => {
-      return valueRow.children.slice(1).map((value) => {
-        const valueDescriptor = value.children[0]?.children[0]?.content;
-        const valueSuffix = value.children[1]?.content;
-        return [valueDescriptor, valueSuffix];
-      })
-    });
+    // values - not supported on Window Tint page
+    const determineValues = (isWindowTint) => {
+      if (!isWindowTint) {
+        const valuesRows = rowsLocations.slice(typeButtons.length, typeButtons.length * 2);
+        const values = valuesRows.map((valueRow) => {
+          return valueRow.children.slice(1).map((value) => {
+            const valueDescriptor = value.children[0]?.children[0]?.content;
+            const valueSuffix = value.children[1]?.content;
+            return [valueDescriptor, valueSuffix];
+          })
+        });
+        return values;
+      }
+      return null;
+    }
 
     // benefits
     const benefits = [];
-    rowsTypes[0].children.slice(1).map((benefitRow) => {
+    content[4]?.children[0]?.children[1]?.children[0].children.slice(1).map((benefitRow) => {
       benefits.push(benefitRow.children[0].content);
     });
 
@@ -114,7 +110,7 @@ const tabbedServiceInfoProcessor = {
       prices,
       images,
       descriptions,
-      values,
+      values: determineValues(isWindowTint),
       benefits,
       commonBenefits,
     };

@@ -78,7 +78,7 @@ const TabbedServiceContent = ({
         </ButtonList>
       </ButtonsContainer>
       <Content isWindowTint={isWindowTint}>
-        <TabbedServiceImage isWindowTint={isWindowTint} locations={data.locations} types={typeButtons} images={data.images} />
+        <TabbedServiceImage isWindowTint={isWindowTint} />
         <TabbedServiceValue isWindowTint={isWindowTint} values={data.values} />
         <TabbedServicePrice isWindowTint={isWindowTint} prices={data.prices} />
         <TabbedServiceDescription
