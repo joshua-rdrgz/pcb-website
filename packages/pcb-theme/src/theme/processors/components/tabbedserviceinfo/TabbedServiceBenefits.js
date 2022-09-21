@@ -35,7 +35,7 @@ const TabbedServiceBenefits = ({ state, benefits, types }) => {
                 <Benefits>
                   <Type addAnimation={false}>
                     <em>
-                      <strong>{types[0]}</strong>
+                      <strong>EVOLVE</strong>
                     </em>{"  "}
                     benefits include:
                   </Type>
@@ -46,7 +46,7 @@ const TabbedServiceBenefits = ({ state, benefits, types }) => {
                 <Benefits>
                   <Type addAnimation={false}>
                     <em>
-                      <strong>{types[1]}</strong>
+                      <strong>CERAMIC IR</strong>
                     </em>{"  "}
                     benefits include:
                   </Type>
