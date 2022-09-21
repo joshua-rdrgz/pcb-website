@@ -164,6 +164,7 @@ const AddressLink = styled(Link)`
 `;
 
 const SocialsBlock = styled.div`
+  height: 25px;
   display: flex;
   gap: 2rem;
   align-items: center;
