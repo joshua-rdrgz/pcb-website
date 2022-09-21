@@ -17,6 +17,7 @@ const settings = {
         source: {
           url: "https://testingpcb.wpengine.com",
           homepage: "/home",
+          redirections: "404",
         },
       },
     },
