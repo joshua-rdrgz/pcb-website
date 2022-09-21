@@ -1,5 +1,5 @@
 import React from "react";
-import { styled, connect } from "frontity";
+import { styled, connect, css } from "frontity";
 import Link from "@frontity/components/link";
 
 import bestOfFtWorth from "../../../assets/best-of-ft-worth.svg";
@@ -10,6 +10,21 @@ import evolve from "../../../assets/evolve-logo.png";
 
 import * as Variables from "../../../styles/Variables";
 import * as Mixins from "../../../styles/Mixins";
+
+const RepBrandsContainer = styled.ul`
+  ${(props) => css`
+    ${props.activeHeights};
+  `}
+  display: flex;
+  justify-content: space-around;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 2.5rem 2rem;
+  background-color: ${Variables.colorGray1RGBA};
+  @media (max-width: ${Variables.queryXLG}) {
+  }
+`;
 
 const Brand = styled.li`
   ${Mixins.liCleanUp};
@@ -47,6 +62,92 @@ const CeramicPro = styled.img`
     width: 25rem;
   }
 `;
+
+const getRepBrandsData = (link) => {
+  let page;
+  let heightOfRepBrands; // this variable defines the Rep Brand's container's height to minimize layout shift on load.
+  switch (link) {
+    case "/":
+      page = "home";
+      heightOfRepBrands = `
+        height: 155px;
+        @media (max-width: 1351px) {
+          height: 270px;
+        }
+        @media (max-width: 1000px) {
+          height: 250px;
+        }
+        @media (max-width: 549px) {
+          height: 312px;
+        }
+        @media (max-width: 489px) {
+          height: 325px;
+        }
+        @media (max-width: 449px) {
+          height: 390px;
+        }
+        @media (max-width: 329px) {
+          height: 440px;
+        }
+      `;
+      break;
+    case "/about/":
+      page = "about";
+      heightOfRepBrands = css`
+        height: 155px;
+        @media (max-width: 1351px) {
+          height: 270px;
+        }
+        @media (max-width: 1000px) {
+          height: 250px;
+        }
+        @media (max-width: 549px) {
+          height: 312px;
+        }
+        @media (max-width: 489px) {
+          height: 325px;
+        }
+        @media (max-width: 449px) {
+          height: 390px;
+        }
+        @media (max-width: 329px) {
+          height: 440px;
+        }
+      `;
+      break;
+    case "/paint-protection-film/":
+      page = "ppf";
+      heightOfRepBrands = css`
+        height: 157px;
+        @media (max-width: 1091px) {
+          height: 272px;
+        }
+        @media (max-width: 1000px) {
+          height: 155px;
+        }
+        @media (max-width: 849px) {
+          height: 250px;
+        }
+        @media (max-width: 549px) {
+          height: 312px;
+        }
+        @media (max-width: 329px) {
+          height: 365px;
+        }
+      `
+      break;
+    case "/window-tint/":
+      page = "wt";
+      heightOfRepBrands = css`
+        height: 155px;
+        @media (max-width: 539px) {
+          height: 250px;
+        }
+      `;
+      break;
+  }
+  return { page, heightOfRepBrands };
+};
 
 const repBrands = [
   {
@@ -101,19 +202,24 @@ const repBrands = [
   },
 ];
 
-const RepBrands = ({ page }) => {
+const RepBrands = ({ state }) => {
+  const repBrandsData = getRepBrandsData(state.router.link);
   const filteredBrands = repBrands.filter((logo) =>
-    logo.included.includes(page)
+    logo.included.includes(repBrandsData.page)
   );
-  return filteredBrands.map((brand) => {
-    return (
-      <Brand key={brand.name}>
-        <Link link={brand.link} target="_blank">
-          <brand.tag src={brand.img.src} alt={brand.img.alt} />
-        </Link>
-      </Brand>
-    );
-  });
+  return (
+    <RepBrandsContainer activeHeights={repBrandsData.heightOfRepBrands}>
+      {filteredBrands.map((brand) => {
+        return (
+          <Brand key={brand.name}>
+            <Link link={brand.link} target="_blank">
+              <brand.tag src={brand.img.src} alt={brand.img.alt} />
+            </Link>
+          </Brand>
+        );
+      })}
+    </RepBrandsContainer>
+  );
 };
 
 export default connect(RepBrands);

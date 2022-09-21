@@ -27,25 +27,6 @@ const Herobox = ({
     ? buttonLink
     : buttonLink.split("/").reverse()[1];
 
-  useEffect(() => {
-    let page;
-    switch (state.router.link) {
-      case "/":
-        page = "home";
-        break;
-      case "/about/":
-        page = "about";
-        break;
-      case "/paint-protection-film/":
-        page = "ppf";
-        break;
-      case "/window-tint/":
-        page = "wt";
-        break;
-    }
-    actions.theme.herobox.setActiveRepBrands(page);
-  }, [state.router.link]);
-
   return (
     <Section image={fImg}>
       <HeroboxContent>
@@ -87,9 +68,7 @@ const Herobox = ({
           </StyledButton>
         )}
       </HeroboxContent>
-      <RepBrandsContainer>
-        <RepBrands page={state.theme.herobox.activeRepBrands} />
-      </RepBrandsContainer>
+      <RepBrands />
     </Section>
   );
 };
@@ -184,21 +163,5 @@ const StyledButton = styled(Link)`
   }
   @media (max-width: ${Variables.querySMMD}) {
     font-size: ${(props) => props.fontSize - 2}rem;
-  }
-`;
-
-const RepBrandsContainer = styled.ul`
-  display: flex;
-  justify-content: space-around;
-  gap: 3rem;
-  align-items: center;
-  flex-wrap: wrap;
-  padding: 3rem 2rem;
-  background-color: ${Variables.colorGray1RGBA};
-  @media (max-width: ${Variables.queryXLG}) {
-    padding: 2.5rem 2rem;
-  }
-  @media (max-width: ${Variables.querySM}) {
-    gap: 1rem;
   }
 `;
