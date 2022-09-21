@@ -129,7 +129,7 @@ const produceWTMaterials = (activeImage) => {
   switch (activeImage) {
     case "0-0": // Tesla Main Windows
       imagePositionCSS = css`
-        background-position: 0 90.537472%;
+        background-position: 0 90.362375%;
         background-size: 284.444444%;
       `;
       imageAlt = "Main Windows package for Tesla vehicles.";
@@ -147,7 +147,7 @@ const produceWTMaterials = (activeImage) => {
       break;
     case "2-0": // Tesla Visor Strip
       imagePositionCSS = css`
-        background-position: 0 96.845824%;
+        background-position: 0 96.787458%;
         background-size: 284.444444%;
       `;
       imageAlt = "Visor Strip package for Tesla vehicles.";
@@ -156,7 +156,7 @@ const produceWTMaterials = (activeImage) => {
       break;
     case "3-0": // Tesla Sunroof
       imagePositionCSS = css`
-        background-position: 0 93.691648%;
+        background-position: 0 93.574916%;
         background-size: 284.444444%;
       `;
       imageAlt = "Sunroof package for Tesla vehicles.";
@@ -165,7 +165,7 @@ const produceWTMaterials = (activeImage) => {
       break;
     case "0-1": // Sedan Main Windows
       imagePositionCSS = css`
-        background-position: 0 42.93918%;
+        background-position: 0 35.009311%;
         background-size: 111.111111%;
       `;
       imageAlt = "Main Windows package for sedans.";
@@ -174,7 +174,7 @@ const produceWTMaterials = (activeImage) => {
       break;
     case "1-1": // Sedan Windshield
       imagePositionCSS = css`
-        background-position: 0 56.356043%;
+        background-position: 0 55.520085%;
         background-size: 111.111111%;
       `;
       imageAlt = "Main Windshield package for sedans.";
@@ -183,7 +183,7 @@ const produceWTMaterials = (activeImage) => {
       break;
     case "2-1": // Sedan Visor Strip
       imagePositionCSS = css`
-        background-position: 0 49.647612%;
+        background-position: 0 48.68316%;
         background-size: 111.111111%;
       `;
       imageAlt = "Visor Strip package for sedans.";
@@ -192,16 +192,16 @@ const produceWTMaterials = (activeImage) => {
       break;
     case "3-1": // Sedan Sunroof
       imagePositionCSS = css`
-        background-position: 0 0%;
-        background-size: 100%;
+        background-position: 0 41.846236%;
+        background-size: 111.111111%;
       `;
       imageAlt = "Sunroof package for sedans.";
       imageSrc =
-        "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAACgAAAAUQAQMAAACyBJvpAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAapJREFUeNrtwTEBAAAAwqD1T20MH6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPgZZagABuO7W+QAAAABJRU5ErkJggg==";
+        "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAACQAAAAPwAQMAAABectNQAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAATFJREFUeNrtwYEAAAAAw6D5U9/gBFUBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDHIsAAHd2DNiAAAAAElFTkSuQmCC";
       break;
     case "0-2": // SUV Main Windows
       imagePositionCSS = css`
-        background-position: 0 8.752328%;
+        background-position: 0 0%;
         background-size: 100%;
       `;
       imageAlt = "Main Windows package for SUVs.";
@@ -210,7 +210,7 @@ const produceWTMaterials = (activeImage) => {
       break;
     case "1-2": // SUV Windshield
       imagePositionCSS = css`
-        background-position: 0 35.009311%;
+        background-position: 0 26.769731%;
         background-size: 100%;
       `;
       imageAlt = "Main Windshield package for SUVs.";
@@ -219,7 +219,7 @@ const produceWTMaterials = (activeImage) => {
       break;
     case "2-2": // SUV Visor Strip
       imagePositionCSS = css`
-        background-position: 0 26.256983%;
+        background-position: 0 17.846488%;
         background-size: 100%;
       `;
       imageAlt = "Visor Strip package for SUVs.";
@@ -228,7 +228,7 @@ const produceWTMaterials = (activeImage) => {
       break;
     case "3-2": // SUV Sunroof
       imagePositionCSS = css`
-        background-position: 0 17.504655%;
+        background-position: 0 8.923244%;
         background-size: 100%;
       `;
       imageAlt = "Sunroof package for SUVs.";
@@ -237,7 +237,7 @@ const produceWTMaterials = (activeImage) => {
       break;
     case "0-3": // Truck Main Windows
       imagePositionCSS = css`
-        background-position: 0 63.662714%;
+        background-position: 0 62.959979%;
         background-size: 133.333333%;
       `;
       imageAlt = "Main Windows package for trucks.";
@@ -246,7 +246,7 @@ const produceWTMaterials = (activeImage) => {
       break;
     case "1-3": // Truck Windshield
       imagePositionCSS = css`
-        background-position: 0 86.824769%;
+        background-position: 0 86.56997%;
         background-size: 133.333333%;
       `;
       imageAlt = "Main Windshield package for trucks.";
@@ -255,7 +255,7 @@ const produceWTMaterials = (activeImage) => {
       break;
     case "2-3": // Truck Visor Strip
       imagePositionCSS = css`
-        background-position: 0 79.104084%;
+        background-position: 0 78.699973%;
         background-size: 133.333333%;
       `;
       imageAlt = "Visor Strip package for trucks.";
@@ -264,7 +264,7 @@ const produceWTMaterials = (activeImage) => {
       break;
     case "3-3": // Truck Sunroof
       imagePositionCSS = css`
-        background-position: 0 71.383399%;
+        background-position: 0 70.829976%;
         background-size: 133.333333%;
       `;
       imageAlt = "Sunroof package for trucks.";
@@ -275,10 +275,7 @@ const produceWTMaterials = (activeImage) => {
   return { css: imagePositionCSS, src: imageSrc, alt: imageAlt };
 };
 
-const TabbedServiceImage = ({
-  state,
-  isWindowTint,
-}) => {
+const TabbedServiceImage = ({ state, isWindowTint }) => {
   const { data: assetData } = state.source.get("media");
   const assets = Object.values(assetData);
   const ppfSprites = assets.find((asset) => asset.slug === "ppf-sprites");
@@ -291,7 +288,6 @@ const TabbedServiceImage = ({
           return state.theme.tabbedServiceInfo.locationButtons.map(
             (isActive, locationIndex) => {
               if (isActive) {
-                console.log(`${locationIndex}-${typeIndex}`);
                 return (
                   <Img
                     loading="lazy"
