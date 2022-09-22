@@ -119,6 +119,7 @@ const PcbLogo = styled.img`
 `;
 
 const TopBarContainer = styled.div`
+  height: 33px;
   display: flex;
   flex-wrap: wrap;
   border-bottom: ${Variables.headerBorder};
@@ -127,6 +128,15 @@ const TopBarContainer = styled.div`
   ${Mixins.addHeadingFont(400, 2)};
   @media (max-width: ${Variables.querySMMD}) {
     ${(props) => props.scrollPos > 50 && "transform: translateY(-100%)"}
+  }
+  @media (max-width: 566px) {
+    height: 45px;
+  }
+  @media (max-width: 415px) {
+    height: 73px;
+  }
+  @media (max-width: 286px) {
+    height: 96px;
   }
 `;
 
@@ -164,7 +174,6 @@ const AddressLink = styled(Link)`
 `;
 
 const SocialsBlock = styled.div`
-  height: 25px;
   display: flex;
   gap: 2rem;
   align-items: center;
@@ -180,6 +189,7 @@ const SocialsBlock = styled.div`
 `;
 
 const MainBarContainer = styled.div`
+  height: 93px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -190,6 +200,7 @@ const MainBarContainer = styled.div`
       : Variables.colorBlackPure};
   @media (max-width: ${Variables.queryMD}) {
     flex-direction: column;
+    height: 95px;
   }
   @media (max-width: ${Variables.querySMMD}) {
     ${(props) =>
