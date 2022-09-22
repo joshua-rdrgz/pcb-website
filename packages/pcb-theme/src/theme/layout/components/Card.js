@@ -13,7 +13,7 @@ function Card({ title, type, img, description, buttonContent, buttonLink }) {
         <Heading>{title}</Heading>
         <ImgWrapper>
           <Img
-            srcSet={img.srcSet}
+            src={img.src}
             alt={img.alt}
             loading={img.loading}
             sizes={img.sizes}
