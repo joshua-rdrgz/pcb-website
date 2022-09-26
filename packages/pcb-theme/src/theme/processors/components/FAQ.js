@@ -67,8 +67,8 @@ const Section = styled.section`
     135deg,
     ${Variables.colorBlackPure},
     ${Variables.colorBlackPure} 20px,
-    rgba(0, 0, 0, 0.99) 20px,
-    rgba(0, 0, 0, 0.99) 40px
+    rgba(0, 0, 0, 0.88) 20px,
+    rgba(0, 0, 0, 0.88) 40px
   );
 `;
 

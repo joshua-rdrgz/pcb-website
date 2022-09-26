@@ -92,8 +92,8 @@ const Section = styled.section`
       135deg,
       ${Variables.colorBlackPure},
       ${Variables.colorBlackPure} 10px,
-      rgba(0, 0, 0, 0.99) 10px,
-      rgba(0, 0, 0, 0.99) 20px
+      rgba(0, 0, 0, 0.9) 10px,
+      rgba(0, 0, 0, 0.9) 20px
     );
     height: auto;
   }
