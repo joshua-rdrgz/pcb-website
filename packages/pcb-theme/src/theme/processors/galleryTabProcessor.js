@@ -14,6 +14,8 @@ const galleryTabProcessor = {
   processor: ({ node, state }) => {
     const content = node?.children[0]?.children;
 
+    const isPPFGallery = node?.props?.id?.includes("ppf-gallery");
+
     // section header, always will be first
     const sectionHeader = content[0]?.children[0]?.content;
 
@@ -27,13 +29,22 @@ const galleryTabProcessor = {
     });
 
     // Button Content
-    const buttonContent =
+    const buttonOneContent =
       content?.at(-1)?.children[0]?.children[0]?.children[0].content;
-    const buttonFontSize = content?.at(-1)?.children[0]?.props?.css?.styles;
-    const buttonLink = content
+    const buttonOneFontSize = content?.at(-1)?.children[0]?.props?.css?.styles;
+    const buttonOneLink = content
       ?.at(-1)
       ?.children[0].children[0]?.props?.href.split("/")
       .reverse()[1];
+
+    const buttonTwoContent =
+      content?.at(-1)?.children[1]?.children[0]?.children[0].content;
+    const buttonTwoLink = content
+      ?.at(-1)
+      ?.children[1]?.children[0]?.props?.href?.split("/")
+      .slice(3)
+      .join("/");
+    console.log(buttonTwoLink);
 
     return {
       component: Gallery,
@@ -41,9 +52,12 @@ const galleryTabProcessor = {
         state,
         sectionHeader,
         galleryContent,
-        buttonContent,
-        buttonFontSize,
-        buttonLink,
+        buttonOneContent,
+        buttonOneFontSize,
+        buttonOneLink,
+        buttonTwoContent,
+        buttonTwoLink,
+        isPPFGallery,
       },
     };
   },

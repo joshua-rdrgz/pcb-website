@@ -11,9 +11,12 @@ const Gallery = ({
   state,
   sectionHeader,
   galleryContent,
-  buttonContent,
-  buttonFontSize,
-  buttonLink,
+  buttonOneContent,
+  buttonOneFontSize,
+  buttonOneLink,
+  buttonTwoContent,
+  buttonTwoLink,
+  isPPFGallery,
 }) => {
   if (!galleryContent || galleryContent.length <= 0) return;
 
@@ -128,19 +131,18 @@ const Gallery = ({
   ];
 
   return (
+    // <IKContext urlEndpoint={urlEndpoint}>
+    //   <IKImage
+    //     path="home/heroboxx.jpg"
+    //     transformation={[{height: 800, width: 800}]}
+    //     lqip={{ active: true, quality: 5 }}
+    //     loading="lazy"
+    //     width='800'
+    //     height='800'
+    //   />
+    // </IKContext>
 
-      // <IKContext urlEndpoint={urlEndpoint}>
-      //   <IKImage
-      //     path="home/heroboxx.jpg"
-      //     transformation={[{height: 800, width: 800}]}
-      //     lqip={{ active: true, quality: 5 }}
-      //     loading="lazy"
-      //     width='800'
-      //     height='800'
-      //   />
-      // </IKContext>
-
-    <Section>
+    <Section id={isPPFGallery && "ppf-gallery"}>
       <SectionHeader>{sectionHeader}</SectionHeader>
       <Carousel>
         <LeftArrow onClick={setGalleryPosDown} />
@@ -181,8 +183,13 @@ const Gallery = ({
           </Container>
         </CarouselWrapperSmall> */}
       </Carousel>
-      <Button type="primary" link={buttonLink} fontSize={buttonFontSize}>
-        {buttonContent}
+      {buttonTwoContent && buttonTwoLink && (
+        <Button type="secondary" link={buttonTwoLink} target="_blank">
+          {buttonTwoContent}
+        </Button>
+      )}
+      <Button type="primary" link={buttonOneLink} fontSize={buttonOneFontSize}>
+        {buttonOneContent}
       </Button>
     </Section>
   );
@@ -292,18 +299,19 @@ const CarouselWrapperBig = styled.div`
 `;
 
 const CarouselBig = styled.figure`
-  
   width: 100%;
   height: 100%;
-  ${props => props.hasCaption && css`
-    height: 85%;
-    @media (max-width: ${Variables.querySMSM}) {
-      height: 70%;
-    }
-    @media (max-width: ${Variables.queryXXSM}) {
-      height: 60%;
-    }
-  `}
+  ${(props) =>
+    props.hasCaption &&
+    css`
+      height: 85%;
+      @media (max-width: ${Variables.querySMSM}) {
+        height: 70%;
+      }
+      @media (max-width: ${Variables.queryXXSM}) {
+        height: 60%;
+      }
+    `}
 `;
 
 const fadeIn = keyframes`
