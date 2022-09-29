@@ -132,7 +132,7 @@ The [Benefits] component renders a list of benefits that come with what the user
 [Value]: /packages/pcb-theme/src/theme/processors/components/tabbedserviceinfo/TabbedServiceValue.js "Paint Protection Film only"
 [Price]: /packages/pcb-theme/src/theme/processors/components/tabbedserviceinfo/TabbedServicePrice.js
 [Description]: /packages/pcb-theme/src/theme/processors/components/tabbedserviceinfo/TabbedServiceDescription.js
-[Benefits]: /packages/pcb-theme/src/theme/processors/components/tabbedserviceinfo/TabbedServiceDescription.js
+[Benefits]: /packages/pcb-theme/src/theme/processors/components/tabbedserviceinfo/TabbedServiceBenefits.js
 
 ### FAQs
 
