@@ -12,7 +12,6 @@ import LandingFooter from "./layout/landing-page-main/LandingFooter";
 
 import Loading from "./layout/components/Loading";
 import Error from "./layout/components/Error";
-import { AiOutlineFundProjectionScreen } from "react-icons/ai";
 
 const App = ({ state, actions }) => {
   const data = state.source.get(state.router.link);
