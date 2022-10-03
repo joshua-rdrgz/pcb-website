@@ -60,7 +60,6 @@ const ContactTab = ({
 export default connect(ContactTab);
 
 const LandingPageSection = styled.section`
-  background-color: ${Variables.colorGray1};
   padding: 3rem 0;
 `;
 
