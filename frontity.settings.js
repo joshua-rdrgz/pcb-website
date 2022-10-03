@@ -18,6 +18,12 @@ const settings = {
           url: "https://testingpcb.wpengine.com",
           homepage: "/home",
           redirections: "404",
+          postTypes: [
+            {
+              type: "landing_page",
+              endpoint: "landing_page"
+            }
+          ]
         },
       },
     },
