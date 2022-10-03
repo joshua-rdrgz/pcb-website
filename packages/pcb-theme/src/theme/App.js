@@ -1,17 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Head, Global, connect } from "frontity";
-import Switch from '@frontity/components/switch';
+import Switch from "@frontity/components/switch";
 import Reset from "./styles/Reset";
 
-import Header from "./layout/Header";
-import PageContent from "./layout/PageContent";
-import Footer from "./layout/Footer";
+import Header from "./layout/main/Header";
+import PageContent from "./layout/main/PageContent";
+import Footer from "./layout/main/Footer";
+
+import LandingHeader from "./layout/landing-page-main/LandingHeader";
+import LandingFooter from "./layout/landing-page-main/LandingFooter";
 
 import Loading from "./layout/components/Loading";
-import Error from './layout/components/Error';
+import Error from "./layout/components/Error";
+import { AiOutlineFundProjectionScreen } from "react-icons/ai";
 
-const App = ({ state }) => {
+const App = ({ state, actions }) => {
   const data = state.source.get(state.router.link);
+  actions.theme.setIsLandingPage(
+    data.isLandingPage ? data.isLandingPage : false
+  );
+  actions.theme.setPage(state.router.link);
+
   return (
     <>
       <Head>
@@ -27,13 +36,13 @@ const App = ({ state }) => {
         <link rel="stylesheet" href="https://use.typekit.net/pjj0xta.css" />
       </Head>
       <Global styles={Reset} />
-      <Header />
+      {state.theme.isLandingPage ? <LandingHeader /> : <Header />}
       <Switch>
-        <PageContent when={data.isPage}/>
-        <Loading when={data.isFetching}/>
-        <Error when={data.isError}/>
+        <PageContent when={data.isPage || data.isLandingPage} />
+        <Loading when={data.isFetching} />
+        <Error when={data.isError} />
       </Switch>
-      <Footer />
+      {state.theme.isLandingPage ? <LandingFooter /> : <Footer />}
     </>
   );
 };

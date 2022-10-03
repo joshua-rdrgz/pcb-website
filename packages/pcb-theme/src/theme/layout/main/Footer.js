@@ -2,13 +2,13 @@ import React from "react";
 import { connect, styled, css } from "frontity";
 
 import Link from "@frontity/components/link";
-import Navigation from "./components/Navigation";
+import Navigation from "../components/Navigation";
 
-import * as Variables from "../styles/Variables";
-import * as Mixins from "../styles/Mixins";
-import { footerSection } from "../styles/layoutStyles/FooterNavStyles";
+import * as Variables from "../../styles/Variables";
+import * as Mixins from "../../styles/Mixins";
+import { footerSection } from "../../styles/layoutStyles/FooterNavStyles";
 
-import pcbLOGO from "../assets/pcb-logo.svg";
+import pcbLOGO from "../../assets/pcb-logo.svg";
 
 function Footer({ state }) {
   const menus = state.source.get("menus");

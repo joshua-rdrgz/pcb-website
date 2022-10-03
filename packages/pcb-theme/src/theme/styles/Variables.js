@@ -62,6 +62,7 @@ export const queryMDSMSM = "37.5em"; // 600px
 export const querySMMD = "35.125em"; // 550px
 export const querySM = "30.625em"; // 490px
 export const querySMSM = "28.125em"; // 450px
+export const querySMSMSM = "26.25em"; // 420px;
 export const queryXSMLG = "25em"; // 400px
 export const queryXSM = "24.5em"; // 392px
 export const queryXXSM = "18.75em"; // 300px
