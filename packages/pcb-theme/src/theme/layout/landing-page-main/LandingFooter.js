@@ -101,7 +101,6 @@ const MapContainer = styled.div`
   position: relative;
   height: 0;
   width: 100%;
-  background-color: blue;
   @media (max-width: ${Variables.queryLG}) {
     padding-bottom: 40%;
   }
