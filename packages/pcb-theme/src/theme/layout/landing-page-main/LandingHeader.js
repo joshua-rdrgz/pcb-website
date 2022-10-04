@@ -11,9 +11,7 @@ import LinkStyles from "../../styles/componentStyles/LinkStyles";
 const LandingHeader = () => {
   return (
     <Header>
-      <Link link="/">
-        <PcbLogo src={pcbLOGO}></PcbLogo>
-      </Link>
+      <PcbLogo src={pcbLOGO}></PcbLogo>
       <CTA>(972) 295 - 7068</CTA>
     </Header>
   );

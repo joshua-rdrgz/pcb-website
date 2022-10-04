@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Head, Global, connect } from "frontity";
 import Switch from "@frontity/components/switch";
 import Reset from "./styles/Reset";
@@ -15,10 +15,12 @@ import Error from "./layout/components/Error";
 
 const App = ({ state, actions }) => {
   const data = state.source.get(state.router.link);
+
   actions.theme.setIsLandingPage(
     data.isLandingPage ? data.isLandingPage : false
   );
   actions.theme.setPage(state.router.link);
+  const isLandingPage = data.isLandingPage ? data.isLandingPage : false;
 
   return (
     <>
@@ -35,13 +37,13 @@ const App = ({ state, actions }) => {
         <link rel="stylesheet" href="https://use.typekit.net/pjj0xta.css" />
       </Head>
       <Global styles={Reset} />
-      {state.theme.isLandingPage ? <LandingHeader /> : <Header />}
+      {isLandingPage ? <LandingHeader /> : <Header />}
       <Switch>
         <PageContent when={data.isPage || data.isLandingPage} />
         <Loading when={data.isFetching} />
         <Error when={data.isError} />
       </Switch>
-      {state.theme.isLandingPage ? <LandingFooter /> : <Footer />}
+      {isLandingPage ? <LandingFooter /> : <Footer />}
     </>
   );
 };

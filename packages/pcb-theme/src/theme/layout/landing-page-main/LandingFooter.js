@@ -17,9 +17,7 @@ const LandingFooter = ({ state }) => {
         Discover the highest level of
         {isPPF ? " paint protection" : " window tinting"} in Texas
       </Heading>
-      <Link link="/">
-        <PCBLogo src={pcbLOGO} alt="Performance Clear Bra Logo" />
-      </Link>
+      <PCBLogo src={pcbLOGO} alt="Performance Clear Bra Logo" />
       <ButtonContainer>
         <Button>(972) 295 - 7068</Button>
         <Button>Get My Quote</Button>
