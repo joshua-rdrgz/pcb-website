@@ -1,6 +1,7 @@
 import React from 'react';
 
-import ContactTab from './components/Contact';
+import ContactTab from './components/contact/Contact';
+import LandingContactTab from './components/contact/LandingContact';
 
 const contactProcessor = {
   name: "Contact",
@@ -11,6 +12,8 @@ const contactProcessor = {
     );
   },
   processor: ({ state, node }) => {
+    const isLandingPage = node?.props?.className?.includes("isLandingPage");
+    console.log(node.props.className);
     const shortHand = node?.children[0]?.children;
     
     const sectionHeader = shortHand[0]?.children[0]?.content;
@@ -21,13 +24,22 @@ const contactProcessor = {
       shortHand[2]?.children[0]?.props;
     const contact = shortHand[3]?.props;
 
-    return {
-      component: ContactTab,
-      props: {
-        sectionHeader,
-        secondItem,
-        thirdItem,
-        contact
+    const props = {
+      sectionHeader,
+      secondItem,
+      thirdItem,
+      contact,
+    };
+
+    if (isLandingPage) {
+      return {
+        component: LandingContactTab,
+        props,
+      }
+    } else {
+      return {
+        component: ContactTab,
+        props,
       }
     }
   }
