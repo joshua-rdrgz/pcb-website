@@ -5,7 +5,7 @@ import menuHandler from "./theme/handlers/menu-handler";
 import mediaHandler from "./theme/handlers/media-handler";
 
 import heroboxProcessor from "./theme/processors/heroboxProcessor";
-import homeServicesProcessor from "./theme/processors/homeServicesProcessor";
+import cardsProcessor from "./theme/processors/cardsProcessor";
 import galleryTabProcessor from "./theme/processors/galleryTabProcessor";
 import testimonialProcessor from "./theme/processors/testimonialProcessor";
 import pageBreakProcessor from "./theme/processors/pageBreakProcessor";
@@ -186,7 +186,7 @@ export default {
         iframe,
         pageBreakProcessor,
         heroboxProcessor,
-        homeServicesProcessor,
+        cardsProcessor,
         galleryTabProcessor,
         testimonialProcessor,
         aboutUsTabProcessor,
