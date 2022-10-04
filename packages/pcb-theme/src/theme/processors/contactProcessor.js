@@ -13,7 +13,6 @@ const contactProcessor = {
   },
   processor: ({ state, node }) => {
     const isLandingPage = node?.props?.className?.includes("isLandingPage");
-    console.log(node.props.className);
     const shortHand = node?.children[0]?.children;
     
     const sectionHeader = shortHand[0]?.children[0]?.content;
