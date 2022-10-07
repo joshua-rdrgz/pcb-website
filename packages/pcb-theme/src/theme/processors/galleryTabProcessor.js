@@ -1,27 +1,30 @@
-import Gallery from "./components/Gallery";
+import GalleryTab from "./components/gallery/GalleryTab";
 
 const galleryTabProcessor = {
   name: "Gallery Tab",
   priority: 5,
   test: ({ node }) => {
-    return (
-      node?.props?.className?.includes("wp-block-group") &&
-      node?.children[0]?.children[1]?.props?.className?.includes(
-        "wp-block-gallery"
-      )
-    );
+    return node?.props?.className?.includes("reactGallery");
   },
-  processor: ({ node, state }) => {
+  processor: ({ node }) => {
     const content = node?.children[0]?.children;
+    const hasAside = node?.props?.className?.includes("hasAside");
+    const hasPPFID = node?.props?.id;
 
-    const isPPFGallery = node?.props?.id?.includes("ppf-gallery");
-
-    // section header, always will be first
-    const sectionHeader = content[0]?.children[0]?.content;
+    // header material OR aside content
+    let sectionHeader;
+    let asideContent;
+    if (hasAside) {
+      asideContent = {
+        heading: content[0]?.children[0]?.content,
+        description: content[1]?.children[0]?.content,
+      };
+    } else {
+      sectionHeader = content[0]?.children[0]?.content;
+    }
 
     // Gallery Content
-    const galleryWrapper = content[1].children;
-    const galleryContent = Object.values(galleryWrapper).map((img) => {
+    const galleryContent = content[hasAside ? 2 : 1].children.map((img) => {
       return {
         img: img.children[0].props,
         caption: img.children[1]?.children[0].content,
@@ -29,36 +32,36 @@ const galleryTabProcessor = {
     });
 
     // Button Content
-    const buttonOneContent =
-      content?.at(-1)?.children[0]?.children[0]?.children[0].content;
-    const buttonOneFontSize = content?.at(-1)?.children[0]?.props?.css?.styles;
-    const buttonOneLink = content
+    const hasButtons = content
       ?.at(-1)
-      ?.children[0].children[0]?.props?.href.split("/")
-      .reverse()[1];
+      ?.props?.className?.includes("wp-block-buttons");
+    const buttons =
+      hasButtons &&
+      content?.at(-1)?.children.map((button) => {
+        return {
+          content: button?.children[0]?.children[0]?.content,
+          link: button?.children[0]?.props?.href?.split("/").slice(3).join("/"),
+        };
+      });
 
-    const buttonTwoContent =
-      content?.at(-1)?.children[1]?.children[0]?.children[0].content;
-    const buttonTwoLink = content
-      ?.at(-1)
-      ?.children[1]?.children[0]?.props?.href?.split("/")
-      .slice(3)
-      .join("/");
-    console.log(buttonTwoLink);
+    const props = hasAside
+      ? {
+          asideContent,
+          galleryContent,
+          buttons,
+          hasAside,
+        }
+      : {
+          sectionHeader,
+          galleryContent,
+          buttons,
+          hasAside,
+          hasPPFID,
+        };
 
     return {
-      component: Gallery,
-      props: {
-        state,
-        sectionHeader,
-        galleryContent,
-        buttonOneContent,
-        buttonOneFontSize,
-        buttonOneLink,
-        buttonTwoContent,
-        buttonTwoLink,
-        isPPFGallery,
-      },
+      component: GalleryTab,
+      props,
     };
   },
 };
