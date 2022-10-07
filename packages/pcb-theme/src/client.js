@@ -14,6 +14,7 @@ import faqProcessor from "./theme/processors/faqProcessor";
 import videoProcessor from "./theme/processors/videoProcessor";
 import tabbedServiceInfoProcessor from "./theme/processors/serviceInfoProcessor";
 import contactProcessor from "./theme/processors/contactProcessor";
+import thankYouProcessor from "./theme/processors/thankYouProcessor";
 
 export default {
   name: "pcb-theme",
@@ -186,6 +187,7 @@ export default {
         videoProcessor,
         tabbedServiceInfoProcessor,
         contactProcessor,
+        thankYouProcessor,
       ],
     },
     source: {
