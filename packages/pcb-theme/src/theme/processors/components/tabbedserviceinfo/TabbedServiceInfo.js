@@ -16,7 +16,6 @@ const TabbedServiceInfo = ({
   typeButtons,
   data,
   buttonContent,
-  buttonFontSize,
   buttonLink,
 }) => {
   actions.theme.tabbedServiceInfo.setCurrentPageData(data);
@@ -28,12 +27,22 @@ const TabbedServiceInfo = ({
         typeButtons={typeButtons}
         isWindowTint={isWindowTint}
       />
-      <Button
-        type="primary"
-        link={buttonLink ? buttonLink : "/contact"}
-      >
-        {buttonContent}
-      </Button>
+      {buttonLink.includes("#") && (
+        <HashButton
+          type="primary"
+          onClick={() => {
+            let contact = document.getElementById("landingContact");
+            contact && window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
+        >
+          {buttonContent}
+        </HashButton>
+      )}
+      {!buttonLink.includes("#") && (
+        <Button type="primary" link={buttonLink ? buttonLink : "/contact"}>
+          {buttonContent}
+        </Button>
+      )}
     </Section>
   );
 };
@@ -58,4 +67,10 @@ const SectionHeader = styled.h3`
 const Button = styled(Link)`
   ${(props) => LinkStyles(props.type, props.fontSize)};
   margin: 1.5rem auto;
+`;
+
+const HashButton = styled.button`
+  ${props => LinkStyles(props.type, props.fontSize)};
+  margin: 1.5rem auto;
+  border: none;
 `;

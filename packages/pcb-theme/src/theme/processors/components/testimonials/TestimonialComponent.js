@@ -72,9 +72,22 @@ const TestimonialComponent = ({
           </>
         )}
       </Testimonials>
-      <Button link={buttonLink} type="primary">
-        {buttonContent}
-      </Button>
+      {buttonLink.includes("#") && (
+        <HashButton
+          type="primary"
+          onClick={() => {
+            let contact = document.getElementById("landingContact");
+            contact && window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
+        >
+          {buttonContent}
+        </HashButton>
+      )}
+      {!buttonLink.includes("#") && (
+        <Button link={buttonLink} type="primary">
+          {buttonContent}
+        </Button>
+      )}
     </Section>
   );
 };
@@ -146,4 +159,12 @@ const Button = styled(Link)`
   margin: 0 auto;
   margin-top: 2rem;
   margin-bottom: 3rem;
+`;
+
+const HashButton = styled.button`
+  ${(props) => LinkStyles(props.type, props.fontSize)};
+  margin: 0 auto;
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+  border: none;
 `;

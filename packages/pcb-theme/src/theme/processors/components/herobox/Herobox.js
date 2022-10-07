@@ -9,7 +9,6 @@ import * as Mixins from "../../../styles/Mixins";
 
 const Herobox = ({
   state,
-  actions,
   primaryHeadingContent,
   slot2Tag,
   slot2Content,
@@ -51,21 +50,25 @@ const Herobox = ({
           </StyledButton>
         )}
         {slot3Tag && frontityButtonLink.includes("#") ? (
-          <StyledA
-            href={frontityButtonLink}
+          <StyledButton
             type="primary"
             fontSize={buttonFontSize}
+            onClick={(e) => {
+              e.preventDefault();
+              const customizer = document.getElementById("customizer-anchor");
+              customizer && customizer.scrollIntoView({ behavior: "smooth", block: "start" });
+            }}
           >
             {slot3Content}
-          </StyledA>
+          </StyledButton>
         ) : (
-          <StyledButton
+          <StyledLink
             link={`/${frontityButtonLink}`}
             type="primary"
             fontSize={buttonFontSize}
           >
             {slot3Content}
-          </StyledButton>
+          </StyledLink>
         )}
       </HeroboxContent>
       <RepBrands />
@@ -146,8 +149,9 @@ const SecondaryHeading = styled.h2`
   }
 `;
 
-const StyledA = styled.a`
+const StyledButton = styled.button`
   ${(props) => LinkStyles(props.type, props.fontSize)};
+  border: none;
   @media (max-width: ${Variables.queryMDMD}) {
     font-size: ${(props) => props.fontSize - 1.5}rem;
   }
@@ -156,7 +160,7 @@ const StyledA = styled.a`
   }
 `;
 
-const StyledButton = styled(Link)`
+const StyledLink = styled(Link)`
   ${(props) => LinkStyles(props.type, props.fontSize)};
   @media (max-width: ${Variables.queryMDMD}) {
     font-size: ${(props) => props.fontSize - 1.5}rem;

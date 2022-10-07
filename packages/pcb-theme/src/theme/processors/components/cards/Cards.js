@@ -45,11 +45,30 @@ const ServiceCards = ({
         {buttons.length > 0 &&
           buttons.map((button, buttonIndex) => {
             const { buttonLink, buttonContent } = button;
-            return (
-              <Button type="primary" link={buttonLink} key={buttonIndex}>
-                {buttonContent}
-              </Button>
-            );
+            if (buttonLink.includes("#")) {
+              return (
+                <HashButton
+                  type="primary"
+                  key={buttonIndex}
+                  onClick={() => {
+                    let contact = document.getElementById("landingContact");
+                    contact &&
+                      window.scrollTo({
+                        top: 0,
+                        behavior: "smooth",
+                      });
+                  }}
+                >
+                  {buttonContent}
+                </HashButton>
+              );
+            } else {
+              return (
+                <Button type="primary" link={buttonLink} key={buttonIndex}>
+                  {buttonContent}
+                </Button>
+              );
+            }
           })}
       </Buttons>
     </Section>
@@ -138,5 +157,9 @@ const Buttons = styled.div`
 
 const Button = styled(Link)`
   ${(props) => LinkStyles(props.type, props.fontSize)};
-  margin: 0;
+`;
+
+const HashButton = styled.button`
+  ${(props) => LinkStyles(props.type, props.fontSize)};
+  border: none;
 `;

@@ -19,14 +19,16 @@ const LandingFooter = ({ state }) => {
       </Heading>
       <PCBLogo src={pcbLOGO} alt="Performance Clear Bra Logo" />
       <ButtonContainer>
-        <CTALink link="tel:(972)%20295-7068">(972) 295 - 7068</CTALink>
-        <CTALink
-          link={`/landing_page/${
-            isPPF ? "clear-bra" : "window-tint"
-          }-free-quote#landingContact`}
+        <CTALink type="primary" link="tel:(972)%20295-7068">(972) 295 - 7068</CTALink>
+        <CTAButton
+          type="primary"
+          onClick={() => {
+            let contact = document.getElementById("landingContact");
+            contact && window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
         >
           Get My Quote
-        </CTALink>
+        </CTAButton>
       </ButtonContainer>
       <MapContainer>
         <Map
@@ -90,7 +92,18 @@ const ButtonContainer = styled.div`
 
 const CTALink = styled(Link)`
   border: none;
-  ${LinkStyles("primary")};
+  ${props => LinkStyles(props.type)};
+  padding: 0.5rem 1.5rem;
+  font-size: 3rem;
+  @media (max-width: ${Variables.querySMSMSM}) {
+    margin: 0;
+    margin-bottom: 1.5rem;
+  }
+`;
+
+const CTAButton = styled.button`
+  border: none;
+  ${props => LinkStyles(props.type)};
   padding: 0.5rem 1.5rem;
   font-size: 3rem;
   @media (max-width: ${Variables.querySMSMSM}) {
