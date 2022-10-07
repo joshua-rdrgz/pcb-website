@@ -45,7 +45,7 @@ const cardsProcessor = {
       const buttonContent = button.children[0].children[0].content;
       const buttonLink = buttonContent.includes("972")
         ? "tel:(972)%20295-7068"
-        : button.children[0].props.href.split("/").reverse()[1];
+        : button.children[0].props.href.split("/").slice(3).join("/");
       buttons.push({ buttonContent, buttonLink });
     });
 

@@ -14,7 +14,7 @@ const tabbedServiceInfoProcessor = {
     const content = node?.children[0]?.children;
 
     // defines the instance as 'window-tint' or not
-    const isWindowTint = node?.props?.className?.includes('wt');
+    const isWindowTint = node?.props?.className?.includes("wt");
 
     // HTML anchor for Herobox to target
     const anchorHTML = node.props.id;
@@ -38,10 +38,9 @@ const tabbedServiceInfoProcessor = {
         });
 
     // types
-    const types = content[1]?.children
-      .map((type) => {
-        return type.children[0].children[0].content;
-      });
+    const types = content[1]?.children.map((type) => {
+      return type.children[0].children[0].content;
+    });
 
     // locations rows
     const rowsLocations = content[2]?.children[0]?.children[1]?.children;
@@ -53,7 +52,6 @@ const tabbedServiceInfoProcessor = {
         return price.children[0]?.content;
       });
     });
-
 
     // images
     const images = content[3].children[0].props;
@@ -73,24 +71,29 @@ const tabbedServiceInfoProcessor = {
     // values - not supported on Window Tint page
     const determineValues = (isWindowTint) => {
       if (!isWindowTint) {
-        const valuesRows = rowsLocations.slice(typeButtons.length, typeButtons.length * 2);
+        const valuesRows = rowsLocations.slice(
+          typeButtons.length,
+          typeButtons.length * 2
+        );
         const values = valuesRows.map((valueRow) => {
           return valueRow.children.slice(1).map((value) => {
             const valueDescriptor = value.children[0]?.children[0]?.content;
             const valueSuffix = value.children[1]?.content;
             return [valueDescriptor, valueSuffix];
-          })
+          });
         });
         return values;
       }
       return null;
-    }
+    };
 
     // benefits
     const benefits = [];
-    content[4]?.children[0]?.children[1]?.children[0].children.slice(1).map((benefitRow) => {
-      benefits.push(benefitRow.children[0].content);
-    });
+    content[4]?.children[0]?.children[1]?.children[0].children
+      .slice(1)
+      .map((benefitRow) => {
+        benefits.push(benefitRow.children[0].content);
+      });
 
     // common benefits
     const commonBenefits = [];
@@ -118,11 +121,11 @@ const tabbedServiceInfoProcessor = {
     // Button Content
     const buttonContent =
       content?.at(-1)?.children[0]?.children[0]?.children[0].content;
-    const buttonFontSize = content?.at(-1)?.children[0]?.props?.css?.styles;
     const buttonLink = content
       ?.at(-1)
       ?.children[0].children[0]?.props?.href?.split("/")
-      .reverse()[1];
+      .slice(3)
+      .join("/");
 
     return {
       component: TabbedServiceInfo,
@@ -133,8 +136,7 @@ const tabbedServiceInfoProcessor = {
         typeButtons,
         data,
         buttonContent,
-        buttonFontSize,
-        buttonLink
+        buttonLink,
       },
     };
   },

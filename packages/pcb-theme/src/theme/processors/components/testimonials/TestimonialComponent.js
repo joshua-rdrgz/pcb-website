@@ -16,7 +16,6 @@ const TestimonialComponent = ({
   testimonials,
   testimonialsHeader,
   buttonContent,
-  buttonFontSize,
   buttonLink,
 }) => {
   useEffect(() => {
@@ -73,7 +72,7 @@ const TestimonialComponent = ({
           </>
         )}
       </Testimonials>
-      <Button link={buttonLink} type="primary" fontSize={buttonFontSize}>
+      <Button link={buttonLink} type="primary">
         {buttonContent}
       </Button>
     </Section>

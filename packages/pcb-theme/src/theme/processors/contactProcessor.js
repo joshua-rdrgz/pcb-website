@@ -11,14 +11,15 @@ const contactProcessor = {
       node?.props?.className?.includes("wp-block-group" && "contact")
     );
   },
-  processor: ({ state, node }) => {
+  processor: ({ node }) => {
     const isLandingPage = node?.props?.className?.includes("isLandingPage");
+    const contactID = node?.props?.id;
     const shortHand = node?.children[0]?.children;
     
     const sectionHeader = shortHand[0]?.children[0]?.content;
     const secondItem = shortHand[1]?.children[0]?.content;
     const thirdItem =
-      state.theme.isLandingPage ?
+      isLandingPage ?
       shortHand[2]?.children[0]?.children[0]?.props :
       shortHand[2]?.children[0]?.props;
     const contact = shortHand[3]?.props;
@@ -28,6 +29,7 @@ const contactProcessor = {
       secondItem,
       thirdItem,
       contact,
+      contactID,
     };
 
     if (isLandingPage) {

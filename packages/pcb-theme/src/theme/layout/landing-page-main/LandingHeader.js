@@ -12,7 +12,7 @@ const LandingHeader = () => {
   return (
     <Header>
       <PcbLogo src={pcbLOGO}></PcbLogo>
-      <CTA>(972) 295 - 7068</CTA>
+      <CTA link="tel:(972)%20295-7068">(972) 295 - 7068</CTA>
     </Header>
   );
 };
@@ -40,8 +40,7 @@ const PcbLogo = styled.img`
   }
 `;
 
-const CTA = styled.button`
-  border: none;
+const CTA = styled(Link)`
   ${LinkStyles("primary")};
   padding: 0.5rem 1.5rem;
   font-size: 3rem;

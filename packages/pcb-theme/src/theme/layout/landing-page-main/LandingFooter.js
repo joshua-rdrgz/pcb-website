@@ -10,7 +10,7 @@ import * as Mixins from "../../styles/Mixins";
 import pcbLOGO from "../../assets/pcb-logo.svg";
 
 const LandingFooter = ({ state }) => {
-  const isPPF = state.theme.page.includes("clear-bra");
+  const isPPF = state.router.link.includes("clear-bra");
   return (
     <Footer>
       <Heading>
@@ -19,8 +19,14 @@ const LandingFooter = ({ state }) => {
       </Heading>
       <PCBLogo src={pcbLOGO} alt="Performance Clear Bra Logo" />
       <ButtonContainer>
-        <Button>(972) 295 - 7068</Button>
-        <Button>Get My Quote</Button>
+        <CTALink link="tel:(972)%20295-7068">(972) 295 - 7068</CTALink>
+        <CTALink
+          link={`/landing_page/${
+            isPPF ? "clear-bra" : "window-tint"
+          }-free-quote#landingContact`}
+        >
+          Get My Quote
+        </CTALink>
       </ButtonContainer>
       <MapContainer>
         <Map
@@ -82,7 +88,7 @@ const ButtonContainer = styled.div`
   gap: 3rem;
 `;
 
-const Button = styled.button`
+const CTALink = styled(Link)`
   border: none;
   ${LinkStyles("primary")};
   padding: 0.5rem 1.5rem;

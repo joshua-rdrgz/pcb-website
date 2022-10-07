@@ -22,8 +22,6 @@ export default {
   },
   state: {
     theme: {
-      isLandingPage: null,
-      page: null,
       gallery: {
         galleryPos: 4,
       },
@@ -59,12 +57,6 @@ export default {
   },
   actions: {
     theme: {
-      setIsLandingPage: ({ state }) => boolean => {
-        state.theme.isLandingPage = boolean;
-      },
-      setPage: ({ state }) => value => {
-        state.theme.page = value;
-      },
       header: {
         initActiveTabs:
           ({ state }) =>

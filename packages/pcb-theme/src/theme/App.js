@@ -13,13 +13,9 @@ import LandingFooter from "./layout/landing-page-main/LandingFooter";
 import Loading from "./layout/components/Loading";
 import Error from "./layout/components/Error";
 
-const App = ({ state, actions }) => {
+const App = ({ state }) => {
   const data = state.source.get(state.router.link);
-
-  actions.theme.setIsLandingPage(
-    data.isLandingPage ? data.isLandingPage : false
-  );
-  actions.theme.setPage(state.router.link);
+  
   const isLandingPage = data.isLandingPage ? data.isLandingPage : false;
 
   return (

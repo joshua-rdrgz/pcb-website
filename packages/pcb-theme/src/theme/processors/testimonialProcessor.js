@@ -1,6 +1,6 @@
 import React from "react";
 
-import TestimonialComponent from '../processors/components/testimonials/TestimonialComponent';
+import TestimonialComponent from "../processors/components/testimonials/TestimonialComponent";
 
 const testimonialProcessor = {
   name: "testimonial",
@@ -12,15 +12,15 @@ const testimonialProcessor = {
     );
   },
   processor: ({ node }) => {
-    const loggedNode = node?.children[0]?.children;
+    const content = node?.children[0]?.children;
 
     // section header, always will be first
-    const sectionHeader = loggedNode[0]?.children[0]?.content;
+    const sectionHeader = content[0]?.children[0]?.content;
 
     // Testimonial Content
     const testimonialsNode =
-      loggedNode[1]?.children[0]?.children[1]?.children[0]?.children;
-    const testimonialsHeaderNode = loggedNode[1]?.children[0]?.children[0];
+      content[1]?.children[0]?.children[1]?.children[0]?.children;
+    const testimonialsHeaderNode = content[1]?.children[0]?.children[0];
     const testimonialsHeader = {
       rating:
         testimonialsHeaderNode.children[0]?.children[0]?.children[0]
@@ -47,12 +47,12 @@ const testimonialProcessor = {
 
     // Button Content
     const buttonContent =
-      loggedNode?.at(-1)?.children[0]?.children[0]?.children[0].content;
-    const buttonFontSize = loggedNode?.at(-1)?.children[0]?.props?.css?.styles;
-    const buttonLink = loggedNode
+      content?.at(-1)?.children[0]?.children[0]?.children[0].content;
+    const buttonLink = content
       ?.at(-1)
-      ?.children[0].children[0]?.props?.href.split("/")
-      .reverse()[1];
+      ?.children[0].children[0]?.props?.href?.split("/")
+      .slice(3)
+      .join("/");
 
     return {
       component: TestimonialComponent,
@@ -61,7 +61,6 @@ const testimonialProcessor = {
         testimonials,
         testimonialsHeader,
         buttonContent,
-        buttonFontSize,
         buttonLink,
       },
     };

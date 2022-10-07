@@ -31,7 +31,6 @@ const TabbedServiceInfo = ({
       <Button
         type="primary"
         link={buttonLink ? buttonLink : "/contact"}
-        fontSize={buttonFontSize}
       >
         {buttonContent}
       </Button>

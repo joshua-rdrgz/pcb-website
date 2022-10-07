@@ -9,9 +9,10 @@ const LandingContactTab = ({
   secondItem,
   thirdItem,
   contact,
+  contactID
 }) => {
   return (
-    <LandingPageSection>
+    <LandingPageSection id={contactID}>
       <LandingPageGrid>
         <SectionHeader>{sectionHeader}</SectionHeader>
         <Description>{secondItem}</Description>
