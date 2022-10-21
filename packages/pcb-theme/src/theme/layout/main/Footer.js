@@ -47,7 +47,11 @@ function Footer({ state }) {
           </div>
           <div>
             <Label>Phone (or Text)</Label>
-            <Data>{menuData.acf.phone}</Data>
+            <Data>
+              <PhoneLink link="tel:(972)%20295-7068">
+                {menuData.acf.phone}
+              </PhoneLink>
+            </Data>
           </div>
           <div>
             <Label>Address</Label>
@@ -199,6 +203,10 @@ const Data = styled.div`
       text-decoration: underline;
       cursor: pointer;
     `}
+`;
+
+const PhoneLink = styled(Link)`
+  color: ${Variables.colorWhite};
 `;
 
 const Socials = styled.div`

@@ -45,7 +45,11 @@ function Header({ state }) {
         scrollPos={state.theme.header.scrollPos}
         ref={topBarContainer}
       >
-        <CallBlock>{menus.menuData[0].acf.phone}</CallBlock>
+        <CallBlock>
+          <PhoneLink link="tel:(972)%20295-7068">
+            {menus.menuData[0].acf.phone}
+          </PhoneLink>
+        </CallBlock>
         <AddressLink
           link="https://www.google.com/maps/place/Performance+Clear+Bra/@32.763217,-97.3587412,17z/data=!4m5!3m4!1s0x864e734cf2061099:0x8c5e06440f0da472!8m2!3d32.763217!4d-97.3565525"
           target="_blank"
@@ -153,6 +157,10 @@ const CallBlock = styled.div`
   @media (max-width: ${Variables.querySM}) {
     margin: 0 auto;
   }
+`;
+
+const PhoneLink = styled(Link)`
+  color: ${Variables.colorWhite};
 `;
 
 const AddressLink = styled(Link)`
