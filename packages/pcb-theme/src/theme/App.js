@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Head, Global, connect } from "frontity";
 import Switch from "@frontity/components/switch";
 import Reset from "./styles/Reset";
@@ -18,28 +18,6 @@ const App = ({ state }) => {
 
   const isLandingPage = data.isLandingPage ? data.isLandingPage : false;
 
-  useEffect(() => {
-    document.querySelector("head").insertAdjacentHTML(
-      "afterbegin",
-      `
-        <!-- Google Tag Manager -->
-        <script>
-          (function (w, d, s, l, i) {
-            w[l] || [];
-            w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-            var f = d.getElementsByTagName(s)[0],
-              j = d.createElement(s),
-              dl = l != "dataLayer" ? "&l=" + l : "";
-            j.async = true;
-            j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-            f.parentNode.insertBefore(j, f);
-          })(window, document, "script", "dataLayer", "GTM-KFH5633");
-        </script>
-        <!-- End Google Tag Manager -->
-      `
-    );
-  }, []);
-
   return (
     <>
       <Head>
@@ -54,16 +32,6 @@ const App = ({ state }) => {
         <html lang="en" />
         <link rel="stylesheet" href="https://use.typekit.net/pjj0xta.css" />
       </Head>
-      {/* Google Tag Manager (noscript) */}
-      <noscript>
-        <iframe
-          src="https://www.googletagmanager.com/ns.html?id=GTM-KFH5633"
-          height="0"
-          width="0"
-          style={{ display: "none", visibility: "hidden" }}
-        ></iframe>
-      </noscript>
-      {/* End Google Tag Manager (noscript) */}
       <Global styles={Reset} />
       {isLandingPage ? <LandingHeader /> : <Header />}
       <Switch>
