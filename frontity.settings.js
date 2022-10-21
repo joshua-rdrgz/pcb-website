@@ -31,13 +31,13 @@ const settings = {
     "@frontity/html2react",
     "@frontity/yoast",
     {
-      name: "@frontity/google-tag-manager-analytics",
+      name: '@frontity/google-tag-manager-analytics',
       state: {
         googleTagManagerAnalytics: {
-          containerID: 'GTM-KFH5633',
+          containerId: 'GTM-KFH5633',
         },
-      }
-    }
+      },
+    },
   ],
 };
 
