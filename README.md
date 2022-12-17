@@ -19,8 +19,6 @@ This project contains the main marketing website for the company [Performance Cl
   - [FAQs](#faqs)
   - [About Page Cards](#about-page-cards)
 - [Updates Planned For The Site](#updates-planned-for-the-site)
-  - [Determined Updates](#determined-updates)
-  - [Potential Updates](#potential-updates)
 
 ## How It Is Built
 
@@ -35,15 +33,16 @@ At a high level, the site's design is built like that of a [React](https://react
 The benefit of combining [React](https://reactjs.org) and [WordPress](https://wordpress.org) together is so that the WordPress theme can take advantage of React's Single-Page-Application (SPA) nature, creating a blazing fast experience untraditional with regular WordPress PHP themes.
 
 [app]: /packages/pcb-theme/src/theme/App.js
-[header]: /packages/pcb-theme/src/theme/layout/Header.js
+[header]: /packages/pcb-theme/src/theme/layout/main/Header.js
+[footer]: /packages/pcb-theme/src/theme/layout/main/Footer.js
 
 ### Frontity Processors
 
-The [PageContent.js][page-content] file renders the page contents of whatever the URL is via the use of [Frontity processors](https://gitbook-docs.frontity.org/guides/using-processors).  A processor in Frontity is object that scans the content coming from the [WordPress Rest API](https://developer.wordpress.org/rest-api/), matches specific content with a test condition, and upon that match executes a function that transforms the WordPress content into something new.
+The [PageContent.js][page-content] file renders the page contents of whatever the URL is via the use of [Frontity processors](https://gitbook-docs.frontity.org/guides/using-processors).  A processor in Frontity is an object that scans the content coming from the [WordPress Rest API](https://developer.wordpress.org/rest-api/), matches specific content with a test condition, and upon that match executes a function that transforms the WordPress content into something new.
 
 The bulk of what is rendered in the [PageContent.js][page-content] file is transformed via these [processors].  The WordPress content is built via grouping content together into components that can trigger these processors.  When the processor triggers, it gathers all the data from the WordPress content, feeds the data to a custom React component, and then renders that React component with the data that the processor gathered.  Using this approach, the Frontity site is able to dynamically transform WordPress page content into React components.
 
-[page-content]: /packages/pcb-theme/src/theme/layout/PageContent.js
+[page-content]: /packages/pcb-theme/src/theme/layout/main/PageContent.js
 [processors]: /packages/pcb-theme/src/theme/processors/
 
 ## Features Of The Site
@@ -73,23 +72,23 @@ In addition, it also dynamically produces Rep Brands that Performance Clear Bra 
 
 ### Services
 
-The [Services][services] React component consists of a WordPress group containing a section heading, different Home-Services cards (each within its own WordPress group), and a Call-To-Action Button.  Each card contains a Heading, an image, a description, and a button.
+The [Services][services] React component consists of a WordPress group containing a section heading, any number of cards (each within its own WordPress group), and an optional Call-To-Action Button.  Each card contains a Heading, an image, a description, and a button.
 
-This Services React component transforms those cards into their respective format on the site.  It can take in as many cards as the WordPress administrator puts in.
+This React component can be displayed anywhere the site needs to display cards.  It is used underneath the Herobox component, as well as underneath the Contact component on Landing Pages exclusively.
 
-This React component is only displayed on the Home page of the site, right underneath the Herobox.
-
-[services]: /packages/pcb-theme/src/theme/processors/homeServicesProcessor.js
+[services]: /packages/pcb-theme/src/theme/processors/cardsProcessor.js
 
 ### Gallery
 
 The [Gallery][gallery] React component consists of a WordPress group containing a section heading, a WordPress gallery, and a Call-To-Action button.
 
-This React Component transforms that content into a scrolling gallery, where users can either click the left or right arrows on the screen to scroll between the pictures of the gallery.  Alternatively, the users can press the left or right arrow keys on their keyboard to scroll through the gallery.
+This React Component transforms that content into a scrolling gallery, where users can either click the left or right arrows on the screen to scroll between the pictures of the gallery.
 
-The WordPress administrator has the option to include captions on each picture.  If a caption is present, the React component will render them underneath the image.  If not, nothing is rendered.
+The WordPress administrator has the option to include an aside, which will present the gallery on one side of the screen, and some optional text on the other side.  This aside is used mainly for the Landing Pages.
 
-[gallery]: /packages/pcb-theme/src/theme/processors/components/Gallery.js
+The WordPress administrator also has the option to include captions on each picture.  If a caption is present, the React component will render them underneath the image.  If not, nothing is rendered.
+
+[gallery]: /packages/pcb-theme/src/theme/processors/components/gallery/GalleryTab.js
 
 ### Testimonials
 
@@ -154,21 +153,10 @@ This React component is only displayed on the About page of the site, right unde
 
 The following are a list of updates planned to expand the site's functionality.  They are labelled as Determined (meaning they for sure will be updated) or Potential (meaning they only have the possibility of being updated).
 
-### Determined Updates
-
-1. Gallery Tab Refactor
-  - We aim to refactor the Gallery Tab React component so that it can hold two types of galleries:
-    1. Scroll Galleries (where users can swipe on mobile, and use arrows on desktop).  This will be used for the home page gallery displaying Performance Clear Bra's shop photos.
-    2. Grid Galleries, where users can see a grid of cars that the shop has worked on.  Clicking the image will display a modal overlay with the image in closer detail.
-2. Tabbed Service Info Refactor
+1. Tabbed Service Info Refactor
   - We aim to refactor the Tabbed Service Info React component so that the WordPress each service page can hold up to 3 sets of tabs (meaning a 3-dimensional component, unlike the 2-dimensional component present now).  
   - This will be used on the Window Tint page, with the 3 sets of tabs being: Car Types, Window Locations, and Film Types.
-3. Testimonial Refactor
+2. Testimonial Refactor
   - We aim to refactor the Testimonial React component to manually fetch Google reviews on its own, allowing for fine-grain control over which reviews are displayed on the site.  The Trustindex.io plugin does not currently allow for fine-grain control, as it only pulls in the most recent reviews of the company.  With this refactor, the company should be able to hand-pick reviews to display on the site.
-
-### Potential Updates
-
-1. Blog Posts
+3. Blog Posts
   - The idea is to create a blog for the site that the company can use to start making posts about the services they provide.  This will help with SEO purposes, as well as give their brand authority online.
-2. Case Studies Posts
-  - The idea is to create a case studies specific blog for the site that the company can use to display the cars that they've worked on.  Each post would be about a specific car; the idea is that users would be able to see cars just like theirs on the site, as well as a detailed description of how Performance Clear Bra improved that car.  This would lead to more customer trust with the company.
