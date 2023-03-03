@@ -71,68 +71,71 @@ const getRepBrandsData = (link) => {
       page = "home";
       heightOfRepBrands = `
         height: 155px;
+        @media (max-width: 1651px) {
+          height: 250px;
+        }
         @media (max-width: 1351px) {
           height: 270px;
         }
         @media (max-width: 1000px) {
-          height: 250px;
+          height: 346px;
         }
         @media (max-width: 549px) {
-          height: 312px;
+          height: 410px;
         }
         @media (max-width: 489px) {
-          height: 325px;
+          height: 421px;
         }
         @media (max-width: 449px) {
-          height: 390px;
+          height: 485px;
         }
         @media (max-width: 329px) {
-          height: 440px;
+          height: 535px;
         }
       `;
       break;
     case "/about/":
       page = "about";
       heightOfRepBrands = css`
-        height: 155px;
-        @media (max-width: 1351px) {
-          height: 270px;
-        }
-        @media (max-width: 1000px) {
-          height: 250px;
-        }
-        @media (max-width: 549px) {
-          height: 312px;
-        }
-        @media (max-width: 489px) {
-          height: 325px;
-        }
-        @media (max-width: 449px) {
-          height: 390px;
-        }
-        @media (max-width: 329px) {
-          height: 440px;
-        }
+      height: 155px;
+      @media (max-width: 1651px) {
+        height: 250px;
+      }
+      @media (max-width: 1351px) {
+        height: 270px;
+      }
+      @media (max-width: 1000px) {
+        height: 346px;
+      }
+      @media (max-width: 549px) {
+        height: 410px;
+      }
+      @media (max-width: 489px) {
+        height: 421px;
+      }
+      @media (max-width: 449px) {
+        height: 485px;
+      }
+      @media (max-width: 329px) {
+        height: 535px;
+      }
       `;
       break;
     case "/paint-protection-film/":
       page = "ppf";
       heightOfRepBrands = css`
-        height: 157px;
-        @media (max-width: 1091px) {
-          height: 272px;
-        }
-        @media (max-width: 1000px) {
-          height: 155px;
-        }
-        @media (max-width: 849px) {
+        height: 155px;
+        @media (max-width: 1381px) {
           height: 250px;
         }
+        @media (max-width: 849px) {
+          height: 346px;
+        }
         @media (max-width: 549px) {
-          height: 312px;
+          height: 408px;
         }
         @media (max-width: 329px) {
-          height: 365px;
+          height: 460px;
         }
       `
       break;
@@ -140,8 +143,11 @@ const getRepBrandsData = (link) => {
       page = "wt";
       heightOfRepBrands = css`
         height: 155px;
-        @media (max-width: 539px) {
+        @media (max-width: 829px) {
           height: 250px;
+        }
+        @media (max-width: 539px) {
+          height: 346px;
         }
       `;
       break;
@@ -200,6 +206,16 @@ const repBrands = [
       alt: "Performance Clear Bra rated #1 of Automotive Tinting Companies in Fort Worth, Texas",
     },
   },
+  {
+    name: "BBB Accredited Business",
+    link: "https://www.bbb.org/us/tx/fort-worth/profile/car-window-tinting/performance-clear-bra-0825-1000215058/#sealclick",
+    tag: 'img',
+    included: ["home", "about", "ppf", "wt"],
+    img: {
+      src: "https://seal-austin.bbb.org/seals/darkgray-seal-280-80-bbb-1000215058.png",
+      alt: "Performance Clear Bra BBB Business Review",
+    }
+  }
 ];
 
 const RepBrands = ({ state }) => {
