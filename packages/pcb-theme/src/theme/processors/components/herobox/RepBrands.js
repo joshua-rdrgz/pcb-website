@@ -44,12 +44,6 @@ const Reaction = styled.img`
   }
 `;
 
-const BestOfFtWorth = styled.img`
-  @media (max-width: ${Variables.queryLG}) {
-    width: 25rem;
-  }
-`;
-
 const Evolve = styled.img`
   width: 25rem;
   @media (max-width: ${Variables.queryLG}) {
@@ -71,71 +65,68 @@ const getRepBrandsData = (link) => {
       page = "home";
       heightOfRepBrands = `
         height: 155px;
-        @media (max-width: 1651px) {
-          height: 250px;
-        }
-        @media (max-width: 1351px) {
+        @media (max-width: 1381px) {
           height: 270px;
         }
         @media (max-width: 1000px) {
-          height: 346px;
+          height: 250px;
         }
-        @media (max-width: 549px) {
-          height: 410px;
+        @media (max-width: 579px) {
+          height: 312px;
         }
         @media (max-width: 489px) {
-          height: 421px;
+          height: 325px;
         }
         @media (max-width: 449px) {
-          height: 485px;
+          height: 390px;
         }
         @media (max-width: 329px) {
-          height: 535px;
+          height: 440px;
         }
       `;
       break;
     case "/about/":
       page = "about";
       heightOfRepBrands = css`
-      height: 155px;
-      @media (max-width: 1651px) {
-        height: 250px;
-      }
-      @media (max-width: 1351px) {
-        height: 270px;
-      }
-      @media (max-width: 1000px) {
-        height: 346px;
-      }
-      @media (max-width: 549px) {
-        height: 410px;
-      }
-      @media (max-width: 489px) {
-        height: 421px;
-      }
-      @media (max-width: 449px) {
-        height: 485px;
-      }
-      @media (max-width: 329px) {
-        height: 535px;
-      }
+        height: 155px;
+        @media (max-width: 1381px) {
+          height: 270px;
+        }
+        @media (max-width: 1000px) {
+          height: 250px;
+        }
+        @media (max-width: 579px) {
+          height: 312px;
+        }
+        @media (max-width: 489px) {
+          height: 325px;
+        }
+        @media (max-width: 449px) {
+          height: 390px;
+        }
+        @media (max-width: 329px) {
+          height: 440px;
+        }
       `;
       break;
     case "/paint-protection-film/":
       page = "ppf";
       heightOfRepBrands = css`
-        height: 155px;
-        @media (max-width: 1381px) {
+        height: 157px;
+        @media (max-width: 1121px) {
+          height: 272px;
+        }
+        @media (max-width: 1000px) {
+          height: 155px;
+        }
+        @media (max-width: 879px) {
           height: 250px;
         }
-        @media (max-width: 849px) {
-          height: 346px;
-        }
-        @media (max-width: 549px) {
-          height: 408px;
+        @media (max-width: 579px) {
+          height: 312px;
         }
         @media (max-width: 329px) {
-          height: 460px;
+          height: 365px;
         }
       `
       break;
@@ -143,17 +134,15 @@ const getRepBrandsData = (link) => {
       page = "wt";
       heightOfRepBrands = css`
         height: 155px;
-        @media (max-width: 829px) {
+        @media (max-width: 569px) {
           height: 250px;
-        }
-        @media (max-width: 539px) {
-          height: 346px;
         }
       `;
       break;
   }
   return { page, heightOfRepBrands };
 };
+
 
 const repBrands = [
   {
@@ -194,16 +183,6 @@ const repBrands = [
     img: {
       src: ceramicPro,
       alt: "Ceramic Pro Official Logo",
-    },
-  },
-  {
-    name: "Best of Fort Worth by Preferred Mechanic",
-    link: "https://preferredmechanic.com/report/window-tinting-places/near_fort-worth-tarrant-county,tx/",
-    tag: BestOfFtWorth,
-    included: ["home", "about", "ppf", "wt"],
-    img: {
-      src: bestOfFtWorth,
-      alt: "Performance Clear Bra rated #1 of Automotive Tinting Companies in Fort Worth, Texas",
     },
   },
   {
