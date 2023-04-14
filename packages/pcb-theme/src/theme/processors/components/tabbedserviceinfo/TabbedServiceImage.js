@@ -354,6 +354,9 @@ const Img = styled.img`
     left: 0;
     transform: none;
   }
+  @media (min-width: 125em) {
+    max-width: 50%;
+  }
 `;
 
 export default connect(TabbedServiceImage);
