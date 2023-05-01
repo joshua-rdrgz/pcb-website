@@ -17,6 +17,7 @@ const settings = {
         source: {
           url: "https://pcbdev2020.wpengine.com",
           homepage: "/home",
+          postsPage: "/blog",
           redirections: "404",
           postTypes: [
             {
