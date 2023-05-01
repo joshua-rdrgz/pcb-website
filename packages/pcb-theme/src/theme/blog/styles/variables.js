@@ -54,7 +54,7 @@ export const textBody16 = generateTextStyles(bodyFontFamily, "1.6rem", 400);
 export const textBody18 = generateTextStyles(bodyFontFamily, "1.8rem", 400);
 export const textBody20 = generateTextStyles(bodyFontFamily, "2.0rem", 400);
 export const textBody24 = generateTextStyles(bodyFontFamily, "2.4rem", 400);
-export const textBody30 = generateTextStyles(bodyFontFamily, "3.0px", 400);
+export const textBody30 = generateTextStyles(bodyFontFamily, "3.0rem", 400);
 export const textHeading6 = generateTextStyles(
   headingFontFamily,
   "2.4rem",
