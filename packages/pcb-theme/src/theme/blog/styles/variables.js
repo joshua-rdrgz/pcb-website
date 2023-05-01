@@ -58,32 +58,32 @@ export const textBody30 = generateTextStyles(bodyFontFamily, "3.0rem", 400);
 export const textHeading6 = generateTextStyles(
   headingFontFamily,
   "2.4rem",
-  400
+  700
 );
 export const textHeading5 = generateTextStyles(
   headingFontFamily,
   "3.0rem",
-  400
+  700
 );
 export const textHeading4 = generateTextStyles(
   headingFontFamily,
   "3.6rem",
-  400
+  700
 );
 export const textHeading3 = generateTextStyles(
   headingFontFamily,
   "4.8rem",
-  400
+  700
 );
 export const textHeading2 = generateTextStyles(
   headingFontFamily,
   "6.0rem",
-  400
+  700
 );
 export const textHeading1 = generateTextStyles(
   headingFontFamily,
   "7.2rem",
-  400
+  700
 );
 // BOLD
 export const textBody12Bold = generateTextStyles(bodyFontFamily, "1.2rem", 700);
@@ -96,32 +96,32 @@ export const textBody30Bold = generateTextStyles(bodyFontFamily, "3.0rem", 700);
 export const textHeading6Bold = generateTextStyles(
   headingFontFamily,
   "2.4rem",
-  700
+  800
 );
 export const textHeading5Bold = generateTextStyles(
   headingFontFamily,
   "3.0rem",
-  700
+  800
 );
 export const textHeading4Bold = generateTextStyles(
   headingFontFamily,
   "3.6rem",
-  700
+  800
 );
 export const textHeading3Bold = generateTextStyles(
   headingFontFamily,
   "4.8rem",
-  700
+  800
 );
 export const textHeading2Bold = generateTextStyles(
   headingFontFamily,
   "6.0rem",
-  700
+  800
 );
 export const textHeading1Bold = generateTextStyles(
   headingFontFamily,
   "7.2rem",
-  700
+  800
 );
 
 // *
