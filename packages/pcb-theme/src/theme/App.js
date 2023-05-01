@@ -33,7 +33,7 @@ const App = ({ state }) => {
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <html lang="en" />
-        <link rel="stylesheet" href="https://use.typekit.net/pjj0xta.css" />
+        <link rel="stylesheet" href="https://use.typekit.net/zau4ika.css" />
       </Head>
       <Global styles={Reset} />
       {isLandingPage ? <LandingHeader /> : <Header />}
