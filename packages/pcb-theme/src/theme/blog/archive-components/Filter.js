@@ -61,7 +61,7 @@ const Filter = ({ filterState }) => {
   return (
     <Form>
       <FormFieldDiv>
-        <Label htmlFor="category">Type of Article</Label>
+        <Label htmlFor="category">Type of Blog Post</Label>
         <Select
           name="category"
           id="category"
