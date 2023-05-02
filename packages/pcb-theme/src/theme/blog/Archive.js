@@ -1,11 +1,58 @@
 import { useState } from "react";
-import { connect } from "frontity";
+import { connect, styled } from "frontity";
 
 import Filter from "./archive-components/Filter";
 import PostPreview from "./archive-components/PostPreview";
 
 import filterPosts from "./helpers/filterPosts";
 import gatherPostData from "./helpers/gatherPostData";
+
+import * as variables from "./styles/variables";
+
+const HeroboxSection = styled.section`
+  display: flex;
+  justify-content: center;
+  background-color: ${variables.colorPureBlack};
+`;
+
+const H1 = styled.h1`
+  color: ${variables.colorNeutral100};
+  ${variables.textHeading4Bold};
+  padding: ${variables.spacing60};
+`;
+
+const SearchResultsSection = styled.section`
+  background-color: ${variables.colorNeutral900};
+`;
+
+const SearchParamsSection = styled.section`
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: ${variables.spacing8};
+  color: ${variables.colorNeutral500};
+  padding: ${variables.spacing20};
+  border-bottom: 1px solid ${variables.colorNeutral700};
+`;
+
+const SearchParamsHeaderP = styled.p`
+  ${variables.textBody12};
+`;
+
+const SearchParamsBodyP = styled.p`
+  ${variables.textBody16};
+`;
+
+const Span = styled.span`
+  color: ${variables.colorNeutral300};
+`;
+
+const H2 = styled.h2`
+  text-align: center;
+  color: ${variables.colorNeutral100};
+  ${variables.textHeading6Bold};
+  padding: ${variables.spacing16};
+`;
 
 const Archive = ({ state }) => {
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -28,21 +75,32 @@ const Archive = ({ state }) => {
 
   return (
     <>
+      <HeroboxSection>
+        <H1>Blog</H1>
+      </HeroboxSection>
       <Filter
         filterState={{
           category: { setSelectedCategory },
           tag: { setSelectedTag },
         }}
       />
-      <section>
-        <div>Results shown for:</div>
-        <div>Type of Blog Post: {selectedCategory}</div>
-        <div>Type of Service: {selectedTag}</div>
+      <SearchResultsSection>
+        <SearchParamsSection>
+          <SearchParamsHeaderP>Results shown for:</SearchParamsHeaderP>
+          <div>
+            <SearchParamsBodyP>
+              Type of Blog Post: <Span>{selectedCategory}</Span>
+            </SearchParamsBodyP>
+            <SearchParamsBodyP>
+              Type of Service: <Span>{selectedTag}</Span>
+            </SearchParamsBodyP>
+          </div>
+        </SearchParamsSection>
         {filteredPosts.length === 0 && (
-          <h2>
+          <H2>
             No posts matched the filter results. Please filter for something
             else!
-          </h2>
+          </H2>
         )}
         {filteredPosts.map((item) => {
           // *
@@ -60,7 +118,7 @@ const Archive = ({ state }) => {
           // *
           return <PostPreview key={item.id} blogData={postPreviewData} />;
         })}
-      </section>
+      </SearchResultsSection>
     </>
   );
 };
