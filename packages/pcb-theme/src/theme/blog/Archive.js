@@ -20,7 +20,8 @@ const H1 = styled.h1`
   ${variables.textHeading4Bold};
   padding: ${variables.spacing48};
   @media (min-width: ${variables.breakpoint600}) {
-    padding: ${variables.spacing60};
+    padding: 10rem;
+    ${variables.textHeading1Bold};
   }
 `;
 
