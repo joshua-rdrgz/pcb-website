@@ -32,6 +32,7 @@ const Select = styled.select`
   background-repeat: no-repeat;
   background-size: ${variables.spacing24};
   background-position: right;
+  cursor: pointer;
   &:focus {
     outline-color: ${variables.colorPrimary700};
   }
