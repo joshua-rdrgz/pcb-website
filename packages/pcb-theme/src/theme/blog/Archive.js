@@ -18,7 +18,7 @@ const HeroboxSection = styled.section`
 const H1 = styled.h1`
   color: ${variables.colorNeutral100};
   ${variables.textHeading4Bold};
-  padding: ${variables.spacing60};
+  padding: ${variables.spacing48};
 `;
 
 const SearchResultsSection = styled.section`
@@ -52,6 +52,13 @@ const H2 = styled.h2`
   color: ${variables.colorNeutral100};
   ${variables.textHeading6Bold};
   padding: ${variables.spacing16};
+`;
+
+const SearchResultsContentSection = styled.section`
+  display: flex;
+  flex-direction: column;
+  gap: ${variables.spacing12};
+  padding: ${variables.spacing32} ${variables.spacing12};
 `;
 
 const Archive = ({ state }) => {
@@ -96,28 +103,28 @@ const Archive = ({ state }) => {
             </SearchParamsBodyP>
           </div>
         </SearchParamsSection>
-        {filteredPosts.length === 0 && (
-          <H2>
-            No posts matched the filter results. Please filter for something
-            else!
-          </H2>
-        )}
-        {filteredPosts.map((item) => {
-          // *
-          // GRAB POST DATA
-          // *
-          const post = state.source[item.type][item.id];
-
-          // *
-          // GATHER PREVIEW DATA
-          // *
-          const postPreviewData = gatherPostData(post, state, media);
-
-          // *
-          // RENDER POST PREVIEW
-          // *
-          return <PostPreview key={item.id} blogData={postPreviewData} />;
-        })}
+        <SearchResultsContentSection>
+          {filteredPosts.length === 0 && (
+            <H2>
+              No posts matched the filter results. Please filter for something
+              else!
+            </H2>
+          )}
+          {filteredPosts.map((item) => {
+            // *
+            // GRAB POST DATA
+            // *
+            const post = state.source[item.type][item.id];
+            // *
+            // GATHER PREVIEW DATA
+            // *
+            const postPreviewData = gatherPostData(post, state, media);
+            // *
+            // RENDER POST PREVIEW
+            // *
+            return <PostPreview key={item.id} blogData={postPreviewData} />;
+          })}
+        </SearchResultsContentSection>
       </SearchResultsSection>
     </>
   );
