@@ -139,3 +139,9 @@ export const spacing32 = "3.2rem";
 export const spacing40 = "4.0rem";
 export const spacing48 = "4.8rem";
 export const spacing60 = "6.0rem";
+
+// *
+// SCREEN SIZE BREAKPOINTS
+// *
+export const breakpoint500 = "31.25em";
+export const breakpoint600 = "37.5em";
