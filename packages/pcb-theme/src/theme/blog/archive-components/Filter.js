@@ -8,12 +8,18 @@ const Form = styled.form`
   gap: ${variables.spacing16};
   padding: ${variables.spacing20};
   background-color: ${variables.colorNeutral600};
+  @media (min-width: ${variables.breakpoint600}) {
+    flex-direction: row;
+  }
 `;
 
 const FormFieldDiv = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${variables.spacing2};
+  @media (min-width: ${variables.breakpoint600}) {
+    flex-grow: 1;
+  }
 `;
 
 const Label = styled.label`
@@ -40,6 +46,9 @@ const Select = styled.select`
 
 const Option = styled.option`
   ${variables.textBody12};
+  @media (min-width: ${variables.breakpoint600}) {
+    ${variables.textBody14};
+  }
 `;
 
 const Filter = ({ filterState }) => {
