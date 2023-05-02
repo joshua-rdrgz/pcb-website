@@ -145,3 +145,5 @@ export const spacing60 = "6.0rem";
 // *
 export const breakpoint500 = "31.25em";
 export const breakpoint600 = "37.5em";
+export const breakpoint950 = "59.375em";
+export const breakpoint1300 = "81.25em";
