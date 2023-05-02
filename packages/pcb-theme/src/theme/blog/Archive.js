@@ -19,6 +19,9 @@ const H1 = styled.h1`
   color: ${variables.colorNeutral100};
   ${variables.textHeading4Bold};
   padding: ${variables.spacing48};
+  @media (min-width: ${variables.breakpoint600}) {
+    padding: ${variables.spacing60};
+  }
 `;
 
 const SearchResultsSection = styled.section`
@@ -41,6 +44,9 @@ const SearchParamsHeaderP = styled.p`
 
 const SearchParamsBodyP = styled.p`
   ${variables.textBody16};
+  @media (min-width: ${variables.breakpoint600}) {
+    ${variables.textBody18};
+  }
 `;
 
 const Span = styled.span`
@@ -52,6 +58,9 @@ const H2 = styled.h2`
   color: ${variables.colorNeutral100};
   ${variables.textHeading6Bold};
   padding: ${variables.spacing16};
+  @media (min-width: ${variables.breakpoint600}) {
+    ${variables.textHeading3Bold};
+  }
 `;
 
 const SearchResultsContentSection = styled.section`
@@ -59,6 +68,10 @@ const SearchResultsContentSection = styled.section`
   flex-direction: column;
   gap: ${variables.spacing12};
   padding: ${variables.spacing32} ${variables.spacing12};
+  @media (min-width: ${variables.breakpoint600}) {
+    gap: ${variables.spacing32};
+    padding: ${variables.spacing32} ${variables.spacing28};
+  }
 `;
 
 const Archive = ({ state }) => {
