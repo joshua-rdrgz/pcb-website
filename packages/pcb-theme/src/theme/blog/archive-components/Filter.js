@@ -11,6 +11,16 @@ const Form = styled.form`
   @media (min-width: ${variables.breakpoint600}) {
     flex-direction: row;
   }
+  @media (min-width: ${variables.breakpoint950}) {
+    width: 30%;
+    max-height: max-content;
+    flex-direction: column;
+    background-color: ${variables.colorNeutral900};
+    border-left: 1px solid ${variables.colorNeutral700};
+  }
+  @media (min-width: ${variables.breakpoint1300}) {
+    width: 25%;
+  }
 `;
 
 const FormFieldDiv = styled.div`
@@ -19,6 +29,9 @@ const FormFieldDiv = styled.div`
   gap: ${variables.spacing2};
   @media (min-width: ${variables.breakpoint600}) {
     flex-grow: 1;
+  }
+  @media (min-width: ${variables.breakpoint950}) {
+    flex-grow: 0;
   }
 `;
 
@@ -76,6 +89,7 @@ const Filter = ({ filterState }) => {
           name="category"
           id="category"
           onChange={(e) => onChangeHandler(e, "category")}
+          autoComplete="off" // FIXES BUG FOR FIREFOX
         >
           <Option value="All">All</Option>
           <Option value="Article">Article</Option>
@@ -85,7 +99,12 @@ const Filter = ({ filterState }) => {
       </FormFieldDiv>
       <FormFieldDiv>
         <Label htmlFor="tag">Type of Service</Label>
-        <Select name="tag" id="tag" onChange={(e) => onChangeHandler(e, "tag")}>
+        <Select
+          name="tag"
+          id="tag"
+          onChange={(e) => onChangeHandler(e, "tag")}
+          autoComplete="off" // FIXES BUG FOR FIREFOX
+        >
           <Option value="All">All</Option>
           <Option value="Paint Protection Film">Paint Protection Film</Option>
           <Option value="Window Tint">Window Tint</Option>

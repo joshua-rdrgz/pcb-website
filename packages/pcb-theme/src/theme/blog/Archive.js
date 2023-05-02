@@ -25,8 +25,21 @@ const H1 = styled.h1`
   }
 `;
 
+const BlogContentDiv = styled.div`
+  @media (min-width: ${variables.breakpoint950}) {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+`;
+
 const SearchResultsSection = styled.section`
   background-color: ${variables.colorNeutral900};
+  @media (min-width: ${variables.breakpoint950}) {
+    width: 70%;
+  }
+  @media (min-width: ${variables.breakpoint1300}) {
+    width: 75%;
+  }
 `;
 
 const SearchParamsSection = styled.section`
@@ -73,6 +86,11 @@ const SearchResultsContentSection = styled.section`
     gap: ${variables.spacing32};
     padding: ${variables.spacing32} ${variables.spacing28};
   }
+  @media (min-width: ${variables.breakpoint1300}) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+  }
 `;
 
 const Archive = ({ state }) => {
@@ -99,47 +117,49 @@ const Archive = ({ state }) => {
       <HeroboxSection>
         <H1>Blog</H1>
       </HeroboxSection>
-      <Filter
-        filterState={{
-          category: { setSelectedCategory },
-          tag: { setSelectedTag },
-        }}
-      />
-      <SearchResultsSection>
-        <SearchParamsSection>
-          <SearchParamsHeaderP>Results shown for:</SearchParamsHeaderP>
-          <div>
-            <SearchParamsBodyP>
-              Type of Blog Post: <Span>{selectedCategory}</Span>
-            </SearchParamsBodyP>
-            <SearchParamsBodyP>
-              Type of Service: <Span>{selectedTag}</Span>
-            </SearchParamsBodyP>
-          </div>
-        </SearchParamsSection>
-        <SearchResultsContentSection>
-          {filteredPosts.length === 0 && (
-            <H2>
-              No posts matched the filter results. Please filter for something
-              else!
-            </H2>
-          )}
-          {filteredPosts.map((item) => {
-            // *
-            // GRAB POST DATA
-            // *
-            const post = state.source[item.type][item.id];
-            // *
-            // GATHER PREVIEW DATA
-            // *
-            const postPreviewData = gatherPostData(post, state, media);
-            // *
-            // RENDER POST PREVIEW
-            // *
-            return <PostPreview key={item.id} blogData={postPreviewData} />;
-          })}
-        </SearchResultsContentSection>
-      </SearchResultsSection>
+      <BlogContentDiv>
+        <Filter
+          filterState={{
+            category: { setSelectedCategory },
+            tag: { setSelectedTag },
+          }}
+        />
+        <SearchResultsSection>
+          <SearchParamsSection>
+            <SearchParamsHeaderP>Results shown for:</SearchParamsHeaderP>
+            <div>
+              <SearchParamsBodyP>
+                Type of Blog Post: <Span>{selectedCategory}</Span>
+              </SearchParamsBodyP>
+              <SearchParamsBodyP>
+                Type of Service: <Span>{selectedTag}</Span>
+              </SearchParamsBodyP>
+            </div>
+          </SearchParamsSection>
+          <SearchResultsContentSection>
+            {filteredPosts.length === 0 && (
+              <H2>
+                No posts matched the filter results. Please filter for something
+                else!
+              </H2>
+            )}
+            {filteredPosts.map((item) => {
+              // *
+              // GRAB POST DATA
+              // *
+              const post = state.source[item.type][item.id];
+              // *
+              // GATHER PREVIEW DATA
+              // *
+              const postPreviewData = gatherPostData(post, state, media);
+              // *
+              // RENDER POST PREVIEW
+              // *
+              return <PostPreview key={item.id} blogData={postPreviewData} />;
+            })}
+          </SearchResultsContentSection>
+        </SearchResultsSection>
+      </BlogContentDiv>
     </>
   );
 };

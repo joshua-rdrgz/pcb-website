@@ -9,9 +9,14 @@ const Article = styled.article`
   background-color: ${variables.colorNeutral100};
   padding: ${variables.spacing20} ${variables.spacing24};
   border-radius: ${variables.spacing4};
-  @media (min-width: ${variables.breakpoint600}) {
+  @media (min-width: ${variables.breakpoint600}) and (max-width: ${variables.breakpoint1300}) {
     padding: ${variables.spacing20} ${variables.spacing32};
     gap: ${variables.spacing24};
+  }
+  @media (min-width: ${variables.breakpoint1300}) {
+    max-width: 30rem;
+    justify-content: space-between;
+    margin: 0 auto;
   }
 `;
 
@@ -20,7 +25,7 @@ const TitleSection = styled.section`
   flex-direction: column;
   gap: ${variables.spacing2};
   text-align: center;
-  @media (min-width: ${variables.breakpoint600}) {
+  @media (min-width: ${variables.breakpoint600}) and (max-width: ${variables.breakpoint1300}) {
     gap: ${variables.spacing4};
   }
 `;
@@ -34,7 +39,7 @@ const H2 = styled.h2`
   color: ${variables.colorNeutral900};
   ${variables.textHeading6};
   text-decoration: none;
-  @media (min-width: ${variables.breakpoint600}) {
+  @media (min-width: ${variables.breakpoint600}) and (max-width: ${variables.breakpoint1300}) {
     ${variables.textHeading3Bold};
   }
 `;
@@ -42,7 +47,7 @@ const H2 = styled.h2`
 const Span = styled.span`
   color: ${variables.colorNeutral700};
   ${variables.textBody12};
-  @media (min-width: ${variables.breakpoint600}) {
+  @media (min-width: ${variables.breakpoint600}) and (max-width: ${variables.breakpoint1300}) {
     ${variables.textBody16};
   }
 `;
@@ -51,7 +56,7 @@ const ContentSection = styled.section`
   display: flex;
   flex-direction: column;
   gap: ${variables.spacing8};
-  @media (min-width: ${variables.breakpoint600}) {
+  @media (min-width: ${variables.breakpoint600}) and (max-width: ${variables.breakpoint1300}) {
     gap: ${variables.spacing16};
   }
 `;
@@ -59,7 +64,7 @@ const ContentSection = styled.section`
 const Figure = styled.figure`
   max-width: 100%;
   margin: 0 auto;
-  @media (min-width: ${variables.breakpoint600}) {
+  @media (min-width: ${variables.breakpoint600}) and (max-width: ${variables.breakpoint1300}) {
     max-width: 50%;
   }
 `;
@@ -74,7 +79,7 @@ const Div = styled.div`
   color: ${variables.colorNeutral800};
   ${variables.textBody12};
   padding: 0 ${variables.spacing4};
-  @media (min-width: ${variables.breakpoint600}) {
+  @media (min-width: ${variables.breakpoint600}) and (max-width: ${variables.breakpoint1300}) {
     ${variables.textBody16};
   }
 `;
