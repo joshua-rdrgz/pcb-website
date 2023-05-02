@@ -86,13 +86,13 @@ export const textHeading1 = generateTextStyles(
   700
 );
 // BOLD
-export const textBody12Bold = generateTextStyles(bodyFontFamily, "1.2rem", 700);
-export const textBody14Bold = generateTextStyles(bodyFontFamily, "1.4rem", 700);
-export const textBody16Bold = generateTextStyles(bodyFontFamily, "1.6rem", 700);
-export const textBody18Bold = generateTextStyles(bodyFontFamily, "1.8rem", 700);
-export const textBody20Bold = generateTextStyles(bodyFontFamily, "2.0rem", 700);
-export const textBody24Bold = generateTextStyles(bodyFontFamily, "2.4rem", 700);
-export const textBody30Bold = generateTextStyles(bodyFontFamily, "3.0rem", 700);
+export const textBody12Bold = generateTextStyles(bodyFontFamily, "1.2rem", 500);
+export const textBody14Bold = generateTextStyles(bodyFontFamily, "1.4rem", 500);
+export const textBody16Bold = generateTextStyles(bodyFontFamily, "1.6rem", 500);
+export const textBody18Bold = generateTextStyles(bodyFontFamily, "1.8rem", 500);
+export const textBody20Bold = generateTextStyles(bodyFontFamily, "2.0rem", 500);
+export const textBody24Bold = generateTextStyles(bodyFontFamily, "2.4rem", 500);
+export const textBody30Bold = generateTextStyles(bodyFontFamily, "3.0rem", 500);
 export const textHeading6Bold = generateTextStyles(
   headingFontFamily,
   "2.4rem",
