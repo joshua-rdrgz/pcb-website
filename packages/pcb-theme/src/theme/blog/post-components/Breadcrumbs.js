@@ -13,6 +13,10 @@ const Div = styled.div`
     padding: ${variables.spacing12} 0;
     ${variables.textBody16Bold}
   }
+  @media (min-width: ${variables.breakpoint1300}) {
+    justify-content: start;
+    padding: ${variables.spacing16} ${variables.spacing32};
+  }
 `;
 
 const Span = styled.span`
