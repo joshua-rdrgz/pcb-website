@@ -7,6 +7,7 @@ import { generateTextStyles } from "./mixins";
 // PRIMARY === REDS
 export const colorPrimary900 = "hsl(25, 90%, 15%)";
 export const colorPrimary800 = "hsl(15, 90%, 20%)";
+export const colorPrimary800Op85 = "rgba(97, 28, 5, .85)"
 export const colorPrimary700 = "hsl(0, 70%, 30%)";
 export const colorPrimary600 = "hsl(0, 70%, 40%)";
 export const colorPrimary500 = "hsl(0, 70%, 50%)";
