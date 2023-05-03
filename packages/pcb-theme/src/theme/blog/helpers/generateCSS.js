@@ -1,6 +1,13 @@
 const filterForCustomCSSClasses = (classes) => {
   if (classes) {
     const classesArray = classes.split(" ");
+
+    // *
+    // FIND RELEVANT CSS CLASSES ===> 
+    // !C (Custom Rule), 
+    // !F (Flex), 
+    // !M#### (Media Query Custom Rule)
+    // *
     const generalRulesets = classesArray.filter((cssClass) =>
       cssClass.startsWith("!C")
     );
@@ -30,6 +37,9 @@ const generateCSS = (classes) => {
     const { generalRulesets, mediaQueryRulesets, isFlexClass } =
       filteredClasses;
 
+    // *
+    // GENERATE PROPER CSS FROM CLASSES
+    // *
     const generalRules = generalRulesets?.map((customClass) => {
       const [property, value] = customClass.split("&");
       return `${property}: ${value};`;
@@ -46,6 +56,9 @@ const generateCSS = (classes) => {
 
     const rulesets = generalRules.concat(mediaQueryRules);
 
+    // *
+    // RETURN CSS
+    // *
     if (isFlexClass) {
       rulesets.push(flexRules);
       return rulesets.join(" ");
