@@ -16,6 +16,7 @@ import tabbedServiceInfoProcessor from "./theme/processors/serviceInfoProcessor"
 import contactProcessor from "./theme/processors/contactProcessor";
 import thankYouProcessor from "./theme/processors/thankYouProcessor";
 import postSectionProcessor from "./theme/blog/processors/postSectionProcessor";
+import postHandler from "./theme/handlers/post-handler";
 
 export default {
   name: "pcb-theme",
@@ -194,7 +195,7 @@ export default {
       ],
     },
     source: {
-      handlers: [menuHandler, mediaHandler],
+      handlers: [menuHandler, mediaHandler, postHandler],
     },
   },
 };

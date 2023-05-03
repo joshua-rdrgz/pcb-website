@@ -47,6 +47,7 @@ export default {
               "ceramic-coating": 11,
             }).map((tag) => actions.source.fetch(`/tag/${tag}`))
           );
+          await actions.source.fetch("posts");
         },
     },
   },
