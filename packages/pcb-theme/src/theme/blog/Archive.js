@@ -2,10 +2,9 @@ import { useState } from "react";
 import { connect, styled } from "frontity";
 
 import Filter from "./archive-components/Filter";
-import PostPreview from "./archive-components/PostPreview";
 
 import filterPosts from "./helpers/filterPosts";
-import gatherPostData from "./helpers/gatherPostData";
+import generatePosts from "./helpers/generatePosts";
 
 import * as variables from "./styles/variables";
 
@@ -65,16 +64,6 @@ const SearchParamsBodyP = styled.p`
 
 const Span = styled.span`
   color: ${variables.colorNeutral300};
-`;
-
-const H2 = styled.h2`
-  text-align: center;
-  color: ${variables.colorNeutral100};
-  ${variables.textHeading6Bold};
-  padding: ${variables.spacing16};
-  @media (min-width: ${variables.breakpoint600}) {
-    ${variables.textHeading3Bold};
-  }
 `;
 
 const SearchResultsContentSection = styled.section`
@@ -137,26 +126,7 @@ const Archive = ({ state }) => {
             </div>
           </SearchParamsSection>
           <SearchResultsContentSection>
-            {filteredPosts.length === 0 && (
-              <H2>
-                No posts matched the filter results. Please filter for something
-                else!
-              </H2>
-            )}
-            {filteredPosts.map((item) => {
-              // *
-              // GRAB POST DATA
-              // *
-              const post = state.source[item.type][item.id];
-              // *
-              // GATHER PREVIEW DATA
-              // *
-              const postPreviewData = gatherPostData(post, state, media);
-              // *
-              // RENDER POST PREVIEW
-              // *
-              return <PostPreview key={item.id} blogData={postPreviewData} />;
-            })}
+            {generatePosts("archive", filteredPosts, state, media)}
           </SearchResultsContentSection>
         </SearchResultsSection>
       </BlogContentDiv>
