@@ -2,8 +2,11 @@ import { connect, styled, css } from "frontity";
 import Breadcrumbs from "./post-components/Breadcrumbs";
 
 import gatherPostData from "./helpers/gatherPostData";
+import generatePosts from "./helpers/generatePosts";
+import filterPosts from "./helpers/filterPosts";
 
 import * as variables from "./styles/variables";
+import generalPostStyles from "./styles/generalPostStyles";
 
 const HeroboxSection = styled.section`
   ${({ bgImgURL }) => css`
@@ -55,125 +58,35 @@ const Span = styled.span`
   }
 `;
 
-// *
-// GENERAL STYLINGS TO EVERY POST
-// *
 const PostContentDiv = styled.div`
-  & h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: trade-gothic-next-compressed, sans-serif;
-    font-style: normal;
-    color: ${variables.colorPureBlack};
+  @media (min-width: ${variables.breakpoint1300}) {
+    display: flex;
   }
-  & h2 {
-    ${variables.textHeading6Bold};
-    @media (min-width: ${variables.breakpoint600}) {
-      ${variables.textHeading4Bold};
-    }
-    @media (min-width: ${variables.breakpoint950}) {
-      ${variables.textHeading3Bold};
-    }
+`;
+
+const MainContentSection = styled.section`
+  ${generalPostStyles};
+  @media (min-width: ${variables.breakpoint1300}) {
+    flex-grow: 1;
   }
-  & h3 {
-    ${variables.textBody14Bold};
-    @media (min-width: ${variables.breakpoint600}) {
-      ${variables.textHeading6Bold};
-    }
-    @media (min-width: ${variables.breakpoint950}) {
-      ${variables.textHeading5Bold};
-    }
-  }
-  & section {
+`;
+
+const Aside = styled.aside`
+  display: none;
+  @media (min-width: ${variables.breakpoint1300}) {
+    width: 350rem;
     display: flex;
     flex-direction: column;
-    gap: ${variables.spacing24};
-    padding: ${variables.spacing16} ${variables.spacing12};
+    gap: ${variables.spacing32};
+    background-color: ${variables.colorNeutral500};
   }
-  & figure {
-    max-width: 100%;
-    @media (min-width: ${variables.breakpoint600}) {
-      max-width: 75%;
-    }
-    @media (min-width: ${variables.breakpoint950}) {
-      max-width: 60%;
-    }
-    @media (min-width: ${variables.breakpoint1300}) {
-      max-width: 50%;
-    }
-  }
-  & img {
-    max-width: 100%;
-    border-radius: ${variables.spacing2};
-    border: 1px solid ${variables.colorNeutral900};
-  }
-  & figcaption {
-    text-align: center;
-    ${variables.textBody12};
-    @media (min-width: ${variables.breakpoint600}) {
-      ${variables.textBody14};
-    }
-    @media (min-width: ${variables.breakpoint950}) {
-      ${variables.textBody16};
-    }
-  }
-  & p {
-    ${variables.textBody12};
-    color: ${variables.colorNeutral900};
-    @media (min-width: ${variables.breakpoint600}) {
-      ${variables.textBody18};
-    }
-    @media (min-width: ${variables.breakpoint950}) {
-      ${variables.textBody20};
-    }
-  }
-  & ul,
-  & ol {
-    padding: ${variables.spacing4} ${variables.spacing16};
-    ${variables.textBody12};
-    @media (min-width: ${variables.breakpoint600}) {
-      padding: ${variables.spacing4} ${variables.spacing24};
-      ${variables.textBody18};
-    }
-    @media (min-width: ${variables.breakpoint950}) {
-      padding: ${variables.spacing8} ${variables.spacing28};
-      ${variables.textBody20};
-    }
-    @media (min-width: ${variables.breakpoint1300}) {
-      padding: ${variables.spacing8} ${variables.spacing40};
-    }
-  }
-  & blockquote {
-    padding-left: ${variables.spacing12};
-    margin: ${variables.spacing4} ${variables.spacing16};
-    border-left: 3px solid ${variables.colorNeutral900};
-    & p {
-      ${variables.textBody16Bold};
-    }
-    @media (min-width: ${variables.breakpoint600}) {
-      margin: ${variables.spacing8} ${variables.spacing20};
-      & p {
-        ${variables.textBody24Bold};
-      }
-      & cite {
-        ${variables.textBody16};
-        font-style: italic;
-      }
-    }
-    @media (min-width: ${variables.breakpoint950}) {
-      margin: ${variables.spacing12} ${variables.spacing28};
-      & p {
-        ${variables.textBody30Bold};
-      }
-      & cite {
-        ${variables.textBody18};
-        font-style: italic;
-      }
-    }
-  }
+`;
+
+const AsideSpan = styled.span`
+  text-align: center;
+  padding-top: ${variables.spacing24};
+  color: ${variables.colorNeutral700};
+  ${variables.textHeading4};
 `;
 
 const Post = ({ state, libraries }) => {
@@ -188,6 +101,8 @@ const Post = ({ state, libraries }) => {
   const data = state.source.get(state.router.link);
   const post = state.source[data.type][data.id];
 
+  const posts = state.source.get("posts").posts;
+
   // *
   // GATHER WORDPRESS MEDIA
   // *
@@ -197,6 +112,11 @@ const Post = ({ state, libraries }) => {
   // COLLECT ALL INFO NEEDED INTO 1 PLACE
   // *
   const postData = gatherPostData(post, state, media);
+  const relatedPosts = filterPosts(
+    posts,
+    { selectedCategory: "All", selectedTag: postData.tags[0] },
+    state.source
+  );
 
   return (
     <>
@@ -221,11 +141,17 @@ const Post = ({ state, libraries }) => {
           })}
         </Span>
       </HeroboxSection>
-      <Breadcrumbs
-        postData={{ postTitle: postData.title, postLink: postData.link }}
-      />
       <PostContentDiv>
-        <Html2React html={post.content.rendered} />
+        <MainContentSection>
+          <Breadcrumbs
+            postData={{ postTitle: postData.title, postLink: postData.link }}
+          />
+          <Html2React html={post.content.rendered} />
+        </MainContentSection>
+        <Aside>
+          <AsideSpan>See More Like This Post</AsideSpan>
+          {generatePosts("related", relatedPosts, state, media)}
+        </Aside>
       </PostContentDiv>
     </>
   );
