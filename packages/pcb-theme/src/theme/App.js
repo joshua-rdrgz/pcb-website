@@ -3,6 +3,9 @@ import { Head, Global, connect } from "frontity";
 import Switch from "@frontity/components/switch";
 import Reset from "./styles/Reset";
 
+import Archive from "./blog/Archive";
+import Post from "./blog/Post";
+
 import Header from "./layout/main/Header";
 import PageContent from "./layout/main/PageContent";
 import Footer from "./layout/main/Footer";
@@ -30,15 +33,19 @@ const App = ({ state }) => {
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <html lang="en" />
-        <link rel="stylesheet" href="https://use.typekit.net/pjj0xta.css" />
+        <link rel="stylesheet" href="https://use.typekit.net/zau4ika.css" />
       </Head>
       <Global styles={Reset} />
       {isLandingPage ? <LandingHeader /> : <Header />}
-      <Switch>
-        <PageContent when={data.isPage || data.isLandingPage} />
-        <Loading when={data.isFetching} />
-        <Error when={data.isError} />
-      </Switch>
+      <main>
+        <Switch>
+          <Loading when={data.isFetching} />
+          <Archive when={data.isArchive} />
+          <Post when={data.isPost} />
+          <PageContent when={data.isPage || data.isLandingPage} />
+          <Error when={data.isError} />
+        </Switch>
+      </main>
       {isLandingPage ? <LandingFooter /> : <Footer />}
     </>
   );

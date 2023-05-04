@@ -17,6 +17,7 @@ const settings = {
         source: {
           url: "https://wp.performanceclearbra.com",
           homepage: "/home",
+          postsPage: "/blog",
           redirections: "404",
           postTypes: [
             {

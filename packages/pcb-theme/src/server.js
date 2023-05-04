@@ -31,10 +31,23 @@ export default {
         },
       beforeSSR:
         ({ actions }) =>
-        async () => {
+        async ({ state, actions }) => {
           await actions.theme.fetchToken();
           await actions.source.fetch("menus");
           await actions.source.fetch("media");
+          await Promise.all(
+            Object.keys({
+              article: 6,
+              news: 7,
+              "case-study": 8,
+            }).map((category) => actions.source.fetch(`/category/${category}`)),
+            Object.keys({
+              "paint-protection-film": 9,
+              "window-tint": 10,
+              "ceramic-coating": 11,
+            }).map((tag) => actions.source.fetch(`/tag/${tag}`))
+          );
+          await actions.source.fetch("posts");
         },
     },
   },

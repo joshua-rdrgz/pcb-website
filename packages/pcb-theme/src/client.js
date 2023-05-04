@@ -15,6 +15,8 @@ import videoProcessor from "./theme/processors/videoProcessor";
 import tabbedServiceInfoProcessor from "./theme/processors/serviceInfoProcessor";
 import contactProcessor from "./theme/processors/contactProcessor";
 import thankYouProcessor from "./theme/processors/thankYouProcessor";
+import postSectionProcessor from "./theme/blog/processors/postSectionProcessor";
+import postHandler from "./theme/handlers/post-handler";
 
 export default {
   name: "pcb-theme",
@@ -33,17 +35,14 @@ export default {
         menuActiveTabs: [],
       },
       herobox: {
-        activeRepBrands: '',
+        activeRepBrands: "",
       },
       testimonials: {
         isExcerpt: [],
         viewportWidth: 0,
       },
       faq: {
-        FAQToggleData: [
-          [],
-          []
-        ],
+        FAQToggleData: [[], []],
       },
       tabbedServiceInfo: {
         currentPageData: {},
@@ -109,9 +108,11 @@ export default {
           },
       },
       herobox: {
-        setActiveRepBrands: ({ state }) => page => {
-          state.theme.herobox.activeRepBrands = page;
-        }
+        setActiveRepBrands:
+          ({ state }) =>
+          (page) => {
+            state.theme.herobox.activeRepBrands = page;
+          },
       },
       testimonials: {
         initTestimonials:
@@ -124,9 +125,11 @@ export default {
           (index) => {
             state.theme.testimonials.isExcerpt[index] = false;
           },
-        setViewportWidth: ({ state }) => outerWidth => {
-          state.theme.testimonials.viewportWidth = outerWidth;
-        }
+        setViewportWidth:
+          ({ state }) =>
+          (outerWidth) => {
+            state.theme.testimonials.viewportWidth = outerWidth;
+          },
       },
       faq: {
         addFAQToggleData:
@@ -188,10 +191,11 @@ export default {
         tabbedServiceInfoProcessor,
         contactProcessor,
         thankYouProcessor,
+        postSectionProcessor,
       ],
     },
     source: {
-      handlers: [menuHandler, mediaHandler],
+      handlers: [menuHandler, mediaHandler, postHandler],
     },
   },
 };
