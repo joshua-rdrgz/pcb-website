@@ -2,7 +2,7 @@ const settings = {
   name: "pcb-website",
   state: {
     frontity: {
-      url: "https://wp.performanceclearbra.com",
+      url: "https://performanceclearbra.com",
       title: "Performance Clear Bra",
       description: "Marketing website of Performance Clear Bra",
     },
