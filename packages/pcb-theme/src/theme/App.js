@@ -28,7 +28,7 @@ const App = ({ state }) => {
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <html lang="en" />
-        <link rel="icon" type="image/png" href={state.theme.favicon.guid.rendered} />
+        <link rel="icon" type="image/png" href={state.theme.favicon.guid?.rendered} />
         <link rel="stylesheet" href="https://use.typekit.net/zau4ika.css" />
       </Head>
       <Global styles={Reset} />
