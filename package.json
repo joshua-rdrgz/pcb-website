@@ -7,7 +7,7 @@
     "performance-clear-bra"
   ],
   "engines": {
-    "node": "16.13.0",
+    "node": "12.x",
     "npm": ">=6.0.0"
   },
   "scripts": {
