@@ -48,6 +48,9 @@ export default {
             }).map((tag) => actions.source.fetch(`/tag/${tag}`))
           );
           await actions.source.fetch("posts");
+          await fetch(`${state.source.url}/wp-json/wp/v2/media/245`)
+            .then((res) => res.json())
+            .then((image) => (state.theme.favicon = image));
         },
     },
   },
