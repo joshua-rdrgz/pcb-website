@@ -29,10 +29,10 @@ export const addHeadingFont = (fontWeight, fontSize) => css`
   font-weight: ${fontWeight};
   font-style: normal;
   font-size: ${fontSize}rem;
-  @media (max-width: ${Variables.queryLG}) {
+  @media (max-width: ${Variables.query1000}) {
     font-size: ${fontSize - 0.35}rem;
   }
-  @media (max-width: ${Variables.queryMD}) {
+  @media (max-width: ${Variables.query800}) {
     font-size: ${fontSize - 0.55}rem;
   }
 `;

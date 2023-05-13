@@ -113,7 +113,7 @@ const Caption = styled.p`
   text-align: center;
   font-size: 2rem;
   animation: ${fadeIn} 0.2s linear;
-  @media (max-width: ${Variables.queryMDSMSM}) {
+  @media (max-width: ${Variables.query600}) {
     font-size: 1.5rem;
   }
 `;

@@ -348,7 +348,7 @@ const Img = styled.img`
   left: 50%;
   transform: translate(-50%, -50%);
   animation: ${Variables.fadeIn} 1s ease;
-  @media (max-width: ${Variables.queryLG}) {
+  @media (max-width: ${Variables.query1000}) {
     position: static;
     top: 0;
     left: 0;

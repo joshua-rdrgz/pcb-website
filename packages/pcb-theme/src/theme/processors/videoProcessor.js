@@ -6,7 +6,7 @@ const videoProcessor = {
   name: "Video",
   priority: 5,
   test: ({ node }) => {
-    return node?.props?.className?.includes("wp-block-group" && "video");
+    return node?.props?.className?.includes("wp-block-group" && "video-section");
   },
   processor: ({ node }) => {
     const nodeClasses = node?.props?.className;

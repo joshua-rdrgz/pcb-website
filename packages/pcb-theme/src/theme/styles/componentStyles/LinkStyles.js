@@ -1,12 +1,14 @@
-import { css } from 'frontity';
-import Link from '@frontity/components/link';
+import { css } from "frontity";
+import Link from "@frontity/components/link";
 
-import * as Variables from '../Variables';
-import * as Mixins from '../Mixins';
+import * as Variables from "../Variables";
+import * as Mixins from "../Mixins";
 
 const LinkStyles = (type, fontSize) => {
-  const remFontSize = fontSize && (fontSize.split(';')[0].split(':')[1].split('p')[0] / 10).toString();
-  if(type === 'primary') {
+  const remFontSize =
+    fontSize &&
+    (fontSize.split(";")[0].split(":")[1].split("p")[0] / 10).toString();
+  if (type === "primary") {
     return css`
       display: inline-block;
       ${Mixins.aCleanUp(Variables.colorWhite)};
@@ -15,9 +17,9 @@ const LinkStyles = (type, fontSize) => {
       margin: 3rem 0;
       border-radius: 0.5rem;
       ${Mixins.applyBoxShadow};
-      transition: all .1s;
-      ${Mixins.addHeadingFont(400, remFontSize ? remFontSize : '3')};
-      @media (max-width: ${Variables.querySMMD}) {
+      transition: all 0.1s;
+      ${Mixins.addHeadingFont(400, remFontSize ? remFontSize : "3")};
+      @media (max-width: ${Variables.query550}) {
         font-size: 3rem;
         padding: 0 2rem;
       }
@@ -26,10 +28,10 @@ const LinkStyles = (type, fontSize) => {
       }
     `;
   }
-  if(type === 'secondary') {
+  if (type === "secondary") {
     return css`
       ${Mixins.aCleanUp(Variables.colorGold)};
-      ${Mixins.addHeadingFont(400, remFontSize ? remFontSize : '2.75')};
+      ${Mixins.addHeadingFont(400, remFontSize ? remFontSize : "2.75")};
       display: inline-block;
       margin-bottom: 1rem;
       text-decoration: underline;
@@ -38,6 +40,6 @@ const LinkStyles = (type, fontSize) => {
       }
     `;
   }
-}
+};
 
 export default LinkStyles;

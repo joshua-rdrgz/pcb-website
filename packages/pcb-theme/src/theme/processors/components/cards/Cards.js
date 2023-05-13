@@ -139,7 +139,7 @@ const Cards = styled.div`
       position: relative;
     `}
   margin: 0 auto;
-  @media (max-width: ${Variables.queryXSM}) {
+  @media (max-width: ${Variables.query392}) {
     width: 100%;
     grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   }

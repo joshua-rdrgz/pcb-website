@@ -73,7 +73,7 @@ const GalleryWrapper = styled.div`
     css`
       padding-bottom: 4rem;
     `}
-  @media (max-width: ${Variables.queryMD}) {
+  @media (max-width: ${Variables.query800}) {
     display: flex;
     flex-direction: column;
   }

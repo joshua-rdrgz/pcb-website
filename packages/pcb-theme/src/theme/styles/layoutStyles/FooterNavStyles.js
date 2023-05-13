@@ -24,7 +24,7 @@ export const NavList = styled.ul``;
 export const NavItem = styled.li`
   ${Mixins.liCleanUp()};
   font-size: 2.5rem;
-  @media (max-width: ${Variables.queryLG}) {
+  @media (max-width: ${Variables.query1000}) {
     font-size: ${2.5 - 0.35}rem;
   }
 `;
