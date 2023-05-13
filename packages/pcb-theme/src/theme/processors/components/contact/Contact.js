@@ -33,7 +33,7 @@ const SectionHeader = styled.h1`
   text-shadow: ${Variables.textShadow};
   line-height: 1.2;
   padding: 2rem;
-  @media (max-width: ${Variables.queryMD}) {
+  @media (max-width: ${Variables.query800}) {
     font-size: 3rem;
   }
 `;
@@ -48,31 +48,31 @@ const SubHeader = styled.h2`
 `;
 
 const addMediaQueries = css`
-  @media (max-width: ${Variables.queryMDLG}) {
+  @media (max-width: ${Variables.query875}) {
     height: 155rem;
   }
-  @media (max-width: ${Variables.queryMD}) {
+  @media (max-width: ${Variables.query800}) {
     height: 152rem;
   }
-  @media (max-width: ${Variables.queryMDMD}) {
+  @media (max-width: ${Variables.query750}) {
     height: 148rem;
   }
-  @media (max-width: ${Variables.queryMDSMMD}) {
+  @media (max-width: ${Variables.query700}) {
     height: 145rem;
   }
-  @media (max-width: ${Variables.queryMDSM}) {
+  @media (max-width: ${Variables.query650}) {
     height: 140rem;
   }
-  @media (max-width: ${Variables.querySMMD}) {
+  @media (max-width: ${Variables.query550}) {
     height: 133rem;
   }
-  @media (max-width: ${Variables.querySM}) {
+  @media (max-width: ${Variables.query490}) {
     height: 129rem;
   }
-  @media (max-width: ${Variables.querySMSM}) {
+  @media (max-width: ${Variables.query450}) {
     height: 126rem;
   }
-  @media (max-width: ${Variables.queryXSM}) {
+  @media (max-width: ${Variables.query392}) {
     height: 125rem;
   }
 `;
@@ -107,7 +107,7 @@ const Grid = styled.article`
   display: grid;
   grid-template-columns: 1fr 2fr 2fr;
   grid-template-rows: 1fr 20fr 1fr;
-  @media (max-width: ${Variables.queryMDLG}) {
+  @media (max-width: ${Variables.query875}) {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 89rem;
     left: 2.5%;
@@ -115,7 +115,7 @@ const Grid = styled.article`
     right: 2.5%;
     transform: none;
   }
-  @media (max-width: ${Variables.queryXSM}) {
+  @media (max-width: ${Variables.query392}) {
     transform: translateY(3rem);
   }
 `;
@@ -123,7 +123,7 @@ const Grid = styled.article`
 const ImgFigure = styled.figure`
   grid-column: 1 / 3;
   grid-row: 1 / -1;
-  @media (max-width: ${Variables.queryMDLG}) {
+  @media (max-width: ${Variables.query875}) {
     grid-column: 1;
     grid-row: 1 / 2;
   }
@@ -139,7 +139,7 @@ const Img = styled.img`
 const ContactFigure = styled.figure`
   grid-column: 2 / -1;
   grid-row: 2 / 3;
-  @media (max-width: ${Variables.queryMDLG}) {
+  @media (max-width: ${Variables.query875}) {
     grid-column: 1;
     grid-row: 2 / -1;
   }
@@ -150,7 +150,7 @@ const Contact = styled.iframe`
   min-height: 100%;
   border: none;
   border-radius: 1rem;
-  @media (max-width: ${Variables.queryXSM}) {
+  @media (max-width: ${Variables.query392}) {
     width: 90%;
   }
 `;

@@ -9,10 +9,13 @@ const FAQTab = ({ state, actions, sectionHeader, faqsContainer }) => {
     faqsContainer.forEach((faqsBlock, faqsBlockIndex) => {
       const faqs = faqsBlock?.children[0]?.children;
       faqs.forEach((_, faqIndex) => {
-        actions.theme.faq.addFAQToggleData({
-          index: faqIndex,
-          open: false,
-        }, faqsBlockIndex);
+        actions.theme.faq.addFAQToggleData(
+          {
+            index: faqIndex,
+            open: false,
+          },
+          faqsBlockIndex
+        );
       });
     });
   }, [faqsContainer]);
@@ -24,32 +27,56 @@ const FAQTab = ({ state, actions, sectionHeader, faqsContainer }) => {
         {faqsContainer.map((faqsBlock, faqsBlockIndex) => {
           const faqs = faqsBlock?.children[0]?.children;
           return (
-            <FAQs key={`faq-${faqsBlockIndex}`} hasHeader={faqs[0].component.includes('h')}>
+            <FAQs
+              key={`faq-${faqsBlockIndex}`}
+              hasHeader={faqs[0].component.includes("h")}
+            >
               {faqs.map((faq, faqIndex) => {
-                const question =
-                  faq.component.includes('h') ? null : faq?.children[0]?.children[0]?.children[0]?.content;
-                const answer =
-                  faq.component.includes('h') ? null : faq?.children[0]?.children[1]?.children[0]?.content;
-        
+                const question = faq.component.includes("h")
+                  ? null
+                  : faq?.children[0]?.children[0]?.children[0]?.content;
+                const answer = faq.component.includes("h")
+                  ? null
+                  : faq?.children[0]?.children[1]?.children[0]?.content;
+
                 if (!question) {
                   return (
-                    <FAQHeader key={`faq-Header-${faqIndex + 1}`}>{faq?.children[0]?.content}</FAQHeader>
-                  )
+                    <FAQHeader key={`faq-Header-${faqIndex + 1}`}>
+                      {faq?.children[0]?.content}
+                    </FAQHeader>
+                  );
                 } else {
                   return (
-                  <FAQ
-                    key={`faq-${faqIndex + 1}`}
-                    onClick={() => actions.theme.faq.setFAQToggleData(faqsBlockIndex, faqIndex)}
-                  >
-                    <FAQIcon isOpen={state.theme.faq.FAQToggleData[faqsBlockIndex][faqIndex]?.open}>
-                      &nbsp;
-                    </FAQIcon>
-                    <Question>{question}</Question>
-                    <Answer isOpen={state.theme.faq.FAQToggleData[faqsBlockIndex][faqIndex]?.open}>
-                      {answer}
-                    </Answer>
-                  </FAQ>
-                );
+                    <FAQ
+                      key={`faq-${faqIndex + 1}`}
+                      onClick={() =>
+                        actions.theme.faq.setFAQToggleData(
+                          faqsBlockIndex,
+                          faqIndex
+                        )
+                      }
+                    >
+                      <FAQIcon
+                        isOpen={
+                          state.theme.faq.FAQToggleData[faqsBlockIndex][
+                            faqIndex
+                          ]?.open
+                        }
+                      >
+                        &nbsp;
+                      </FAQIcon>
+                      <Question>{question}</Question>
+                      <Answer
+                        isOpen={
+                          state.theme.faq.FAQToggleData[faqsBlockIndex][
+                            faqIndex
+                          ]?.open
+                        }
+                      >
+                        {answer}
+                      </Answer>
+                    </FAQ>
+                  );
                 }
               })}
             </FAQs>
@@ -74,7 +101,7 @@ const Section = styled.section`
 
 const FAQsContainer = styled.div`
   display: flex;
-  @media (max-width: ${Variables.queryMD}) {
+  @media (max-width: ${Variables.query800}) {
     display: block;
   }
 `;
@@ -93,12 +120,12 @@ const FAQs = styled.section`
   display: flex;
   flex-direction: column;
   gap: 3rem;
-  width: ${props => props.hasHeader ? '40%' : '80%'};
+  width: ${(props) => (props.hasHeader ? "40%" : "80%")};
   margin: 0 auto;
   position: relative;
   padding-bottom: 4rem;
   cursor: pointer;
-  @media (max-width: ${Variables.queryMD}) {
+  @media (max-width: ${Variables.query800}) {
     width: 80%;
   }
 `;

@@ -108,7 +108,7 @@ const ButtonsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  @media (max-width: ${Variables.queryMDLG}) {
+  @media (max-width: ${Variables.query875}) {
     justify-content: center;
     text-align: center;
     gap: 0.5rem;
@@ -121,7 +121,7 @@ const ButtonList = styled.nav`
   gap: 1rem;
   &:first-child {
     margin-right: 7rem;
-    @media (max-width: ${Variables.queryMDLG}) {
+    @media (max-width: ${Variables.query875}) {
       margin-right: 0;
     }
   }
@@ -135,7 +135,7 @@ const Options = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
-  @media (max-width: ${Variables.queryMDLG}) {
+  @media (max-width: ${Variables.query875}) {
     justify-content: center;
   }
 `;
@@ -170,7 +170,7 @@ const Content = styled.div`
     "img price"
     "img des"
     "img ben";
-  @media (max-width: ${Variables.queryLG}) {
+  @media (max-width: ${Variables.query1000}) {
     grid-template-columns: 1fr;
     grid-template-areas:
       "img"

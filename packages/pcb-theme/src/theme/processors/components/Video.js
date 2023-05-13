@@ -73,13 +73,13 @@ const VideoWrapper = styled.figure`
     props.backgroundColor === "dark" && Variables.colorRedDeep1};
   border-radius: 1rem;
   text-align: center;
-  @media (max-width: ${Variables.queryLG}) {
+  @media (max-width: ${Variables.query1000}) {
     margin: 0 2rem;
     &:last-child {
       margin-bottom: 4rem;
     }
   }
-  @media (max-width: ${Variables.queryMDSMSM}) {
+  @media (max-width: ${Variables.query600}) {
     padding: 1rem;
   }
 `;
@@ -87,7 +87,7 @@ const VideoWrapper = styled.figure`
 const VideoHeader = styled.h4`
   ${Mixins.addHeadingFont(400, 2.5)};
   padding-bottom: 1rem;
-  @media (max-width: ${Variables.queryMDSMSM}) {
+  @media (max-width: ${Variables.query600}) {
     padding-bottom: 0;
   }
 `;
@@ -96,31 +96,31 @@ const Video = styled.iframe`
   width: 60rem;
   height: 32rem;
   box-shadow: ${Variables.boxShadow};
-  @media (max-width: ${Variables.queryXXXLG}) {
+  @media (max-width: ${Variables.query1450}) {
     width: 50rem;
     height: 28rem;
   }
-  @media (max-width: ${Variables.queryLGXLG}) {
+  @media (max-width: ${Variables.query1250}) {
     width: 35rem;
     height: 19rem;
   }
-  @media (max-width: ${Variables.queryLG}) {
+  @media (max-width: ${Variables.query1000}) {
     width: 60rem;
     height: 32rem;
   }
-  @media (max-width: ${Variables.queryMDMD}) {
+  @media (max-width: ${Variables.query750}) {
     width: 50rem;
     height: 28rem;
   }
-  @media (max-width: ${Variables.queryMDSMSM}) {
+  @media (max-width: ${Variables.query600}) {
     width: 35rem;
     height: 19rem;
   }
-  @media (max-width: ${Variables.queryMDSMSM}) {
+  @media (max-width: ${Variables.query600}) {
     width: 35rem;
     height: 19rem;
   }
-  @media (max-width: ${Variables.queryXSMLG}) {
+  @media (max-width: ${Variables.query400}) {
     width: 26rem;
     height: 14rem;
   }

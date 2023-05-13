@@ -91,7 +91,7 @@ const StyledHeader = styled.header`
   position: sticky;
   top: 0;
   z-index: 1000;
-  @media (max-width: ${Variables.querySMMD}) {
+  @media (max-width: ${Variables.query550}) {
     ${(props) =>
       props.scrollPos > 50 &&
       `
@@ -101,11 +101,11 @@ const StyledHeader = styled.header`
 `;
 
 const PcbLogoLink = styled(Link)`
-  @media (max-width: ${Variables.queryMD}) {
+  @media (max-width: ${Variables.query800}) {
     margin-right: auto;
     width: 200px;
   }
-  @media (max-width: ${Variables.querySMMD}) {
+  @media (max-width: ${Variables.query550}) {
     margin-left: 0.5rem;
   }
 `;
@@ -113,11 +113,11 @@ const PcbLogoLink = styled(Link)`
 const PcbLogo = styled.img`
   width: 250px;
   margin-left: 3rem;
-  @media (max-width: ${Variables.queryMD}) {
+  @media (max-width: ${Variables.query800}) {
     margin-right: auto;
     width: 200px;
   }
-  @media (max-width: ${Variables.querySMMD}) {
+  @media (max-width: ${Variables.query550}) {
     margin-left: 1rem;
   }
 `;
@@ -130,7 +130,7 @@ const TopBarContainer = styled.div`
   transition: all 0.5s;
   ${Mixins.addColors(Variables.colorRedDeep2, Variables.colorWhitePure)};
   ${Mixins.addHeadingFont(400, 2)};
-  @media (max-width: ${Variables.querySMMD}) {
+  @media (max-width: ${Variables.query550}) {
     ${(props) => props.scrollPos > 50 && "transform: translateY(-100%)"}
   }
   @media (max-width: 566px) {
@@ -147,14 +147,14 @@ const TopBarContainer = styled.div`
 const CallBlock = styled.div`
   padding: 0 3rem;
   border-right: ${Variables.headerBorder};
-  @media (max-width: ${Variables.queryMD}) {
+  @media (max-width: ${Variables.query800}) {
     padding: 0 1rem;
   }
-  @media (max-width: ${Variables.querySMMD}) {
+  @media (max-width: ${Variables.query550}) {
     border-right: none;
     margin-left: auto;
   }
-  @media (max-width: ${Variables.querySM}) {
+  @media (max-width: ${Variables.query490}) {
     margin: 0 auto;
   }
 `;
@@ -168,14 +168,14 @@ const AddressLink = styled(Link)`
   border-right: 1px solid ${Variables.colorWhite};
   padding: 0 3rem;
   text-decoration: underline;
-  @media (max-width: ${Variables.queryMD}) {
+  @media (max-width: ${Variables.query800}) {
     padding: 0 1rem;
   }
-  @media (max-width: ${Variables.querySMMD}) {
+  @media (max-width: ${Variables.query550}) {
     border-right: none;
     margin: 0 auto;
   }
-  @media (max-width: ${Variables.queryXSM}) {
+  @media (max-width: ${Variables.query392}) {
     margin: 0 auto;
     text-align: center;
   }
@@ -186,12 +186,12 @@ const SocialsBlock = styled.div`
   gap: 2rem;
   align-items: center;
   padding-left: 3rem;
-  @media (max-width: ${Variables.queryMD}) {
+  @media (max-width: ${Variables.query800}) {
     gap: 1rem;
     padding: 0 1rem;
     margin: 0 auto;
   }
-  @media (max-width: ${Variables.querySMMD}) {
+  @media (max-width: ${Variables.query550}) {
     padding-bottom: 0.5rem;
   }
 `;
@@ -206,11 +206,11 @@ const MainBarContainer = styled.div`
     props.scrollPos > 125
       ? Variables.colorBlackPureRGBA
       : Variables.colorBlackPure};
-  @media (max-width: ${Variables.queryMD}) {
+  @media (max-width: ${Variables.query800}) {
     flex-direction: column;
     height: 95px;
   }
-  @media (max-width: ${Variables.querySMMD}) {
+  @media (max-width: ${Variables.query550}) {
     ${(props) =>
       props.scrollPos > 50 &&
       `

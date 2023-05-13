@@ -22,7 +22,7 @@ const RepBrandsContainer = styled.ul`
   flex-wrap: wrap;
   padding: 2.5rem 2rem;
   background-color: ${Variables.colorGray1RGBA};
-  @media (max-width: ${Variables.queryXLG}) {
+  @media (max-width: ${Variables.query1300}) {
   }
 `;
 
@@ -32,33 +32,33 @@ const Brand = styled.li`
 
 const SunTek = styled.img`
   width: 10rem;
-  @media (max-width: ${Variables.queryLG}) {
+  @media (max-width: ${Variables.query1000}) {
     width: 8rem;
   }
 `;
 
 const Reaction = styled.img`
   width: 35rem;
-  @media (max-width: ${Variables.queryLG}) {
+  @media (max-width: ${Variables.query1000}) {
     width: 20rem;
   }
 `;
 
 const BestOfFtWorth = styled.img`
-  @media (max-width: ${Variables.queryLG}) {
+  @media (max-width: ${Variables.query1000}) {
     width: 25rem;
   }
 `;
 
 const Evolve = styled.img`
   width: 25rem;
-  @media (max-width: ${Variables.queryLG}) {
+  @media (max-width: ${Variables.query1000}) {
     width: 15rem;
   }
 `;
 
 const CeramicPro = styled.img`
-  @media (max-width: ${Variables.queryLG}) {
+  @media (max-width: ${Variables.query1000}) {
     width: 25rem;
   }
 `;
@@ -97,28 +97,28 @@ const getRepBrandsData = (link) => {
     case "/about/":
       page = "about";
       heightOfRepBrands = css`
-      height: 155px;
-      @media (max-width: 1651px) {
-        height: 250px;
-      }
-      @media (max-width: 1351px) {
-        height: 270px;
-      }
-      @media (max-width: 1000px) {
-        height: 346px;
-      }
-      @media (max-width: 549px) {
-        height: 410px;
-      }
-      @media (max-width: 489px) {
-        height: 421px;
-      }
-      @media (max-width: 449px) {
-        height: 485px;
-      }
-      @media (max-width: 329px) {
-        height: 535px;
-      }
+        height: 155px;
+        @media (max-width: 1651px) {
+          height: 250px;
+        }
+        @media (max-width: 1351px) {
+          height: 270px;
+        }
+        @media (max-width: 1000px) {
+          height: 346px;
+        }
+        @media (max-width: 549px) {
+          height: 410px;
+        }
+        @media (max-width: 489px) {
+          height: 421px;
+        }
+        @media (max-width: 449px) {
+          height: 485px;
+        }
+        @media (max-width: 329px) {
+          height: 535px;
+        }
       `;
       break;
     case "/paint-protection-film/":
@@ -137,7 +137,7 @@ const getRepBrandsData = (link) => {
         @media (max-width: 329px) {
           height: 460px;
         }
-      `
+      `;
       break;
     case "/window-tint/":
       page = "wt";
@@ -209,13 +209,13 @@ const repBrands = [
   {
     name: "BBB Accredited Business",
     link: "https://www.bbb.org/us/tx/fort-worth/profile/car-window-tinting/performance-clear-bra-0825-1000215058/#sealclick",
-    tag: 'img',
+    tag: "img",
     included: ["home", "about", "ppf", "wt"],
     img: {
       src: "https://seal-austin.bbb.org/seals/darkgray-seal-280-80-bbb-1000215058.png",
       alt: "Performance Clear Bra BBB Business Review",
-    }
-  }
+    },
+  },
 ];
 
 const RepBrands = ({ state }) => {

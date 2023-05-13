@@ -19,7 +19,9 @@ const LandingFooter = ({ state }) => {
       </Heading>
       <PCBLogo src={pcbLOGO} alt="Performance Clear Bra Logo" />
       <ButtonContainer>
-        <CTALink type="primary" link="tel:(972)%20295-7068">(972) 295 - 7068</CTALink>
+        <CTALink type="primary" link="tel:(972)%20295-7068">
+          (972) 295 - 7068
+        </CTALink>
         <CTAButton
           type="primary"
           onClick={() => {
@@ -69,16 +71,16 @@ const PCBLogo = styled.img`
   height: 214px;
   display: block;
   margin: 0 auto;
-  @media (max-width: ${Variables.queryLG}) {
+  @media (max-width: ${Variables.query1000}) {
     width: 500px;
   }
-  @media (max-width: ${Variables.queryMDSM}) {
+  @media (max-width: ${Variables.query650}) {
     width: 400px;
   }
-  @media (max-width: ${Variables.querySM}) {
+  @media (max-width: ${Variables.query490}) {
     width: 300px;
   }
-  @media (max-width: ${Variables.queryXSMLG}) {
+  @media (max-width: ${Variables.query400}) {
     width: 250px;
   }
 `;
@@ -92,10 +94,10 @@ const ButtonContainer = styled.div`
 
 const CTALink = styled(Link)`
   border: none;
-  ${props => LinkStyles(props.type)};
+  ${(props) => LinkStyles(props.type)};
   padding: 0.5rem 1.5rem;
   font-size: 3rem;
-  @media (max-width: ${Variables.querySMSMSM}) {
+  @media (max-width: ${Variables.query420}) {
     margin: 0;
     margin-bottom: 1.5rem;
   }
@@ -103,10 +105,10 @@ const CTALink = styled(Link)`
 
 const CTAButton = styled.button`
   border: none;
-  ${props => LinkStyles(props.type)};
+  ${(props) => LinkStyles(props.type)};
   padding: 0.5rem 1.5rem;
   font-size: 3rem;
-  @media (max-width: ${Variables.querySMSMSM}) {
+  @media (max-width: ${Variables.query420}) {
     margin: 0;
     margin-bottom: 1.5rem;
   }
@@ -118,10 +120,10 @@ const MapContainer = styled.div`
   position: relative;
   height: 0;
   width: 100%;
-  @media (max-width: ${Variables.queryLG}) {
+  @media (max-width: ${Variables.query1000}) {
     padding-bottom: 40%;
   }
-  @media (max-width: ${Variables.queryMDSMSM}) {
+  @media (max-width: ${Variables.query600}) {
     padding-bottom: 50%;
   }
 `;

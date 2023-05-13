@@ -104,7 +104,7 @@ const StyledFooter = styled.footer`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  @media (max-width: ${Variables.queryLG}) {
+  @media (max-width: ${Variables.query1000}) {
     padding-top: 5rem;
   }
 `;
@@ -115,7 +115,7 @@ const FooterGrid = styled.div`
   gap: 7rem;
   flex-wrap: wrap;
   margin: 0 5rem;
-  @media (max-width: ${Variables.queryMD}) {
+  @media (max-width: ${Variables.query800}) {
     text-align: center;
     gap: 3rem;
   }
@@ -126,20 +126,20 @@ const PcbLogo = styled.img`
   height: 214px;
   display: block;
   margin: 0 auto;
-  @media (max-width: ${Variables.queryLG}) {
+  @media (max-width: ${Variables.query1000}) {
     width: 500px;
   }
-  @media (max-width: ${Variables.queryMDMD}) {
+  @media (max-width: ${Variables.query750}) {
     border-bottom: 0.5px solid ${Variables.colorGray1};
     margin-bottom: 3rem;
   }
-  @media (max-width: ${Variables.queryMDSM}) {
+  @media (max-width: ${Variables.query650}) {
     width: 400px;
   }
-  @media (max-width: ${Variables.querySM}) {
+  @media (max-width: ${Variables.query490}) {
     width: 300px;
   }
-  @media (max-width: ${Variables.queryXSMLG}) {
+  @media (max-width: ${Variables.query400}) {
     width: 250px;
   }
 `;
@@ -151,7 +151,7 @@ const FancyLinesContainer = styled.div`
   width: 75rem;
   height: 0.5rem;
   margin-bottom: 3rem;
-  @media (max-width: ${Variables.queryMDMD}) {
+  @media (max-width: ${Variables.query750}) {
     display: none;
   }
 `;
@@ -172,7 +172,7 @@ const FancyLines = styled.div`
   &::after {
     right: 19rem;
   }
-  @media (max-width: ${Variables.queryMDMD}) {
+  @media (max-width: ${Variables.query750}) {
     display: none;
   }
 `;
@@ -219,11 +219,11 @@ const Socials = styled.div`
 const Map = styled.iframe`
   width: 400px;
   height: 300px;
-  @media (max-width: ${Variables.querySM}) {
+  @media (max-width: ${Variables.query490}) {
     width: 300px;
     height: 200px;
   }
-  @media (max-width: ${Variables.queryXSM}) {
+  @media (max-width: ${Variables.query392}) {
     width: 250px;
     height: 150px;
   }

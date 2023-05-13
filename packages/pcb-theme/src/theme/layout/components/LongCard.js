@@ -58,11 +58,11 @@ const Article = styled.article`
       `
     );
   }}
-  @media (max-width: ${Variables.queryMDLGLG}) {
+  @media (max-width: ${Variables.query925}) {
     grid-template-areas:
-      'title'
-      'text'
-      'img';
+      "title"
+      "text"
+      "img";
     grid-template-rows: auto;
     text-align: center;
   }
@@ -84,7 +84,7 @@ const SectionImg = styled.img`
   border-radius: 2rem;
   padding: 1rem;
   grid-area: img;
-  @media (max-width: ${Variables.queryMDLGLG}) {
+  @media (max-width: ${Variables.query925}) {
     max-width: 75%;
     margin: 0 auto;
   }

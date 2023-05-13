@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { connect, styled, css } from "frontity";
 
-import { fadeIn, queryLG } from "../../../styles/Variables";
+import { fadeIn, query1000 } from "../../../styles/Variables";
 
 const TabbedServiceDescription = ({ state, isWindowTint, descriptions }) => {
   return (
@@ -13,7 +13,9 @@ const TabbedServiceDescription = ({ state, isWindowTint, descriptions }) => {
               return (
                 <Div isWindowTint={isWindowTint} key={`description-${index}`}>
                   <DesHeading>{description[0]}</DesHeading>
-                  <Description isWindowTint={isWindowTint}>{description[1]?.[i]}</Description>
+                  <Description isWindowTint={isWindowTint}>
+                    {description[1]?.[i]}
+                  </Description>
                 </Div>
               );
             }
@@ -27,9 +29,11 @@ const TabbedServiceDescription = ({ state, isWindowTint, descriptions }) => {
 export default connect(TabbedServiceDescription);
 
 const Div = styled.div`
-  ${props => props.isWindowTint && css`
-    text-align: center;
-  `}
+  ${(props) =>
+    props.isWindowTint &&
+    css`
+      text-align: center;
+    `}
 `;
 
 const DesHeading = styled.span`
@@ -43,12 +47,14 @@ const DesHeading = styled.span`
 const Description = styled.p`
   font-size: 1.25rem;
   padding-right: 2rem;
-  ${props => props.isWindowTint && css`
-    padding-right: 0;
-  `}
+  ${(props) =>
+    props.isWindowTint &&
+    css`
+      padding-right: 0;
+    `}
   margin-bottom: 1rem;
   animation: ${fadeIn} 1s ease;
-  @media (max-width: ${queryLG}) {
+  @media (max-width: ${query1000}) {
     padding-right: 0;
   }
 `;

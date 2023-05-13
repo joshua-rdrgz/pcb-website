@@ -9,7 +9,7 @@ const LandingContactTab = ({
   secondItem,
   thirdItem,
   contact,
-  contactID
+  contactID,
 }) => {
   return (
     <LandingPageSection id={contactID}>
@@ -52,7 +52,7 @@ const LandingPageGrid = styled.div`
   column-gap: 4rem;
   width: 75%;
   margin: 0 auto;
-  @media (max-width: ${Variables.queryMD}) {
+  @media (max-width: ${Variables.query800}) {
     display: flex;
     flex-direction: column;
   }
@@ -64,7 +64,7 @@ const SectionHeader = styled.h1`
   text-shadow: ${Variables.textShadow};
   line-height: 1.2;
   padding: 2rem;
-  @media (max-width: ${Variables.queryMD}) {
+  @media (max-width: ${Variables.query800}) {
     font-size: 3rem;
   }
 `;
@@ -95,7 +95,7 @@ const Video = styled.iframe`
 
 const LandingContactFigure = styled.figure`
   grid-area: form;
-  @media (max-width: ${Variables.queryMD}) {
+  @media (max-width: ${Variables.query800}) {
     height: 55rem;
   }
 `;
@@ -105,7 +105,7 @@ const Contact = styled.iframe`
   min-height: 100%;
   border: none;
   border-radius: 1rem;
-  @media (max-width: ${Variables.queryXSM}) {
+  @media (max-width: ${Variables.query392}) {
     width: 90%;
   }
 `;

@@ -64,12 +64,15 @@ const PriceHeading = styled.span`
   animation: ${Variables.fadeIn} 1s ease;
 `;
 
-const Price = styled.h4` 
-  ${props => props.isWindowTint ? css`
-    ${Mixins.addHeadingFont(700, 6.5)};
-  ` : css`
-    ${Mixins.addHeadingFont(700, 8)}
-  `}
+const Price = styled.h4`
+  ${(props) =>
+    props.isWindowTint
+      ? css`
+          ${Mixins.addHeadingFont(700, 6.5)};
+        `
+      : css`
+          ${Mixins.addHeadingFont(700, 8)}
+        `}
   color: ${Variables.colorRed};
   line-height: 1;
   padding-bottom: 2rem;
@@ -81,7 +84,7 @@ const WTContainer = styled.ul`
   justify-content: space-around;
   gap: 3rem;
   text-align: center;
-  @media (max-width: ${Variables.querySMSM}) {
+  @media (max-width: ${Variables.query450}) {
     flex-direction: column;
     justify-content: flex-start;
     gap: 0;

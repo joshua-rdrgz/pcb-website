@@ -31,11 +31,11 @@ const Header = styled.header`
 const PcbLogo = styled.img`
   width: 250px;
   margin-left: 3rem;
-  @media (max-width: ${Variables.queryMD}) {
+  @media (max-width: ${Variables.query800}) {
     margin-right: auto;
     width: 200px;
   }
-  @media (max-width: ${Variables.querySMMD}) {
+  @media (max-width: ${Variables.query550}) {
     margin-left: 1rem;
   }
 `;
@@ -44,7 +44,7 @@ const CTA = styled(Link)`
   ${LinkStyles("primary")};
   padding: 0.5rem 1.5rem;
   font-size: 3rem;
-  @media (max-width: ${Variables.querySMSMSM}) {
+  @media (max-width: ${Variables.query420}) {
     margin: 0;
     margin-bottom: 1.5rem;
   }

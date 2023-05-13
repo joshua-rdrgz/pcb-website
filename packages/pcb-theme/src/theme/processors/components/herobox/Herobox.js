@@ -56,7 +56,11 @@ const Herobox = ({
             onClick={(e) => {
               e.preventDefault();
               const customizer = document.getElementById("customizer-anchor");
-              customizer && customizer.scrollIntoView({ behavior: "smooth", block: "start" });
+              customizer &&
+                customizer.scrollIntoView({
+                  behavior: "smooth",
+                  block: "start",
+                });
             }}
           >
             {slot3Content}
@@ -90,7 +94,7 @@ const Section = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  @media (max-width: ${Variables.queryLG}) {
+  @media (max-width: ${Variables.query1000}) {
     background: repeating-linear-gradient(
       135deg,
       ${Variables.colorBlackPure},
@@ -100,7 +104,7 @@ const Section = styled.section`
     );
     height: auto;
   }
-  @media (max-width: ${Variables.queryMDSMSM}) {
+  @media (max-width: ${Variables.query600}) {
     text-align: center;
   }
 `;
@@ -110,17 +114,17 @@ const HeroboxContent = styled.div`
   margin: auto 0;
   margin-right: auto;
   margin-left: 12rem;
-  @media (max-width: ${Variables.queryLG}) {
+  @media (max-width: ${Variables.query1000}) {
     margin-left: auto;
   }
 `;
 
 // exported for LinkStyles.js
 export const addHeadingMediaQueries = (fontSize) => css`
-  @media (max-width: ${Variables.queryMDMD}) {
+  @media (max-width: ${Variables.query750}) {
     font-size: ${fontSize - 1.5}rem;
   }
-  @media (max-width: ${Variables.querySMMD}) {
+  @media (max-width: ${Variables.query550}) {
     font-size: ${fontSize - 2}rem;
   }
 `;
@@ -129,13 +133,13 @@ const PrimaryHeading = styled.h1`
   ${Mixins.addHeadingFont(700, 8)};
   ${addHeadingMediaQueries(8)};
   margin-top: 4rem;
-  @media (max-width: ${Variables.queryMDMD}) {
+  @media (max-width: ${Variables.query750}) {
     font-size: 5.5rem;
   }
-  @media (max-width: ${Variables.querySMMD}) {
+  @media (max-width: ${Variables.query550}) {
     font-size: 4.5rem;
   }
-  @media (max-width: ${Variables.querySM}) {
+  @media (max-width: ${Variables.query490}) {
     font-size: 3.5rem;
     padding: 0 1.5rem;
   }
@@ -144,7 +148,7 @@ const PrimaryHeading = styled.h1`
 const SecondaryHeading = styled.h2`
   ${Mixins.addHeadingFont(400, 4)};
   ${addHeadingMediaQueries(4)};
-  @media (max-width: ${Variables.querySM}) {
+  @media (max-width: ${Variables.query490}) {
     padding: 0 1rem;
   }
 `;
@@ -152,20 +156,20 @@ const SecondaryHeading = styled.h2`
 const StyledButton = styled.button`
   ${(props) => LinkStyles(props.type, props.fontSize)};
   border: none;
-  @media (max-width: ${Variables.queryMDMD}) {
+  @media (max-width: ${Variables.query750}) {
     font-size: ${(props) => props.fontSize - 1.5}rem;
   }
-  @media (max-width: ${Variables.querySMMD}) {
+  @media (max-width: ${Variables.query550}) {
     font-size: ${(props) => props.fontSize - 2}rem;
   }
 `;
 
 const StyledLink = styled(Link)`
   ${(props) => LinkStyles(props.type, props.fontSize)};
-  @media (max-width: ${Variables.queryMDMD}) {
+  @media (max-width: ${Variables.query750}) {
     font-size: ${(props) => props.fontSize - 1.5}rem;
   }
-  @media (max-width: ${Variables.querySMMD}) {
+  @media (max-width: ${Variables.query550}) {
     font-size: ${(props) => props.fontSize - 2}rem;
   }
 `;
