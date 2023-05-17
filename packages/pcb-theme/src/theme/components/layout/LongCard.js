@@ -1,10 +1,8 @@
 import React from "react";
 import { styled, css } from "frontity";
-import Link from "@frontity/components/link";
 
 import * as Mixins from "../../styles/Mixins";
 import * as Variables from "../../styles/Variables";
-import LinkStyles from "../../styles/componentStyles/LinkStyles";
 
 const LongCard = ({ alignment, item1, item2, item3 }) => {
   return (

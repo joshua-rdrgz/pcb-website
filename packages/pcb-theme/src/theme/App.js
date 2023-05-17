@@ -5,16 +5,16 @@ import Reset from "./styles/Reset";
 
 import Archive from "./blog/Archive";
 import Post from "./blog/Post";
-
-import Header from "./layout/main/Header";
 import Page from "./components/Page";
-import Footer from "./layout/main/Footer";
 
-import LandingHeader from "./layout/landing-page-main/LandingHeader";
-import LandingFooter from "./layout/landing-page-main/LandingFooter";
+import Header from "./components/layout/Header";
+import Footer from "./components/layout/Footer";
 
-import Loading from "./layout/components/Loading";
-import Error from "./layout/components/Error";
+import LandingHeader from "./components/layout/LandingHeader";
+import LandingFooter from "./components/layout/LandingFooter";
+
+import Loading from "./components/Loading";
+import Error from "./components/Error";
 
 const App = ({ state }) => {
   const data = state.source.get(state.router.link);

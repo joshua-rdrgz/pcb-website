@@ -2,7 +2,7 @@ import React from "react";
 import { connect, styled, css } from "frontity";
 
 import Link from "@frontity/components/link";
-import Navigation from "../components/Navigation";
+import Navigation from "./Navigation";
 
 import * as Variables from "../../styles/Variables";
 import * as Mixins from "../../styles/Mixins";

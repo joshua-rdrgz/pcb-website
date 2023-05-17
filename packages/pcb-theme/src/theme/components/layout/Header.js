@@ -5,7 +5,7 @@ import * as Variables from "../../styles/Variables";
 
 import pcbLOGO from "../../assets/pcb-logo.svg";
 import Link from "@frontity/components/link";
-import Navigation from "../components/Navigation";
+import Navigation from "./Navigation";
 
 function Header({ state }) {
   // Fetch Menus
