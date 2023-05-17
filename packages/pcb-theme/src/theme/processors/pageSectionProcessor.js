@@ -21,3 +21,5 @@ const pageSectionProcessor = {
     };
   },
 };
+
+export default pageSectionProcessor;

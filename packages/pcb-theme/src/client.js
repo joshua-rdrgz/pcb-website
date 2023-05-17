@@ -16,6 +16,7 @@ import tabbedServiceInfoProcessor from "./theme/processors/serviceInfoProcessor"
 import contactProcessor from "./theme/processors/contactProcessor";
 import thankYouProcessor from "./theme/processors/thankYouProcessor";
 import postSectionProcessor from "./theme/blog/processors/postSectionProcessor";
+import pageSectionProcessor from "./theme/processors/pageSectionProcessor";
 import postHandler from "./theme/handlers/post-handler";
 
 export default {
@@ -192,6 +193,7 @@ export default {
         contactProcessor,
         thankYouProcessor,
         postSectionProcessor,
+        pageSectionProcessor,
       ],
     },
     source: {
