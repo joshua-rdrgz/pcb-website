@@ -28,6 +28,32 @@ const LinkStyles = (type, fontSize) => {
       }
     `;
   }
+  if (type === "secondary-herobox") {
+    return css`
+      display: inline-block;
+      ${Mixins.aCleanUp(Variables.colorWhite)};
+      background-color: transparent;
+      border: 1px solid ${Variables.colorGold};
+      padding: 0.25rem 3.5rem;
+      margin: 3rem 0;
+      border-radius: 0.5rem;
+      ${Mixins.applyBoxShadow};
+      transition: all 0.1s;
+      ${Mixins.addHeadingFont(400, remFontSize ? remFontSize : "3")};
+      @media (max-width: ${Variables.query550}) {
+        font-size: 3rem;
+        padding: 0 2rem;
+      }
+      @media (max-width: ${Variables.query490}) {
+        padding: 0;
+        margin: 0;
+        margin-top: 2rem;
+      }
+      &:hover {
+        background-color: ${Variables.colorRed};
+      }
+    `;
+  }
   if (type === "secondary") {
     return css`
       ${Mixins.aCleanUp(Variables.colorGold)};
