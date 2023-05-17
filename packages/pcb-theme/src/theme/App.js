@@ -7,7 +7,7 @@ import Archive from "./blog/Archive";
 import Post from "./blog/Post";
 
 import Header from "./layout/main/Header";
-import PageContent from "./layout/main/PageContent";
+import Page from "./components/Page";
 import Footer from "./layout/main/Footer";
 
 import LandingHeader from "./layout/landing-page-main/LandingHeader";
@@ -38,7 +38,7 @@ const App = ({ state }) => {
           <Loading when={data.isFetching} />
           <Archive when={data.isArchive} />
           <Post when={data.isPost} />
-          <PageContent when={data.isPage || data.isLandingPage} />
+          <Page when={data.isPage || data.isLandingPage} />
           <Error when={data.isError} />
         </Switch>
       </main>
