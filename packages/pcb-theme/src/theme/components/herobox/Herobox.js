@@ -3,77 +3,52 @@ import { styled, css, connect } from "frontity";
 import Link from "@frontity/components/link";
 import RepBrands from "./RepBrands";
 
-import LinkStyles from "../../../styles/componentStyles/LinkStyles";
-import * as Variables from "../../../styles/Variables";
-import * as Mixins from "../../../styles/Mixins";
+import LinkStyles from "../../styles/componentStyles/LinkStyles";
+import * as Variables from "../../styles/Variables";
+import * as Mixins from "../../styles/Mixins";
 
-const Herobox = ({
-  state,
-  primaryHeadingContent,
-  slot2Tag,
-  slot2Content,
-  slot3Tag,
-  slot3Content,
-  buttonFontSize,
-  buttonLink,
-}) => {
+const onClickHandler = (e) => {
+  e.preventDefault();
+  const customizer = document.getElementById("customizer-anchor");
+  customizer &&
+    customizer.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+};
+
+const Herobox = ({ state, content }) => {
   const link = state.source.get(state.router.link);
   const media = state.source.get("media");
   const mediaID = state.source.page[link.id].featured_media;
   const [fMedia] = media.data.filter((media) => media.id === mediaID);
-  const fImg = fMedia?.guid.rendered;
-  const frontityButtonLink = buttonLink.includes("#")
-    ? buttonLink
-    : buttonLink.split("/").reverse()[1];
+  const backgroundImage = fMedia?.guid.rendered;
+
+  const [primaryHeading, secondaryHeading, buttons] = content;
+  console.log(buttons);
 
   return (
-    <Section image={fImg}>
+    <Section image={backgroundImage}>
       <HeroboxContent>
-        <PrimaryHeading>{primaryHeadingContent}</PrimaryHeading>
-        {slot2Tag.includes("h") ? (
-          <SecondaryHeading>{slot2Content}</SecondaryHeading>
-        ) : frontityButtonLink.includes("#") ? (
-          <StyledA
-            href={frontityButtonLink}
-            type="primary"
-            fontSize={buttonFontSize}
-          >
-            {slot3Content}
-          </StyledA>
-        ) : (
-          <StyledButton
-            link={`/${frontityButtonLink}`}
-            type="primary"
-            fontSize={buttonFontSize}
-          >
-            {slot2Content}
-          </StyledButton>
-        )}
-        {slot3Tag && frontityButtonLink.includes("#") ? (
-          <StyledButton
-            type="primary"
-            fontSize={buttonFontSize}
-            onClick={(e) => {
-              e.preventDefault();
-              const customizer = document.getElementById("customizer-anchor");
-              customizer &&
-                customizer.scrollIntoView({
-                  behavior: "smooth",
-                  block: "start",
-                });
-            }}
-          >
-            {slot3Content}
-          </StyledButton>
-        ) : (
-          <StyledLink
-            link={`/${frontityButtonLink}`}
-            type="primary"
-            fontSize={buttonFontSize}
-          >
-            {slot3Content}
-          </StyledLink>
-        )}
+        <PrimaryHeading>{primaryHeading.content}</PrimaryHeading>
+        <SecondaryHeading>{secondaryHeading.content}</SecondaryHeading>
+        <StyledDiv>
+          {Array.isArray(buttons.content) &&
+            buttons.content.map((button, buttonIdx) => {
+              const firstButton = buttonIdx === 0;
+              const linkIsAnchor = button.href.includes("#");
+              const componentProps = {
+                key: `herobox-button-${buttonIdx}`,
+                link: button.href,
+                type: firstButton ? "secondary-herobox" : "primary",
+                onClick: linkIsAnchor && onClickHandler,
+              };
+
+              return (
+                <StyledLink {...componentProps}>{button.content}</StyledLink>
+              );
+            })}
+        </StyledDiv>
       </HeroboxContent>
       <RepBrands />
     </Section>
@@ -119,8 +94,7 @@ const HeroboxContent = styled.div`
   }
 `;
 
-// exported for LinkStyles.js
-export const addHeadingMediaQueries = (fontSize) => css`
+const addHeadingMediaQueries = (fontSize) => css`
   @media (max-width: ${Variables.query750}) {
     font-size: ${fontSize - 1.5}rem;
   }
@@ -153,14 +127,12 @@ const SecondaryHeading = styled.h2`
   }
 `;
 
-const StyledButton = styled.button`
-  ${(props) => LinkStyles(props.type, props.fontSize)};
-  border: none;
-  @media (max-width: ${Variables.query750}) {
-    font-size: ${(props) => props.fontSize - 1.5}rem;
-  }
-  @media (max-width: ${Variables.query550}) {
-    font-size: ${(props) => props.fontSize - 2}rem;
+const StyledDiv = styled.div`
+  display: flex;
+  gap: 2rem;
+  @media (max-width: ${Variables.query490}) {
+    flex-direction: column;
+    gap: 0;
   }
 `;
 
