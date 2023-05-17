@@ -12,7 +12,6 @@ const heroboxProcessor = {
   },
   processor: ({ node }) => {
     const sectionContent = gatherSectionContent(node);
-    console.log(sectionContent);
 
     return {
       component: Herobox,

@@ -25,7 +25,6 @@ const Herobox = ({ state, content }) => {
   const backgroundImage = fMedia?.guid.rendered;
 
   const [primaryHeading, secondaryHeading, buttons] = content;
-  console.log(buttons);
 
   return (
     <Section image={backgroundImage}>
