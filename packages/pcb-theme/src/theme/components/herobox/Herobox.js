@@ -38,6 +38,7 @@ const Herobox = ({ state, content }) => {
               const linkIsAnchor = button.href.includes("#");
               const componentProps = {
                 key: `herobox-button-${buttonIdx}`,
+                as: linkIsAnchor ? "button" : Link,
                 link: button.href,
                 type: firstButton ? "secondary-herobox" : "primary",
                 onClick: linkIsAnchor && onClickHandler,
@@ -135,7 +136,11 @@ const StyledDiv = styled.div`
   }
 `;
 
-const StyledLink = styled(Link)`
+// *
+// WILL BE PROGRAMMATICALLY REPLACED WITH:
+// button OR Link
+// *
+const StyledLink = styled.div`
   ${(props) => LinkStyles(props.type, props.fontSize)};
   @media (max-width: ${Variables.query750}) {
     font-size: ${(props) => props.fontSize - 1.5}rem;
