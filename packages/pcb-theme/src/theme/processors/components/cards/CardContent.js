@@ -26,7 +26,7 @@ const CardContent = ({
             />
           </ImgWrapper>
           <Heading type={type}>{title}</Heading>
-          <Description>{description}</Description>
+          <Description type={type}>{description}</Description>
           {hasButton && <Button type="secondary">{buttonContent}</Button>}
         </Article>
       );
@@ -35,7 +35,7 @@ const CardContent = ({
         <Article type={type} image={image}>
           <ContentWrapper>
             <Heading type={type}>{title}</Heading>
-            <Description>{description}</Description>
+            <Description type={type}>{description}</Description>
           </ContentWrapper>
           {hasButton && <Button type="secondary">{buttonContent}</Button>}
         </Article>
@@ -52,7 +52,7 @@ const CardContent = ({
               sizes={image.sizes}
             />
           </ImgWrapper>
-          <Description>{description}</Description>
+          <Description type={type}>{description}</Description>
           {hasButton && <Button type="secondary">{buttonContent}</Button>}
         </Article>
       );
@@ -141,9 +141,24 @@ const Img = styled.img`
 
 const Description = styled.p`
   font-size: 1.5rem;
-  max-width: 30rem;
   margin: 0 auto;
-  padding: 0 1rem;
+  ${(props) => {
+    if (props.type === "icon" || props.type === "image-bg") {
+      return css`
+        max-width: 30rem;
+        padding: 0 1rem;
+      `;
+    }
+    if (props.type === "normal") {
+      return css`
+        max-width: 100%;
+        padding: 0 5rem;
+        @media (max-width: ${Variables.query875}) {
+          padding: 0 3rem;
+        }
+      `;
+    }
+  }}
 `;
 
 const Button = styled.div`
