@@ -29,8 +29,8 @@ const Herobox = ({ state, content }) => {
   return (
     <Section image={backgroundImage}>
       <HeroboxContent>
-        <PrimaryHeading>{primaryHeading.content}</PrimaryHeading>
         <SecondaryHeading>{secondaryHeading.content}</SecondaryHeading>
+        <PrimaryHeading>{primaryHeading.content}</PrimaryHeading>
         <StyledDiv>
           {Array.isArray(buttons.content) &&
             buttons.content.map((button, buttonIdx) => {
@@ -103,10 +103,18 @@ const addHeadingMediaQueries = (fontSize) => css`
   }
 `;
 
+const SecondaryHeading = styled.h2`
+  margin-top: 4rem;
+  ${Mixins.addHeadingFont(400, 4)};
+  ${addHeadingMediaQueries(4)};
+  @media (max-width: ${Variables.query490}) {
+    padding: 0 1rem;
+  }
+`;
+
 const PrimaryHeading = styled.h1`
   ${Mixins.addHeadingFont(700, 8)};
   ${addHeadingMediaQueries(8)};
-  margin-top: 4rem;
   @media (max-width: ${Variables.query750}) {
     font-size: 5.5rem;
   }
@@ -116,14 +124,6 @@ const PrimaryHeading = styled.h1`
   @media (max-width: ${Variables.query490}) {
     font-size: 3.5rem;
     padding: 0 1.5rem;
-  }
-`;
-
-const SecondaryHeading = styled.h2`
-  ${Mixins.addHeadingFont(400, 4)};
-  ${addHeadingMediaQueries(4)};
-  @media (max-width: ${Variables.query490}) {
-    padding: 0 1rem;
   }
 `;
 
