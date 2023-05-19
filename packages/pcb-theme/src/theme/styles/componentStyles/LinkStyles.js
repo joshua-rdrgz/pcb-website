@@ -41,11 +41,10 @@ const LinkStyles = (type, fontSize) => {
       transition: all 0.1s;
       ${Mixins.addHeadingFont(400, remFontSize ? remFontSize : "3")};
       @media (max-width: ${Variables.query550}) {
-        font-size: 3rem;
-        padding: 0 2rem;
+        font-size: 2.5rem;
+        padding: 1rem 2rem;
       }
       @media (max-width: ${Variables.query490}) {
-        padding: 0;
         margin: 0;
         margin-top: 2rem;
       }

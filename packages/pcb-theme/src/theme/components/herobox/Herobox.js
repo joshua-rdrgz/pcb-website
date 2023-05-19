@@ -31,24 +31,25 @@ const Herobox = ({ state, content }) => {
       <HeroboxContent>
         <SecondaryHeading>{secondaryHeading.content}</SecondaryHeading>
         <PrimaryHeading>{primaryHeading.content}</PrimaryHeading>
-        <StyledDiv>
-          {Array.isArray(buttons.content) &&
-            buttons.content.map((button, buttonIdx) => {
-              const firstButton = buttonIdx === 0;
-              const linkIsAnchor = button.href.includes("#");
-              const componentProps = {
-                key: `herobox-button-${buttonIdx}`,
-                as: linkIsAnchor ? "button" : Link,
-                link: button.href,
-                type: firstButton ? "secondary-herobox" : "primary",
-                onClick: linkIsAnchor && onClickHandler,
-              };
-
-              return (
-                <StyledLink {...componentProps}>{button.content}</StyledLink>
-              );
-            })}
-        </StyledDiv>
+        <StyledDivContainer>
+          <StyledDivWrapper>
+            {Array.isArray(buttons.content) &&
+              buttons.content.map((button, buttonIdx) => {
+                const firstButton = buttonIdx === 0;
+                const linkIsAnchor = button.href.includes("#");
+                const componentProps = {
+                  key: `herobox-button-${buttonIdx}`,
+                  as: linkIsAnchor ? "button" : Link,
+                  link: button.href,
+                  type: firstButton ? "secondary-herobox" : "primary",
+                  onClick: linkIsAnchor && onClickHandler,
+                };
+                return (
+                  <StyledLink {...componentProps}>{button.content}</StyledLink>
+                );
+              })}
+          </StyledDivWrapper>
+        </StyledDivContainer>
       </HeroboxContent>
       <RepBrands />
     </Section>
@@ -88,9 +89,21 @@ const HeroboxContent = styled.div`
   color: ${Variables.colorWhite};
   margin: auto 0;
   margin-right: auto;
+  padding-right: 10rem;
   margin-left: 12rem;
   @media (max-width: ${Variables.query1000}) {
-    margin-left: auto;
+    text-align: center;
+    margin: 0;
+    padding: 0 10rem;
+  }
+  @media (max-width: ${Variables.query600}) {
+    padding: 0 5rem;
+  }
+  @media (max-width: ${Variables.query400}) {
+    padding: 0 2rem;
+  }
+  @media (max-width: ${Variables.query420}) {
+    padding: 0;
   }
 `;
 
@@ -118,9 +131,11 @@ const PrimaryHeading = styled.h1`
   line-height: 10rem;
   @media (max-width: ${Variables.query750}) {
     font-size: 5.5rem;
+    line-height: 8rem;
   }
   @media (max-width: ${Variables.query550}) {
     font-size: 4.5rem;
+    line-height: 6rem;
   }
   @media (max-width: ${Variables.query490}) {
     font-size: 3.5rem;
@@ -128,9 +143,16 @@ const PrimaryHeading = styled.h1`
   }
 `;
 
-const StyledDiv = styled.div`
+const StyledDivContainer = styled.div`
+  display: flex;
+`;
+
+const StyledDivWrapper = styled.div`
   display: flex;
   gap: 2rem;
+  @media (max-width: ${Variables.query1000}) {
+    margin: 0 auto;
+  }
   @media (max-width: ${Variables.query490}) {
     flex-direction: column;
     gap: 0;
