@@ -65,7 +65,7 @@ const Section = styled.section`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 80vh;
+  height: min-content;
   object-fit: cover;
   display: flex;
   flex-direction: column;
@@ -87,7 +87,7 @@ const Section = styled.section`
 
 const HeroboxContent = styled.div`
   color: ${Variables.colorWhite};
-  margin: auto 0;
+  margin: 7.5rem 0;
   margin-right: auto;
   padding-right: 10rem;
   margin-left: 12rem;
