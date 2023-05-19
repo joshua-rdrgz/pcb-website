@@ -5,16 +5,16 @@ import Reset from "./styles/Reset";
 
 import Archive from "./blog/Archive";
 import Post from "./blog/Post";
+import Page from "./components/Page";
 
-import Header from "./layout/main/Header";
-import PageContent from "./layout/main/PageContent";
-import Footer from "./layout/main/Footer";
+import Header from "./components/layout/Header";
+import Footer from "./components/layout/Footer";
 
-import LandingHeader from "./layout/landing-page-main/LandingHeader";
-import LandingFooter from "./layout/landing-page-main/LandingFooter";
+import LandingHeader from "./components/layout/LandingHeader";
+import LandingFooter from "./components/layout/LandingFooter";
 
-import Loading from "./layout/components/Loading";
-import Error from "./layout/components/Error";
+import Loading from "./components/Loading";
+import Error from "./components/Error";
 
 const App = ({ state }) => {
   const data = state.source.get(state.router.link);
@@ -38,7 +38,7 @@ const App = ({ state }) => {
           <Loading when={data.isFetching} />
           <Archive when={data.isArchive} />
           <Post when={data.isPost} />
-          <PageContent when={data.isPage || data.isLandingPage} />
+          <Page when={data.isPage || data.isLandingPage} />
           <Error when={data.isError} />
         </Switch>
       </main>

@@ -1,8 +1,8 @@
 import React from "react";
 import { styled, keyframes } from "frontity";
 
-import * as Variables from "../../styles/Variables";
-import * as Mixins from '../../styles/Mixins';
+import * as Variables from "../styles/Variables";
+import * as Mixins from '../styles/Mixins';
 
 const Loading = () => {
   return (

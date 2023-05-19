@@ -1,5 +1,5 @@
 import { styled, css } from "frontity";
-import generateCSS from "../helpers/generateCSS";
+import generateCSS from "../../helpers/generateCSS";
 import * as variables from "../styles/variables";
 
 // *

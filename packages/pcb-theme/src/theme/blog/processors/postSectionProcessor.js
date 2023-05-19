@@ -1,5 +1,5 @@
 import PostContent from "../post-components/PostContent";
-import gatherSectionContent from "../helpers/gatherSectionContent";
+import gatherSectionContent from "../../helpers/gatherSectionContent";
 
 const postSectionProcessor = {
   name: "Post Section Processor",

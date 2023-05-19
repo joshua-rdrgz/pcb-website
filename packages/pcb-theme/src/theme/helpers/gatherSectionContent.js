@@ -5,13 +5,23 @@ const processChildNode = (node) => {
   if (!node.children || node.children.length === 0) {
     const typeOfLeafNode = node.type;
     if (typeOfLeafNode === "text") {
-      return {
-        tag: node.parent.component,
-        content: node.content,
-      };
+      const href = node.parent.props.href;
+      return href
+        ? {
+            type: "text",
+            tag: node.parent.component,
+            content: node.content,
+            href,
+          }
+        : {
+            type: "text",
+            tag: node.parent.component,
+            content: node.content,
+          };
     }
     if (typeOfLeafNode === "element") {
       return {
+        type: "element",
         tag: node.component,
         content: node.props,
       };
@@ -43,7 +53,10 @@ const processChildNode = (node) => {
     // *
     // CURRENT ELEMENT ONLY HAS TEXT CONTENT AS CHILD
     // *
-    return { ...childrenContent[0], classes: node?.props?.className };
+    return {
+      ...childrenContent[0],
+      classes: node?.props?.className,
+    };
   }
 };
 

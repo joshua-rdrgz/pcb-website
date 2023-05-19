@@ -2,14 +2,14 @@ import React from "react";
 import { styled, connect, css } from "frontity";
 import Link from "@frontity/components/link";
 
-import bestOfFtWorth from "../../../assets/best-of-ft-worth.svg";
-import ceramicPro from "../../../assets/ceramic-pro.svg";
-import suntek from "../../../assets/suntek.png";
-import reaction from "../../../assets/reaction-logo.png";
-import evolve from "../../../assets/evolve-logo.png";
+import bestOfFtWorth from "../../assets/best-of-ft-worth.svg";
+import ceramicPro from "../../assets/ceramic-pro.svg";
+import suntek from "../../assets/suntek.png";
+import reaction from "../../assets/reaction-logo.png";
+import evolve from "../../assets/evolve-logo.png";
 
-import * as Variables from "../../../styles/Variables";
-import * as Mixins from "../../../styles/Mixins";
+import * as Variables from "../../styles/Variables";
+import * as Mixins from "../../styles/Mixins";
 
 const RepBrandsContainer = styled.ul`
   ${(props) => css`
