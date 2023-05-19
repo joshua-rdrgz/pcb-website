@@ -103,9 +103,9 @@ const addHeadingMediaQueries = (fontSize) => css`
   }
 `;
 
-const SecondaryHeading = styled.h2`
+const SecondaryHeading = styled.div`
   margin-top: 4rem;
-  ${Mixins.addHeadingFont(400, 4)};
+  ${Mixins.addHeadingFont(400, 2.5)};
   ${addHeadingMediaQueries(4)};
   @media (max-width: ${Variables.query490}) {
     padding: 0 1rem;
@@ -115,6 +115,7 @@ const SecondaryHeading = styled.h2`
 const PrimaryHeading = styled.h1`
   ${Mixins.addHeadingFont(700, 8)};
   ${addHeadingMediaQueries(8)};
+  line-height: 10rem;
   @media (max-width: ${Variables.query750}) {
     font-size: 5.5rem;
   }
@@ -141,6 +142,7 @@ const StyledDiv = styled.div`
 // button OR Link
 // *
 const StyledLink = styled.div`
+  border: none;
   ${(props) => LinkStyles(props.type, props.fontSize)};
   @media (max-width: ${Variables.query750}) {
     font-size: ${(props) => props.fontSize - 1.5}rem;
