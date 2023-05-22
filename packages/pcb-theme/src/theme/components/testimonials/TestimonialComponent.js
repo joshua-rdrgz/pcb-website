@@ -13,6 +13,7 @@ const TestimonialComponent = ({
   state,
   actions,
   sectionHeader,
+  sectionDescription,
   testimonials,
   testimonialsHeader,
   buttonContent,
@@ -40,7 +41,12 @@ const TestimonialComponent = ({
     });
   return (
     <Section>
-      <SectionHeader>{sectionHeader}</SectionHeader>
+      <SectionHeadingContent>
+        <SectionHeader>{sectionHeader}</SectionHeader>
+        {sectionDescription && (
+          <SectionDescription>{sectionDescription}</SectionDescription>
+        )}
+      </SectionHeadingContent>
       <TestimonialsHeader>
         <span>{testimonialsHeader.rating}</span>
         <div>
@@ -99,11 +105,34 @@ const Section = styled.section`
   flex-direction: column;
 `;
 
-const SectionHeader = styled.h3`
+const SectionHeadingContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 75%;
+  margin: 0 auto;
   text-align: center;
+`;
+
+const SectionHeader = styled.h3`
   margin-top: 1.5rem;
   ${Mixins.addHeadingFont(700, 3.5)};
   text-shadow: ${Variables.textShadow};
+  &:after {
+    content: "";
+    display: block;
+    margin: 0 auto;
+    width: 8rem;
+    padding-top: 5px;
+    border-bottom: 5px ${Variables.colorRedDeep1} solid;
+  }
+`;
+
+const SectionDescription = styled.p`
+  font-size: 1.5rem;
+  @media (max-width: ${Variables.query400}) {
+    text-align: left;
+  }
 `;
 
 const TestimonialsHeader = styled.div`
