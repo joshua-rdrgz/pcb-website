@@ -1,9 +1,9 @@
 import React from "react";
 import { styled, css } from "frontity";
 
-import * as Mixins from "../../../styles/Mixins";
-import * as Variables from "../../../styles/Variables";
-import LinkStyles from "../../../styles/componentStyles/LinkStyles";
+import * as Mixins from "../../styles/Mixins";
+import * as Variables from "../../styles/Variables";
+import LinkStyles from "../../styles/componentStyles/LinkStyles";
 
 const CardContent = ({
   type,
