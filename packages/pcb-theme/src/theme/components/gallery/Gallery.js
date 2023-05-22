@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { connect, css, styled, keyframes } from "frontity";
 
-import * as Mixins from "../../../styles/Mixins";
-import * as Variables from "../../../styles/Variables";
+import * as Mixins from "../../styles/Mixins";
+import * as Variables from "../../styles/Variables";
 
 const Gallery = ({ galleryContent }) => {
   const galleryLength = galleryContent.length;

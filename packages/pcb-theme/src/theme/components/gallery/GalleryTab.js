@@ -3,9 +3,9 @@ import { connect, css, styled } from "frontity";
 import Link from "@frontity/components/link";
 import Gallery from "./Gallery";
 
-import * as Mixins from "../../../styles/Mixins";
-import * as Variables from "../../../styles/Variables";
-import LinkStyles from "../../../styles/componentStyles/LinkStyles";
+import * as Mixins from "../../styles/Mixins";
+import * as Variables from "../../styles/Variables";
+import LinkStyles from "../../styles/componentStyles/LinkStyles";
 
 const GalleryTab = ({
   sectionHeader,
