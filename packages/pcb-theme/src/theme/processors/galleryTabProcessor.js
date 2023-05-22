@@ -1,4 +1,4 @@
-import GalleryTab from "./components/gallery/GalleryTab";
+import GalleryTab from "../components/gallery/GalleryTab";
 
 const galleryTabProcessor = {
   name: "Gallery Tab",
