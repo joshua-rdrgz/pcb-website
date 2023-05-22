@@ -2,7 +2,7 @@ const settings = {
   name: "pcb-website",
   state: {
     frontity: {
-      url: "https://pcbdev2020.wpengine.com",
+      url: "https://performanceclearbra.com",
       title: "Performance Clear Bra",
       description: "Marketing website of Performance Clear Bra",
     },
@@ -15,7 +15,7 @@ const settings = {
       name: "@frontity/wp-source",
       state: {
         source: {
-          url: "https://pcbdev2020.wpengine.com",
+          url: "https://wp.performanceclearbra.com",
           homepage: "/home",
           postsPage: "/blog",
           redirections: "404",
