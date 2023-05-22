@@ -25,13 +25,13 @@ const GalleryTab = ({
       )}
       {hasAside && (
         <GalleryWrapper hasNoButtons={buttons ? false : true}>
-          <GalleryContent>
-            <Gallery galleryContent={galleryContent} />
-          </GalleryContent>
           <GalleryAside>
             <Header>{asideContent.heading}</Header>
             <Description>{asideContent.description}</Description>
           </GalleryAside>
+          <GalleryContent>
+            <Gallery galleryContent={galleryContent} />
+          </GalleryContent>
         </GalleryWrapper>
       )}
       {buttons && (
