@@ -1,7 +1,7 @@
 import React from "react";
 import { connect, styled } from "frontity";
 
-import * as Variables from "../../../styles/Variables";
+import * as Variables from "../../styles/Variables";
 import { Star } from "./TestimonialComponent";
 import { GoVerified } from "react-icons/go";
 import { FcGoogle } from "react-icons/fc";
@@ -9,9 +9,9 @@ import { FcGoogle } from "react-icons/fc";
 const Testimonial = ({ state, actions, testimonial, index }) => {
   const testimonialExcerpt = testimonial.review.slice(0, 200) + "...";
   const testimonialReview = testimonial.review;
-  const openTestimonial = index => {
+  const openTestimonial = (index) => {
     actions.theme.testimonials.openTestimonial(index);
-  }
+  };
   return (
     <TestimonialLI key={`testimonial-${index + 1}`}>
       <ProfileInfo>
@@ -37,7 +37,9 @@ const Testimonial = ({ state, actions, testimonial, index }) => {
         {state.theme.testimonials.isExcerpt[index] ? (
           <>
             <Review>{testimonialExcerpt}</Review>
-            <ShowMore onClick={() => openTestimonial(index)}>Show More</ShowMore>
+            <ShowMore onClick={() => openTestimonial(index)}>
+              Show More
+            </ShowMore>
           </>
         ) : (
           <Review>{testimonialReview}</Review>

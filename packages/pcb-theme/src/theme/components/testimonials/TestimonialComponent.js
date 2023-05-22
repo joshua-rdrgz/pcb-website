@@ -4,9 +4,9 @@ import Link from "@frontity/components/link";
 
 import Testimonial from "./Testimonial";
 
-import LinkStyles from "../../../styles/componentStyles/LinkStyles";
-import * as Variables from "../../../styles/Variables";
-import * as Mixins from "../../../styles/Mixins";
+import LinkStyles from "../../styles/componentStyles/LinkStyles";
+import * as Variables from "../../styles/Variables";
+import * as Mixins from "../../styles/Mixins";
 import { AiFillStar } from "react-icons/ai";
 
 const TestimonialComponent = ({
