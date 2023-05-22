@@ -7,20 +7,29 @@ const testimonialProcessor = {
   priority: 5,
   test: ({ node }) => {
     return (
-      node?.props?.className?.includes("wp-block-group") &&
-      node?.children[0]?.children[1]?.props?.className?.includes("ti-goog")
+      (node?.props?.className?.includes("wp-block-group") &&
+        node?.children[0]?.children[1]?.props?.className?.includes(
+          "ti-goog"
+        )) ||
+      node?.props?.className?.includes("reactReviews")
     );
   },
   processor: ({ node }) => {
     const content = node?.children[0]?.children;
 
-    // section header, always will be first
+    const hasDescription = content[1]?.component === "p";
+    const testimonialIndex = hasDescription ? 2 : 1;
+
+    // section header + description, always will be first
     const sectionHeader = content[0]?.children[0]?.content;
+    const sectionDescription = hasDescription && content[1]?.children[0]?.content;
 
     // Testimonial Content
     const testimonialsNode =
-      content[1]?.children[0]?.children[1]?.children[0]?.children;
-    const testimonialsHeaderNode = content[1]?.children[0]?.children[0];
+      content[testimonialIndex]?.children[0]?.children[1]?.children[0]
+        ?.children;
+    const testimonialsHeaderNode =
+      content[testimonialIndex]?.children[0]?.children[0];
     const testimonialsHeader = {
       rating:
         testimonialsHeaderNode.children[0]?.children[0]?.children[0]
@@ -58,6 +67,7 @@ const testimonialProcessor = {
       component: TestimonialComponent,
       props: {
         sectionHeader,
+        sectionDescription,
         testimonials,
         testimonialsHeader,
         buttonContent,
