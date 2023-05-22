@@ -1,4 +1,4 @@
-import ServiceCards from "./components/cards/Cards";
+import ServiceCards from "../components/cards/Cards";
 
 const cardsProcessor = {
   name: "Service Cards",
