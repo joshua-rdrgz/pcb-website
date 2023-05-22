@@ -1,6 +1,6 @@
 import React from "react";
 
-import TestimonialComponent from "../processors/components/testimonials/TestimonialComponent";
+import TestimonialComponent from "../components/testimonials/TestimonialComponent";
 
 const testimonialProcessor = {
   name: "testimonial",
