@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 const useCustomSEO = () => {
   useEffect(() => {
-    const isWpDomain = window.location.host.includes('localhost:3000');
+    const isWpDomain = window.location.host.includes('wp.performanceclearbra.com');
 
     if (isWpDomain) {
       const metaTags = document.head.querySelectorAll('meta[name="robots"]');
