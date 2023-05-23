@@ -1,4 +1,5 @@
 import React from "react";
+import useCustomSEO from "./hooks/useCustomSEO";
 import { Head, Global, connect } from "frontity";
 import Switch from "@frontity/components/switch";
 import Reset from "./styles/Reset";
@@ -20,6 +21,8 @@ const App = ({ state }) => {
   const data = state.source.get(state.router.link);
 
   const isLandingPage = data.isLandingPage ? data.isLandingPage : false;
+
+  useCustomSEO();
 
   return (
     <>
