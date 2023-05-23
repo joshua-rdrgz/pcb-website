@@ -130,7 +130,7 @@ const getRepBrandsData = (link) => {
         }
       `;
       break;
-    case "/window-tint/":
+    case "/window-tint-fort-worth-tx/":
       page = "wt";
       heightOfRepBrands = css`
         height: 155px;
