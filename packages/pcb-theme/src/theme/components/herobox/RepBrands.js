@@ -109,7 +109,7 @@ const getRepBrandsData = (link) => {
         }
       `;
       break;
-    case "/paint-protection-film/":
+    case "/paint-protection-film-clear-bra-fort-worth-tx/":
       page = "ppf";
       heightOfRepBrands = css`
         height: 157px;
