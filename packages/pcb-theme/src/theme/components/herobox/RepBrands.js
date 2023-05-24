@@ -85,8 +85,8 @@ const getRepBrandsData = (link) => {
         }
       `;
       break;
-    case "/about/":
-      page = "about";
+    case "/reviews/":
+      page = "reviews";
       heightOfRepBrands = css`
         height: 155px;
         @media (max-width: 1381px) {
@@ -149,7 +149,7 @@ const repBrands = [
     name: "SunTek Logo",
     link: "https://suntekfilms.com/suntek-paint-protection",
     tag: SunTek,
-    included: ["home", "about", "ppf", "wt"],
+    included: ["home", "reviews", "ppf", "wt"],
     img: {
       src: suntek,
       alt: "SunTek Certified Dealer",
@@ -159,7 +159,7 @@ const repBrands = [
     name: "SunTek Reaction Logo",
     link: "https://suntekfilms.com/paintprotection/ppf-reaction",
     tag: Reaction,
-    included: ["home", "about", "ppf"],
+    included: ["home", "reviews", "ppf"],
     img: {
       src: reaction,
       alt: "SunTek Reaction Official Logo",
@@ -169,7 +169,7 @@ const repBrands = [
     name: "SunTek Evolve Logo",
     link: "https://suntekfilms.com/automotive/evolve",
     tag: Evolve,
-    included: ["home", "about", "wt"],
+    included: ["home", "reviews", "wt"],
     img: {
       src: evolve,
       alt: "SunTek Evolve Official Logo",
@@ -179,7 +179,7 @@ const repBrands = [
     name: "Ceramic Pro",
     link: "https://ceramicpro.com/",
     tag: CeramicPro,
-    included: ["home", "about", "ppf"],
+    included: ["home", "reviews", "ppf"],
     img: {
       src: ceramicPro,
       alt: "Ceramic Pro Official Logo",
@@ -189,7 +189,7 @@ const repBrands = [
     name: "BBB Accredited Business",
     link: "https://www.bbb.org/us/tx/fort-worth/profile/car-window-tinting/performance-clear-bra-0825-1000215058/#sealclick",
     tag: "img",
-    included: ["home", "about", "ppf", "wt"],
+    included: ["home", "reviews", "ppf", "wt"],
     img: {
       src: "https://seal-austin.bbb.org/seals/darkgray-seal-280-80-bbb-1000215058.png",
       alt: "Performance Clear Bra BBB Business Review",

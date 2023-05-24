@@ -10,8 +10,14 @@ import * as Mixins from "../../styles/Mixins";
 const onClickHandler = (e) => {
   e.preventDefault();
   const customizer = document.getElementById("customizer-anchor");
+  const reviewAnchor = document.getElementById("reviews");
   customizer &&
     customizer.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  reviewAnchor &&
+    reviewAnchor.scrollIntoView({
       behavior: "smooth",
       block: "start",
     });
