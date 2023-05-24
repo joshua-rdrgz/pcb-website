@@ -35,6 +35,10 @@ function Footer({ state }) {
         <FancyLines />
       </FancyLinesContainer>
       <FooterGrid>
+        <AboutDiv>
+          <AboutPHeader>Trusted Protection</AboutPHeader>
+          <AboutPDescription>{`At Performance Clear Bra, protecting your vehicle is the passion that drives what we do.  That’s why we set the highest standards for ourselves to meet your paint protection needs.  From choosing what products go on your vehicle to looking at the finest of details in our clear bra installations, we have two quality standards that are met on every car we work on: 1) everything performs exceptionally well, and 2) it does so for a very long time.  With our SunTek certified installers having over 30+ years of combined industry experience, we guarantee your car will receive the highest quality of care that you can find in Dallas-Fort Worth.  We put those years of experience to work for you by selecting the finest products and using the most advanced installation methods to make sure your vehicle gets the best long-term protection.`}</AboutPDescription>
+        </AboutDiv>
         <Navigation type="footer" menuNumber={state.theme.footerPagesID} />
         <Navigation type="footer" menuNumber={state.theme.footerResourcesID} />
         <WhereToFindUs>
@@ -118,6 +122,21 @@ const FooterGrid = styled.div`
   @media (max-width: ${Variables.query800}) {
     text-align: center;
     gap: 3rem;
+  }
+`;
+
+const AboutDiv = styled.div`
+  text-align: center;
+`;
+
+const AboutPHeader = styled.p`
+  ${Mixins.addHeadingFont(400, 4)};
+`;
+
+const AboutPDescription = styled.p`
+  font-size: 1.5rem;
+  @media (max-width: ${Variables.query400}) {
+    font-size: 1.25rem;
   }
 `;
 
