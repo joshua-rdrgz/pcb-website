@@ -18,7 +18,6 @@ function Footer({ state }) {
 
   const { data: assets } = state.source.get("media");
   const media = Object.values(assets);
-  // const pcbLogo = media.find((asset) => asset.slug === "pcb-logo");
   const facebookLogo = media.find((asset) => asset.slug === "facebook-footer");
   const yelpLogo = media.find((asset) => asset.slug === "yelp-footer");
   const youtubeLogo = media.find((asset) => asset.slug === "youtube-footer");
@@ -71,19 +70,30 @@ function Footer({ state }) {
         </WhereToFindUs>
         <div>
           <Socials>
-            <Social
+            <object
               data={facebookLogo.guid.rendered}
               type="image/svg+xml"
-            ></Social>
-            <Social data={yelpLogo.guid.rendered} type="image/svg+xml"></Social>
-            <Social
+              width="50"
+              height="50"
+            ></object>
+            <object
+              data={yelpLogo.guid.rendered}
+              type="image/svg+xml"
+              width="50"
+              height="50"
+            ></object>
+            <object
               data={youtubeLogo.guid.rendered}
               type="image/svg+xml"
-            ></Social>
-            <Social
+              width="50"
+              height="50"
+            ></object>
+            <object
               data={instagramLogo.guid.rendered}
               type="image/svg+xml"
-            ></Social>
+              width="50"
+              height="50"
+            ></object>
           </Socials>
           <Map
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d46661.83134146085!2d-97.37785355349327!3d32.76933557693849!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864e734cf2061099%3A0x8c5e06440f0da472!2sPerformance%20Clear%20Bra!5e0!3m2!1sen!2sus!4v1657234656201!5m2!1sen!2sus"
@@ -194,10 +204,6 @@ const FancyLines = styled.div`
   @media (max-width: ${Variables.query750}) {
     display: none;
   }
-`;
-
-const Social = styled.object`
-  width: 5rem;
 `;
 
 const WhereToFindUs = styled.div`
