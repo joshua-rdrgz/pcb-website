@@ -17,6 +17,9 @@ const testimonialProcessor = {
   processor: ({ node }) => {
     const content = node?.children[0]?.children;
 
+    // HTML ID for Reviews Page Herobox to target
+    const anchorHTML = node?.props?.id;
+
     const hasDescription = content[1]?.component === "p";
     const testimonialIndex = hasDescription ? 2 : 1;
 
@@ -66,6 +69,7 @@ const testimonialProcessor = {
     return {
       component: TestimonialComponent,
       props: {
+        anchorHTML,
         sectionHeader,
         sectionDescription,
         testimonials,

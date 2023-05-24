@@ -12,6 +12,7 @@ import { AiFillStar } from "react-icons/ai";
 const TestimonialComponent = ({
   state,
   actions,
+  anchorHTML,
   sectionHeader,
   sectionDescription,
   testimonials,
@@ -40,7 +41,7 @@ const TestimonialComponent = ({
       }
     });
   return (
-    <Section>
+    <Section id={anchorHTML}>
       <SectionHeadingContent>
         <SectionHeader>{sectionHeader}</SectionHeader>
         {sectionDescription && (
