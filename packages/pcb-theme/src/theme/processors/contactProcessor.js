@@ -1,49 +1,49 @@
-import React from 'react';
+import React from "react";
 
-import ContactTab from '../components/contact/Contact';
-import LandingContactTab from '../components/contact/LandingContact';
+import ContactTab from "../components/contact/Contact";
+import LandingContactTab from "../components/contact/LandingContact";
 
 const contactProcessor = {
   name: "Contact",
   priority: 5,
   test: ({ node }) => {
-    return (
-      node?.props?.className?.includes("wp-block-group" && "contact")
-    );
+    return node?.props?.className?.includes("wp-block-group" && "contact");
   },
   processor: ({ node }) => {
     const isLandingPage = node?.props?.className?.includes("isLandingPage");
     const contactID = node?.props?.id;
-    const shortHand = node?.children[0]?.children;
-    
-    const sectionHeader = shortHand[0]?.children[0]?.content;
-    const secondItem = shortHand[1]?.children[0]?.content;
-    const thirdItem =
-      isLandingPage ?
-      shortHand[2]?.children[0]?.children[0]?.props :
-      shortHand[2]?.children[0]?.props;
-    const contact = shortHand[3]?.props;
+    const nodeChildren = node?.children[0]?.children;
 
-    const props = {
-      sectionHeader,
-      secondItem,
-      thirdItem,
-      contact,
-      contactID,
-    };
+    const props = {};
+
+    if (isLandingPage) {
+      props.contactID = contactID;
+      props.sectionHeader = nodeChildren[0]?.children[0]?.content;
+      props.sectionDescription = nodeChildren[1]?.children[0]?.content;
+      props.video = nodeChildren[2]?.children[0]?.children[0]?.props;
+      props.tintWizForm = nodeChildren[3]?.props;
+    }
+
+    if (!isLandingPage) {
+      props.sectionHeader = nodeChildren[0]?.children[0]?.content;
+      props.sectionDescription = nodeChildren[1]?.children[0]?.content;
+      props.contactContentHeader = nodeChildren[2]?.children[0]?.content;
+      props.contactContentImg = nodeChildren[3]?.children[0]?.props;
+      props.tintWizForm = nodeChildren[4]?.props;
+    }
 
     if (isLandingPage) {
       return {
         component: LandingContactTab,
         props,
-      }
+      };
     } else {
       return {
         component: ContactTab,
         props,
-      }
+      };
     }
-  }
-}
+  },
+};
 
 export default contactProcessor;
