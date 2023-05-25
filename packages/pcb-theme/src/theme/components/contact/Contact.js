@@ -4,153 +4,180 @@ import { connect, styled, css } from "frontity";
 import * as Mixins from "../../styles/Mixins";
 import * as Variables from "../../styles/Variables";
 
-const ContactTab = ({ sectionHeader, secondItem, thirdItem, contact }) => {
+const ContactTab = ({
+  sectionHeader,
+  sectionDescription,
+  contactContentHeader,
+  contactContentImg,
+  tintWizForm,
+}) => {
   return (
-    <section>
-      <SectionHeader>{sectionHeader}</SectionHeader>
-      <GridPageContainer>
-        <GridContainer>
-          <SubHeader>{secondItem}</SubHeader>
-          <Grid>
-            <ImgFigure>
-              <Img src={thirdItem.src} alt={thirdItem.alt} />
-            </ImgFigure>
-            <ContactFigure>
-              <Contact src={contact.src} />
-            </ContactFigure>
-          </Grid>
-        </GridContainer>
-      </GridPageContainer>
-    </section>
+    <ContactSection>
+      <ContactTitleDiv>
+        <H1>{sectionHeader}</H1>
+        <ContactSubtitleP>{sectionDescription}</ContactSubtitleP>
+      </ContactTitleDiv>
+      <ContactContentDiv>
+        <H2>{contactContentHeader}</H2>
+        <ContactContentGridDiv>
+          <ImageFigure>
+            <Img {...contactContentImg} />
+          </ImageFigure>
+          <ContactFormFigure>
+            <ContactFormIframe {...tintWizForm} />
+          </ContactFormFigure>
+        </ContactContentGridDiv>
+        <NAPInfoDiv>
+          <NAPInfoP>
+            Email:{" "}
+            <NAPInfoA href="mailto:info@performanceclearbra.com">
+              info@performanceclearbra.com
+            </NAPInfoA>
+          </NAPInfoP>
+          <NAPInfoP>
+            Phone:{" "}
+            <NAPInfoA href="tel:(972)%20295-7068">(972) - 295 - 7068</NAPInfoA>
+          </NAPInfoP>
+          <NAPInfoP>
+            Address:{" "}
+            <NAPInfoA
+              href="https://www.google.com/maps/place/Performance+Clear+Bra/@32.763217,-97.3587412,17z/data=!4m5!3m4!1s0x864e734cf2061099:0x8c5e06440f0da472!8m2!3d32.763217!4d-97.3565525"
+              target="_blank"
+            >
+              2800 Shamrock Ave. Suite 116, Fort Worth, TX 76107
+            </NAPInfoA>
+          </NAPInfoP>
+          <NAPInfoP>
+            Hours: <NAPInfoSpan>Mon - Fri: 9AM - 5PM,</NAPInfoSpan>
+            <NAPInfoSpan>Sat - Sun: Closed</NAPInfoSpan>
+            <NAPInfoSpan>(by appointment only)</NAPInfoSpan>
+          </NAPInfoP>
+        </NAPInfoDiv>
+      </ContactContentDiv>
+    </ContactSection>
   );
 };
 
 export default connect(ContactTab);
 
-const SectionHeader = styled.h1`
+const ContactSection = styled.section`
+  margin: 0 2rem;
+`;
+
+const ContactTitleDiv = styled.div`
+  margin: 2rem 0;
+`;
+
+const H1 = styled.h1`
+  ${Mixins.addHeadingFont(400, 3.5)};
   text-align: center;
-  ${Mixins.addHeadingFont(700, 5)};
-  text-shadow: ${Variables.textShadow};
-  line-height: 1.2;
-  padding: 2rem;
-  @media (max-width: ${Variables.query800}) {
-    font-size: 3rem;
-  }
 `;
 
-const SubHeader = styled.h2`
+const ContactSubtitleP = styled.p`
+  font-size: 1.5rem;
   text-align: center;
-  ${Mixins.addHeadingFont(400, 3)};
-  text-shadow: ${Variables.textShadow};
-  line-height: 1.2;
-  padding: 2rem;
-  color: white;
 `;
 
-const addMediaQueries = css`
-  @media (max-width: ${Variables.query875}) {
-    height: 155rem;
-  }
-  @media (max-width: ${Variables.query800}) {
-    height: 152rem;
-  }
-  @media (max-width: ${Variables.query750}) {
-    height: 148rem;
-  }
-  @media (max-width: ${Variables.query700}) {
-    height: 145rem;
-  }
-  @media (max-width: ${Variables.query650}) {
-    height: 140rem;
-  }
-  @media (max-width: ${Variables.query550}) {
-    height: 133rem;
-  }
-  @media (max-width: ${Variables.query490}) {
-    height: 129rem;
-  }
-  @media (max-width: ${Variables.query450}) {
-    height: 126rem;
-  }
-  @media (max-width: ${Variables.query392}) {
-    height: 125rem;
-  }
-`;
-
-const GridPageContainer = styled.div`
-  position: relative;
-  width: 100%;
-  height: 85rem;
-  margin-bottom: 2rem;
-  ${addMediaQueries};
-`;
-
-const GridContainer = styled.div`
+const ContactContentDiv = styled.div`
   background-color: ${Variables.colorRedDeep2};
-  width: 95%;
-  height: 85rem;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 1rem;
-  ${addMediaQueries};
-`;
-
-const Grid = styled.article`
-  width: 95%;
-  height: 71rem;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: grid;
-  grid-template-columns: 1fr 2fr 2fr;
-  grid-template-rows: 1fr 20fr 1fr;
-  @media (max-width: ${Variables.query875}) {
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 89rem;
-    left: 2.5%;
-    top: 5%;
-    right: 2.5%;
-    transform: none;
+  color: ${Variables.colorWhite};
+  border-radius: 0.5rem;
+  padding: 0 1rem;
+  @media (min-width: ${Variables.query1000}) {
+    padding: 0 3rem;
   }
-  @media (max-width: ${Variables.query392}) {
-    transform: translateY(3rem);
+  @media (min-width: ${Variables.query1450}) {
+    padding: 0 5rem;
   }
 `;
 
-const ImgFigure = styled.figure`
-  grid-column: 1 / 3;
-  grid-row: 1 / -1;
-  @media (max-width: ${Variables.query875}) {
-    grid-column: 1;
-    grid-row: 1 / 2;
+const H2 = styled.h2`
+  ${Mixins.addHeadingFont(400, 3)};
+  text-align: center;
+  padding: 1rem 0;
+`;
+
+const ContactContentGridDiv = styled.div`
+  @media (min-width: ${Variables.query600}) {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr 20fr 1fr;
+  }
+  @media (min-width: ${Variables.query1000}) {
+    grid-template-columns: 1fr 2fr 1fr;
+    height: 70rem;
+  }
+`;
+
+const ImageFigure = styled.figure`
+  @media (min-width: ${Variables.query600}) {
+    grid-column: 1 / 3;
+    grid-row: 1 / -1;
   }
 `;
 
 const Img = styled.img`
   width: 100%;
   height: 100%;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   object-fit: cover;
 `;
 
-const ContactFigure = styled.figure`
-  grid-column: 2 / -1;
-  grid-row: 2 / 3;
-  @media (max-width: ${Variables.query875}) {
-    grid-column: 1;
-    grid-row: 2 / -1;
+const ContactFormFigure = styled.figure`
+  @media (min-width: ${Variables.query600}) {
+    grid-column: 2 / -1;
+    grid-row: 2;
   }
 `;
 
-const Contact = styled.iframe`
-  min-width: 100%;
-  min-height: 100%;
+const ContactFormIframe = styled.iframe`
+  width: 100%;
   border: none;
-  border-radius: 1rem;
-  @media (max-width: ${Variables.query392}) {
-    width: 90%;
+  border-radius: 0.5rem;
+  height: 88rem;
+  @media (min-width: ${Variables.query600}) {
+    height: 55rem;
+  }
+  @media (min-width: ${Variables.query1000}) {
+    height: 65rem;
+  }
+`;
+
+const NAPInfoDiv = styled.div`
+  padding: 2rem 0;
+  @media (min-width: ${Variables.query1000}) {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  @media (min-width: ${Variables.query1200}) {
+    max-width: 80%;
+    margin: 0 auto;
+  }
+`;
+
+const NAPInfoP = styled.p`
+  text-align: center;
+  font-size: 1.5rem;
+  @media (min-width: ${Variables.query600}) {
+    font-size: 2rem;
+  }
+`;
+
+const NAPInfoA = styled.a`
+  display: block;
+  text-decoration: underline;
+  color: ${Variables.colorWhite};
+  font-size: 1rem;
+  @media (min-width: ${Variables.query600}) {
+    font-size: 1.5rem;
+  }
+`;
+
+const NAPInfoSpan = styled.span`
+  display: block;
+  font-size: 1rem;
+  @media (min-width: ${Variables.query600}) {
+    font-size: 1.5rem;
   }
 `;

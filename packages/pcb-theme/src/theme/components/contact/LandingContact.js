@@ -5,31 +5,22 @@ import * as Mixins from "../../styles/Mixins";
 import * as Variables from "../../styles/Variables";
 
 const LandingContactTab = ({
-  sectionHeader,
-  secondItem,
-  thirdItem,
-  contact,
   contactID,
+  sectionHeader,
+  sectionDescription,
+  video,
+  tintWizForm,
 }) => {
   return (
     <LandingPageSection id={contactID}>
       <LandingPageGrid>
         <SectionHeader>{sectionHeader}</SectionHeader>
-        <Description>{secondItem}</Description>
+        <Description>{sectionDescription}</Description>
         <VideoFigure>
-          <Video
-            allow={thirdItem.allow}
-            allowFullScreen={thirdItem.allowFullScreen}
-            frameBorder={thirdItem.frameBorder}
-            height={thirdItem.height}
-            width={thirdItem.width}
-            loading={thirdItem.loading}
-            src={thirdItem.src}
-            title={thirdItem.title}
-          />
+          <Video {...video} />
         </VideoFigure>
         <LandingContactFigure>
-          <Contact src={contact.src} />
+          <Contact {...tintWizForm} height="100%" />
         </LandingContactFigure>
       </LandingPageGrid>
     </LandingPageSection>
