@@ -1,8 +1,8 @@
 import React from "react";
 import { connect, styled, css } from "frontity";
 
-import * as Mixins from "../../../styles/Mixins";
-import * as Variables from "../../../styles/Variables";
+import * as Mixins from "../../styles/Mixins";
+import * as Variables from "../../styles/Variables";
 
 const ContactTab = ({ sectionHeader, secondItem, thirdItem, contact }) => {
   return (
