@@ -1,7 +1,7 @@
 import React from 'react';
 
-import ContactTab from './components/contact/Contact';
-import LandingContactTab from './components/contact/LandingContact';
+import ContactTab from '../components/contact/Contact';
+import LandingContactTab from '../components/contact/LandingContact';
 
 const contactProcessor = {
   name: "Contact",
