@@ -26,11 +26,9 @@ const FAQTab = ({ state, actions, sectionHeader, faqsContainer }) => {
       <FAQsContainer>
         {faqsContainer.map((faqsBlock, faqsBlockIndex) => {
           const faqs = faqsBlock?.children[0]?.children;
+          const hasHeader = faqs[0].component.includes("h");
           return (
-            <FAQs
-              key={`faq-${faqsBlockIndex}`}
-              hasHeader={faqs[0].component.includes("h")}
-            >
+            <FAQs key={`faq-${faqsBlockIndex}`} hasHeader={hasHeader}>
               {faqs.map((faq, faqIndex) => {
                 const question = faq.component.includes("h")
                   ? null
@@ -65,7 +63,7 @@ const FAQTab = ({ state, actions, sectionHeader, faqsContainer }) => {
                       >
                         &nbsp;
                       </FAQIcon>
-                      <Question>{question}</Question>
+                      <Question as={hasHeader ? 'h4' : 'h3'}>{question}</Question>
                       <Answer
                         isOpen={
                           state.theme.faq.FAQToggleData[faqsBlockIndex][
@@ -106,7 +104,7 @@ const FAQsContainer = styled.div`
   }
 `;
 
-const SectionHeader = styled.h3`
+const SectionHeader = styled.h2`
   text-align: center;
   margin-top: 1.5rem;
   ${Mixins.addHeadingFont(700, 3.5)};
@@ -130,7 +128,7 @@ const FAQs = styled.section`
   }
 `;
 
-const FAQHeader = styled.h4`
+const FAQHeader = styled.h3`
   text-align: center;
   ${Mixins.addHeadingFont(400, 2.5)};
   text-shadow: ${Variables.textShadow};
@@ -143,7 +141,10 @@ const FAQ = styled.article`
   box-shadow: ${Variables.boxShadow};
 `;
 
-const Question = styled.h4`
+// *
+// WILL BE REPLACED WITH CORRECT H TAG
+// *
+const Question = styled.div`
   ${Mixins.addHeadingFont(400, 3)};
   padding-left: 4rem;
   padding-right: 2rem;

@@ -51,7 +51,7 @@ const Section = styled.section`
     Mixins.addColors(Variables.colorBlack, Variables.colorWhite)};
 `;
 
-const SectionHeader = styled.h3`
+const SectionHeader = styled.h2`
   text-align: center;
   padding-top: 1.5rem;
   ${Mixins.addHeadingFont(700, 3.5)};
@@ -84,7 +84,7 @@ const VideoWrapper = styled.figure`
   }
 `;
 
-const VideoHeader = styled.h4`
+const VideoHeader = styled.h3`
   ${Mixins.addHeadingFont(400, 2.5)};
   padding-bottom: 1rem;
   @media (max-width: ${Variables.query600}) {
