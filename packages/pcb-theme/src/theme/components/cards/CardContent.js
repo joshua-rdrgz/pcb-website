@@ -104,7 +104,7 @@ const ContentWrapper = styled.div`
   transform: translate(-50%, -50%);
 `;
 
-const Heading = styled.h4`
+const Heading = styled.h3`
   ${(props) =>
     props.type === "image-bg" &&
     css`

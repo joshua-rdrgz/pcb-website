@@ -115,7 +115,7 @@ const SectionHeadingContent = styled.div`
   text-align: center;
 `;
 
-const SectionHeader = styled.h3`
+const SectionHeader = styled.h2`
   margin-top: 1.5rem;
   ${Mixins.addHeadingFont(700, 3.5)};
   text-shadow: ${Variables.textShadow};

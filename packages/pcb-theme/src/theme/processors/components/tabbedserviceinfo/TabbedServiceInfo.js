@@ -55,7 +55,7 @@ const Section = styled.section`
   justify-content: center;
 `;
 
-const SectionHeader = styled.h3`
+const SectionHeader = styled.h2`
   text-align: center;
   margin-top: 1rem;
   ${Mixins.addHeadingFont(700, 3.5)};

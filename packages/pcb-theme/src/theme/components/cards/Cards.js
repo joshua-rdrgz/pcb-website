@@ -89,7 +89,7 @@ const Section = styled.section`
   justify-content: center;
 `;
 
-const Heading = styled.h3`
+const Heading = styled.h2`
   ${(props) => {
     if (props.type === "icon" || props.type === "image-bg") {
       return css`

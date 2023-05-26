@@ -25,13 +25,13 @@ const GalleryTab = ({
       )}
       {hasAside && (
         <GalleryWrapper hasNoButtons={buttons ? false : true}>
-          <GalleryAside>
+          <aside>
             <Header>{asideContent.heading}</Header>
             <Description>{asideContent.description}</Description>
-          </GalleryAside>
-          <GalleryContent>
+          </aside>
+          <div>
             <Gallery galleryContent={galleryContent} />
-          </GalleryContent>
+          </div>
         </GalleryWrapper>
       )}
       {buttons && (
@@ -79,11 +79,7 @@ const GalleryWrapper = styled.div`
   }
 `;
 
-const GalleryContent = styled.div``;
-
-const GalleryAside = styled.aside``;
-
-const Header = styled.h3`
+const Header = styled.h2`
   text-align: center;
   padding: 1.5rem 0;
   ${Mixins.addHeadingFont(700, 3.5)};
