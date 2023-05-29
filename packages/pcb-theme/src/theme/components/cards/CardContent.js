@@ -18,12 +18,7 @@ const CardContent = ({
       return (
         <Article type={type}>
           <ImgWrapper type={type}>
-            <Img
-              src={image.src}
-              alt={image.alt}
-              loading={image.loading}
-              sizes={image.sizes}
-            />
+            <Img {...image} width={null} height={null} />
           </ImgWrapper>
           <Heading type={type}>{title}</Heading>
           <Description type={type}>{description}</Description>
@@ -45,12 +40,7 @@ const CardContent = ({
         <Article type={type}>
           <Heading type={type}>{title}</Heading>
           <ImgWrapper type={type}>
-            <Img
-              src={image.src}
-              alt={image.alt}
-              loading={image.loading}
-              sizes={image.sizes}
-            />
+            <Img {...image} width={null} height={null} />
           </ImgWrapper>
           <Description type={type}>{description}</Description>
           {hasButton && <Button type="secondary">{buttonContent}</Button>}
