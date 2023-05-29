@@ -37,7 +37,7 @@ const Gallery = ({ galleryContent }) => {
             <ItemNumber>
               {itemIndex + 1} / {galleryLength}
             </ItemNumber>
-            <Image src={item.img.src} alt={item.img.alt} />
+            <Image {...item.img} height={null} loading={null} />
             {item.caption && <Caption>{item.caption}</Caption>}
           </Figure>
         );
