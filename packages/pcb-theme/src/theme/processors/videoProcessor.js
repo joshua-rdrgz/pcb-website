@@ -1,12 +1,14 @@
-import React from "react";
+import { loadable } from "frontity";
 
-import VideoTab from "./components/Video";
+const VideoTab = loadable(() => import("./components/Video"));
 
 const videoProcessor = {
   name: "Video",
   priority: 5,
   test: ({ node }) => {
-    return node?.props?.className?.includes("wp-block-group" && "video-section");
+    return node?.props?.className?.includes(
+      "wp-block-group" && "video-section"
+    );
   },
   processor: ({ node }) => {
     const nodeClasses = node?.props?.className;

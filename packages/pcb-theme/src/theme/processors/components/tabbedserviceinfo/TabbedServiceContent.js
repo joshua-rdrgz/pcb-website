@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
+import { loadable } from "frontity";
 import { connect, styled, css } from "frontity";
 import TabbedServiceImage from "./TabbedServiceImage";
-import TabbedServicePrice from "./TabbedServicePrice";
 import TabbedServiceDescription from "./TabbedServiceDescription";
 import TabbedServiceBenefits from "./TabbedServiceBenefits";
 import TabbedServiceValue from "./TabbedServiceValue";
+
+const TabbedServicePrice = loadable(() => import("./TabbedServicePrice"));
 
 import * as Variables from "../../../styles/Variables";
 import * as Mixins from "../../../styles/Mixins";

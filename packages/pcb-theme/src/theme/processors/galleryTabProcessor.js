@@ -1,4 +1,6 @@
-import GalleryTab from "../components/gallery/GalleryTab";
+import { loadable } from "frontity";
+
+const GalleryTab = loadable(() => import("../components/gallery/GalleryTab"));
 
 const galleryTabProcessor = {
   name: "Gallery Tab",

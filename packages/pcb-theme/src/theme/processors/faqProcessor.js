@@ -1,7 +1,6 @@
-import React, { useState } from "react";
-import { styled, css } from "frontity";
+import { loadable } from "frontity";
 
-import FAQTab from './components/FAQ';
+const FAQTab = loadable(() => import("./components/FAQ"));
 
 const faqProcessor = {
   name: "FAQ",

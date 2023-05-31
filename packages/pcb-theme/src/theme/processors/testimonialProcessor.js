@@ -1,6 +1,8 @@
-import React from "react";
+import { loadable } from "frontity";
 
-import TestimonialComponent from "../components/testimonials/TestimonialComponent";
+const TestimonialComponent = loadable(() =>
+  import("../components/testimonials/TestimonialComponent")
+);
 
 const testimonialProcessor = {
   name: "testimonial",
@@ -25,7 +27,8 @@ const testimonialProcessor = {
 
     // section header + description, always will be first
     const sectionHeader = content[0]?.children[0]?.content;
-    const sectionDescription = hasDescription && content[1]?.children[0]?.content;
+    const sectionDescription =
+      hasDescription && content[1]?.children[0]?.content;
 
     // Testimonial Content
     const testimonialsNode =

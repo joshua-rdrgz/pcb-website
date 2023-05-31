@@ -1,4 +1,6 @@
-import ServiceCards from "../components/cards/Cards";
+import { loadable } from "frontity";
+
+const ServiceCards = loadable(() => import("../components/cards/Cards"));
 
 const cardsProcessor = {
   name: "Service Cards",
@@ -24,11 +26,9 @@ const cardsProcessor = {
         cardContent[3]?.children.length !== 0 && cardContent[3]?.children;
 
       const buttonContent =
-        button &&
-        button[0]?.children[0]?.children[0]?.content;
+        button && button[0]?.children[0]?.children[0]?.content;
       const buttonLink =
-        button &&
-        button[0]?.children[0]?.props.href.split("/").reverse()[1];
+        button && button[0]?.children[0]?.props.href.split("/").reverse()[1];
       cards.push({
         title,
         image,
