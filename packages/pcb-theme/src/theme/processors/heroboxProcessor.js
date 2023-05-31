@@ -1,5 +1,7 @@
-import Herobox from "../components/herobox/Herobox";
+import { loadable } from "frontity";
 import gatherSectionContent from "../helpers/gatherSectionContent";
+
+const Herobox = loadable(() => import("../components/herobox/Herobox"));
 
 const heroboxProcessor = {
   name: "herobox",

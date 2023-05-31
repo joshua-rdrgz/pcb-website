@@ -1,7 +1,9 @@
-import React from "react";
+import { loadable } from "frontity";
 
-import ContactTab from "../components/contact/Contact";
-import LandingContactTab from "../components/contact/LandingContact";
+const ContactTab = loadable(() => import("../components/contact/Contact"));
+const LandingContactTab = loadable(() =>
+  import("../components/contact/LandingContact")
+);
 
 const contactProcessor = {
   name: "Contact",

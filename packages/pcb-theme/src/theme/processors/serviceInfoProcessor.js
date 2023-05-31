@@ -1,6 +1,8 @@
-import React from "react";
+import { loadable } from "frontity";
 
-import TabbedServiceInfo from "./components/tabbedserviceinfo/TabbedServiceInfo";
+const TabbedServiceInfo = loadable(() =>
+  import("./components/tabbedserviceinfo/TabbedServiceInfo")
+);
 
 const tabbedServiceInfoProcessor = {
   name: "Tabbed Service Information",
