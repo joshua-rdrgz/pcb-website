@@ -13,14 +13,14 @@ const calculateIfPageIsCoreSite = (route, isPost, isLandingPage) => {
 const useCustomSEO = () => {
   const { state } = useConnect();
   const data = state.source.get(state.router.link);
+  const isCoreSitePage = calculateIfPageIsCoreSite(
+    state.router.link,
+    data.isPost,
+    data.isLandingPage
+  );
+
   useEffect(() => {
     const isMainDomain = window.location.host === "performanceclearbra.com";
-    const isCoreSitePage = calculateIfPageIsCoreSite(
-      state.router.link,
-      data.isPost,
-      data.isLandingPage
-    );
-
     if (!isMainDomain || !isCoreSitePage) {
       const metaTags = document.head.querySelectorAll('meta[name="robots"]');
 
@@ -40,7 +40,7 @@ const useCustomSEO = () => {
     }
   }, [state.router.link]);
 
-  return null;
+  return { isCoreSitePage };
 };
 
 export default useCustomSEO;
