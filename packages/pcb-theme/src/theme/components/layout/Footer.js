@@ -28,7 +28,7 @@ function Footer({ state }) {
   return (
     <StyledFooter>
       <Link link="/">
-        <PcbLogo src={pcbLOGO}></PcbLogo>
+        <PcbLogo src={pcbLOGO} alt="Performance Clear Bra Logo"></PcbLogo>
       </Link>
       <FancyLinesContainer>
         <FancyLines />

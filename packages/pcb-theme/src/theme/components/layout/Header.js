@@ -77,7 +77,7 @@ function Header({ state }) {
         topBarHeight={state.theme.header.topBarHeight}
       >
         <PcbLogoLink link="/">
-          <PcbLogo src={pcbLOGO}></PcbLogo>
+          <PcbLogo src={pcbLOGO} alt="Performance Clear Bra Logo"></PcbLogo>
         </PcbLogoLink>
         <Navigation type="header" menuNumber={state.theme.headerMenuID} />
       </MainBarContainer>
