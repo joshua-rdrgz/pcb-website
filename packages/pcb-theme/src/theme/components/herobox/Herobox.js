@@ -7,6 +7,8 @@ import LinkStyles from "../../styles/componentStyles/LinkStyles";
 import * as Variables from "../../styles/Variables";
 import * as Mixins from "../../styles/Mixins";
 
+import gatherFeaturedImage from "../../helpers/gatherFeaturedImage";
+
 const onClickHandler = (e) => {
   e.preventDefault();
   const customizer = document.getElementById("customizer-anchor");
@@ -25,10 +27,7 @@ const onClickHandler = (e) => {
 
 const Herobox = ({ state, content }) => {
   const link = state.source.get(state.router.link);
-  const media = state.source.get("media");
-  const mediaID = state.source.page[link.id].featured_media;
-  const [fMedia] = media.data.filter((media) => media.id === mediaID);
-  const backgroundImage = fMedia?.guid.rendered;
+  const backgroundImage = gatherFeaturedImage(state, link);
 
   const [primaryHeading, secondaryHeading, buttons] = content;
 
