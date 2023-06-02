@@ -71,25 +71,25 @@ function Footer({ state }) {
         <div>
           <Socials>
             <object
-              data={facebookLogo.guid.rendered}
+              data={facebookLogo?.guid?.rendered}
               type="image/svg+xml"
               width="50"
               height="50"
             ></object>
             <object
-              data={yelpLogo.guid.rendered}
+              data={yelpLogo?.guid?.rendered}
               type="image/svg+xml"
               width="50"
               height="50"
             ></object>
             <object
-              data={youtubeLogo.guid.rendered}
+              data={youtubeLogo?.guid?.rendered}
               type="image/svg+xml"
               width="50"
               height="50"
             ></object>
             <object
-              data={instagramLogo.guid.rendered}
+              data={instagramLogo?.guid?.rendered}
               type="image/svg+xml"
               width="50"
               height="50"
