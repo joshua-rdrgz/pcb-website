@@ -58,16 +58,16 @@ function Header({ state }) {
         </AddressLink>
         <SocialsBlock>
           <object
-            data={facebookLogo.guid.rendered}
+            data={facebookLogo?.guid?.rendered}
             type="image/svg+xml"
           ></object>
-          <object data={yelpLogo.guid.rendered} type="image/svg+xml"></object>
+          <object data={yelpLogo?.guid?.rendered} type="image/svg+xml"></object>
           <object
-            data={youtubeLogo.guid.rendered}
+            data={youtubeLogo?.guid?.rendered}
             type="image/svg+xml"
           ></object>
           <object
-            data={instagramLogo.guid.rendered}
+            data={instagramLogo?.guid?.rendered}
             type="image/svg+xml"
           ></object>
         </SocialsBlock>
