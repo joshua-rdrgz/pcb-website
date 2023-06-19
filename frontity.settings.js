@@ -2,7 +2,7 @@ const settings = {
   name: "pcb-website",
   state: {
     frontity: {
-      url: "https://pcbdev2020.wpengine.com",
+      url: "https://performanceclearbra.com",
       title: "Performance Clear Bra",
       description: "Marketing website of Performance Clear Bra",
     },
@@ -15,16 +15,16 @@ const settings = {
       name: "@frontity/wp-source",
       state: {
         source: {
-          url: "https://pcbdev2020.wpengine.com",
+          url: "https://wp.performanceclearbra.com",
           homepage: "/home",
           postsPage: "/blog",
           redirections: "404",
           postTypes: [
             {
               type: "landing_page",
-              endpoint: "landing_page"
-            }
-          ]
+              endpoint: "landing_page",
+            },
+          ],
         },
       },
     },
@@ -32,10 +32,10 @@ const settings = {
     "@frontity/html2react",
     "@frontity/yoast",
     {
-      name: '@frontity/google-tag-manager-analytics',
+      name: "@frontity/google-tag-manager-analytics",
       state: {
         googleTagManagerAnalytics: {
-          containerId: 'GTM-KFH5633',
+          containerId: "GTM-KFH5633",
         },
       },
     },
