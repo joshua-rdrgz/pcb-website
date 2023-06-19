@@ -66,7 +66,8 @@ const generalPostStyles = css`
       ${variables.textBody16};
     }
   }
-  & p {
+  & p,
+  & a {
     ${variables.textBody12};
     color: ${variables.colorNeutral900};
     @media (min-width: ${variables.breakpoint600}) {
@@ -75,6 +76,9 @@ const generalPostStyles = css`
     @media (min-width: ${variables.breakpoint950}) {
       ${variables.textBody20};
     }
+  }
+  & a {
+    color: ${variables.colorPrimary700};
   }
   & ul,
   & ol {

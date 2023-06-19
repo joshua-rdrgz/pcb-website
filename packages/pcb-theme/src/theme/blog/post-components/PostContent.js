@@ -1,4 +1,5 @@
 import { styled, css } from "frontity";
+import Link from "@frontity/components/link";
 import generateCSS from "../../helpers/generateCSS";
 import * as variables from "../styles/variables";
 
@@ -34,6 +35,15 @@ const StyledComponent = styled.div`
   ${({ cssRulesets }) =>
     css`
       ${cssRulesets}
+    `}
+  // *
+  // FIX 'a' TAGS WITHIN 'p' TAGS SPACING ISSUE
+  // *
+  ${(props) =>
+    props.as === "p" &&
+    props.isLeafElement &&
+    css`
+      display: inline;
     `}
 `;
 
@@ -77,6 +87,24 @@ const PostContent = ({ content, isHighlightedSection, tag, classes }) => {
           }
 
           // *
+          // ELEMENT IS A LINK => a TAG
+          // *
+          if (elementTag === "a") {
+            return (
+              <StyledComponent
+                key={`element-${elementTag}-${elementIdx}`}
+                as={Link}
+                link={element.href}
+                cssRulesets={elementRulesets ? elementRulesets : null}
+                isHighlightedSection={isHighlightedSection}
+                target="_blank"
+              >
+                {elementContent}
+              </StyledComponent>
+            );
+          }
+
+          // *
           // ELEMENT IS ANYTING BUT AN IMG
           // *
           return (
@@ -85,6 +113,7 @@ const PostContent = ({ content, isHighlightedSection, tag, classes }) => {
               as={elementTag}
               cssRulesets={elementRulesets ? elementRulesets : null}
               isHighlightedSection={isHighlightedSection}
+              isLeafElement
             >
               {elementContent}
             </StyledComponent>
@@ -99,7 +128,7 @@ const PostContent = ({ content, isHighlightedSection, tag, classes }) => {
             key={`element-${elementTag}-${elementIdx}`}
             content={elementContent}
             isHighlightedSection={isHighlightedSection}
-            tag={elementTag}
+            tag={elementTag === "p" ? "div" : elementTag}
             classes={elementClasses}
           />
         );

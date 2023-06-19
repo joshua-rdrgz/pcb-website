@@ -27,13 +27,13 @@ const Span = styled.span`
 
 const FrontityLink = styled(Link)`
   text-decoration: none;
-  color: ${variables.colorNeutral600};
+  color: ${variables.colorNeutral600} !important;
   cursor: pointer;
 `;
 
 const HighlightedFrontityLink = styled(Link)`
   text-decoration: none;
-  color: ${variables.colorNeutral900};
+  color: ${variables.colorNeutral900} !important;
   cursor: pointer;
 `;
 
