@@ -53,6 +53,15 @@ const generalPostStyles = css`
   }
   & img {
     max-width: 100%;
+    @media (min-width: ${variables.breakpoint600}) {
+      max-width: 75%;
+    }
+    @media (min-width: ${variables.breakpoint950}) {
+      max-width: 60%;
+    }
+    @media (min-width: ${variables.breakpoint1300}) {
+      max-width: 50%;
+    }
     border-radius: ${variables.spacing2};
     border: 1px solid ${variables.colorNeutral900};
   }
