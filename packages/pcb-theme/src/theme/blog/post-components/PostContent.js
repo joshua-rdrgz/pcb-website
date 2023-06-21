@@ -16,7 +16,9 @@ const StyledComponent = styled.div`
     css`
       background-color: ${variables.colorPrimary700};
       color: ${variables.colorNeutral100} !important;
-      ${props.as.startsWith("h") &&
+
+      ${typeof props.as === "string" &&
+      props.as.startsWith("h") &&
       css`
         color: ${variables.colorPureWhite} !important;
       `}
