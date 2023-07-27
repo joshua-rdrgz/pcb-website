@@ -127,7 +127,7 @@ const PostPreview = ({ blogData }) => {
       <ContentSection>
         <Link link={blogData.link}>
           <Figure>
-            <Img src={blogData.featuredMedia[0].guid.rendered} />
+            <Img src={blogData.featuredMedia[0]?.guid.rendered} />
           </Figure>
         </Link>
         <Div dangerouslySetInnerHTML={{ __html: blogData.excerpt }} />

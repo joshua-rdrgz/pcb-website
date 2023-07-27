@@ -120,7 +120,7 @@ const Post = ({ state, libraries }) => {
 
   return (
     <>
-      <HeroboxSection bgImgURL={postData.featuredMedia[0].guid.rendered}>
+      <HeroboxSection bgImgURL={postData.featuredMedia[0]?.guid.rendered}>
         <H1>{post.title.rendered}</H1>
         <Span>
           by {postData.author} |{" "}
