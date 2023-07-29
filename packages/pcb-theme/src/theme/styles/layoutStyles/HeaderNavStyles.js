@@ -6,7 +6,7 @@ import * as Mixins from "../Mixins";
 export const Nav = styled.nav`
   color: ${Variables.colorWhite};
   margin: 2rem 3rem 2rem auto;
-  @media (max-width: ${Variables.query800}) {
+  @media (max-width: ${Variables.query875}) {
     height: 0;
     margin-top: 0;
     transform: scale(1, 0);
@@ -50,7 +50,7 @@ export const MobileIcon = styled.span`
   &::after {
     top: 0.7rem;
   }
-  @media (max-width: ${Variables.query800}) {
+  @media (max-width: ${Variables.query875}) {
     visibility: visible;
     margin-left: 0.9rem;
     margin-top: 1.9rem;
@@ -83,7 +83,7 @@ export const MobileBurger = styled.label`
     transform: rotate(-135deg);
     top: 0;
   }
-  @media (max-width: ${Variables.query800}) {
+  @media (max-width: ${Variables.query875}) {
     visibility: visible;
   }
 `;
@@ -92,10 +92,10 @@ export const NavList = styled.ul`
   display: flex;
   justify-content: space-between;
   gap: 5rem;
-  @media (max-width: ${Variables.query1000}) {
+  @media (max-width: ${Variables.query1025}) {
     gap: 2.5rem;
   }
-  @media (max-width: ${Variables.query800}) {
+  @media (max-width: ${Variables.query875}) {
     background-color: ${Variables.colorBlackPureRGBA};
     flex-direction: column;
     gap: 0;
@@ -118,7 +118,7 @@ export const ParentLink = styled.li`
   &:hover {
     color: ${Variables.colorGold};
   }
-  @media (max-width: ${Variables.query800}) {
+  @media (max-width: ${Variables.query875}) {
     padding-bottom: 0;
     & span {
       display: none;
@@ -166,7 +166,7 @@ export const ParentIcon = styled.span`
 `;
 
 export const ChildList = styled.ul`
-  @media (min-width: ${Variables.query800}) {
+  @media (min-width: ${Variables.query875}) {
     display: none;
     position: absolute;
     min-width: 20rem;
@@ -195,14 +195,14 @@ export const ChildList = styled.ul`
     min-width: 16rem;
     margin-left: -4.5rem;
   }
-  @media (max-width: ${Variables.query800}) {
+  @media (max-width: ${Variables.query875}) {
     margin-left: 0;
     list-style: none;
   }
 `;
 
 export const ChildLink = styled.li`
-  @media (min-width: ${Variables.query800}) {
+  @media (min-width: ${Variables.query875}) {
     ${Mixins.liCleanUp};
     ${Mixins.addHeadingFont(700, 2.5)};
     text-align: center;
@@ -223,7 +223,7 @@ export const CTA = styled.li`
 
 // Mixin to make links responsive, keeping it here to not pollute the global Mixin file.
 export const linkResponsive = () => css`
-  @media (max-width: ${Variables.query800}) {
+  @media (max-width: ${Variables.query875}) {
     opacity: 0;
     transition: opacity 150ms ease-in-out;
     ${MobileToggle}:checked ~ ${Nav} & {
@@ -250,7 +250,7 @@ export const StyledCTA = styled(Link)`
     color: ${Variables.colorWhite};
     border-color: ${Variables.colorRed};
   }
-  @media (max-width: ${Variables.query800}) {
+  @media (max-width: ${Variables.query875}) {
     border: none;
     padding: none;
     color: ${Variables.colorWhite} !important;

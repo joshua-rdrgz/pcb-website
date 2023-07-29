@@ -101,7 +101,7 @@ const StyledHeader = styled.header`
 `;
 
 const PcbLogoLink = styled(Link)`
-  @media (max-width: ${Variables.query800}) {
+  @media (max-width: ${Variables.query875}) {
     margin-right: auto;
     width: 200px;
   }
@@ -113,7 +113,7 @@ const PcbLogoLink = styled(Link)`
 const PcbLogo = styled.img`
   width: 250px;
   margin-left: 3rem;
-  @media (max-width: ${Variables.query800}) {
+  @media (max-width: ${Variables.query875}) {
     margin-right: auto;
     width: 200px;
   }
@@ -147,7 +147,7 @@ const TopBarContainer = styled.div`
 const CallBlock = styled.div`
   padding: 0 3rem;
   border-right: ${Variables.headerBorder};
-  @media (max-width: ${Variables.query800}) {
+  @media (max-width: ${Variables.query875}) {
     padding: 0 1rem;
   }
   @media (max-width: ${Variables.query550}) {
@@ -168,7 +168,7 @@ const AddressLink = styled(Link)`
   border-right: 1px solid ${Variables.colorWhite};
   padding: 0 3rem;
   text-decoration: underline;
-  @media (max-width: ${Variables.query800}) {
+  @media (max-width: ${Variables.query875}) {
     padding: 0 1rem;
   }
   @media (max-width: ${Variables.query550}) {
@@ -186,7 +186,7 @@ const SocialsBlock = styled.div`
   gap: 2rem;
   align-items: center;
   padding-left: 3rem;
-  @media (max-width: ${Variables.query800}) {
+  @media (max-width: ${Variables.query875}) {
     gap: 1rem;
     padding: 0 1rem;
     margin: 0 auto;
@@ -206,7 +206,7 @@ const MainBarContainer = styled.div`
     props.scrollPos > 125
       ? Variables.colorBlackPureRGBA
       : Variables.colorBlackPure};
-  @media (max-width: ${Variables.query800}) {
+  @media (max-width: ${Variables.query875}) {
     flex-direction: column;
     height: 95px;
   }
