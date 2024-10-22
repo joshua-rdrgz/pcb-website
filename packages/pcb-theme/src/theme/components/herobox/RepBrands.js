@@ -1,20 +1,18 @@
-import React from "react";
-import { styled, connect, css } from "frontity";
 import Link from "@frontity/components/link";
+import { connect, css, styled } from "frontity";
+import React from "react";
 
-import bestOfFtWorth from "../../assets/best-of-ft-worth.svg";
 import ceramicPro from "../../assets/ceramic-pro.svg";
-import suntek from "../../assets/suntek.png";
-import reaction from "../../assets/reaction-logo.png";
 import evolve from "../../assets/evolve-logo.png";
+import flexishield from "../../assets/flexishield.png";
+import legendppf from "../../assets/legend-ppf.png";
+import reaction from "../../assets/reaction-logo.png";
+import suntek from "../../assets/suntek.png";
 
-import * as Variables from "../../styles/Variables";
 import * as Mixins from "../../styles/Mixins";
+import * as Variables from "../../styles/Variables";
 
 const RepBrandsContainer = styled.ul`
-  ${(props) => css`
-    ${props.activeHeights};
-  `}
   display: flex;
   justify-content: space-around;
   gap: 1rem;
@@ -22,8 +20,6 @@ const RepBrandsContainer = styled.ul`
   flex-wrap: wrap;
   padding: 2.5rem 2rem;
   background-color: ${Variables.colorGray1RGBA};
-  @media (max-width: ${Variables.query1300}) {
-  }
 `;
 
 const Brand = styled.li`
@@ -57,92 +53,38 @@ const CeramicPro = styled.img`
   }
 `;
 
-const getRepBrandsData = (link) => {
+const LegendPPF = styled.img`
+  width: 35rem;
+  @media (max-width: ${Variables.query1000}) {
+    width: 20rem;
+  }
+`;
+
+const FlexishieldPPF = styled.img`
+  width: 35rem;
+  @media (max-width: ${Variables.query1000}) {
+    width: 20rem;
+  }
+`;
+
+const getPage = (link) => {
   let page;
-  let heightOfRepBrands; // this variable defines the Rep Brand's container's height to minimize layout shift on load.
   switch (link) {
     case "/":
       page = "home";
-      heightOfRepBrands = `
-        height: 155px;
-        @media (max-width: 1381px) {
-          height: 270px;
-        }
-        @media (max-width: 1000px) {
-          height: 250px;
-        }
-        @media (max-width: 579px) {
-          height: 312px;
-        }
-        @media (max-width: 489px) {
-          height: 325px;
-        }
-        @media (max-width: 449px) {
-          height: 390px;
-        }
-        @media (max-width: 329px) {
-          height: 440px;
-        }
-      `;
       break;
     case "/reviews/":
       page = "reviews";
-      heightOfRepBrands = css`
-        height: 155px;
-        @media (max-width: 1381px) {
-          height: 270px;
-        }
-        @media (max-width: 1000px) {
-          height: 250px;
-        }
-        @media (max-width: 579px) {
-          height: 312px;
-        }
-        @media (max-width: 489px) {
-          height: 325px;
-        }
-        @media (max-width: 449px) {
-          height: 390px;
-        }
-        @media (max-width: 329px) {
-          height: 440px;
-        }
-      `;
       break;
     case "/paint-protection-film-clear-bra-fort-worth-tx/":
       page = "ppf";
-      heightOfRepBrands = css`
-        height: 157px;
-        @media (max-width: 1121px) {
-          height: 272px;
-        }
-        @media (max-width: 1000px) {
-          height: 155px;
-        }
-        @media (max-width: 879px) {
-          height: 250px;
-        }
-        @media (max-width: 579px) {
-          height: 312px;
-        }
-        @media (max-width: 329px) {
-          height: 365px;
-        }
-      `;
       break;
     case "/window-tint-fort-worth-tx/":
       page = "wt";
-      heightOfRepBrands = css`
-        height: 155px;
-        @media (max-width: 569px) {
-          height: 250px;
-        }
-      `;
       break;
   }
-  return { page, heightOfRepBrands };
+  return page;
 };
-
 
 const repBrands = [
   {
@@ -163,6 +105,26 @@ const repBrands = [
     img: {
       src: reaction,
       alt: "SunTek Reaction Official Logo",
+    },
+  },
+  {
+    name: "Legend PPF Logo",
+    link: "https://legendppf.com/ppf-prime/",
+    tag: LegendPPF,
+    included: ["home", "ppf"],
+    img: {
+      src: legendppf,
+      alt: "Legend PPF Official Logo",
+    },
+  },
+  {
+    name: "Flexishield PPF Logo",
+    link: "https://www.flexishieldusa.com/products/color-paint-protection-film-ppf/",
+    tag: FlexishieldPPF,
+    included: ["home", "ppf"],
+    img: {
+      src: flexishield,
+      alt: "Flexishield PPF Official Logo",
     },
   },
   {
@@ -198,12 +160,12 @@ const repBrands = [
 ];
 
 const RepBrands = ({ state }) => {
-  const repBrandsData = getRepBrandsData(state.router.link);
+  const page = getPage(state.router.link);
   const filteredBrands = repBrands.filter((logo) =>
-    logo.included.includes(repBrandsData.page)
+    logo.included.includes(page)
   );
   return (
-    <RepBrandsContainer activeHeights={repBrandsData.heightOfRepBrands}>
+    <RepBrandsContainer>
       {filteredBrands.map((brand) => {
         return (
           <Brand key={brand.name}>
