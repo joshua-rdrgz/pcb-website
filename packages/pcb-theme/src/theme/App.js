@@ -73,6 +73,11 @@ const App = ({ state }) => {
           `}
           </script>
         )}
+        <script
+          defer
+          async
+          src="https://cdn.trustindex.io/loader.js?ce1b0cc3612b265e491696fcbdd"
+        ></script>
       </Head>
       <Global styles={Reset} />
       {isLandingPage ? <LandingHeader /> : <Header />}
