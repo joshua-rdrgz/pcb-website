@@ -23,29 +23,30 @@ const tabbedServiceInfoProcessor = {
 
     // section header, always will be first
     const sectionHeader = content[0]?.children[0]?.content;
+    const sectionDescription = content[1]?.children[0]?.content;
 
     // button tabs, controls what is shown to user
-    const typeButtons = content[1]?.children.map((_, i) => {
-      return content[1]?.children[i].children[0].children[0].content;
+    const typeButtons = content[2]?.children.map((_, i) => {
+      return content[2]?.children[i].children[0].children[0].content;
     });
 
     // DATA
 
     // locations
     const locations =
-      content[2]?.children[0]?.children[0]?.children[0]?.children
+      content[3]?.children[0]?.children[0]?.children[0]?.children
         .slice(1)
         .map((location) => {
           return location.children[0].content;
         });
 
     // types
-    const types = content[1]?.children.map((type) => {
+    const types = content[2]?.children.map((type) => {
       return type.children[0].children[0].content;
     });
 
     // locations rows
-    const rowsLocations = content[2]?.children[0]?.children[1]?.children;
+    const rowsLocations = content[3]?.children[0]?.children[1]?.children;
 
     // prices
     const priceRows = rowsLocations.slice(0, types.length);
@@ -56,7 +57,7 @@ const tabbedServiceInfoProcessor = {
     });
 
     // images
-    const images = content[3].children[0].props;
+    const images = content[4].children[0].props;
 
     // descriptions
     const descriptionsRows = rowsLocations.slice(-2);
@@ -91,7 +92,7 @@ const tabbedServiceInfoProcessor = {
 
     // benefits
     const benefits = [];
-    content[4]?.children[0]?.children[1]?.children[0].children
+    content[5]?.children[0]?.children[1]?.children[0].children
       .slice(1)
       .map((benefitRow) => {
         benefits.push(benefitRow.children[0].content);
@@ -135,6 +136,7 @@ const tabbedServiceInfoProcessor = {
         anchorHTML,
         isWindowTint,
         sectionHeader,
+        sectionDescription,
         typeButtons,
         data,
         buttonContent,

@@ -13,6 +13,7 @@ const TabbedServiceInfo = ({
   anchorHTML,
   isWindowTint,
   sectionHeader,
+  sectionDescription,
   typeButtons,
   data,
   buttonContent,
@@ -22,6 +23,7 @@ const TabbedServiceInfo = ({
   return (
     <Section id={anchorHTML}>
       <SectionHeader>{sectionHeader}</SectionHeader>
+      <SectionDescription>{sectionDescription}</SectionDescription>
       <TabbedServiceContent
         data={state.theme.tabbedServiceInfo.currentPageData}
         typeButtons={typeButtons}
@@ -64,13 +66,20 @@ const SectionHeader = styled.h2`
   margin-bottom: 2rem;
 `;
 
+const SectionDescription = styled.p`
+  text-align: center;
+  font-size: 2rem;
+  padding: 0 3rem;
+  margin-bottom: 2rem;
+`;
+
 const Button = styled(Link)`
   ${(props) => LinkStyles(props.type, props.fontSize)};
   margin: 1.5rem auto;
 `;
 
 const HashButton = styled.button`
-  ${props => LinkStyles(props.type, props.fontSize)};
+  ${(props) => LinkStyles(props.type, props.fontSize)};
   margin: 1.5rem auto;
   border: none;
 `;
