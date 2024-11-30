@@ -14,14 +14,17 @@ const faqProcessor = {
     // section header, always will be first
     const sectionHeader = shortHand[0]?.children[0]?.content;
 
+    const sectionDescription = shortHand[1]?.children[0]?.content;
+
     // FAQs
-    const faqsContainer = shortHand.slice(1);
+    const faqsContainer = shortHand.slice(2);
 
     return {
       component: FAQTab,
       props: {
         state,
         sectionHeader,
+        sectionDescription,
         faqsContainer,
       },
     };

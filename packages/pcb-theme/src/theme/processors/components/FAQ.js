@@ -4,7 +4,13 @@ import { styled, css, connect } from "frontity";
 import * as Variables from "../../styles/Variables";
 import * as Mixins from "../../styles/Mixins";
 
-const FAQTab = ({ state, actions, sectionHeader, faqsContainer }) => {
+const FAQTab = ({
+  state,
+  actions,
+  sectionHeader,
+  sectionDescription,
+  faqsContainer,
+}) => {
   useEffect(() => {
     faqsContainer.forEach((faqsBlock, faqsBlockIndex) => {
       const faqs = faqsBlock?.children[0]?.children;
@@ -23,6 +29,7 @@ const FAQTab = ({ state, actions, sectionHeader, faqsContainer }) => {
   return (
     <Section>
       <SectionHeader>{sectionHeader}</SectionHeader>
+      <SectionDescription>{sectionDescription}</SectionDescription>
       <FAQsContainer>
         {faqsContainer.map((faqsBlock, faqsBlockIndex) => {
           const faqs = faqsBlock?.children[0]?.children;
@@ -63,7 +70,9 @@ const FAQTab = ({ state, actions, sectionHeader, faqsContainer }) => {
                       >
                         &nbsp;
                       </FAQIcon>
-                      <Question as={hasHeader ? 'h4' : 'h3'}>{question}</Question>
+                      <Question as={hasHeader ? "h4" : "h3"}>
+                        {question}
+                      </Question>
                       <Answer
                         isOpen={
                           state.theme.faq.FAQToggleData[faqsBlockIndex][
@@ -111,6 +120,13 @@ const SectionHeader = styled.h2`
   text-shadow: ${Variables.textShadow};
   color: ${Variables.colorWhite};
   padding-top: 1rem;
+`;
+
+const SectionDescription = styled.p`
+  text-align: center;
+  font-size: 2rem;
+  color: ${Variables.colorWhite};
+  padding: 0 3rem;
   margin-bottom: 2rem;
 `;
 
@@ -130,7 +146,7 @@ const FAQs = styled.section`
 
 const FAQHeader = styled.h3`
   text-align: center;
-  ${Mixins.addHeadingFont(400, 2.5)};
+  ${Mixins.addHeadingFont(400, 3)};
   text-shadow: ${Variables.textShadow};
   color: ${Variables.colorWhite};
 `;
