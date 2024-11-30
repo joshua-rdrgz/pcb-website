@@ -15,7 +15,7 @@ const settings = {
       name: "@frontity/wp-source",
       state: {
         source: {
-          url: "https://pcbdev2020.wpengine.com",
+          url: "https://wp.performanceclearbra.com",
           homepage: "/home",
           postsPage: "/blog",
           redirections: "404",
