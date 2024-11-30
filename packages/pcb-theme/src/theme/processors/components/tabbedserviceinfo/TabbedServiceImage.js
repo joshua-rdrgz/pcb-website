@@ -312,8 +312,8 @@ const TabbedServiceImage = ({ state, isWindowTint }) => {
                     }
                     imageLink={
                       isWindowTint
-                        ? wtSprites.guid.rendered
-                        : ppfSprites.guid.rendered
+                        ? wtSprites?.guid.rendered
+                        : ppfSprites?.guid.rendered
                     }
                     activeImage={
                       isWindowTint
