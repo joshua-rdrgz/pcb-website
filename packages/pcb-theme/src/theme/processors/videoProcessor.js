@@ -18,26 +18,16 @@ const videoProcessor = {
 
     const sectionHeader = content[0]?.children[0]?.content;
 
-    const videoContent = content.slice(1).map((videoBlock) => {
+    const sectionDescription = content[1]?.children[0]?.content;
+
+    const videoContent = content.slice(2).map((videoBlock) => {
       const videoBlockContent = videoBlock?.children[0]?.children;
 
-      const ifVideoHasHeader = videoBlockContent[0].component.includes("h");
-
-      const videoBlockHeader = ifVideoHasHeader
-        ? videoBlockContent[0]?.children[0].content
-        : null;
-
-      const video = ifVideoHasHeader
-        ? videoBlockContent[1]?.children[0]?.children[0].props
-        : videoBlockContent[0]?.children[0]?.children[0].props;
-
-      const videoBlockDescription = videoBlockContent[2]
-        ? videoBlockContent[2]?.children[0].content
-        : ifVideoHasHeader
-        ? null
-        : videoBlockContent[1]?.children[0].content;
-
-      return [videoBlockHeader, video, videoBlockDescription];
+      return {
+        videoBlockHeader: videoBlockContent[0]?.children[0]?.content,
+        videoBlockDescription: videoBlockContent[1]?.children[0]?.content,
+        video: videoBlockContent[2]?.children[0]?.children[0].props,
+      };
     });
 
     return {
@@ -45,6 +35,7 @@ const videoProcessor = {
       props: {
         backgroundColor,
         sectionHeader,
+        sectionDescription,
         videoContent,
       },
     };

@@ -4,17 +4,19 @@ import { styled, css, connect } from "frontity";
 import * as Variables from "../../styles/Variables";
 import * as Mixins from "../../styles/Mixins";
 
-const VideoTab = ({ backgroundColor, sectionHeader, videoContent }) => {
+const VideoTab = ({
+  backgroundColor,
+  sectionHeader,
+  sectionDescription,
+  videoContent,
+}) => {
   return (
     <Section backgroundColor={backgroundColor}>
       <SectionHeader>{sectionHeader}</SectionHeader>
+      <SectionDescription>{sectionDescription}</SectionDescription>
       <VideosContainer>
         {videoContent.map((videoBlock, videoBlockIndex) => {
-          const videoBlockHeader =
-            videoBlock[0] === null ? null : videoBlock[0];
-          const video = videoBlock[1];
-          const videoBlockDescription =
-            videoBlock[2] === null ? null : videoBlock[2];
+          const { videoBlockHeader, videoBlockDescription, video } = videoBlock;
 
           return (
             <VideoWrapper
@@ -24,6 +26,9 @@ const VideoTab = ({ backgroundColor, sectionHeader, videoContent }) => {
               {videoBlockHeader && (
                 <VideoHeader>{videoBlockHeader}</VideoHeader>
               )}
+              {videoBlockDescription && (
+                <VideoDescription>{videoBlockDescription}</VideoDescription>
+              )}
               <Video
                 src={video.src}
                 loading="lazy"
@@ -32,9 +37,6 @@ const VideoTab = ({ backgroundColor, sectionHeader, videoContent }) => {
                 allow={video.allow}
                 allowFullScreen={true}
               />
-              {videoBlockDescription && (
-                <VideoDescription>{videoBlockDescription}</VideoDescription>
-              )}
             </VideoWrapper>
           );
         })}
@@ -59,6 +61,12 @@ const SectionHeader = styled.h2`
   text-shadow: ${Variables.textShadow};
 `;
 
+const SectionDescription = styled.p`
+  text-align: center;
+  font-size: 1.75rem;
+  padding: 0 3rem;
+`;
+
 const VideosContainer = styled.article`
   display: flex;
   flex-wrap: wrap;
@@ -73,6 +81,7 @@ const VideoWrapper = styled.figure`
     props.backgroundColor === "dark" && Variables.colorRedDeep1};
   border-radius: 1rem;
   text-align: center;
+  max-width: min-content;
   @media (max-width: ${Variables.query1000}) {
     margin: 0 2rem;
     &:last-child {
@@ -85,11 +94,8 @@ const VideoWrapper = styled.figure`
 `;
 
 const VideoHeader = styled.h3`
-  ${Mixins.addHeadingFont(400, 2.5)};
-  padding-bottom: 1rem;
-  @media (max-width: ${Variables.query600}) {
-    padding-bottom: 0;
-  }
+  ${Mixins.addHeadingFont(400, 3)};
+  text-decoration: underline;
 `;
 
 const Video = styled.iframe`
@@ -127,5 +133,9 @@ const Video = styled.iframe`
 `;
 
 const VideoDescription = styled.p`
-  font-size: 2rem;
+  font-size: 1.75rem;
+  padding-bottom: 1rem;
+  @media (max-width: ${Variables.query600}) {
+    padding-bottom: 0;
+  }
 `;
